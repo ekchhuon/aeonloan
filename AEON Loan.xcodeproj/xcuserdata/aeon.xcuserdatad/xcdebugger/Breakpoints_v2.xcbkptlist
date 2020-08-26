@@ -23,17 +23,49 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "0C8914E0-4EEB-42E9-B24D-9391003B7644"
-            shouldBeEnabled = "Yes"
+            uuid = "DD66F81C-06F3-4525-9E22-8755587B1310"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "AEON Loan/Features/Launch/LaunchView.swift"
+            filePath = "AEON Loan/Features/Login/LoginViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "14"
-            endingLineNumber = "14"
-            landmarkName = "viewDidLoad()"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "fetch(user:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "DD66F81C-06F3-4525-9E22-8755587B1310 - b601557b80b5bcd6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AEON_Loan.LoginViewModel.fetch(user: AEON_Loan.User) -&gt; ()"
+                  moduleName = "AEON Loan"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aeon/Documents/development/AEON%20Loan/AEON%20Loan/Features/Login/LoginViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "26"
+                  endingLineNumber = "26"
+                  offsetFromSymbolStart = "579">
+               </Location>
+               <Location
+                  uuid = "DD66F81C-06F3-4525-9E22-8755587B1310 - 2037f3a6746ccf3b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in AEON_Loan.LoginViewModel.fetch(user: AEON_Loan.User) -&gt; ()"
+                  moduleName = "AEON Loan"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aeon/Documents/development/AEON%20Loan/AEON%20Loan/Features/Login/LoginViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "27"
+                  endingLineNumber = "27"
+                  offsetFromSymbolStart = "44">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

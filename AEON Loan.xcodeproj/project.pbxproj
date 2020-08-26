@@ -7,9 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E23674824F617C3003FD6D4 /* Date+DayAndTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E23674724F617C3003FD6D4 /* Date+DayAndTime.swift */; };
+		3E23674A24F617ED003FD6D4 /* TimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E23674924F617ED003FD6D4 /* TimeInterval.swift */; };
+		3E23674C24F6184C003FD6D4 /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E23674B24F6184C003FD6D4 /* UIDevice.swift */; };
+		3E23674F24F61CA1003FD6D4 /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E23674E24F61CA1003FD6D4 /* Box.swift */; };
+		3E23675224F61D91003FD6D4 /* WeatherbitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E23675124F61D91003FD6D4 /* WeatherbitService.swift */; };
+		3E23675424F61DCA003FD6D4 /* LocationGeocoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E23675324F61DCA003FD6D4 /* LocationGeocoder.swift */; };
+		3E23675724F6217D003FD6D4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E23675524F6217D003FD6D4 /* LoginViewController.swift */; };
+		3E23675824F6217D003FD6D4 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E23675624F6217D003FD6D4 /* LoginViewController.xib */; };
+		3E23675A24F62193003FD6D4 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E23675924F62193003FD6D4 /* LoginViewModel.swift */; };
+		3E23675C24F63FF6003FD6D4 /* UIWindow+RootController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E23675B24F63FF6003FD6D4 /* UIWindow+RootController.swift */; };
+		3E23675E24F64056003FD6D4 /* CATransition+Options.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E23675D24F64056003FD6D4 /* CATransition+Options.swift */; };
+		3E23676024F6431F003FD6D4 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E23675F24F6431F003FD6D4 /* NavigationController.swift */; };
+		3E23676224F6437D003FD6D4 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E23676124F6437D003FD6D4 /* NavigationBar.swift */; };
+		3E23676724F64E99003FD6D4 /* LanuchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E23676524F64E99003FD6D4 /* LanuchViewController.swift */; };
+		3E23676824F64E99003FD6D4 /* LanuchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E23676624F64E99003FD6D4 /* LanuchViewController.xib */; };
 		3EF9195524F5008200E77958 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF9195424F5008200E77958 /* AppDelegate.swift */; };
 		3EF9195724F5008200E77958 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF9195624F5008200E77958 /* SceneDelegate.swift */; };
-		3EF9195924F5008200E77958 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF9195824F5008200E77958 /* ViewController.swift */; };
 		3EF9195C24F5008200E77958 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EF9195A24F5008200E77958 /* Main.storyboard */; };
 		3EF9195E24F5008200E77958 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EF9195D24F5008200E77958 /* Assets.xcassets */; };
 		3EF9196124F5008200E77958 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EF9195F24F5008200E77958 /* LaunchScreen.storyboard */; };
@@ -20,7 +34,6 @@
 		3EF9198D24F5022400E77958 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF9198C24F5022400E77958 /* HomeViewModel.swift */; };
 		3EF9198F24F5023100E77958 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF9198E24F5023100E77958 /* Home.swift */; };
 		3EF9199524F509AE00E77958 /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF9199324F509AE00E77958 /* LaunchView.swift */; };
-		3EF9199624F509AE00E77958 /* LaunchView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EF9199424F509AE00E77958 /* LaunchView.xib */; };
 		3EF9199824F509C300E77958 /* LanuchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF9199724F509C300E77958 /* LanuchViewModel.swift */; };
 		3EF9199A24F509DA00E77958 /* Launch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF9199924F509DA00E77958 /* Launch.swift */; };
 /* End PBXBuildFile section */
@@ -43,10 +56,24 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3E23674724F617C3003FD6D4 /* Date+DayAndTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+DayAndTime.swift"; sourceTree = "<group>"; };
+		3E23674924F617ED003FD6D4 /* TimeInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeInterval.swift; sourceTree = "<group>"; };
+		3E23674B24F6184C003FD6D4 /* UIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
+		3E23674E24F61CA1003FD6D4 /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
+		3E23675124F61D91003FD6D4 /* WeatherbitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherbitService.swift; sourceTree = "<group>"; };
+		3E23675324F61DCA003FD6D4 /* LocationGeocoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationGeocoder.swift; sourceTree = "<group>"; };
+		3E23675524F6217D003FD6D4 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		3E23675624F6217D003FD6D4 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		3E23675924F62193003FD6D4 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		3E23675B24F63FF6003FD6D4 /* UIWindow+RootController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIWindow+RootController.swift"; sourceTree = "<group>"; };
+		3E23675D24F64056003FD6D4 /* CATransition+Options.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CATransition+Options.swift"; sourceTree = "<group>"; };
+		3E23675F24F6431F003FD6D4 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		3E23676124F6437D003FD6D4 /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
+		3E23676524F64E99003FD6D4 /* LanuchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanuchViewController.swift; sourceTree = "<group>"; };
+		3E23676624F64E99003FD6D4 /* LanuchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LanuchViewController.xib; sourceTree = "<group>"; };
 		3EF9195124F5008200E77958 /* AEON Loan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AEON Loan.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EF9195424F5008200E77958 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3EF9195624F5008200E77958 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		3EF9195824F5008200E77958 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3EF9195B24F5008200E77958 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3EF9195D24F5008200E77958 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3EF9196024F5008200E77958 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -62,7 +89,6 @@
 		3EF9198C24F5022400E77958 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		3EF9198E24F5023100E77958 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		3EF9199324F509AE00E77958 /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
-		3EF9199424F509AE00E77958 /* LaunchView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LaunchView.xib; sourceTree = "<group>"; };
 		3EF9199724F509C300E77958 /* LanuchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanuchViewModel.swift; sourceTree = "<group>"; };
 		3EF9199924F509DA00E77958 /* Launch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Launch.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -92,6 +118,118 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3E23673C24F611C2003FD6D4 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				3E23675524F6217D003FD6D4 /* LoginViewController.swift */,
+				3E23675924F62193003FD6D4 /* LoginViewModel.swift */,
+				3E23675624F6217D003FD6D4 /* LoginViewController.xib */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		3E23673D24F6141C003FD6D4 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		3E23673E24F61450003FD6D4 /* Schedule */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Schedule;
+			sourceTree = "<group>";
+		};
+		3E23673F24F61477003FD6D4 /* Conditions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Conditions;
+			sourceTree = "<group>";
+		};
+		3E23674024F61497003FD6D4 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
+		3E23674124F614AD003FD6D4 /* Payment */ = {
+			isa = PBXGroup;
+			children = (
+				3E23674024F61497003FD6D4 /* Location */,
+				3E23673F24F61477003FD6D4 /* Conditions */,
+				3E23673E24F61450003FD6D4 /* Schedule */,
+			);
+			path = Payment;
+			sourceTree = "<group>";
+		};
+		3E23674224F61508003FD6D4 /* ApplyInstallment */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ApplyInstallment;
+			sourceTree = "<group>";
+		};
+		3E23674324F6171B003FD6D4 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				3E23674E24F61CA1003FD6D4 /* Box.swift */,
+				3E23675F24F6431F003FD6D4 /* NavigationController.swift */,
+				3E23676124F6437D003FD6D4 /* NavigationBar.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		3E23674424F61733003FD6D4 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				3E23674624F61750003FD6D4 /* UIKits */,
+				3E23674524F61742003FD6D4 /* Foundation */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		3E23674524F61742003FD6D4 /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				3E23674724F617C3003FD6D4 /* Date+DayAndTime.swift */,
+				3E23674924F617ED003FD6D4 /* TimeInterval.swift */,
+			);
+			path = Foundation;
+			sourceTree = "<group>";
+		};
+		3E23674624F61750003FD6D4 /* UIKits */ = {
+			isa = PBXGroup;
+			children = (
+				3E23674B24F6184C003FD6D4 /* UIDevice.swift */,
+				3E23675B24F63FF6003FD6D4 /* UIWindow+RootController.swift */,
+				3E23675D24F64056003FD6D4 /* CATransition+Options.swift */,
+			);
+			path = UIKits;
+			sourceTree = "<group>";
+		};
+		3E23674D24F618A4003FD6D4 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3EF9195D24F5008200E77958 /* Assets.xcassets */,
+				3EF9195F24F5008200E77958 /* LaunchScreen.storyboard */,
+				3EF9196224F5008200E77958 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		3E23675024F61D60003FD6D4 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				3E23675124F61D91003FD6D4 /* WeatherbitService.swift */,
+				3E23675324F61DCA003FD6D4 /* LocationGeocoder.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		3EF9194824F5008200E77958 = {
 			isa = PBXGroup;
 			children = (
@@ -117,12 +255,12 @@
 			children = (
 				3EF9195424F5008200E77958 /* AppDelegate.swift */,
 				3EF9195624F5008200E77958 /* SceneDelegate.swift */,
-				3EF9195824F5008200E77958 /* ViewController.swift */,
+				3E23675024F61D60003FD6D4 /* Services */,
 				3EF9198424F5018300E77958 /* Features */,
 				3EF9195A24F5008200E77958 /* Main.storyboard */,
-				3EF9195D24F5008200E77958 /* Assets.xcassets */,
-				3EF9195F24F5008200E77958 /* LaunchScreen.storyboard */,
-				3EF9196224F5008200E77958 /* Info.plist */,
+				3E23674D24F618A4003FD6D4 /* Resources */,
+				3E23674424F61733003FD6D4 /* Utils */,
+				3E23674324F6171B003FD6D4 /* Components */,
 			);
 			path = "AEON Loan";
 			sourceTree = "<group>";
@@ -148,8 +286,12 @@
 		3EF9198424F5018300E77958 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				3E23673D24F6141C003FD6D4 /* Register */,
+				3E23673C24F611C2003FD6D4 /* Login */,
 				3EF9199224F5097500E77958 /* Launch */,
 				3EF9199024F504CB00E77958 /* Home */,
+				3E23674124F614AD003FD6D4 /* Payment */,
+				3E23674224F61508003FD6D4 /* ApplyInstallment */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -168,8 +310,9 @@
 		3EF9199224F5097500E77958 /* Launch */ = {
 			isa = PBXGroup;
 			children = (
-				3EF9199424F509AE00E77958 /* LaunchView.xib */,
 				3EF9199324F509AE00E77958 /* LaunchView.swift */,
+				3E23676524F64E99003FD6D4 /* LanuchViewController.swift */,
+				3E23676624F64E99003FD6D4 /* LanuchViewController.xib */,
 				3EF9199724F509C300E77958 /* LanuchViewModel.swift */,
 				3EF9199924F509DA00E77958 /* Launch.swift */,
 			);
@@ -279,9 +422,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E23675824F6217D003FD6D4 /* LoginViewController.xib in Resources */,
+				3E23676824F64E99003FD6D4 /* LanuchViewController.xib in Resources */,
 				3EF9196124F5008200E77958 /* LaunchScreen.storyboard in Resources */,
 				3EF9198A24F5020100E77958 /* HomeView.xib in Resources */,
-				3EF9199624F509AE00E77958 /* LaunchView.xib in Resources */,
 				3EF9195E24F5008200E77958 /* Assets.xcassets in Resources */,
 				3EF9195C24F5008200E77958 /* Main.storyboard in Resources */,
 			);
@@ -308,15 +452,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3EF9195924F5008200E77958 /* ViewController.swift in Sources */,
+				3E23674824F617C3003FD6D4 /* Date+DayAndTime.swift in Sources */,
 				3EF9199A24F509DA00E77958 /* Launch.swift in Sources */,
 				3EF9198924F5020100E77958 /* HomeView.swift in Sources */,
+				3E23675724F6217D003FD6D4 /* LoginViewController.swift in Sources */,
+				3E23675A24F62193003FD6D4 /* LoginViewModel.swift in Sources */,
 				3EF9195524F5008200E77958 /* AppDelegate.swift in Sources */,
+				3E23675424F61DCA003FD6D4 /* LocationGeocoder.swift in Sources */,
 				3EF9199524F509AE00E77958 /* LaunchView.swift in Sources */,
 				3EF9198D24F5022400E77958 /* HomeViewModel.swift in Sources */,
+				3E23674C24F6184C003FD6D4 /* UIDevice.swift in Sources */,
 				3EF9198F24F5023100E77958 /* Home.swift in Sources */,
+				3E23675C24F63FF6003FD6D4 /* UIWindow+RootController.swift in Sources */,
+				3E23676724F64E99003FD6D4 /* LanuchViewController.swift in Sources */,
+				3E23676024F6431F003FD6D4 /* NavigationController.swift in Sources */,
 				3EF9195724F5008200E77958 /* SceneDelegate.swift in Sources */,
+				3E23674F24F61CA1003FD6D4 /* Box.swift in Sources */,
+				3E23676224F6437D003FD6D4 /* NavigationBar.swift in Sources */,
 				3EF9199824F509C300E77958 /* LanuchViewModel.swift in Sources */,
+				3E23675224F61D91003FD6D4 /* WeatherbitService.swift in Sources */,
+				3E23674A24F617ED003FD6D4 /* TimeInterval.swift in Sources */,
+				3E23675E24F64056003FD6D4 /* CATransition+Options.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -493,7 +649,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "AEON Loan/Info.plist";
+				INFOPLIST_FILE = "AEON Loan/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -511,7 +667,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "AEON Loan/Info.plist";
+				INFOPLIST_FILE = "AEON Loan/Resources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

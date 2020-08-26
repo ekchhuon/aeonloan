@@ -1,13 +1,21 @@
 //
-//  LaunchView.swift
+//  LanuchViewController.swift
 //  AEON Loan
 //
-//  Created by aeon on 8/25/20.
+//  Created by aeon on 8/26/20.
 //
 
 import UIKit
 
-class LaunchView: UIViewController {
+
+extension LanuchViewController {
+    static func instantiate() -> LoginViewController {
+        return LoginViewController()
+    }
+}
+
+class LanuchViewController: UIViewController {
+
     private let viewModel = WeatherViewModel()
     
     @IBOutlet weak var label: UILabel!
@@ -17,9 +25,9 @@ class LaunchView: UIViewController {
     
     override func viewDidLoad() {
       
-      viewModel.locationName.bind { [weak self] locationName in
-        self?.label.text = locationName
-      }
+//      viewModel.locationName.bind { [weak self] locationName in
+//        self?.label.text = locationName
+//      }
         
 //        navigateToLogin()
         
@@ -48,6 +56,5 @@ class LaunchView: UIViewController {
         navigateToLogin()
         
     }
-    
 
 }
