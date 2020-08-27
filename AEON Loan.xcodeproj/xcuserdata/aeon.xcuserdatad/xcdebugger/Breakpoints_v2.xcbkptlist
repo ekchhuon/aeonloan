@@ -30,8 +30,8 @@
             filePath = "AEON Loan/Features/Login/LoginViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
             landmarkName = "fetch(user:)"
             landmarkType = "7">
             <Locations>

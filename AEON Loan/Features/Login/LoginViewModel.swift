@@ -9,7 +9,11 @@ import Foundation
 import UIKit.UIImage
 
 public class LoginViewModel {
+    let defaults = "Loading..."
     let user: Box<User?> = Box(nil)
+    let username = Box("")
+    let password = Box("")
+    let loading = Box(false)
     
     init() {
 //        login(username: "", password: "")
@@ -21,11 +25,11 @@ public class LoginViewModel {
     }
     
     func fetch(user: User) {
-        print("user=======>", user)
+        loading.value = true
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-            self.user.value?.username = "Chhuon True"
-            self.user.value?.password = "pwd true"
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.loading.value = false
+            self.user.value = User(username: "Chhuon OK", password: "Password OK", profile: "")
         }
     }
     

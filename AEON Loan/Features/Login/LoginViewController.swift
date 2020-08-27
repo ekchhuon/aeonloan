@@ -15,7 +15,6 @@ extension LoginViewController {
 
 class LoginViewController: UIViewController {
     private let viewModel = LoginViewModel()
-    private let wviewModel = WeatherViewModel()
     
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -25,30 +24,18 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         viewModel.user.bind { (user) in
-            print("callback user", user?.username)
+            self.location.text = user?.username
+            self.farenheit.text = user?.password
         }
         
-        wviewModel.locationName.bind { (location) in
-            
-            self.location.text = location
-            print("callback location", location)
+        viewModel.loading.bind { (loading) in
+            self.show(indicator: loading)
         }
-        
-        wviewModel.forecastSummary.bind { (forcast) in
-            self.farenheit.text = forcast
-            print("callback forcast", forcast)
-        }
-        
-        
     }
     
     @IBAction func loginTapped(_ sender: Any) {
-//        viewModel.login(username: usernameTextField.text ?? "", password: passwordTextField.text ?? "")
-        location.text = usernameTextField.text ?? ""
-        location.backgroundColor = .blue
-        wviewModel.changeLocation(to: usernameTextField.text ?? "")
+        viewModel.login(username: usernameTextField.text ?? "", password: passwordTextField.text ?? "")
     }
     
     func navigateToHome() {
@@ -60,3 +47,5 @@ class LoginViewController: UIViewController {
     
 
 }
+
+
