@@ -3,10 +3,16 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1459BEA2FE0E3DB55210E7FB /* Pods_AEON_Loan_AEON_LoanUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09AD907EC9965EBDDDBFF8CA /* Pods_AEON_Loan_AEON_LoanUITests.framework */; };
+		3E113F492501DC1C008132CB /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E113F482501DC1C008132CB /* Services.swift */; };
+		3E113F4B2501E316008132CB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E113F4A2501E316008132CB /* Constants.swift */; };
+		3E113F4F2501E3C9008132CB /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E113F4E2501E3C9008132CB /* APIRouter.swift */; };
+		3E113F5125020228008132CB /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E113F5025020228008132CB /* APIClient.swift */; };
+		3E113F53250228E0008132CB /* Connectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E113F52250228E0008132CB /* Connectivity.swift */; };
 		3E23674824F617C3003FD6D4 /* Date+DayAndTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E23674724F617C3003FD6D4 /* Date+DayAndTime.swift */; };
 		3E23674A24F617ED003FD6D4 /* TimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E23674924F617ED003FD6D4 /* TimeInterval.swift */; };
 		3E23674C24F6184C003FD6D4 /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E23674B24F6184C003FD6D4 /* UIDevice.swift */; };
@@ -37,6 +43,8 @@
 		3EF9199524F509AE00E77958 /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF9199324F509AE00E77958 /* LaunchView.swift */; };
 		3EF9199824F509C300E77958 /* LanuchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF9199724F509C300E77958 /* LanuchViewModel.swift */; };
 		3EF9199A24F509DA00E77958 /* Launch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF9199924F509DA00E77958 /* Launch.swift */; };
+		77A69EE31F73CB70A03A6604 /* Pods_AEON_Loan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 726B7A21AF9A90A1993157BA /* Pods_AEON_Loan.framework */; };
+		90AFEBA2967EDB6325E8EB56 /* Pods_AEON_LoanTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53A9A28581E8230ED3C162C8 /* Pods_AEON_LoanTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +65,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		09AD907EC9965EBDDDBFF8CA /* Pods_AEON_Loan_AEON_LoanUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AEON_Loan_AEON_LoanUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		30565776BD8217784231863C /* Pods-AEON Loan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AEON Loan.debug.xcconfig"; path = "Target Support Files/Pods-AEON Loan/Pods-AEON Loan.debug.xcconfig"; sourceTree = "<group>"; };
+		3E113F482501DC1C008132CB /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
+		3E113F4A2501E316008132CB /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		3E113F4E2501E3C9008132CB /* APIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
+		3E113F5025020228008132CB /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		3E113F52250228E0008132CB /* Connectivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connectivity.swift; sourceTree = "<group>"; };
 		3E23674724F617C3003FD6D4 /* Date+DayAndTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+DayAndTime.swift"; sourceTree = "<group>"; };
 		3E23674924F617ED003FD6D4 /* TimeInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeInterval.swift; sourceTree = "<group>"; };
 		3E23674B24F6184C003FD6D4 /* UIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
@@ -93,6 +108,13 @@
 		3EF9199324F509AE00E77958 /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
 		3EF9199724F509C300E77958 /* LanuchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanuchViewModel.swift; sourceTree = "<group>"; };
 		3EF9199924F509DA00E77958 /* Launch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Launch.swift; sourceTree = "<group>"; };
+		49086C34FF5FB7A744C85793 /* Pods-AEON Loan-AEON LoanUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AEON Loan-AEON LoanUITests.debug.xcconfig"; path = "Target Support Files/Pods-AEON Loan-AEON LoanUITests/Pods-AEON Loan-AEON LoanUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		53A9A28581E8230ED3C162C8 /* Pods_AEON_LoanTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AEON_LoanTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5F34EEAD29F08C525F8CE36F /* Pods-AEON LoanTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AEON LoanTests.debug.xcconfig"; path = "Target Support Files/Pods-AEON LoanTests/Pods-AEON LoanTests.debug.xcconfig"; sourceTree = "<group>"; };
+		726B7A21AF9A90A1993157BA /* Pods_AEON_Loan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AEON_Loan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B829AA2DFC41867CB5E1DF48 /* Pods-AEON LoanTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AEON LoanTests.release.xcconfig"; path = "Target Support Files/Pods-AEON LoanTests/Pods-AEON LoanTests.release.xcconfig"; sourceTree = "<group>"; };
+		BB8925F858361D6F2DEBCC35 /* Pods-AEON Loan-AEON LoanUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AEON Loan-AEON LoanUITests.release.xcconfig"; path = "Target Support Files/Pods-AEON Loan-AEON LoanUITests/Pods-AEON Loan-AEON LoanUITests.release.xcconfig"; sourceTree = "<group>"; };
+		C263574E1ADBEE65F4CA77AA /* Pods-AEON Loan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AEON Loan.release.xcconfig"; path = "Target Support Files/Pods-AEON Loan/Pods-AEON Loan.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +122,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77A69EE31F73CB70A03A6604 /* Pods_AEON_Loan.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,6 +130,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90AFEBA2967EDB6325E8EB56 /* Pods_AEON_LoanTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -114,12 +138,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1459BEA2FE0E3DB55210E7FB /* Pods_AEON_Loan_AEON_LoanUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2F51B9A961989983714E8C55 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				30565776BD8217784231863C /* Pods-AEON Loan.debug.xcconfig */,
+				C263574E1ADBEE65F4CA77AA /* Pods-AEON Loan.release.xcconfig */,
+				49086C34FF5FB7A744C85793 /* Pods-AEON Loan-AEON LoanUITests.debug.xcconfig */,
+				BB8925F858361D6F2DEBCC35 /* Pods-AEON Loan-AEON LoanUITests.release.xcconfig */,
+				5F34EEAD29F08C525F8CE36F /* Pods-AEON LoanTests.debug.xcconfig */,
+				B829AA2DFC41867CB5E1DF48 /* Pods-AEON LoanTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		32E1C1CEBEC5B3F59724CC1A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				726B7A21AF9A90A1993157BA /* Pods_AEON_Loan.framework */,
+				09AD907EC9965EBDDDBFF8CA /* Pods_AEON_Loan_AEON_LoanUITests.framework */,
+				53A9A28581E8230ED3C162C8 /* Pods_AEON_LoanTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		3E23673C24F611C2003FD6D4 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -228,6 +276,11 @@
 			isa = PBXGroup;
 			children = (
 				3E23675124F61D91003FD6D4 /* WeatherbitService.swift */,
+				3E113F482501DC1C008132CB /* Services.swift */,
+				3E113F4E2501E3C9008132CB /* APIRouter.swift */,
+				3E113F5025020228008132CB /* APIClient.swift */,
+				3E113F52250228E0008132CB /* Connectivity.swift */,
+				3E113F4A2501E316008132CB /* Constants.swift */,
 				3E23675324F61DCA003FD6D4 /* LocationGeocoder.swift */,
 			);
 			path = Services;
@@ -247,6 +300,8 @@
 				3EF9196A24F5008300E77958 /* AEON LoanTests */,
 				3EF9197524F5008300E77958 /* AEON LoanUITests */,
 				3EF9195224F5008200E77958 /* Products */,
+				2F51B9A961989983714E8C55 /* Pods */,
+				32E1C1CEBEC5B3F59724CC1A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -337,9 +392,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3EF9197B24F5008300E77958 /* Build configuration list for PBXNativeTarget "AEON Loan" */;
 			buildPhases = (
+				C3CD9656B6BB398841627AC5 /* [CP] Check Pods Manifest.lock */,
 				3EF9194D24F5008200E77958 /* Sources */,
 				3EF9194E24F5008200E77958 /* Frameworks */,
 				3EF9194F24F5008200E77958 /* Resources */,
+				C949427A270285688D406EE9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -354,6 +411,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3EF9197E24F5008300E77958 /* Build configuration list for PBXNativeTarget "AEON LoanTests" */;
 			buildPhases = (
+				86E1BC872AE2E8E057C0D85D /* [CP] Check Pods Manifest.lock */,
 				3EF9196324F5008300E77958 /* Sources */,
 				3EF9196424F5008300E77958 /* Frameworks */,
 				3EF9196524F5008300E77958 /* Resources */,
@@ -372,9 +430,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3EF9198124F5008300E77958 /* Build configuration list for PBXNativeTarget "AEON LoanUITests" */;
 			buildPhases = (
+				7153792CB627BB2A27902B26 /* [CP] Check Pods Manifest.lock */,
 				3EF9196E24F5008300E77958 /* Sources */,
 				3EF9196F24F5008300E77958 /* Frameworks */,
 				3EF9197024F5008300E77958 /* Resources */,
+				A044996B533250ABEDD0131F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -458,6 +518,109 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		7153792CB627BB2A27902B26 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AEON Loan-AEON LoanUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		86E1BC872AE2E8E057C0D85D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AEON LoanTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A044996B533250ABEDD0131F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AEON Loan-AEON LoanUITests/Pods-AEON Loan-AEON LoanUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AEON Loan-AEON LoanUITests/Pods-AEON Loan-AEON LoanUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AEON Loan-AEON LoanUITests/Pods-AEON Loan-AEON LoanUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C3CD9656B6BB398841627AC5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AEON Loan-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C949427A270285688D406EE9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AEON Loan/Pods-AEON Loan-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AEON Loan/Pods-AEON Loan-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AEON Loan/Pods-AEON Loan-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		3EF9194D24F5008200E77958 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -482,9 +645,14 @@
 				3E23674F24F61CA1003FD6D4 /* Box.swift in Sources */,
 				3E23676224F6437D003FD6D4 /* NavigationBar.swift in Sources */,
 				3EF9199824F509C300E77958 /* LanuchViewModel.swift in Sources */,
+				3E113F53250228E0008132CB /* Connectivity.swift in Sources */,
 				3E23675224F61D91003FD6D4 /* WeatherbitService.swift in Sources */,
+				3E113F4F2501E3C9008132CB /* APIRouter.swift in Sources */,
 				3E23674A24F617ED003FD6D4 /* TimeInterval.swift in Sources */,
+				3E113F492501DC1C008132CB /* Services.swift in Sources */,
 				3E23675E24F64056003FD6D4 /* CATransition+Options.swift in Sources */,
+				3E113F4B2501E316008132CB /* Constants.swift in Sources */,
+				3E113F5125020228008132CB /* APIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -657,6 +825,7 @@
 		};
 		3EF9197C24F5008300E77958 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 30565776BD8217784231863C /* Pods-AEON Loan.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -675,6 +844,7 @@
 		};
 		3EF9197D24F5008300E77958 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C263574E1ADBEE65F4CA77AA /* Pods-AEON Loan.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -693,6 +863,7 @@
 		};
 		3EF9197F24F5008300E77958 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5F34EEAD29F08C525F8CE36F /* Pods-AEON LoanTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -714,6 +885,7 @@
 		};
 		3EF9198024F5008300E77958 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B829AA2DFC41867CB5E1DF48 /* Pods-AEON LoanTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -735,6 +907,7 @@
 		};
 		3EF9198224F5008300E77958 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 49086C34FF5FB7A744C85793 /* Pods-AEON Loan-AEON LoanUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -754,6 +927,7 @@
 		};
 		3EF9198324F5008300E77958 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BB8925F858361D6F2DEBCC35 /* Pods-AEON Loan-AEON LoanUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

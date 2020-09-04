@@ -20,8 +20,16 @@ public class LoginViewModel {
     }
     
     func login(username: String, password: String) {
-        let user = User(username: username, password: password, profile: "")
-        fetch(user: user)
+        
+        APIClient.testLogin(email: "abc@gmail.com", password: "") { result in
+            switch result {
+            case .success(let user):
+                print("_____________________________")
+                print(user)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
     
     func fetch(user: User) {

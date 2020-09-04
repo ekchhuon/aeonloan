@@ -61,7 +61,7 @@ class WeatherbitService {
           completion(nil, .invalidResponse)
           return
         }
-        
+         
         guard response.statusCode == 200 else {
           print("Failure response from Weatherbit: \(response.statusCode)")
           completion(nil, .failedRequest)

@@ -1,0 +1,6 @@
+framework module Pods_AEON_Loan_AEON_LoanUITests {
+  umbrella header "Pods-AEON Loan-AEON LoanUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
