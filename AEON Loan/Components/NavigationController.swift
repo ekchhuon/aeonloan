@@ -30,11 +30,14 @@ class MainNavigationController: NavigationController {
     }
 
     override func pushViewController(_ viewController: UIViewController, animated: Bool) {
-        viewController.navigationItem.titleView = UIView().apply {_ in 
-//            let imageView = UIImageView(image: Asset.Images.Brand.mainWhite.image)
-//            imageView.contentMode = .scaleAspectFit
-//            $0.addSubview(imageView)
-//            imageView.pinInSuperview(to: .all, with: .all(8))
+        
+//        viewController.navigationItem.tit
+        
+        viewController.navigationItem.titleView = UIView().apply {
+            let imageView = UIImageView(image: UIImage(named: "banner"))
+            imageView.contentMode = .scaleAspectFit
+            $0.addSubview(imageView)
+            imageView.pinInSuperview(to: .all, with: .all(8))
         }
         super.pushViewController(viewController, animated: animated)
     }

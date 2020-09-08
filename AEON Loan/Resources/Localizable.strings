@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  AEON Loan
+
+  Created by aeon on 9/7/20.
+  
+*/
+
+"You have sold 1000 apps in %d months" = "You have sold 1000 apps in %d months";
+"You like?" = "You like?";

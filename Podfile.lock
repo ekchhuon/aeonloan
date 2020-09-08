@@ -1,16 +1,28 @@
 PODS:
   - Alamofire (5.2.2)
+  - IQKeyboardManagerSwift (6.5.6)
+  - SwiftGen (6.3.0)
+  - SwiftLint (0.40.0)
 
 DEPENDENCIES:
   - Alamofire (~> 5.2)
+  - IQKeyboardManagerSwift
+  - SwiftGen
+  - SwiftLint
 
 SPEC REPOS:
   trunk:
     - Alamofire
+    - IQKeyboardManagerSwift
+    - SwiftGen
+    - SwiftLint
 
 SPEC CHECKSUMS:
   Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
+  IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
+  SwiftGen: 3d5024a47ea79e408cded20763d7a17d18a4548c
+  SwiftLint: 4154893c73a4c52d6240195507eb7a3e3c64087e
 
-PODFILE CHECKSUM: 9fba53bc162803e48b8db91db592d311a9f9baf7
+PODFILE CHECKSUM: fdfc1bfbd2ea1861e5192fbdc69e43947c0d136a
 
 COCOAPODS: 1.9.3

@@ -36,9 +36,12 @@ class LanuchViewController: UIViewController {
     
     
     func navigateToLogin() {
-        let login = LoginViewController.instantiate()
+//        let login = LoginViewController.instantiate()
 //        let controller = NavigationController.blue(with: login)
-        view.window?.setRootViewController(login)
+//        view.window?.setRootViewController(login)
+        
+        let selectLanguage = SelectLanguageViewController.instantiate()
+        view.window?.setRootViewController(selectLanguage)
     }
 
 

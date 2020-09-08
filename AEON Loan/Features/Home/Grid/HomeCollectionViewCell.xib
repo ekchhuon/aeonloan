@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17147" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17120"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="HomeCollectionViewCell" customModule="AEON_Loan" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="222" height="136"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="222" height="136"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vmL-TV-shG">
+                        <rect key="frame" x="0.0" y="0.0" width="222" height="136"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="nlH-cM-ydO">
+                                <rect key="frame" x="0.0" y="0.0" width="222" height="136"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2mc-gC-vc9">
+                                        <rect key="frame" x="0.0" y="0.0" width="222" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="leaf.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="PfY-ib-w7V">
+                                        <rect key="frame" x="0.0" y="40.5" width="222" height="55.5"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SX4-yu-ROn">
+                                        <rect key="frame" x="0.0" y="102" width="222" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="2mc-gC-vc9" firstAttribute="height" secondItem="nlH-cM-ydO" secondAttribute="height" multiplier="0.25" id="Fe6-XP-8Gk"/>
+                                    <constraint firstItem="SX4-yu-ROn" firstAttribute="height" secondItem="2mc-gC-vc9" secondAttribute="height" id="NXf-xb-nfK"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="nlH-cM-ydO" secondAttribute="trailing" id="1xx-tL-duQ"/>
+                            <constraint firstAttribute="bottom" secondItem="nlH-cM-ydO" secondAttribute="bottom" id="Ncq-0d-mOK"/>
+                            <constraint firstItem="nlH-cM-ydO" firstAttribute="leading" secondItem="vmL-TV-shG" secondAttribute="leading" id="U8f-Vo-c1P"/>
+                            <constraint firstItem="nlH-cM-ydO" firstAttribute="top" secondItem="vmL-TV-shG" secondAttribute="top" id="t6w-5K-ATv"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="vmL-TV-shG" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="3Am-FR-AEN"/>
+                <constraint firstAttribute="bottom" secondItem="vmL-TV-shG" secondAttribute="bottom" id="AI7-CV-7zu"/>
+                <constraint firstAttribute="trailing" secondItem="vmL-TV-shG" secondAttribute="trailing" id="OqO-Kh-Gte"/>
+                <constraint firstItem="vmL-TV-shG" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="i0H-1f-HRJ"/>
+            </constraints>
+            <size key="customSize" width="222" height="136"/>
+            <connections>
+                <outlet property="cellContentView" destination="vmL-TV-shG" id="Yv0-Dk-tPT"/>
+            </connections>
+            <point key="canvasLocation" x="262.31884057971018" y="108.48214285714285"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="leaf.fill" catalog="system" width="128" height="106"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

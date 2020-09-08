@@ -31,7 +31,9 @@ class BlueNavigationBar: NavigationBar {
     override func setupAppearance() {
         super.setupAppearance()
         tintColor = .white
-//        setBackgroundImage(Asset.Images.Background.Navigation.blue.image, for: .default)
+        barTintColor = .brandPurple
+        
+//        setBackgroundImage(UIImage(named: "banner"), for: .default)
 //        titleTextAttributes = [.font: FontFamily.Muli.bold.font(size: 17), .foregroundColor: Asset.Colors.white.color]
     }
 }
