@@ -31,9 +31,16 @@ class LanuchViewController: UIViewController {
         
 //        navigateToLogin()
         
+        navigateToHome()
+        
         
     }
     
+    func navigateToHome() {
+        let home = HomeViewController.instantiate()
+        let controller = NavigationController.main(with: home)
+        view.window?.setRootViewController(controller)
+    }
     
     func navigateToLogin() {
 //        let login = LoginViewController.instantiate()

@@ -10,9 +10,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="AEON_Loan" customModuleProvider="target">
             <connections>
-                <outlet property="collectionView" destination="Pya-V9-5lf" id="e6X-5O-bOE"/>
                 <outlet property="contactusView" destination="hme-KY-M4T" id="yru-6d-gRA"/>
+                <outlet property="gridCollectionView" destination="Pya-V9-5lf" id="e6X-5O-bOE"/>
                 <outlet property="locationView" destination="OdD-FK-0AC" id="lbA-6j-1nK"/>
+                <outlet property="pageControl" destination="L8a-BK-zCv" id="jGp-kd-vEe"/>
+                <outlet property="sliderCollectionView" destination="e0r-vb-jTJ" id="S7D-fO-vI0"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -23,7 +25,30 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eXI-9w-nql">
                     <rect key="frame" x="0.0" y="45" width="414" height="250"/>
+                    <subviews>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="e0r-vb-jTJ">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="250"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="kk7-lc-2Uu">
+                                <size key="itemSize" width="128" height="128"/>
+                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            </collectionViewFlowLayout>
+                        </collectionView>
+                        <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="L8a-BK-zCv">
+                            <rect key="frame" x="146" y="212.5" width="122" height="27.5"/>
+                        </pageControl>
+                    </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstItem="L8a-BK-zCv" firstAttribute="centerX" secondItem="eXI-9w-nql" secondAttribute="centerX" id="94y-Df-qF7"/>
+                        <constraint firstAttribute="trailing" secondItem="e0r-vb-jTJ" secondAttribute="trailing" id="EOH-sM-AUm"/>
+                        <constraint firstItem="e0r-vb-jTJ" firstAttribute="leading" secondItem="eXI-9w-nql" secondAttribute="leading" id="GHg-YR-pxg"/>
+                        <constraint firstAttribute="bottom" secondItem="e0r-vb-jTJ" secondAttribute="bottom" id="HgG-iX-1pQ"/>
+                        <constraint firstItem="e0r-vb-jTJ" firstAttribute="top" secondItem="eXI-9w-nql" secondAttribute="top" id="nWv-QK-YHo"/>
+                        <constraint firstAttribute="bottom" secondItem="L8a-BK-zCv" secondAttribute="bottom" constant="10" id="uXl-uC-1uO"/>
+                    </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TQ3-Yj-1Jb">
                     <rect key="frame" x="0.0" y="782" width="414" height="80"/>
@@ -112,7 +137,7 @@
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Pya-V9-5lf">
                     <rect key="frame" x="0.0" y="303" width="414" height="471"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="5Uh-ki-iOE">
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="5Uh-ki-iOE">
                         <size key="itemSize" width="128" height="128"/>
                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                         <size key="footerReferenceSize" width="0.0" height="0.0"/>

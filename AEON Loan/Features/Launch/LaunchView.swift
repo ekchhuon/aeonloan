@@ -23,6 +23,8 @@ class LaunchView: UIViewController {
         
 //        navigateToLogin()
         
+        navigateToHome()
+        
         
     }
     
@@ -35,6 +37,13 @@ class LaunchView: UIViewController {
         let selectLanguage = SelectLanguageViewController.instantiate()
         view.window?.setRootViewController(selectLanguage)
         
+        
+    }
+    
+    func navigateToHome() {
+        let home = HomeViewController.instantiate()
+        let controller = NavigationController.main(with: home)
+        view.window?.setRootViewController(controller)
     }
 
 
@@ -49,7 +58,8 @@ class LaunchView: UIViewController {
     */
     
     @IBAction func tapped(_ sender: Any) {
-        navigateToLogin()
+//        navigateToLogin()
+        navigateToHome()
         
     }
     
