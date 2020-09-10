@@ -41,3 +41,7 @@ public class HomeViewModel {
     }
     
 }
+
+public class SliderViewModel {
+    
+}

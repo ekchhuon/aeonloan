@@ -16,6 +16,7 @@ extension HomeViewController {
 
 class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
     private let viewModel = HomeViewModel()
+    private let siderViewModel = SliderViewModel()
     
     @IBOutlet weak var gridCollectionView: UICollectionView!
     @IBOutlet weak var sliderCollectionView: UICollectionView!
@@ -38,94 +39,11 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        //        setupRefreshControl()
-    }
-    
-    private func setupRefreshControl() {
-        self.refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(didPullToRefresh(_:)), for: .valueChanged)
-        refreshControl.tintColor = .red
-        sliderCollectionView.alwaysBounceHorizontal = true
-        sliderCollectionView.refreshControl = refreshControl // iOS 10+
-    }
-    
-    @objc
-    private func didPullToRefresh(_ sender: Any) {
-        // stuff here
-        
-        // changeSlideShow()
-        
-        refreshControl.endRefreshing()
-    }
-    
-    @objc
-    func handleClick(){
-        let login = LoginViewController.instantiate()
-        navigationController?.pushViewController(login, animated: true)
-    }
-    
-    @objc
-    func navigateToNotification() {
-        let notification = NotificationViewController.instantiate()
-        navigationController?.pushViewController(notification, animated: true)
-    }
-    
-    @objc
-    func showSideMenu() {
-        
-//        let menu = SideMenuNavigationController(nibName: "SideMenuViewController", bundle: nil)
-        let menu = SideMenuNavigationController(rootViewController: SideMenuViewController.instantiate())
-         
-//        menu.animationOptions = .curveEaseIn
-//        menu.menuWidth = 250
-//        menu.presentationStyle = .menuSlideIn
-//        menu.pushStyle = .preserve
-        menu.leftSide = true
-//        menu.blurEffectStyle = .extraLight
-        
-//        menu.navigationBar.barStyle = .default
-        menu.navigationBar.backgroundColor = .red
-        menu.navigationBar.barTintColor = .brandPurple
-        
-        menu.settings = sideMenuSetting()
-        
-        
-        present(menu, animated: true, completion: nil)
-    }
-    
-    func setupSideMenu() {
-        
-    }
-    
-    func sideMenuSetting() -> SideMenuSettings {
-        var presentation: SideMenuPresentationStyle = SideMenuPresentationStyle()
-        presentation = .menuSlideIn
-//        presentation.menuScaleFactor = 1
-//        presentation.onTopShadowOpacity = 0.5
-//        presentation.backgroundColor = .red
-        
-//        presentation.backgroundColor = UIColor(patternImage: #imageLiteral(resourceName: "background"))
-        presentation.menuStartAlpha = 1
-        presentation.menuScaleFactor = 1
-        presentation.onTopShadowOpacity = 0
-        presentation.presentingEndAlpha = 0.5
-        presentation.presentingScaleFactor = 1
-        
-        
-        
-        var settings = SideMenuSettings()
-        settings.presentationStyle = presentation
-        settings.menuWidth = UIScreen.main.bounds.width/1.5
-        settings.blurEffectStyle = .none
-        settings.statusBarEndAlpha = 0
-        settings.presentDuration = 0.5
-        
-        return settings
-        
         
     }
 }
 
+// MARK: Collection
 extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
@@ -155,9 +73,7 @@ extension HomeViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        
         print("indexPath", indexPath.row)
-        
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
@@ -183,23 +99,20 @@ extension HomeViewController: UICollectionViewDelegate {
         }else {
 
         }
-
     }
 }
 
-// Private
+// MARK: Private
 extension HomeViewController{
     private func setupView() {
-        
         setupSliderView()
         setupGridView()
         setupNavigationBar()
         setupPageControl()
         changeSlideShow()
         setupLongGestureRecognizerOnCollection()
-        
-        locationView.roundCorners([.layerMinXMaxYCorner, .layerMinXMinYCorner], radius: 10, borderColor: .brandMaginta, borderWidth: 1)
-        contactusView.roundCorners([.layerMaxXMaxYCorner, .layerMaxXMinYCorner], radius: 10, borderColor: .brandMaginta, borderWidth: 1)
+        // setupRefreshControl()
+        customView()
     }
     
     private func setupNavigationBar() {
@@ -231,6 +144,19 @@ extension HomeViewController{
         
         navigationItem.setRightBarButtonItems([menu, notification, user], animated: false)
         navigationItem.leftBarButtonItems = [banner]
+    }
+    
+    private func customView() {
+        locationView.roundCorners([.layerMinXMaxYCorner, .layerMinXMinYCorner], radius: 10, borderColor: .brandMaginta, borderWidth: 1)
+        contactusView.roundCorners([.layerMaxXMaxYCorner, .layerMaxXMinYCorner], radius: 10, borderColor: .brandMaginta, borderWidth: 1)
+    }
+    
+    private func setupRefreshControl() {
+        self.refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(didPullToRefresh(_:)), for: .valueChanged)
+        refreshControl.tintColor = .red
+        sliderCollectionView.alwaysBounceHorizontal = true
+        sliderCollectionView.refreshControl = refreshControl // iOS 10+
     }
     
     private func setupGridView() {
@@ -285,7 +211,39 @@ extension HomeViewController{
         }
     }
     
-    @objc func changeSlideShow() {
+    // stop slider when long press began
+    private func setupLongGestureRecognizerOnCollection() {
+        let longPressedGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(gestureRecognizer:)))
+        longPressedGesture.minimumPressDuration = 0.5
+        longPressedGesture.delegate = self
+        longPressedGesture.delaysTouchesBegan = true
+        sliderCollectionView?.addGestureRecognizer(longPressedGesture)
+    }
+    
+    private func sideMenuSetting() -> SideMenuSettings {
+        var presentation: SideMenuPresentationStyle = SideMenuPresentationStyle()
+        presentation = .menuSlideIn
+        presentation.menuStartAlpha = 1
+        presentation.menuScaleFactor = 1
+        presentation.onTopShadowOpacity = 0
+        presentation.presentingEndAlpha = 0.5 // overlay::alpha
+        presentation.presentingScaleFactor = 1
+        
+        var settings = SideMenuSettings()
+        settings.presentationStyle = presentation
+        settings.menuWidth = UIScreen.main.bounds.width/1.5
+        settings.blurEffectStyle = .none
+        settings.statusBarEndAlpha = 0
+        settings.presentDuration = 0.5
+        
+        return settings
+    }
+}
+
+// MARK: @objc
+extension HomeViewController {
+    @objc
+    private func changeSlideShow() {
         guard longPressed == false else { return }
         if counter < imageArray.count {
             let index = IndexPath.init(item: counter, section: 0)
@@ -301,17 +259,35 @@ extension HomeViewController{
         }
     }
     
-    // stop slider when long press began
-    private func setupLongGestureRecognizerOnCollection() {
-        let longPressedGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(gestureRecognizer:)))
-        longPressedGesture.minimumPressDuration = 0.5
-        longPressedGesture.delegate = self
-        longPressedGesture.delaysTouchesBegan = true
-        sliderCollectionView?.addGestureRecognizer(longPressedGesture)
+    @objc
+    private func handleLongPress(gestureRecognizer: UILongPressGestureRecognizer) {
+        longPressed = gestureRecognizer.state == .began
     }
     
     @objc
-    func handleLongPress(gestureRecognizer: UILongPressGestureRecognizer) {
-        longPressed = gestureRecognizer.state == .began
+    private func didPullToRefresh(_ sender: Any) {
+        // stuff here
+        refreshControl.endRefreshing()
+    }
+    
+    @objc
+    private func handleClick(){
+        let login = LoginViewController.instantiate()
+        navigationController?.pushViewController(login, animated: true)
+    }
+    
+    @objc
+    private func navigateToNotification() {
+        let notification = NotificationViewController.instantiate()
+        navigationController?.pushViewController(notification, animated: true)
+    }
+    
+    @objc
+    private func showSideMenu() {
+        let menu = SideMenuNavigationController(rootViewController: SideMenuViewController.instantiate())
+        menu.leftSide = false
+        menu.navigationBar.barTintColor = .brandPurple
+        menu.settings = sideMenuSetting()
+        present(menu, animated: true, completion: nil)
     }
 }
