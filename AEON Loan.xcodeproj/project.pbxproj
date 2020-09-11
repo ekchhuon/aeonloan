@@ -44,6 +44,11 @@
 		3E5641E92507B21100716D8B /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5641E72507B21100716D8B /* RegisterViewController.swift */; };
 		3E5641EA2507B21100716D8B /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E5641E82507B21100716D8B /* RegisterViewController.xib */; };
 		3E6397D224F763DC00C5BB86 /* ActivityIndicatorOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6397D124F763DC00C5BB86 /* ActivityIndicatorOverlay.swift */; };
+		3E800261250B5C1100503267 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E800260250B5C1100503267 /* BaseViewController.swift */; };
+		3E800263250B75A000503267 /* UINavigationController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E800262250B75A000503267 /* UINavigationController + Extension.swift */; };
+		3E800267250B87F900503267 /* ApplyLoanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E800265250B87F900503267 /* ApplyLoanViewController.swift */; };
+		3E800268250B87F900503267 /* ApplyLoanViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E800266250B87F900503267 /* ApplyLoanViewController.xib */; };
+		3E80026A250B881700503267 /* ApplyLoanViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E800269250B881700503267 /* ApplyLoanViewModel.swift */; };
 		3E834E5125087F2E00D9E700 /* SliderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E834E4F25087F2E00D9E700 /* SliderCollectionViewCell.swift */; };
 		3E834E5225087F2E00D9E700 /* SliderCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E834E5025087F2E00D9E700 /* SliderCollectionViewCell.xib */; };
 		3E834E562508EE5E00D9E700 /* SliderDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E834E542508EE5E00D9E700 /* SliderDetailViewController.swift */; };
@@ -123,6 +128,11 @@
 		3E5641E72507B21100716D8B /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		3E5641E82507B21100716D8B /* RegisterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
 		3E6397D124F763DC00C5BB86 /* ActivityIndicatorOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorOverlay.swift; sourceTree = "<group>"; };
+		3E800260250B5C1100503267 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		3E800262250B75A000503267 /* UINavigationController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController + Extension.swift"; sourceTree = "<group>"; };
+		3E800265250B87F900503267 /* ApplyLoanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyLoanViewController.swift; sourceTree = "<group>"; };
+		3E800266250B87F900503267 /* ApplyLoanViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ApplyLoanViewController.xib; sourceTree = "<group>"; };
+		3E800269250B881700503267 /* ApplyLoanViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyLoanViewModel.swift; sourceTree = "<group>"; };
 		3E834E4F25087F2E00D9E700 /* SliderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderCollectionViewCell.swift; sourceTree = "<group>"; };
 		3E834E5025087F2E00D9E700 /* SliderCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SliderCollectionViewCell.xib; sourceTree = "<group>"; };
 		3E834E542508EE5E00D9E700 /* SliderDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderDetailViewController.swift; sourceTree = "<group>"; };
@@ -304,6 +314,7 @@
 				3E5641DE250727A300716D8B /* UIEdgeInsets+Extension.swift */,
 				3E5641C9250639A000716D8B /* UIColor.swift */,
 				3E5641DC2507273900716D8B /* UIView+Layout.swift */,
+				3E800262250B75A000503267 /* UINavigationController + Extension.swift */,
 			);
 			path = UIKits;
 			sourceTree = "<group>";
@@ -357,6 +368,24 @@
 			children = (
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		3E80025F250B5BF300503267 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				3E800260250B5C1100503267 /* BaseViewController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		3E800264250B87DB00503267 /* ApplyLoan */ = {
+			isa = PBXGroup;
+			children = (
+				3E800265250B87F900503267 /* ApplyLoanViewController.swift */,
+				3E800269250B881700503267 /* ApplyLoanViewModel.swift */,
+				3E800266250B87F900503267 /* ApplyLoanViewController.xib */,
+			);
+			path = ApplyLoan;
 			sourceTree = "<group>";
 		};
 		3E834E532508EDFF00D9E700 /* SliderCell */ = {
@@ -454,6 +483,8 @@
 		3EF9198424F5018300E77958 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				3E800264250B87DB00503267 /* ApplyLoan */,
+				3E80025F250B5BF300503267 /* Base */,
 				3E23673D24F6141C003FD6D4 /* Register */,
 				3E5641C0250619E500716D8B /* SelectLanguage */,
 				3E23673C24F611C2003FD6D4 /* Login */,
@@ -604,6 +635,7 @@
 				3E23675824F6217D003FD6D4 /* LoginViewController.xib in Resources */,
 				3E5641EA2507B21100716D8B /* RegisterViewController.xib in Resources */,
 				3E23676824F64E99003FD6D4 /* LanuchViewController.xib in Resources */,
+				3E800268250B87F900503267 /* ApplyLoanViewController.xib in Resources */,
 				3EF9196124F5008200E77958 /* LaunchScreen.storyboard in Resources */,
 				3EF9195E24F5008200E77958 /* Assets.xcassets in Resources */,
 				3E5641E32507449500716D8B /* HomeCollectionViewCell.xib in Resources */,
@@ -747,6 +779,7 @@
 				3EF9199A24F509DA00E77958 /* Launch.swift in Sources */,
 				3E5641DF250727A300716D8B /* UIEdgeInsets+Extension.swift in Sources */,
 				3E6397D224F763DC00C5BB86 /* ActivityIndicatorOverlay.swift in Sources */,
+				3E800261250B5C1100503267 /* BaseViewController.swift in Sources */,
 				3E23675724F6217D003FD6D4 /* LoginViewController.swift in Sources */,
 				3E5641C82506396C00716D8B /* UIButton.swift in Sources */,
 				3E23675A24F62193003FD6D4 /* LoginViewModel.swift in Sources */,
@@ -759,11 +792,13 @@
 				3E23675C24F63FF6003FD6D4 /* UIWindow+RootController.swift in Sources */,
 				3E23676724F64E99003FD6D4 /* LanuchViewController.swift in Sources */,
 				3E834E602509016400D9E700 /* SideMenuViewController.swift in Sources */,
+				3E80026A250B881700503267 /* ApplyLoanViewModel.swift in Sources */,
 				3E834E5125087F2E00D9E700 /* SliderCollectionViewCell.swift in Sources */,
 				3E23676024F6431F003FD6D4 /* NavigationController.swift in Sources */,
 				3E5641E92507B21100716D8B /* RegisterViewController.swift in Sources */,
 				3EF9195724F5008200E77958 /* SceneDelegate.swift in Sources */,
 				3E5641DD2507273900716D8B /* UIView+Layout.swift in Sources */,
+				3E800263250B75A000503267 /* UINavigationController + Extension.swift in Sources */,
 				3E5641C325061A1300716D8B /* SelectLanguageViewController.swift in Sources */,
 				3E23674F24F61CA1003FD6D4 /* Box.swift in Sources */,
 				3E834E562508EE5E00D9E700 /* SliderDetailViewController.swift in Sources */,
@@ -779,6 +814,7 @@
 				3E5641E62507941900716D8B /* CollectionViewDataSource.swift in Sources */,
 				3E113F492501DC1C008132CB /* Services.swift in Sources */,
 				3E23675E24F64056003FD6D4 /* CATransition+Options.swift in Sources */,
+				3E800267250B87F900503267 /* ApplyLoanViewController.swift in Sources */,
 				3E113F4B2501E316008132CB /* Constants.swift in Sources */,
 				3E113F5125020228008132CB /* APIClient.swift in Sources */,
 			);

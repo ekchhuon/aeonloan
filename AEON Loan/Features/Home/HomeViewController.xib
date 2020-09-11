@@ -12,6 +12,8 @@
             <connections>
                 <outlet property="contactusView" destination="hme-KY-M4T" id="yru-6d-gRA"/>
                 <outlet property="gridCollectionView" destination="Pya-V9-5lf" id="e6X-5O-bOE"/>
+                <outlet property="indicator" destination="sqL-D6-jAf" id="OD3-ie-Tae"/>
+                <outlet property="loadingLabel" destination="YIc-o9-SBv" id="og3-ih-dCI"/>
                 <outlet property="locationView" destination="OdD-FK-0AC" id="lbA-6j-1nK"/>
                 <outlet property="pageControl" destination="L8a-BK-zCv" id="jGp-kd-vEe"/>
                 <outlet property="sliderCollectionView" destination="e0r-vb-jTJ" id="S7D-fO-vI0"/>
@@ -39,6 +41,15 @@
                         <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="L8a-BK-zCv">
                             <rect key="frame" x="146" y="212.5" width="122" height="27.5"/>
                         </pageControl>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YIc-o9-SBv">
+                            <rect key="frame" x="186.5" y="115" width="41.5" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="sqL-D6-jAf">
+                            <rect key="frame" x="158" y="115" width="20" height="20"/>
+                        </activityIndicatorView>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
@@ -46,8 +57,12 @@
                         <constraint firstAttribute="trailing" secondItem="e0r-vb-jTJ" secondAttribute="trailing" id="EOH-sM-AUm"/>
                         <constraint firstItem="e0r-vb-jTJ" firstAttribute="leading" secondItem="eXI-9w-nql" secondAttribute="leading" id="GHg-YR-pxg"/>
                         <constraint firstAttribute="bottom" secondItem="e0r-vb-jTJ" secondAttribute="bottom" id="HgG-iX-1pQ"/>
+                        <constraint firstItem="YIc-o9-SBv" firstAttribute="centerY" secondItem="eXI-9w-nql" secondAttribute="centerY" id="Rzu-y2-2N3"/>
+                        <constraint firstItem="YIc-o9-SBv" firstAttribute="centerX" secondItem="eXI-9w-nql" secondAttribute="centerX" id="SwV-Nw-0Kf"/>
+                        <constraint firstItem="sqL-D6-jAf" firstAttribute="centerY" secondItem="YIc-o9-SBv" secondAttribute="centerY" id="Yhq-bU-7IF"/>
                         <constraint firstItem="e0r-vb-jTJ" firstAttribute="top" secondItem="eXI-9w-nql" secondAttribute="top" id="nWv-QK-YHo"/>
                         <constraint firstAttribute="bottom" secondItem="L8a-BK-zCv" secondAttribute="bottom" constant="10" id="uXl-uC-1uO"/>
+                        <constraint firstItem="YIc-o9-SBv" firstAttribute="leading" secondItem="sqL-D6-jAf" secondAttribute="trailing" constant="8.5" id="yH7-Mv-uyQ"/>
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TQ3-Yj-1Jb">

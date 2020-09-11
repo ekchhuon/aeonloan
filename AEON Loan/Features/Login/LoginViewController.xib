@@ -10,7 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="AEON_Loan" customModuleProvider="target">
             <connections>
-                <outlet property="eyeUIImage" destination="DFf-fc-TD9" id="eKd-Yb-E0l"/>
+                <outlet property="eyeballButton" destination="50I-iZ-D1h" id="L92-A3-6w6"/>
                 <outlet property="loginButton" destination="6WX-eU-26a" id="922-aT-JGQ"/>
                 <outlet property="passwordTextField" destination="q8K-dq-rei" id="Cqn-mW-kLH"/>
                 <outlet property="registerButton" destination="L6V-ak-Tgt" id="TUa-7E-jTN"/>
@@ -67,30 +67,23 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ozT-ao-QW9">
                                     <rect key="frame" x="328" y="0.0" width="50" height="50"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="eye.slash" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="DFf-fc-TD9">
-                                            <rect key="frame" x="10" y="16" width="30" height="27.5"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="50I-iZ-D1h">
+                                            <rect key="frame" x="0.0" y="15" width="50" height="30"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="30" id="0ce-TE-cua"/>
-                                                <constraint firstAttribute="width" constant="30" id="oWB-NY-RaA"/>
+                                                <constraint firstAttribute="height" constant="30" id="IoN-pe-CNA"/>
                                             </constraints>
-                                        </imageView>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="50I-iZ-D1h">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <state key="normal" image="eye.slash" catalog="system"/>
                                             <connections>
                                                 <action selector="eyeButtonTapped:" destination="-1" eventType="touchUpInside" id="aZh-PC-ORM"/>
                                             </connections>
                                         </button>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="50I-iZ-D1h" secondAttribute="bottom" id="8eT-HB-Pzk"/>
                                         <constraint firstAttribute="width" constant="50" id="CNT-80-wO0"/>
-                                        <constraint firstItem="50I-iZ-D1h" firstAttribute="top" secondItem="ozT-ao-QW9" secondAttribute="top" id="Lub-xY-dA7"/>
                                         <constraint firstAttribute="height" constant="50" id="PvV-tx-jt0"/>
-                                        <constraint firstItem="DFf-fc-TD9" firstAttribute="leading" secondItem="ozT-ao-QW9" secondAttribute="leading" constant="10" id="Pzg-7i-lRW"/>
-                                        <constraint firstItem="50I-iZ-D1h" firstAttribute="leading" secondItem="ozT-ao-QW9" secondAttribute="leading" id="a9j-jB-29t"/>
-                                        <constraint firstAttribute="trailing" secondItem="50I-iZ-D1h" secondAttribute="trailing" id="gwS-RX-5go"/>
-                                        <constraint firstAttribute="bottom" secondItem="DFf-fc-TD9" secondAttribute="bottom" constant="5" id="hjG-4v-q7W"/>
-                                        <constraint firstAttribute="trailing" secondItem="DFf-fc-TD9" secondAttribute="trailing" constant="10" id="nRn-9u-Kkz"/>
+                                        <constraint firstAttribute="bottom" secondItem="50I-iZ-D1h" secondAttribute="bottom" constant="5" id="fCG-sS-ohD"/>
+                                        <constraint firstAttribute="trailing" secondItem="50I-iZ-D1h" secondAttribute="trailing" id="pfA-F5-dFX"/>
+                                        <constraint firstItem="50I-iZ-D1h" firstAttribute="leading" secondItem="ozT-ao-QW9" secondAttribute="leading" id="yE9-ca-m09"/>
                                     </constraints>
                                 </view>
                             </subviews>

@@ -26,20 +26,44 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var locationView: UIView!
     @IBOutlet weak var contactusView: UIView!
+    @IBOutlet weak var indicator: UIActivityIndicatorView!
+    @IBOutlet weak var loadingLabel: UILabel!
+    
     
     var timer = Timer()
     var counter = 0
     var longPressed: Bool = false
     var defaultInterval: TimeInterval = 3
     
-    var imageArray = [UIImage(named: "leaf"), UIImage(named: "leaf.fill"), UIImage(named: "leaf"), UIImage(named: "leaf.fill"), UIImage(named: "leaf"), UIImage(named: "leaf.fill")]
+    var imageArray = [UIImage?]()
     
-    var numbers = ["1", "2", "3", "4", "5", "6"]
+    var numbers = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        bindSliderData()
+    }
+    
+    func bindSliderData() {
+        siderViewModel.images.bind { [weak self] images in
+            guard let images = images, let self = self else { return }
+            self.imageArray = images
+            self.sliderCollectionView.reloadData()
+            self.setupPageControl()
+        }
         
+        siderViewModel.numbers.bind { [weak self] numbers in
+            guard let numbers = numbers, let self = self else { return }
+            self.numbers = numbers
+        }
+        
+        siderViewModel.loading.bind { [weak self] loading in
+            guard let self = self else {return}
+            self.loadingLabel.text = loading ? "loading..." : ""
+            self.indicator.startAnimating()
+            self.indicator.isHidden = !loading
+        }
     }
 }
 
@@ -93,12 +117,30 @@ extension HomeViewController: UICollectionViewDataSource {
 
 extension HomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if collectionView == sliderCollectionView {
-            let detailed = SliderDetailViewController.instantiate(index: indexPath, item: numbers[indexPath.row])
-            navigationController?.pushViewController(detailed, animated: true)
-        }else {
-
+        
+        switch collectionView {
+        case sliderCollectionView:
+            navigateToSliderDetail(index: indexPath, item: numbers[indexPath.row])
+        case gridCollectionView:
+            switch indexPath.row {
+            case 0: break
+            case 1:
+                navigateToApplyLoan()
+            default: break
+            }
+        default: break
         }
+
+    }
+    
+    func navigateToApplyLoan() {
+        let detailed = ApplyLoanViewController.instantiate()
+        navigationController?.pushViewController(detailed, animated: true)
+    }
+    
+    func navigateToSliderDetail(index: IndexPath, item: String) {
+        let detailed = SliderDetailViewController.instantiate(index: index, item: item)
+        navigationController?.pushViewController(detailed, animated: true)
     }
 }
 
@@ -108,7 +150,7 @@ extension HomeViewController{
         setupSliderView()
         setupGridView()
         setupNavigationBar()
-        setupPageControl()
+//        setupPageControl()
         changeSlideShow()
         setupLongGestureRecognizerOnCollection()
         // setupRefreshControl()

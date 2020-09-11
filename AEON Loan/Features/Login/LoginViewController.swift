@@ -13,14 +13,15 @@ extension LoginViewController {
     }
 }
 
-class LoginViewController: UIViewController {
+class LoginViewController: BaseViewController {
     private let viewModel = LoginViewModel()
     
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var registerButton: UIButton!
-    @IBOutlet weak var eyeUIImage: UIImageView!
+    @IBOutlet weak var eyeballButton: UIButton!
+    
     
     var hidden: Bool = true
     
@@ -28,6 +29,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         setupView()
         bind()
+        setup(title: "Login")
     }
     
     private func bind() {
@@ -46,12 +48,14 @@ class LoginViewController: UIViewController {
     
     @IBAction func registerButtonTapped(_ sender: Any) {
 
-        
+        let register = RegisterViewController.instantiate()
+        navigationController?.pushViewController(register, animated: true)
     }
     
     @IBAction func eyeButtonTapped(_ sender: Any) {
         hidden = !hidden
-        eyeUIImage.image = UIImage(systemName: hidden ? "eye.slash" : "eye")?.withTintColor(.brandGray, renderingMode: .alwaysOriginal)
+        let eyeball = UIImage(systemName: hidden ? "eye.slash" : "eye")?.withTintColor(.brandGray, renderingMode: .alwaysOriginal)
+        eyeballButton.setImage(eyeball, for: .normal)
         passwordTextField.isSecureTextEntry = hidden
     }
     
@@ -65,16 +69,22 @@ class LoginViewController: UIViewController {
     }
     
     private func setupView(){
-        usernameTextField.placeholder = "Username / Phone Number"
-        passwordTextField.placeholder = "Password"
-        passwordTextField.isSecureTextEntry = true
-        eyeUIImage.image = UIImage(systemName: "eye.slash")?.withTintColor(.brandGray, renderingMode: .alwaysOriginal)
+        setup(title: "Login")
+        setupTextField()
         
         loginButton.rounds(radius: 10, border: .brandPurple, background: .brandPurple, width: 1)
         registerButton.rounds(radius: 10, border: .brandYellow, background: .brandYellow, width: 1)
-        
+    }
+    
+    func setupTextField() {
+        usernameTextField.placeholder = "Username / Phone Number"
+        passwordTextField.placeholder = "Password"
+        passwordTextField.isSecureTextEntry = true
+        eyeballButton.setImage(UIImage(systemName: "eye.slash")?.withTintColor(.brandGray, renderingMode: .alwaysOriginal), for: .normal)
     }
 }
+
+
 
 
 
