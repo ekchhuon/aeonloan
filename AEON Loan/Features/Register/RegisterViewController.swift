@@ -80,15 +80,16 @@ class RegisterViewController: BaseViewController {
     }
     
     func setupTextField() {
-        usernameTextField.placeholder = NSLocalizedString("Username", comment: "")
-        phoneTextField.placeholder = NSLocalizedString("Email Address", comment: "")
-        emailTextField.placeholder = NSLocalizedString("Email Address", comment: "")
-        passwordTextField.placeholder = NSLocalizedString("Password", comment: "")
-        confirmPasswordTextField.placeholder = NSLocalizedString("Confirm Password", comment: "")
+        let textFields = [usernameTextField, phoneTextField, emailTextField, passwordTextField, confirmPasswordTextField]
+        let placeholders = ["Username", "Phone Number", "Email Adress", "Password", "Confirm Password"]
+        let eyeball = UIImage(systemName: "eye.slash")?.withTintColor(.brandGray, renderingMode: .alwaysOriginal)
+        
+        for (index, field) in textFields.enumerated() {
+            field?.placeholder = NSLocalizedString(placeholders[index], comment: "")
+        }
+        
         passwordTextField.isSecureTextEntry = true
         confirmPasswordTextField.isSecureTextEntry = true
-        
-        let eyeball = UIImage(systemName: "eye.slash")?.withTintColor(.brandGray, renderingMode: .alwaysOriginal)
         eyeballButtons.forEach { $0.setImage(eyeball, for: .normal) }
     }
 }

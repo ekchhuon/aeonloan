@@ -9,13 +9,17 @@ import UIKit
 
 class HomeCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var cellContentView: UIView!
+    @IBOutlet weak var icon: UIImageView!
+    @IBOutlet weak var title: UILabel!
     
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        
-        cellContentView.setViewBorder(radius: 10, border: .purple, width: 1, bg: .none, alpha: 1)
+        cellContentView.rounds(10)
     }
-
+    
+    func setupMenu(menu: Menu) {
+        self.icon.image = menu.icon
+        self.title.text = menu.title
+    }
 }

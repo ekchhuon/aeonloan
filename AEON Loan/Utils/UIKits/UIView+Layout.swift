@@ -272,11 +272,21 @@ extension UIView {
         
     }
     
-    func roundCorners(_ corners: CACornerMask, radius: CGFloat, borderColor: UIColor, borderWidth: CGFloat) {
+    func roundByCorners(_ radius: CGFloat, for corners: CACornerMask, borderColor: UIColor = .white, borderWidth: CGFloat = 0) {
         self.layer.maskedCorners = corners
         self.layer.cornerRadius = radius
         self.layer.borderWidth = borderWidth
         self.layer.borderColor = borderColor.cgColor
         
     }
+    
+    func rounds(_ radius: CGFloat = 5, border borderColor: UIColor = .white, width: CGFloat = 0, background backgroundColor: UIColor = .white, alpha: CGFloat = 1) {
+        self.layer.cornerRadius = radius
+        self.layer.borderWidth = width
+        self.layer.borderColor = borderColor.cgColor
+        self.alpha = alpha
+        self.layer.backgroundColor = backgroundColor.cgColor
+        
+    }
+    
 }

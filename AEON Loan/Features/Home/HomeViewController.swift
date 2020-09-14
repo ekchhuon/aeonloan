@@ -23,26 +23,28 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
     @IBOutlet weak var pageControl: UIPageControl!
     var refreshControl: UIRefreshControl!
     
-    @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var locationView: UIView!
     @IBOutlet weak var contactusView: UIView!
     @IBOutlet weak var indicator: UIActivityIndicatorView!
     @IBOutlet weak var loadingLabel: UILabel!
-    
-    
+
     var timer = Timer()
     var counter = 0
     var longPressed: Bool = false
     var defaultInterval: TimeInterval = 3
     
     var imageArray = [UIImage?]()
-    
-    var numbers = [String]()
+    var menus: [Menu] = [Menu]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.menus.bind { [weak self] menus in
+            guard let self = self else {return}
+            self.menus = menus
+        }
         setupView()
         bindSliderData()
+
     }
     
     func bindSliderData() {
@@ -51,11 +53,6 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
             self.imageArray = images
             self.sliderCollectionView.reloadData()
             self.setupPageControl()
-        }
-        
-        siderViewModel.numbers.bind { [weak self] numbers in
-            guard let numbers = numbers, let self = self else { return }
-            self.numbers = numbers
         }
         
         siderViewModel.loading.bind { [weak self] loading in
@@ -74,7 +71,7 @@ extension HomeViewController: UICollectionViewDataSource {
         if collectionView == sliderCollectionView {
             return imageArray.count
         }else {
-            return 6
+            return menus.count
         }
         
     }
@@ -83,21 +80,18 @@ extension HomeViewController: UICollectionViewDataSource {
         
         if collectionView == sliderCollectionView {
             let slider : SliderCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SliderCollectionViewCell", for: indexPath) as! SliderCollectionViewCell
-            slider.sliderLabel.text = numbers[indexPath.row]
+            slider.sliderImage.image = imageArray[indexPath.row]
             
             return slider
         }else {
             let cell : HomeCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCollectionViewCell", for: indexPath) as! HomeCollectionViewCell
+            cell.setupMenu(menu: menus[indexPath.row])
             return cell
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        print("indexPath", indexPath.row)
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
@@ -120,7 +114,7 @@ extension HomeViewController: UICollectionViewDelegate {
         
         switch collectionView {
         case sliderCollectionView:
-            navigateToSliderDetail(index: indexPath, item: numbers[indexPath.row])
+            navigateToSliderDetail(index: indexPath, item: "\(indexPath.row)")
         case gridCollectionView:
             switch indexPath.row {
             case 0: break
@@ -130,7 +124,7 @@ extension HomeViewController: UICollectionViewDelegate {
             }
         default: break
         }
-
+        
     }
     
     func navigateToApplyLoan() {
@@ -144,13 +138,57 @@ extension HomeViewController: UICollectionViewDelegate {
     }
 }
 
+extension HomeViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        switch collectionView {
+        case sliderCollectionView:
+            return UIEdgeInsets(top:0,left:0,bottom:0,right:0)
+        default:
+            return UIEdgeInsets(top:20,left:15,bottom:0,right:15)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        
+        switch collectionView {
+        case sliderCollectionView:
+            return 0
+        default:
+            return 10
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        switch collectionView {
+        case sliderCollectionView:
+            return 0
+        default:
+            return 20
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let minimumLineSpacing:CGFloat = 20
+        let minimumInteritemSpacing: CGFloat = 10 * 2
+        
+        switch collectionView {
+        case sliderCollectionView:
+            return CGSize(width: sliderCollectionView.frame.size.width, height: sliderCollectionView.frame.size.height)
+        default:
+            let size = gridCollectionView.frame.size
+            return CGSize(width: size.width/2 - minimumInteritemSpacing, height: (size.height/3) - minimumLineSpacing)
+        }
+    }
+}
+
 // MARK: Private
 extension HomeViewController{
     private func setupView() {
+        self.view.backgroundColor = .brandPurple
         setupSliderView()
         setupGridView()
         setupNavigationBar()
-//        setupPageControl()
+        //        setupPageControl()
         changeSlideShow()
         setupLongGestureRecognizerOnCollection()
         // setupRefreshControl()
@@ -189,8 +227,8 @@ extension HomeViewController{
     }
     
     private func customView() {
-        locationView.roundCorners([.layerMinXMaxYCorner, .layerMinXMinYCorner], radius: 10, borderColor: .brandMaginta, borderWidth: 1)
-        contactusView.roundCorners([.layerMaxXMaxYCorner, .layerMaxXMinYCorner], radius: 10, borderColor: .brandMaginta, borderWidth: 1)
+        locationView.roundByCorners(10, for: [.layerMinXMaxYCorner, .layerMinXMinYCorner])
+        contactusView.roundByCorners(10, for: [.layerMaxXMaxYCorner, .layerMaxXMinYCorner])
     }
     
     private func setupRefreshControl() {
@@ -205,8 +243,7 @@ extension HomeViewController{
         gridCollectionView.delegate = self
         gridCollectionView.dataSource = self
         self.gridCollectionView.register(UINib(nibName: "HomeCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "HomeCollectionViewCell")
-        
-        setupGridLayout()
+        gridCollectionView.backgroundColor = .brandPurple
     }
     
     private func setupSliderView() {
@@ -215,29 +252,6 @@ extension HomeViewController{
         self.sliderCollectionView.register(UINib(nibName: "SliderCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "SliderCollectionViewCell")
         sliderCollectionView.showsHorizontalScrollIndicator = false
         sliderCollectionView.isPagingEnabled = true
-        
-        setupSliderLayout()
-    }
-    
-    private func setupGridLayout() {
-        let layout:UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        let size = gridCollectionView.frame.size
-        layout.sectionInset = UIEdgeInsets(top:15,left:15,bottom:0,right:15)
-        layout.itemSize = CGSize(width: UIScreen.main.bounds.size.width/2 - 20, height: size.height/3 - 40)
-        layout.minimumInteritemSpacing = 10
-        layout.minimumLineSpacing = 20
-        gridCollectionView.collectionViewLayout = layout
-    }
-    
-    private func setupSliderLayout() {
-        let layout:UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-        let size = sliderCollectionView.frame.size
-        layout.scrollDirection = .horizontal
-        layout.sectionInset = UIEdgeInsets(top:0,left:0,bottom:0,right:0)
-        layout.itemSize = CGSize(width: size.width, height: size.height)
-        layout.minimumInteritemSpacing = 0
-        layout.minimumLineSpacing = 0
-        sliderCollectionView.collectionViewLayout = layout
     }
     
     private func setupPageControl() {

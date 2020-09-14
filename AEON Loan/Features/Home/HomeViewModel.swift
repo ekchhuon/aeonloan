@@ -14,9 +14,22 @@ public class HomeViewModel {
     let username = Box("")
     let password = Box("")
     let loading = Box(false)
+    let menus : Box<[Menu]> = Box([Menu]())
     
+
     init() {
-        //        login(username: "", password: "")
+        setupMenu()
+    }
+    
+    func setupMenu() {
+        var menus: [Menu] = [Menu]()
+        let names: [String] = ["credit.fill", "docs.fill", "loan", "promotion", "calendar", "calculator.fill"]
+        let titles: [String] = ["Check Credit", "Apply Loan/Installment", "AEON SPB Product", "Promotion", "Check Your Payment Schedule", "Loan Calculation"]
+        for (index, _) in names.enumerated() {
+            let menu = Menu(icon: UIImage(named: names[index]) ?? UIImage(), title: NSLocalizedString(titles[index], comment: ""))
+            menus.append(menu)
+        }
+        self.menus.value = menus
     }
     
     func login(username: String, password: String) {
@@ -45,7 +58,6 @@ public class HomeViewModel {
 
 public class SliderViewModel {
     let images : Box<[UIImage?]?> = Box(nil)
-    let numbers: Box<[String]?> = Box(nil)
     let loading = Box(false)
     init() {
         fetch()
@@ -53,16 +65,17 @@ public class SliderViewModel {
     
     func fetch(){
         loading.value = true
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.loading.value = false
-            let imageArray = [UIImage(named: "leaf"), UIImage(named: "leaf.fill"), UIImage(named: "leaf"), UIImage(named: "leaf.fill"), UIImage(named: "leaf"), UIImage(named: "leaf.fill")]
-            
+            let imageArray = [UIImage(named: "1"), UIImage(named: "2"), UIImage(named: "3"), UIImage(named: "4"), UIImage(named: "5"), UIImage(named: "6")]
             self.images.value = imageArray
-        
-            
-            let numbers = ["1", "2", "3", "4", "5", "6"]
-            
-            self.numbers.value = numbers
         }
     }
+}
+
+
+
+struct Menu {
+    var icon: UIImage
+    var title: String
 }

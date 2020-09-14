@@ -9,11 +9,10 @@ import UIKit
 
 class SliderCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var sliderImage: UIImageView!
-    @IBOutlet weak var sliderLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        sliderImage.contentMode = .scaleAspectFill
     }
 
 }

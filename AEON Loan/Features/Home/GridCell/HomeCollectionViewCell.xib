@@ -21,36 +21,36 @@
                         <rect key="frame" x="0.0" y="0.0" width="222" height="136"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="nlH-cM-ydO">
-                                <rect key="frame" x="0.0" y="0.0" width="222" height="136"/>
+                                <rect key="frame" x="0.0" y="5" width="222" height="126"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2mc-gC-vc9">
-                                        <rect key="frame" x="0.0" y="0.0" width="222" height="34"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ERF-VG-JIs" userLabel="spacer">
+                                        <rect key="frame" x="0.0" y="0.0" width="222" height="26.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="leaf.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="PfY-ib-w7V">
-                                        <rect key="frame" x="0.0" y="40.5" width="222" height="55.5"/>
+                                        <rect key="frame" x="0.0" y="33" width="222" height="60.5"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SX4-yu-ROn">
-                                        <rect key="frame" x="0.0" y="102" width="222" height="34"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SX4-yu-ROn" userLabel="spacer">
+                                        <rect key="frame" x="0.0" y="99.5" width="222" height="26.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="2mc-gC-vc9" firstAttribute="height" secondItem="nlH-cM-ydO" secondAttribute="height" multiplier="0.25" id="Fe6-XP-8Gk"/>
-                                    <constraint firstItem="SX4-yu-ROn" firstAttribute="height" secondItem="2mc-gC-vc9" secondAttribute="height" id="NXf-xb-nfK"/>
+                                    <constraint firstItem="PfY-ib-w7V" firstAttribute="centerY" secondItem="nlH-cM-ydO" secondAttribute="centerY" id="7SB-MC-BlX"/>
+                                    <constraint firstItem="PfY-ib-w7V" firstAttribute="height" secondItem="nlH-cM-ydO" secondAttribute="height" multiplier="0.5" id="Hte-dS-uNX"/>
                                 </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="nlH-cM-ydO" secondAttribute="trailing" id="1xx-tL-duQ"/>
-                            <constraint firstAttribute="bottom" secondItem="nlH-cM-ydO" secondAttribute="bottom" id="Ncq-0d-mOK"/>
+                            <constraint firstAttribute="bottom" secondItem="nlH-cM-ydO" secondAttribute="bottom" constant="5" id="Ncq-0d-mOK"/>
                             <constraint firstItem="nlH-cM-ydO" firstAttribute="leading" secondItem="vmL-TV-shG" secondAttribute="leading" id="U8f-Vo-c1P"/>
-                            <constraint firstItem="nlH-cM-ydO" firstAttribute="top" secondItem="vmL-TV-shG" secondAttribute="top" id="t6w-5K-ATv"/>
+                            <constraint firstItem="nlH-cM-ydO" firstAttribute="top" secondItem="vmL-TV-shG" secondAttribute="top" constant="5" id="t6w-5K-ATv"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -65,6 +65,8 @@
             <size key="customSize" width="222" height="136"/>
             <connections>
                 <outlet property="cellContentView" destination="vmL-TV-shG" id="Yv0-Dk-tPT"/>
+                <outlet property="icon" destination="PfY-ib-w7V" id="LGh-BG-OuR"/>
+                <outlet property="title" destination="SX4-yu-ROn" id="xSX-zw-Zds"/>
             </connections>
             <point key="canvasLocation" x="262.31884057971018" y="108.48214285714285"/>
         </collectionViewCell>
