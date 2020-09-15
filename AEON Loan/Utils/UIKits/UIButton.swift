@@ -19,7 +19,7 @@ extension UIButton {
         
     }
     
-    func rounds(radius: CGFloat = 5, border borderColor: UIColor, background bgColor:UIColor, width: CGFloat = 1) {
+    func rounds(radius: CGFloat = 5, background bgColor:UIColor = .white, border borderColor: UIColor = .clear, width: CGFloat = 0) {
         self.layer.cornerRadius = radius
         self.layer.borderWidth = width
         self.layer.borderColor = borderColor.cgColor

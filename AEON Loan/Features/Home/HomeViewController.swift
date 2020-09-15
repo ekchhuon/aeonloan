@@ -42,6 +42,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
             guard let self = self else {return}
             self.menus = menus
         }
+        
         setupView()
         bindSliderData()
 
@@ -120,6 +121,8 @@ extension HomeViewController: UICollectionViewDelegate {
             case 0: break
             case 1:
                 navigateToApplyLoan()
+            case 4:
+                navigateToPaymentOption()
             default: break
             }
         default: break
@@ -130,6 +133,11 @@ extension HomeViewController: UICollectionViewDelegate {
     func navigateToApplyLoan() {
         let detailed = ApplyLoanViewController.instantiate()
         navigationController?.pushViewController(detailed, animated: true)
+    }
+    
+    func navigateToPaymentOption() {
+        let controller = PaymentOptionViewController.instantiate()
+        navigationController?.pushViewController(controller, animated: true)
     }
     
     func navigateToSliderDetail(index: IndexPath, item: String) {

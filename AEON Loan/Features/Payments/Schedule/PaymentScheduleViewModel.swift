@@ -1,13 +1,13 @@
 //
-//  ApplyLoanViewModel.swift
+//  PaymentScheduleViewModel.swift
 //  AEON Loan
 //
-//  Created by aeon on 9/11/20.
+//  Created by aeon on 9/15/20.
 //
 
 import Foundation
 
-public class ApplyLoanViewModel {
+public class PaymentScheduleViewModel {
     let defaults = "Loading..."
     let user: Box<User?> = Box(nil)
     let username = Box("")

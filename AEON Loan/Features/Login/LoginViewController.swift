@@ -72,8 +72,8 @@ class LoginViewController: BaseViewController {
         setup(title: "Login")
         setupTextField()
         
-        loginButton.rounds(radius: 10, border: .brandPurple, background: .brandPurple, width: 1)
-        registerButton.rounds(radius: 10, border: .brandYellow, background: .brandYellow, width: 1)
+        loginButton.rounds(radius: 10, background: .brandPurple, border: .brandPurple, width: 1)
+        registerButton.rounds(radius: 10, background: .brandYellow, border: .brandYellow, width: 1)
     }
     
     func setupTextField() {

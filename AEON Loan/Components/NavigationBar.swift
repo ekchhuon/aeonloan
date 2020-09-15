@@ -31,6 +31,7 @@ class BlueNavigationBar: NavigationBar {
     override func setupAppearance() {
         super.setupAppearance()
         tintColor = .white
+        self.isTranslucent = false
         barTintColor = .brandPurple
         
 //        setBackgroundImage(UIImage(named: "banner"), for: .default)

@@ -76,7 +76,7 @@ class RegisterViewController: BaseViewController {
     private func setupView(){
         setup(title: NSLocalizedString("Register", comment: ""))
         setupTextField()
-        registerButton.rounds(radius: 10, border: .brandPurple, background: .brandPurple, width: 1)
+        registerButton.rounds(radius: 10, background: .brandPurple, border: .brandPurple, width: 1)
     }
     
     func setupTextField() {

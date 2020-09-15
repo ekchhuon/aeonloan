@@ -30,15 +30,16 @@ class ApplyLoanViewController: BaseViewController {
     }
     
     @IBAction func submitButtonTapped(_ sender: Any) {
-        
+        let controller = LoanSubmissionResultViewController.instantiate(isCheckCredit: false)
+        navigationController?.pushViewController(controller, animated: true)
     }
-
 }
 
 extension ApplyLoanViewController {
     func setupView() {
         setup(title: NSLocalizedString("Apply Loan/Installment", comment: ""))
         setupTextFields()
+        submitButton.rounds(radius: 10, background: .brandPurple)
     }
     
     func setupTextFields(){
