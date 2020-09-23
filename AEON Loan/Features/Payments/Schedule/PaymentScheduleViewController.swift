@@ -27,6 +27,8 @@ class PaymentScheduleViewController: BaseViewController {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         setupView()
+        
+        print("tableView.rowHeight",tableView.rowHeight)
     }
     
     private func setupView() {
@@ -46,7 +48,6 @@ extension PaymentScheduleViewController: UITableViewDataSource, UITableViewDeleg
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let controller = PaymentDetailViewController.instantiate(item: agreements[indexPath.row])
-        navigationController?.pushViewController(controller, animated: true)
+        navigates(to: .paymentScheduleDetail(agreements[indexPath.row]))
     }
 }

@@ -47,9 +47,7 @@ class LoginViewController: BaseViewController {
     }
     
     @IBAction func registerButtonTapped(_ sender: Any) {
-
-        let register = RegisterViewController.instantiate()
-        navigationController?.pushViewController(register, animated: true)
+        navigates(to: .register)
     }
     
     @IBAction func eyeButtonTapped(_ sender: Any) {

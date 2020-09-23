@@ -115,34 +115,19 @@ extension HomeViewController: UICollectionViewDelegate {
         
         switch collectionView {
         case sliderCollectionView:
-            navigateToSliderDetail(index: indexPath, item: "\(indexPath.row)")
+            navigates(to: .slider(indexPath, "\(indexPath.row)"))
         case gridCollectionView:
             switch indexPath.row {
-            case 0: break
+            case 0:
+                navigates(to: .checkCredit)
             case 1:
-                navigateToApplyLoan()
+                navigates(to: .applyLoan)
             case 4:
-                navigateToPaymentOption()
+                navigates(to: .payment)
             default: break
             }
         default: break
         }
-        
-    }
-    
-    func navigateToApplyLoan() {
-        let detailed = ApplyLoanViewController.instantiate()
-        navigationController?.pushViewController(detailed, animated: true)
-    }
-    
-    func navigateToPaymentOption() {
-        let controller = PaymentOptionViewController.instantiate()
-        navigationController?.pushViewController(controller, animated: true)
-    }
-    
-    func navigateToSliderDetail(index: IndexPath, item: String) {
-        let detailed = SliderDetailViewController.instantiate(index: index, item: item)
-        navigationController?.pushViewController(detailed, animated: true)
     }
 }
 
@@ -210,7 +195,8 @@ extension HomeViewController{
         let userIcon = UIImage(named: "user")?.withRenderingMode(.alwaysTemplate)
         
         
-        let banner = UIBarButtonItem( image: bannerIcon, style: .plain, target: self, action: #selector(handleClick))
+        let banner = UIBarButtonItem( image: bannerIcon, style: .plain, target: self, action: nil)
+        banner.isEnabled = false
         
         let notificationButton : UIButton = UIButton.init(type: .custom)
         notificationButton.setImage(notificationIcon, for: .normal)
@@ -336,14 +322,12 @@ extension HomeViewController {
     
     @objc
     private func handleClick(){
-        let login = LoginViewController.instantiate()
-        navigationController?.pushViewController(login, animated: true)
+        navigates(to: .login)
     }
     
     @objc
     private func navigateToNotification() {
-        let notification = NotificationViewController.instantiate()
-        navigationController?.pushViewController(notification, animated: true)
+        navigates(to: .notification)
     }
     
     @objc

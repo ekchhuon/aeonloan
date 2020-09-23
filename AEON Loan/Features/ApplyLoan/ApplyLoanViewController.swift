@@ -21,7 +21,7 @@ class ApplyLoanViewController: BaseViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var amountTextField: UITextField!
     @IBOutlet weak var locationTextField: UITextField!
-
+    
     @IBOutlet weak var submitButton: UIButton!
     
     override func viewDidLoad() {
@@ -30,8 +30,10 @@ class ApplyLoanViewController: BaseViewController {
     }
     
     @IBAction func submitButtonTapped(_ sender: Any) {
-        let controller = LoanSubmissionResultViewController.instantiate(isCheckCredit: false)
-        navigationController?.pushViewController(controller, animated: true)
+        //        let controller = LoanSubmissionResultViewController.instantiate(result: .success)
+        //        navigationController?.pushViewController(controller, animated: true)
+        
+        navigates(to: .loanResult(.success))
     }
 }
 

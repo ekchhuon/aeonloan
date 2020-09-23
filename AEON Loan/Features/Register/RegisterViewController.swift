@@ -45,6 +45,7 @@ class RegisterViewController: BaseViewController {
     
     @IBAction func registerButtonTapped(_ sender: Any) {
         //        viewModel.login(username: usernameTextField.text ?? "", password: passwordTextField.text ?? "")
+        navigates(to: .home(.push(subtype: .fromLeft)))
     }
     
     @IBAction func passwordEyeballTapped(_ sender: Any) {

@@ -30,18 +30,15 @@ class PaymentOptionViewController: UIViewController {
     }
 
     @IBAction func locationButtonTapped(_ sender: Any) {
-        let controller = PaymentLocationViewController.instantiate()
-        navigationController?.pushViewController(controller, animated: true)
+        navigates(to: .paymentLocation)
     }
     
     @IBAction func conditionButtonTapped(_ sender: Any) {
-        let controller = PaymentConditionViewController.instantiate()
-        navigationController?.pushViewController(controller, animated: true)
+        navigates(to: .paymentCondition)
     }
 
     @IBAction func ScheduleButtonTapped(_ sender: Any) {
-        let controller = PaymentScheduleViewController.instantiate()
-        navigationController?.pushViewController(controller, animated: true)
+        navigates(to: .paymentSchedule)
     }
 
 }

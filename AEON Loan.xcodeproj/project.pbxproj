@@ -61,6 +61,25 @@
 		3E5641E62507941900716D8B /* CollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5641E52507941900716D8B /* CollectionViewDataSource.swift */; };
 		3E5641E92507B21100716D8B /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5641E72507B21100716D8B /* RegisterViewController.swift */; };
 		3E5641EA2507B21100716D8B /* RegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E5641E82507B21100716D8B /* RegisterViewController.xib */; };
+		3E56EE93251846B90083CC49 /* TakePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E56EE91251846B90083CC49 /* TakePhotoViewController.swift */; };
+		3E56EE94251846B90083CC49 /* TakePhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E56EE92251846B90083CC49 /* TakePhotoViewController.xib */; };
+		3E56EE97251846E10083CC49 /* TakePhotoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E56EE96251846E10083CC49 /* TakePhotoViewModel.swift */; };
+		3E56EE9A251864800083CC49 /* SelfieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E56EE98251864800083CC49 /* SelfieViewController.swift */; };
+		3E56EE9B251864800083CC49 /* SelfieViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E56EE99251864800083CC49 /* SelfieViewController.xib */; };
+		3E56EE9E251864CA0083CC49 /* SelfieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E56EE9D251864CA0083CC49 /* SelfieViewModel.swift */; };
+		3E56EEA125186B070083CC49 /* ApplicantInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E56EE9F25186B070083CC49 /* ApplicantInfoViewController.swift */; };
+		3E56EEA225186B070083CC49 /* ApplicantInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E56EEA025186B070083CC49 /* ApplicantInfoViewController.xib */; };
+		3E56EEA525186B3A0083CC49 /* ApplicantInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E56EEA425186B3A0083CC49 /* ApplicantInfoViewModel.swift */; };
+		3E62A2E12519A61A0072CAB3 /* CreditRejectedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E62A2DF2519A61A0072CAB3 /* CreditRejectedViewController.swift */; };
+		3E62A2E22519A61A0072CAB3 /* CreditRejectedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E62A2E02519A61A0072CAB3 /* CreditRejectedViewController.xib */; };
+		3E62A2E52519A65B0072CAB3 /* CreditRejectedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E62A2E42519A65B0072CAB3 /* CreditRejectedViewModel.swift */; };
+		3E62A2E82519BA8B0072CAB3 /* CreditAcceptedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E62A2E62519BA8B0072CAB3 /* CreditAcceptedViewController.swift */; };
+		3E62A2E92519BA8B0072CAB3 /* CreditAcceptedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E62A2E72519BA8B0072CAB3 /* CreditAcceptedViewController.xib */; };
+		3E62A2EB2519BAA10072CAB3 /* CreditAcceptedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E62A2EA2519BAA10072CAB3 /* CreditAcceptedViewModel.swift */; };
+		3E62A2EF2519D2C40072CAB3 /* ApplicationAcceptedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E62A2ED2519D2C40072CAB3 /* ApplicationAcceptedTableViewCell.swift */; };
+		3E62A2F02519D2C40072CAB3 /* CreditAcceptedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E62A2EE2519D2C40072CAB3 /* CreditAcceptedTableViewCell.xib */; };
+		3E62A2F32519DB2A0072CAB3 /* UITableVIew + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E62A2F22519DB2A0072CAB3 /* UITableVIew + Extension.swift */; };
+		3E62A2F7251A0DA40072CAB3 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E62A2F6251A0DA40072CAB3 /* Enum.swift */; };
 		3E6397D224F763DC00C5BB86 /* ActivityIndicatorOverlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6397D124F763DC00C5BB86 /* ActivityIndicatorOverlay.swift */; };
 		3E800261250B5C1100503267 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E800260250B5C1100503267 /* BaseViewController.swift */; };
 		3E800263250B75A000503267 /* UINavigationController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E800262250B75A000503267 /* UINavigationController + Extension.swift */; };
@@ -77,6 +96,9 @@
 		3E834E5C2508FCAC00D9E700 /* NotificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E834E5A2508FCAC00D9E700 /* NotificationViewController.xib */; };
 		3E834E602509016400D9E700 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E834E5E2509016400D9E700 /* SideMenuViewController.swift */; };
 		3E834E612509016400D9E700 /* SideMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E834E5F2509016400D9E700 /* SideMenuViewController.xib */; };
+		3ED2C51E251AF8C0007B0B9A /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED2C51D251AF8C0007B0B9A /* UIViewController.swift */; };
+		3ED2C521251B3420007B0B9A /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED2C51F251B3420007B0B9A /* PhotoViewController.swift */; };
+		3ED2C522251B3420007B0B9A /* PhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ED2C520251B3420007B0B9A /* PhotoViewController.xib */; };
 		3EF9195524F5008200E77958 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF9195424F5008200E77958 /* AppDelegate.swift */; };
 		3EF9195724F5008200E77958 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF9195624F5008200E77958 /* SceneDelegate.swift */; };
 		3EF9195C24F5008200E77958 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EF9195A24F5008200E77958 /* Main.storyboard */; };
@@ -165,6 +187,25 @@
 		3E5641E52507941900716D8B /* CollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewDataSource.swift; sourceTree = "<group>"; };
 		3E5641E72507B21100716D8B /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		3E5641E82507B21100716D8B /* RegisterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegisterViewController.xib; sourceTree = "<group>"; };
+		3E56EE91251846B90083CC49 /* TakePhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakePhotoViewController.swift; sourceTree = "<group>"; };
+		3E56EE92251846B90083CC49 /* TakePhotoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TakePhotoViewController.xib; sourceTree = "<group>"; };
+		3E56EE96251846E10083CC49 /* TakePhotoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TakePhotoViewModel.swift; sourceTree = "<group>"; };
+		3E56EE98251864800083CC49 /* SelfieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfieViewController.swift; sourceTree = "<group>"; };
+		3E56EE99251864800083CC49 /* SelfieViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelfieViewController.xib; sourceTree = "<group>"; };
+		3E56EE9D251864CA0083CC49 /* SelfieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfieViewModel.swift; sourceTree = "<group>"; };
+		3E56EE9F25186B070083CC49 /* ApplicantInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicantInfoViewController.swift; sourceTree = "<group>"; };
+		3E56EEA025186B070083CC49 /* ApplicantInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ApplicantInfoViewController.xib; sourceTree = "<group>"; };
+		3E56EEA425186B3A0083CC49 /* ApplicantInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicantInfoViewModel.swift; sourceTree = "<group>"; };
+		3E62A2DF2519A61A0072CAB3 /* CreditRejectedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditRejectedViewController.swift; sourceTree = "<group>"; };
+		3E62A2E02519A61A0072CAB3 /* CreditRejectedViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreditRejectedViewController.xib; sourceTree = "<group>"; };
+		3E62A2E42519A65B0072CAB3 /* CreditRejectedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditRejectedViewModel.swift; sourceTree = "<group>"; };
+		3E62A2E62519BA8B0072CAB3 /* CreditAcceptedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditAcceptedViewController.swift; sourceTree = "<group>"; };
+		3E62A2E72519BA8B0072CAB3 /* CreditAcceptedViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreditAcceptedViewController.xib; sourceTree = "<group>"; };
+		3E62A2EA2519BAA10072CAB3 /* CreditAcceptedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditAcceptedViewModel.swift; sourceTree = "<group>"; };
+		3E62A2ED2519D2C40072CAB3 /* ApplicationAcceptedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationAcceptedTableViewCell.swift; sourceTree = "<group>"; };
+		3E62A2EE2519D2C40072CAB3 /* CreditAcceptedTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreditAcceptedTableViewCell.xib; sourceTree = "<group>"; };
+		3E62A2F22519DB2A0072CAB3 /* UITableVIew + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableVIew + Extension.swift"; sourceTree = "<group>"; };
+		3E62A2F6251A0DA40072CAB3 /* Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
 		3E6397D124F763DC00C5BB86 /* ActivityIndicatorOverlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorOverlay.swift; sourceTree = "<group>"; };
 		3E800260250B5C1100503267 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		3E800262250B75A000503267 /* UINavigationController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController + Extension.swift"; sourceTree = "<group>"; };
@@ -181,6 +222,9 @@
 		3E834E5A2508FCAC00D9E700 /* NotificationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationViewController.xib; sourceTree = "<group>"; };
 		3E834E5E2509016400D9E700 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		3E834E5F2509016400D9E700 /* SideMenuViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SideMenuViewController.xib; sourceTree = "<group>"; };
+		3ED2C51D251AF8C0007B0B9A /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		3ED2C51F251B3420007B0B9A /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
+		3ED2C520251B3420007B0B9A /* PhotoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoViewController.xib; sourceTree = "<group>"; };
 		3EF9195124F5008200E77958 /* AEON Loan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AEON Loan.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EF9195424F5008200E77958 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3EF9195624F5008200E77958 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -277,44 +321,6 @@
 			path = Register;
 			sourceTree = "<group>";
 		};
-		3E23673E24F61450003FD6D4 /* Schedule */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Schedule;
-			sourceTree = "<group>";
-		};
-		3E23673F24F61477003FD6D4 /* Conditions */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Conditions;
-			sourceTree = "<group>";
-		};
-		3E23674024F61497003FD6D4 /* Location */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Location;
-			sourceTree = "<group>";
-		};
-		3E23674124F614AD003FD6D4 /* Payment */ = {
-			isa = PBXGroup;
-			children = (
-				3E23674024F61497003FD6D4 /* Location */,
-				3E23673F24F61477003FD6D4 /* Conditions */,
-				3E23673E24F61450003FD6D4 /* Schedule */,
-			);
-			path = Payment;
-			sourceTree = "<group>";
-		};
-		3E23674224F61508003FD6D4 /* ApplyInstallment */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ApplyInstallment;
-			sourceTree = "<group>";
-		};
 		3E23674324F6171B003FD6D4 /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -355,6 +361,8 @@
 				3E5641C9250639A000716D8B /* UIColor.swift */,
 				3E5641DC2507273900716D8B /* UIView+Layout.swift */,
 				3E800262250B75A000503267 /* UINavigationController + Extension.swift */,
+				3E62A2F22519DB2A0072CAB3 /* UITableVIew + Extension.swift */,
+				3ED2C51D251AF8C0007B0B9A /* UIViewController.swift */,
 			);
 			path = UIKits;
 			sourceTree = "<group>";
@@ -389,7 +397,6 @@
 			children = (
 				3E2F400B25109B1200C8875B /* PaymentOptionViewController.swift */,
 				3E2F400C25109B1200C8875B /* PaymentOptionViewController.xib */,
-				3E3CABAA2510D5DC00EAF826 /* ScheduleDetail */,
 				3E3CAB9E2510CE9900EAF826 /* Schedule */,
 				3E3CAB972510C5B700EAF826 /* Condition */,
 				3E3CAB872510A46100EAF826 /* Location */,
@@ -434,6 +441,7 @@
 				3E3CABA42510D26000EAF826 /* PaymentScheduleViewModel.swift */,
 				3E3CAB9B2510CE8F00EAF826 /* PaymentScheduleViewController.xib */,
 				3E3CABA32510D01500EAF826 /* ScheduleCell */,
+				3E3CABAA2510D5DC00EAF826 /* ScheduleDetail */,
 			);
 			path = Schedule;
 			sourceTree = "<group>";
@@ -457,14 +465,14 @@
 			path = ScheduleDetail;
 			sourceTree = "<group>";
 		};
-		3E5641C0250619E500716D8B /* SelectLanguage */ = {
+		3E5641C0250619E500716D8B /* Languages */ = {
 			isa = PBXGroup;
 			children = (
 				3E5641C125061A1300716D8B /* SelectLanguageViewController.swift */,
 				3E5641C525061A2600716D8B /* SelectLanguageViewModel.swift */,
 				3E5641C225061A1300716D8B /* SelectLanguageViewController.xib */,
 			);
-			path = SelectLanguage;
+			path = Languages;
 			sourceTree = "<group>";
 		};
 		3E5641E4250744AA00716D8B /* GridCell */ = {
@@ -474,6 +482,87 @@
 				3E5641E12507449500716D8B /* HomeCollectionViewCell.xib */,
 			);
 			path = GridCell;
+			sourceTree = "<group>";
+		};
+		3E56EE95251846BE0083CC49 /* Photo */ = {
+			isa = PBXGroup;
+			children = (
+				3ED2C523251B3492007B0B9A /* New Group */,
+				3E56EE91251846B90083CC49 /* TakePhotoViewController.swift */,
+				3E56EE92251846B90083CC49 /* TakePhotoViewController.xib */,
+				3E56EE96251846E10083CC49 /* TakePhotoViewModel.swift */,
+			);
+			path = Photo;
+			sourceTree = "<group>";
+		};
+		3E56EE9C2518648D0083CC49 /* Selfie */ = {
+			isa = PBXGroup;
+			children = (
+				3E56EE98251864800083CC49 /* SelfieViewController.swift */,
+				3E56EE9D251864CA0083CC49 /* SelfieViewModel.swift */,
+				3E56EE99251864800083CC49 /* SelfieViewController.xib */,
+			);
+			path = Selfie;
+			sourceTree = "<group>";
+		};
+		3E56EEA325186B120083CC49 /* Form */ = {
+			isa = PBXGroup;
+			children = (
+				3E56EE9F25186B070083CC49 /* ApplicantInfoViewController.swift */,
+				3E56EEA425186B3A0083CC49 /* ApplicantInfoViewModel.swift */,
+				3E56EEA025186B070083CC49 /* ApplicantInfoViewController.xib */,
+			);
+			path = Form;
+			sourceTree = "<group>";
+		};
+		3E62A2E32519A6230072CAB3 /* Rejected */ = {
+			isa = PBXGroup;
+			children = (
+				3E62A2DF2519A61A0072CAB3 /* CreditRejectedViewController.swift */,
+				3E62A2E42519A65B0072CAB3 /* CreditRejectedViewModel.swift */,
+				3E62A2E02519A61A0072CAB3 /* CreditRejectedViewController.xib */,
+			);
+			path = Rejected;
+			sourceTree = "<group>";
+		};
+		3E62A2EC2519CEB40072CAB3 /* Accepted */ = {
+			isa = PBXGroup;
+			children = (
+				3E62A2E62519BA8B0072CAB3 /* CreditAcceptedViewController.swift */,
+				3E62A2EA2519BAA10072CAB3 /* CreditAcceptedViewModel.swift */,
+				3E62A2E72519BA8B0072CAB3 /* CreditAcceptedViewController.xib */,
+				3E62A2F12519D2CE0072CAB3 /* AcceptedCell */,
+			);
+			path = Accepted;
+			sourceTree = "<group>";
+		};
+		3E62A2F12519D2CE0072CAB3 /* AcceptedCell */ = {
+			isa = PBXGroup;
+			children = (
+				3E62A2ED2519D2C40072CAB3 /* ApplicationAcceptedTableViewCell.swift */,
+				3E62A2EE2519D2C40072CAB3 /* CreditAcceptedTableViewCell.xib */,
+			);
+			path = AcceptedCell;
+			sourceTree = "<group>";
+		};
+		3E62A2F42519F3BC0072CAB3 /* CheckCredit */ = {
+			isa = PBXGroup;
+			children = (
+				3E56EE95251846BE0083CC49 /* Photo */,
+				3E56EE9C2518648D0083CC49 /* Selfie */,
+				3E56EEA325186B120083CC49 /* Form */,
+				3E62A2E32519A6230072CAB3 /* Rejected */,
+				3E62A2EC2519CEB40072CAB3 /* Accepted */,
+			);
+			path = CheckCredit;
+			sourceTree = "<group>";
+		};
+		3E62A2F5251A0D850072CAB3 /* Commons */ = {
+			isa = PBXGroup;
+			children = (
+				3E62A2F6251A0DA40072CAB3 /* Enum.swift */,
+			);
+			path = Commons;
 			sourceTree = "<group>";
 		};
 		3E6397D324F76D4000C5BB86 /* Models */ = {
@@ -497,18 +586,18 @@
 				3E800265250B87F900503267 /* ApplyLoanViewController.swift */,
 				3E800269250B881700503267 /* ApplyLoanViewModel.swift */,
 				3E800266250B87F900503267 /* ApplyLoanViewController.xib */,
-				3E80026B2510675C00503267 /* SubmissionResult */,
+				3E80026B2510675C00503267 /* Result */,
 			);
 			path = ApplyLoan;
 			sourceTree = "<group>";
 		};
-		3E80026B2510675C00503267 /* SubmissionResult */ = {
+		3E80026B2510675C00503267 /* Result */ = {
 			isa = PBXGroup;
 			children = (
 				3E80026C2510681100503267 /* LoanSubmissionResultViewController.swift */,
 				3E80026D2510681100503267 /* LoanSubmissionResultViewController.xib */,
 			);
-			path = SubmissionResult;
+			path = Result;
 			sourceTree = "<group>";
 		};
 		3E834E532508EDFF00D9E700 /* SliderCell */ = {
@@ -547,6 +636,15 @@
 			path = SideMenu;
 			sourceTree = "<group>";
 		};
+		3ED2C523251B3492007B0B9A /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+				3ED2C51F251B3420007B0B9A /* PhotoViewController.swift */,
+				3ED2C520251B3420007B0B9A /* PhotoViewController.xib */,
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
 		3EF9194824F5008200E77958 = {
 			isa = PBXGroup;
 			children = (
@@ -578,6 +676,7 @@
 				3E23675024F61D60003FD6D4 /* Services */,
 				3EF9198424F5018300E77958 /* Features */,
 				3E6397D324F76D4000C5BB86 /* Models */,
+				3E62A2F5251A0D850072CAB3 /* Commons */,
 				3E23674D24F618A4003FD6D4 /* Resources */,
 				3E23674424F61733003FD6D4 /* Utils */,
 				3E23674324F6171B003FD6D4 /* Components */,
@@ -606,17 +705,16 @@
 		3EF9198424F5018300E77958 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				3E80025F250B5BF300503267 /* Base */,
+				3EF9199024F504CB00E77958 /* Home */,
+				3EF9199224F5097500E77958 /* Launch */,
+				3E5641C0250619E500716D8B /* Languages */,
+				3E23673D24F6141C003FD6D4 /* Register */,
+				3E23673C24F611C2003FD6D4 /* Login */,
 				3E2F400A25109AE400C8875B /* Payments */,
 				3E800264250B87DB00503267 /* ApplyLoan */,
-				3E80025F250B5BF300503267 /* Base */,
-				3E23673D24F6141C003FD6D4 /* Register */,
-				3E5641C0250619E500716D8B /* SelectLanguage */,
-				3E23673C24F611C2003FD6D4 /* Login */,
-				3EF9199224F5097500E77958 /* Launch */,
 				3E834E5D2508FCB300D9E700 /* Notification */,
-				3EF9199024F504CB00E77958 /* Home */,
-				3E23674124F614AD003FD6D4 /* Payment */,
-				3E23674224F61508003FD6D4 /* ApplyInstallment */,
+				3E62A2F42519F3BC0072CAB3 /* CheckCredit */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -626,8 +724,8 @@
 			children = (
 				3E5641E52507941900716D8B /* CollectionViewDataSource.swift */,
 				3E5641D82506504900716D8B /* HomeViewController.swift */,
-				3E5641D92506504900716D8B /* HomeViewController.xib */,
 				3EF9198C24F5022400E77958 /* HomeViewModel.swift */,
+				3E5641D92506504900716D8B /* HomeViewController.xib */,
 				3E834E622509016A00D9E700 /* SideMenu */,
 				3E834E582508FC5300D9E700 /* SliderDetail */,
 				3E834E532508EDFF00D9E700 /* SliderCell */,
@@ -758,19 +856,26 @@
 			files = (
 				3E3CAB8F2510A61100EAF826 /* LocationTableViewCell.xib in Resources */,
 				3E23675824F6217D003FD6D4 /* LoginViewController.xib in Resources */,
+				3E56EE94251846B90083CC49 /* TakePhotoViewController.xib in Resources */,
+				3E56EEA225186B070083CC49 /* ApplicantInfoViewController.xib in Resources */,
 				3E5641EA2507B21100716D8B /* RegisterViewController.xib in Resources */,
 				3E23676824F64E99003FD6D4 /* LanuchViewController.xib in Resources */,
 				3E800268250B87F900503267 /* ApplyLoanViewController.xib in Resources */,
 				3E3CAB8B2510A4A000EAF826 /* PaymentLocationViewController.xib in Resources */,
+				3E62A2E22519A61A0072CAB3 /* CreditRejectedViewController.xib in Resources */,
 				3EF9196124F5008200E77958 /* LaunchScreen.storyboard in Resources */,
+				3E62A2F02519D2C40072CAB3 /* CreditAcceptedTableViewCell.xib in Resources */,
 				3EF9195E24F5008200E77958 /* Assets.xcassets in Resources */,
 				3E5641E32507449500716D8B /* HomeCollectionViewCell.xib in Resources */,
 				3E3CABA92510D56500EAF826 /* PaymentDetailViewController.xib in Resources */,
 				3E5641CC25063F0B00716D8B /* Localizable.strings in Resources */,
+				3E56EE9B251864800083CC49 /* SelfieViewController.xib in Resources */,
 				3E5641C425061A1300716D8B /* SelectLanguageViewController.xib in Resources */,
 				3E834E572508EE5E00D9E700 /* SliderDetailViewController.xib in Resources */,
 				3E3CABA22510D01000EAF826 /* ScheduleTableViewCell.xib in Resources */,
+				3E62A2E92519BA8B0072CAB3 /* CreditAcceptedViewController.xib in Resources */,
 				3EF9195C24F5008200E77958 /* Main.storyboard in Resources */,
+				3ED2C522251B3420007B0B9A /* PhotoViewController.xib in Resources */,
 				3E80026F2510681100503267 /* LoanSubmissionResultViewController.xib in Resources */,
 				3E834E612509016400D9E700 /* SideMenuViewController.xib in Resources */,
 				3E3CAB962510C5B000EAF826 /* PaymentConditionViewController.xib in Resources */,
@@ -909,18 +1014,22 @@
 				3E5641E22507449500716D8B /* HomeCollectionViewCell.swift in Sources */,
 				3E23674824F617C3003FD6D4 /* Date+DayAndTime.swift in Sources */,
 				3EF9199A24F509DA00E77958 /* Launch.swift in Sources */,
+				3E62A2EB2519BAA10072CAB3 /* CreditAcceptedViewModel.swift in Sources */,
 				3E5641DF250727A300716D8B /* UIEdgeInsets+Extension.swift in Sources */,
 				3E6397D224F763DC00C5BB86 /* ActivityIndicatorOverlay.swift in Sources */,
 				3E800261250B5C1100503267 /* BaseViewController.swift in Sources */,
 				3E23675724F6217D003FD6D4 /* LoginViewController.swift in Sources */,
 				3E5641C82506396C00716D8B /* UIButton.swift in Sources */,
+				3E62A2F32519DB2A0072CAB3 /* UITableVIew + Extension.swift in Sources */,
 				3E3CAB9C2510CE8F00EAF826 /* PaymentScheduleViewController.swift in Sources */,
 				3E3CABAC2510D60B00EAF826 /* PaymentDetailViewModel.swift in Sources */,
 				3E3CAB8A2510A4A000EAF826 /* PaymentLocationViewController.swift in Sources */,
 				3E23675A24F62193003FD6D4 /* LoginViewModel.swift in Sources */,
 				3EF9195524F5008200E77958 /* AppDelegate.swift in Sources */,
 				3E23675424F61DCA003FD6D4 /* LocationGeocoder.swift in Sources */,
+				3E62A2E82519BA8B0072CAB3 /* CreditAcceptedViewController.swift in Sources */,
 				3EF9199524F509AE00E77958 /* LaunchView.swift in Sources */,
+				3E62A2E12519A61A0072CAB3 /* CreditRejectedViewController.swift in Sources */,
 				3E3CABA12510D01000EAF826 /* ScheduleTableViewCell.swift in Sources */,
 				3EF9198D24F5022400E77958 /* HomeViewModel.swift in Sources */,
 				3E834E5B2508FCAC00D9E700 /* NotificationViewController.swift in Sources */,
@@ -931,13 +1040,19 @@
 				3E23676724F64E99003FD6D4 /* LanuchViewController.swift in Sources */,
 				3E834E602509016400D9E700 /* SideMenuViewController.swift in Sources */,
 				3E80026A250B881700503267 /* ApplyLoanViewModel.swift in Sources */,
+				3ED2C51E251AF8C0007B0B9A /* UIViewController.swift in Sources */,
 				3E834E5125087F2E00D9E700 /* SliderCollectionViewCell.swift in Sources */,
+				3E62A2F7251A0DA40072CAB3 /* Enum.swift in Sources */,
+				3E62A2EF2519D2C40072CAB3 /* ApplicationAcceptedTableViewCell.swift in Sources */,
 				3E23676024F6431F003FD6D4 /* NavigationController.swift in Sources */,
 				3E5641E92507B21100716D8B /* RegisterViewController.swift in Sources */,
+				3E56EE9A251864800083CC49 /* SelfieViewController.swift in Sources */,
 				3EF9195724F5008200E77958 /* SceneDelegate.swift in Sources */,
 				3E5641DD2507273900716D8B /* UIView+Layout.swift in Sources */,
 				3E800263250B75A000503267 /* UINavigationController + Extension.swift in Sources */,
+				3ED2C521251B3420007B0B9A /* PhotoViewController.swift in Sources */,
 				3E5641C325061A1300716D8B /* SelectLanguageViewController.swift in Sources */,
+				3E56EEA525186B3A0083CC49 /* ApplicantInfoViewModel.swift in Sources */,
 				3E23674F24F61CA1003FD6D4 /* Box.swift in Sources */,
 				3E834E562508EE5E00D9E700 /* SliderDetailViewController.swift in Sources */,
 				3E23676224F6437D003FD6D4 /* NavigationBar.swift in Sources */,
@@ -952,14 +1067,19 @@
 				3E5641E62507941900716D8B /* CollectionViewDataSource.swift in Sources */,
 				3E2F400D25109B1200C8875B /* PaymentOptionViewController.swift in Sources */,
 				3E113F492501DC1C008132CB /* Services.swift in Sources */,
+				3E56EE9E251864CA0083CC49 /* SelfieViewModel.swift in Sources */,
+				3E56EE97251846E10083CC49 /* TakePhotoViewModel.swift in Sources */,
 				3E3CABA52510D26000EAF826 /* PaymentScheduleViewModel.swift in Sources */,
 				3E3CAB952510C5B000EAF826 /* PaymentConditionViewController.swift in Sources */,
 				3E80026E2510681100503267 /* LoanSubmissionResultViewController.swift in Sources */,
 				3E23675E24F64056003FD6D4 /* CATransition+Options.swift in Sources */,
+				3E56EEA125186B070083CC49 /* ApplicantInfoViewController.swift in Sources */,
 				3E800267250B87F900503267 /* ApplyLoanViewController.swift in Sources */,
 				3E3CAB922510AD7E00EAF826 /* PaymentLocationViewModel.swift in Sources */,
 				3E113F4B2501E316008132CB /* Constants.swift in Sources */,
 				3E3CAB8E2510A61100EAF826 /* LocationTableViewCell.swift in Sources */,
+				3E62A2E52519A65B0072CAB3 /* CreditRejectedViewModel.swift in Sources */,
+				3E56EE93251846B90083CC49 /* TakePhotoViewController.swift in Sources */,
 				3E113F5125020228008132CB /* APIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1138,7 +1258,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = AJ92HXHS77;
 				INFOPLIST_FILE = "AEON Loan/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1157,7 +1279,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = AJ92HXHS77;
 				INFOPLIST_FILE = "AEON Loan/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

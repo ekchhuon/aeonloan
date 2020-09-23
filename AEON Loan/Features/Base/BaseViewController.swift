@@ -81,14 +81,12 @@ class BaseViewController: UIViewController {
     
     @objc
     private func handleClick(){
-        let login = LoginViewController.instantiate()
-        navigationController?.pushViewController(login, animated: true)
+        navigates(to: .login)
     }
     
     @objc
     private func navigateToNotification() {
-        let notification = NotificationViewController.instantiate()
-        navigationController?.pushViewController(notification, animated: true)
+        navigates(to: .notification)
     }
     
     @objc

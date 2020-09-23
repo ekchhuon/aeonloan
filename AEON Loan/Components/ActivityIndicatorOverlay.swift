@@ -9,6 +9,7 @@ import UIKit
 
 fileprivate let overlayViewTag: Int = 999
 fileprivate let activityIndicatorViewTag: Int = 1000
+fileprivate let loadingLabelTag: Int = 1001
 
 // Public interface
 extension UIView {
@@ -50,7 +51,7 @@ extension UIViewController {
 // Private interface
 extension UIView {
     private var activityIndicatorView: UIActivityIndicatorView {
-        let view: UIActivityIndicatorView = UIActivityIndicatorView(style: .large)
+        let view: UIActivityIndicatorView = UIActivityIndicatorView(style: .medium)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.tag = activityIndicatorViewTag
         return view
@@ -63,6 +64,17 @@ extension UIView {
         view.alpha = 0.5
         view.tag = overlayViewTag
         return view
+    }
+    
+    private var loadingLabel: UILabel {
+        let label: UILabel = UILabel()
+        label.frame = CGRect(x: 50, y: 150, width: 200, height: 21)
+        label.backgroundColor = UIColor.orange
+        label.textColor = UIColor.black
+        label.textAlignment = NSTextAlignment.center
+        label.text = "test label"
+        
+        return label
     }
 
     private func setActivityIndicatorView() {

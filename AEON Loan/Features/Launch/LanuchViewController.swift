@@ -37,11 +37,11 @@ class LanuchViewController: UIViewController {
     }
     
     func navigateToHome() {
-        let home = HomeViewController.instantiate()
-        let controller = NavigationController.main(with: home)
-        view.window?.setRootViewController(controller)
+//        let home = HomeViewController.instantiate()
+//        let controller = NavigationController.main(with: home)
+//        view.window?.setRootViewController(controller)
         
-        
+        navigates(to: .home(.push(subtype: .fromLeft)))
     }
     
     func navigateToLogin() {

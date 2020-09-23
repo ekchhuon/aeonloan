@@ -1,13 +1,12 @@
 //
-//  ApplyLoanViewModel.swift
+//  TakePhotoViewModel.swift
 //  AEON Loan
 //
-//  Created by aeon on 9/11/20.
+//  Created by aeon on 9/21/20.
 //
 
 import Foundation
-
-public class ApplyLoanViewModel {
+public class TakePhotoViewModel {
     let defaults = "Loading..."
     let user: Box<User?> = Box(nil)
     let username = Box("")
@@ -17,7 +16,5 @@ public class ApplyLoanViewModel {
     init() {
         
     }
-    
-    
     
 }

@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17147" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17120"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -10,11 +11,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoanSubmissionResultViewController" customModule="AEON_Loan" customModuleProvider="target">
             <connections>
                 <outlet property="checkCreditButton" destination="cvH-Qq-voX" id="UcG-xs-TtS"/>
-                <outlet property="checkCreditStackView" destination="KpI-Ep-miq" id="rxh-sO-ITe"/>
                 <outlet property="checkCreditTitleLabel" destination="Qmn-Zi-xbc" id="Axl-dn-SUC"/>
-                <outlet property="doneStackView" destination="Cvu-pS-ZFK" id="sK6-fI-vbo"/>
-                <outlet property="thankLabel" destination="Qfl-XD-vlT" id="IdW-Wb-jaD"/>
-                <outlet property="thankSubTitle" destination="1De-kL-qWt" id="aVR-9s-Ok4"/>
+                <outlet property="successSubtitleLabel" destination="1De-kL-qWt" id="aVR-9s-Ok4"/>
+                <outlet property="successTitleLabel" destination="Qfl-XD-vlT" id="IdW-Wb-jaD"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
