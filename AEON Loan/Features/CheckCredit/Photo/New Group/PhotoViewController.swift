@@ -32,16 +32,42 @@ class PhotoViewController: BaseViewController, AVCapturePhotoCaptureDelegate {
         label.text = "This is label view."
         label.font = UIFont.systemFont(ofSize: 12)
         label.textColor = .white
+        label.backgroundColor = .red
+        //        label.frame.size.height = 100
+        //        label.frame.size.width = 300
+        
+        
         return label
     }()
+    
+    var myView: UIView = {
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: 300, height: 200))
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .green
+        //        view.frame = CGRect(x: 0, y: 0, width: 300, height: 200)
+        return view
+    }()
+    
+    var checkmark1UIImageView: UIImageView = {
+        let imgView = UIImageView()
+        imgView.image = UIImage(systemName: "checkmark")?.withTintColor(.white, renderingMode:.alwaysOriginal)
+        return imgView
+    }()
+    
+    var checkmark2UIImageView: UIImageView = {
+        let imgView = UIImageView()
+        imgView.image = UIImage(systemName: "checkmark")?.withTintColor(.white, renderingMode:.alwaysOriginal)
+        return imgView
+    }()
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Set its constraint to display it on screen
-//        myLabel.widthAnchor.constraint(equalToConstant:  200).isActive = true
-//        myLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-//        myLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+//        preview.add(checkmark1UIImageView, left: 10, right: -10, top: 10, bottom: -10)
+        preview.add(myLabel, left: (preview.leftAnchor, 10), right: (preview.rightAnchor, -10), top: (preview.topAnchor, 10), bottom: (preview.bottomAnchor, -10))
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -83,11 +109,15 @@ class PhotoViewController: BaseViewController, AVCapturePhotoCaptureDelegate {
         videoPreviewLayer.videoGravity = .resizeAspectFill
         videoPreviewLayer.connection?.videoOrientation = .portrait
         preview.layer.addSublayer(videoPreviewLayer)
-        preview.addSubview(myLabel)
+        //        preview.addSubview(myLabel)
         preview.addSubview(loading)
-        myLabel.widthAnchor.constraint(equalToConstant:  200).isActive = true
-        myLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        myLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        //        myLabel.widthAnchor.constraint(equalToConstant:  200).isActive = true
+        //        myLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        //        myLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        
+        //        preview.add2(myLabel, .left(20, view.rightAnchor), .right(30, view.rightAnchor), .top(40, view.leftAnchor), .buttom(20, view.leftAnchor), abc: <#(String, Int)#>)
+        
+        //        preview.centers(myLabel)
         
         //Step12
         DispatchQueue.global(qos: .userInitiated).async { //[weak self] in
