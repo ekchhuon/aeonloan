@@ -2,9 +2,9 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17147" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17120"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -16,25 +16,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ITe-vF-wJ8">
-                                <rect key="frame" x="170.5" y="429.5" width="73.5" height="37"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="31"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bGT-XC-cU4">
-                                <rect key="frame" x="171" y="651" width="72" height="42"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
-                                <state key="normal" title="Button"/>
-                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AEONSPB-logo" translatesAutoresizingMaskIntoConstraints="NO" id="xrS-3b-bLO">
+                                <rect key="frame" x="147" y="388" width="120" height="120"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="19D-aV-v9d"/>
+                                    <constraint firstAttribute="height" constant="120" id="AMa-qg-CkW"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.4549019608" green="0.3803921569" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="ITe-vF-wJ8" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="7xQ-OV-nu1"/>
-                            <constraint firstItem="ITe-vF-wJ8" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="FJf-EP-Rem"/>
-                            <constraint firstItem="bGT-XC-cU4" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="N86-HA-AbM"/>
-                            <constraint firstItem="bGT-XC-cU4" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" multiplier="1.5" id="cqK-bL-t41"/>
+                            <constraint firstItem="xrS-3b-bLO" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="7jo-qU-DiV"/>
+                            <constraint firstItem="xrS-3b-bLO" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="mJb-Xc-geW"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -44,8 +38,6 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <image name="AEONSPB-logo" width="558" height="543"/>
     </resources>
 </document>

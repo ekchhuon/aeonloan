@@ -40,10 +40,14 @@ class LoginViewController: BaseViewController {
         viewModel.loading.bind { (loading) in
             self.show(indicator: loading)
         }
+        
+        viewModel.token.bind { (token) in
+            self.showAlert(message: token)
+        }
     }
     
     @IBAction func loginTapped(_ sender: Any) {
-        viewModel.login(username: usernameTextField.text ?? "", password: passwordTextField.text ?? "")
+        validate()
     }
     
     @IBAction func registerButtonTapped(_ sender: Any) {
@@ -80,9 +84,28 @@ class LoginViewController: BaseViewController {
         passwordTextField.isSecureTextEntry = true
         eyeballButton.setImage(UIImage(systemName: "eye.slash")?.withTintColor(.brandGray, renderingMode: .alwaysOriginal), for: .normal)
     }
+    
+    func validate() {
+        do {
+            let username = try usernameTextField.validatedText(type: .username)
+            let password = try passwordTextField.validatedText(type: .username)
+            let data = LoginDataTest(username: username, password: password)
+            fetch(data)
+        } catch (let error) {
+            print((error as! ValidationError).message)
+        }
+    }
+    
+    func fetch(_ data: LoginDataTest) {
+         viewModel.login(username: usernameTextField.text ?? "", password: passwordTextField.text ?? "")
+//        showAlert(title: "Success", message: "Hello World", buttonTitle: "Try again")
+    }
 }
 
-
+struct LoginDataTest {
+    var username: String
+    var password: String
+}
 
 
 

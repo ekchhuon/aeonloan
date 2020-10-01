@@ -251,8 +251,67 @@ extension UIView {
             $0.activate()
         }
     }
+    
+    func setLeft(equalTo anchor: NSLayoutXAxisAnchor, constant c: CGFloat) {
+        self.leftAnchor.constraint(equalTo: anchor, constant: c).isActive = true
+    }
+    
+    func setRight(equalTo anchor: NSLayoutXAxisAnchor, constant c: CGFloat) {
+        self.rightAnchor.constraint(equalTo: anchor, constant: c).isActive = true
+    }
+    
+    func setTop(equalTo anchor: NSLayoutYAxisAnchor , constant c: CGFloat) {
+        self.topAnchor.constraint(equalTo: anchor, constant: c).isActive = true
+    }
+    
+    func setBottom(qualTo anchor: NSLayoutYAxisAnchor, constant c: CGFloat) {
+        self.bottomAnchor.constraint(equalTo: anchor, constant: c).isActive = true
+    }
+    
+    func centers(_ subview: UIView) {
+        subview.translatesAutoresizingMaskIntoConstraints = false
+        self.addSubview(subview)
+        subview.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        subview.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        
+    }
+    
+    func centers(_ axis: Axis, to view: UIView, constant c: CGFloat) {
+        switch axis {
+        case let .vertically(x):
+            self.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+            switch x {
+            case .left:
+                self.rightAnchor.constraint(equalTo: view.leftAnchor, constant: c).isActive = true
+            case .right:
+                self.leftAnchor.constraint(equalTo: view.rightAnchor, constant: c).isActive = true
+            }
+        case let .horizontally(y):
+            self.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+            switch y {
+            case .top:
+                self.bottomAnchor.constraint(equalTo: view.topAnchor, constant: c).isActive = true
+            case .bottom:
+                self.topAnchor.constraint(equalTo: view.bottomAnchor, constant: c).isActive = true
+            }
+        }
+    }
+    
+    enum Axis{
+        case vertically(PostionX)
+        case horizontally(PositionY)
+    }
+    
+    enum PostionX {
+        case left
+        case right
+    }
+    
+    enum PositionY {
+        case top
+        case bottom
+    }
 }
-
 
 extension UIView {
     public var viewWidth: CGFloat {
@@ -305,47 +364,77 @@ extension UIView {
         subview.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: bottom).isActive = true
     }
     
-    func add(_ subview: UIView, left: (NSLayoutXAxisAnchor, CGFloat), right: (NSLayoutXAxisAnchor, CGFloat), top: (NSLayoutYAxisAnchor, CGFloat), bottom: (NSLayoutYAxisAnchor, CGFloat)) {
-        subview.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(subview)
-        subview.leftAnchor.constraint(equalTo: left.0, constant: left.1).isActive = true
-        subview.rightAnchor.constraint(equalTo: right.0, constant: right.1).isActive = true
-        subview.topAnchor.constraint(equalTo: top.0, constant: top.1).isActive = true
-        subview.bottomAnchor.constraint(equalTo: bottom.0, constant: bottom.1).isActive = true
-    }
-    
-    func add(_ subview: UIView, left: (NSLayoutXAxisAnchor, CGFloat)?, right: (NSLayoutXAxisAnchor, CGFloat)?, top: (NSLayoutYAxisAnchor, CGFloat)?, bottom: (NSLayoutYAxisAnchor, CGFloat)?, size: (CGFloat, CGFloat)?) {
-        subview.translatesAutoresizingMaskIntoConstraints = false
-        self.addSubview(subview)
-        if let leftAnchor = left?.0, let const = right?.1 {
-            subview.leftAnchor.constraint(equalTo: leftAnchor, constant: const).isActive = true
-        }
-        if let rightAnchor = right?.0, let const = right?.1 {
-            subview.rightAnchor.constraint(equalTo: rightAnchor, constant: const).isActive = true
-        }
-        if let topAnchor = top?.0, let const = top?.1 {
-            subview.topAnchor.constraint(equalTo: topAnchor, constant: const).isActive = true
-        }
-        if let bottomAnchor = bottom?.0, let const = bottom?.1 {
-            subview.bottomAnchor.constraint(equalTo: bottomAnchor, constant: const).isActive = true
-        }
-        if  let width = size?.0, let height = size?.1 {
-            self.widthAnchor.constraint(equalToConstant: width).isActive = true
-            self.heightAnchor.constraint(equalToConstant: height).isActive = true
+    func addSubViews(_ views: [UIView]) {
+        views.forEach {
+            self.addSubview($0)
+            $0.translatesAutoresizingMaskIntoConstraints = false
         }
     }
     
-    func centers(_ subview: UIView, width: CGFloat?, height: CGFloat?) {
+//    func add(_ subview: UIView, left: (NSLayoutXAxisAnchor, CGFloat), right: (NSLayoutXAxisAnchor, CGFloat), top: (NSLayoutYAxisAnchor, CGFloat), bottom: (NSLayoutYAxisAnchor, CGFloat)) {
+//        subview.translatesAutoresizingMaskIntoConstraints = false
+//        self.addSubview(subview)
+//        subview.leftAnchor.constraint(equalTo: left.0, constant: left.1).isActive = true
+//        subview.rightAnchor.constraint(equalTo: right.0, constant: right.1).isActive = true
+//        subview.topAnchor.constraint(equalTo: top.0, constant: top.1).isActive = true
+//        subview.bottomAnchor.constraint(equalTo: bottom.0, constant: bottom.1).isActive = true
+//    }
+    
+    func add(_ subview: UIView, left: CGFloat, right: CGFloat, top: CGFloat, bottom: CGFloat, leftAnchor: NSLayoutXAxisAnchor, rightAnchor: NSLayoutXAxisAnchor, topAnchor: NSLayoutYAxisAnchor, bottomAnchor: NSLayoutYAxisAnchor) {
         subview.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(subview)
-        subview.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        subview.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true        
         
-        guard let viewWidth = width, let viewHeight = height else { return }
-        subview.widthAnchor.constraint(equalToConstant: viewWidth).isActive = true
-        subview.heightAnchor.constraint(equalToConstant: viewHeight).isActive = true
+        subview.leftAnchor.constraint(equalTo: leftAnchor, constant: left).isActive = true
+        subview.rightAnchor.constraint(equalTo: rightAnchor, constant: right).isActive = true
         
+        subview.topAnchor.constraint(equalTo: topAnchor, constant: top).isActive = true
+        subview.bottomAnchor.constraint(equalTo: bottomAnchor, constant: bottom).isActive = true
     }
+    
+//    func addWithSize(_ subview: UIView, left: CGFloat?, right: CGFloat?, top: CGFloat?, bottom: CGFloat?, leftAnchor: NSLayoutXAxisAnchor?, rightAnchor: NSLayoutXAxisAnchor?, topAnchor: NSLayoutYAxisAnchor?, bottomAnchor: NSLayoutYAxisAnchor?) {
+//        subview.translatesAutoresizingMaskIntoConstraints = false
+//        self.addSubview(subview)
+//
+////        subview.leftAnchor.constraint(equalTo: leftAnchor, constant: left).isActive = true
+////        subview.rightAnchor.constraint(equalTo: rightAnchor, constant: right).isActive = true
+////
+////        subview.topAnchor.constraint(equalTo: topAnchor, constant: top).isActive = true
+////        subview.bottomAnchor.constraint(equalTo: bottomAnchor, constant: bottom).isActive = true
+//
+//        if let leftAnchor = leftAnchor, let const = left {
+//            subview.leftAnchor.constraint(equalTo: leftAnchor, constant: const).isActive = true
+//        }
+//        if let rightAnchor = rightAnchor, let const = right {
+//            subview.rightAnchor.constraint(equalTo: rightAnchor, constant: const).isActive = true
+//        }
+//        if let topAnchor = topAnchor, let const = top {
+//            subview.topAnchor.constraint(equalTo: topAnchor, constant: const).isActive = true
+//        }
+//        if let bottomAnchor = bottomAnchor, let const = bottom {
+//            subview.bottomAnchor.constraint(equalTo: bottomAnchor, constant: const).isActive = true
+//        }
+//    }
+    
+//    func add(_ subview: UIView, left: (NSLayoutXAxisAnchor, CGFloat)?, right: (NSLayoutXAxisAnchor, CGFloat)?, top: (NSLayoutYAxisAnchor, CGFloat)?, bottom: (NSLayoutYAxisAnchor, CGFloat)?, size: (CGFloat, CGFloat)?) {
+//        subview.translatesAutoresizingMaskIntoConstraints = false
+//        self.addSubview(subview)
+//        if let leftAnchor = left?.0, let const = right?.1 {
+//            subview.leftAnchor.constraint(equalTo: leftAnchor, constant: const).isActive = true
+//        }
+//        if let rightAnchor = right?.0, let const = right?.1 {
+//            subview.rightAnchor.constraint(equalTo: rightAnchor, constant: const).isActive = true
+//        }
+//        if let topAnchor = top?.0, let const = top?.1 {
+//            subview.topAnchor.constraint(equalTo: topAnchor, constant: const).isActive = true
+//        }
+//        if let bottomAnchor = bottom?.0, let const = bottom?.1 {
+//            subview.bottomAnchor.constraint(equalTo: bottomAnchor, constant: const).isActive = true
+//        }
+//        if  let width = size?.0, let height = size?.1 {
+//            self.widthAnchor.constraint(equalToConstant: width).isActive = true
+//            self.heightAnchor.constraint(equalToConstant: height).isActive = true
+//        }
+//    }
     
 //    func adds(_ subview: UIView, width: CGFloat, height: CGFloat) {
 //        subview.translatesAutoresizingMaskIntoConstraints = false
@@ -354,14 +443,5 @@ extension UIView {
 //        subview.heightAnchor.constraint(equalToConstant: height).isActive = true
 //
 //    }
-    
-    func add(width: CGFloat, height: CGFloat) {
-        self.translatesAutoresizingMaskIntoConstraints = false
-        self.widthAnchor.constraint(equalToConstant: width).isActive = true
-        self.heightAnchor.constraint(equalToConstant: height).isActive = true
-    }
-    
-    
-    
-    
+      
 }

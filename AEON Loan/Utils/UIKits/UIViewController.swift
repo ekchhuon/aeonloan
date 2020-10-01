@@ -72,3 +72,30 @@ extension UIViewController {
         }
     }
 }
+
+// MARK: alert
+extension UIViewController {
+    //simple alert with optional completion
+    func showAlert(title: String = "OK", message: String, buttonTitle: String = "OK", okAction: (() -> Void)?  = nil) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: buttonTitle, style: .default, handler: { action in
+            okAction?()
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    //alert with title completion & style. 
+    func showALertWithTitleAndMessages(title: String, message: String, dismissButtonTitle: String, okButtonTitle: String, style: UIAlertController.Style = .alert, dismissAction:@escaping ()-> Void, okAction:@escaping ()-> Void) {
+        let alert = UIAlertController(title:title, message:message, preferredStyle: style)
+        let dismissAction = UIAlertAction(title: dismissButtonTitle, style: .default) { (action) in
+            dismissAction()
+        }
+        let okAction = UIAlertAction(title: okButtonTitle, style: .default) { (action) in
+            okAction()
+        }
+        alert.addAction(dismissAction)
+        alert.addAction(okAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+
+}

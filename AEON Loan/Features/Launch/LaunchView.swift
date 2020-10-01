@@ -22,9 +22,9 @@ class LaunchView: UIViewController {
         }
         
         
-        viewModel.locationName.bind { [weak self] locationName in
-            self?.label.text = locationName
-        }
+//        viewModel.locationName.bind { [weak self] locationName in
+//            self?.label.text = locationName
+//        }
         
         //        navigateToLogin()
         
@@ -64,10 +64,11 @@ class LaunchView: UIViewController {
      */
     
     @IBAction func tapped(_ sender: Any) {
+        
         //        navigateToLogin()
         //        navigateToHome()
         navigates(to: .home(.push(subtype: .fromRight)))
-        navigates(to: .language)
+//        navigates(to: .language)
         
     }
     

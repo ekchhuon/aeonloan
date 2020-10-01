@@ -68,23 +68,19 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
 // MARK: Collection
 extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
         if collectionView == sliderCollectionView {
             return imageArray.count
         }else {
             return menus.count
         }
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         if collectionView == sliderCollectionView {
             let slider : SliderCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SliderCollectionViewCell", for: indexPath) as! SliderCollectionViewCell
             slider.sliderImage.image = imageArray[indexPath.row]
-            
             return slider
-        }else {
+        } else {
             let cell : HomeCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCollectionViewCell", for: indexPath) as! HomeCollectionViewCell
             cell.setupMenu(menu: menus[indexPath.row])
             return cell

@@ -2,9 +2,9 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17147" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aCQ-Hs-BhY">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17120"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -32,7 +32,7 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="wDB-OJ-d3H"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.4549019608" green="0.3803921569" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="4co-7b-ZL7" firstAttribute="centerX" secondItem="xBD-Nw-3bA" secondAttribute="centerX" id="SFU-ou-JfU"/>
                             <constraint firstItem="0PO-zm-pOz" firstAttribute="centerY" secondItem="xBD-Nw-3bA" secondAttribute="centerY" multiplier="1.6" id="X9u-fJ-dTc"/>
@@ -49,9 +49,4 @@
             <point key="canvasLocation" x="-1728" y="70"/>
         </scene>
     </scenes>
-    <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-    </resources>
 </document>

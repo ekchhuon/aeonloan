@@ -14,18 +14,34 @@ public class LoginViewModel {
     let username = Box("")
     let password = Box("")
     let loading = Box(false)
+    let token = Box("")
+    
     
     init() {
-//        login(username: "", password: "")
+        //        login(username: "", password: "")
     }
     
     func login(username: String, password: String) {
-        
-        APIClient.testLogin(email: "abc@gmail.com", password: "") { result in
+        loading.value = true
+        APIClient.testLogin(email: "abc@gmail.com", password: "password") { result in
+            self.loading.value = false
             switch result {
             case .success(let user):
                 print("_____________________________")
                 print(user)
+                self.token.value = user.data?.token ?? ""
+                
+            /*
+             let int: Int = 555
+             let data = Data(from: int)
+             let status = KeyChain.save(key: "MyNumber", data: data)
+             print("status: ", status)
+             
+             if let receivedData = KeyChain.load(key: "MyNumber") {
+             let result = receivedData.to(type: Int.self)
+             print("result: ", result)
+             }
+             */
             case .failure(let error):
                 print(error.localizedDescription)
             }
@@ -40,6 +56,7 @@ public class LoginViewModel {
             self.user.value = User(username: "Chhuon OK", password: "Password OK", profile: "")
         }
     }
+    
     
 }
 
