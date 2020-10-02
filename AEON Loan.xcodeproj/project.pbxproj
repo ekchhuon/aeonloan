@@ -50,6 +50,10 @@
 		3E3CABA82510D56500EAF826 /* PaymentDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3CABA62510D56500EAF826 /* PaymentDetailViewController.swift */; };
 		3E3CABA92510D56500EAF826 /* PaymentDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E3CABA72510D56500EAF826 /* PaymentDetailViewController.xib */; };
 		3E3CABAC2510D60B00EAF826 /* PaymentDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3CABAB2510D60B00EAF826 /* PaymentDetailViewModel.swift */; };
+		3E4816292526EA110010966A /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4816282526EA110010966A /* RegisterViewModel.swift */; };
+		3E48162C252741E10010966A /* OTPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E48162A252741E10010966A /* OTPViewController.swift */; };
+		3E48162D252741E10010966A /* OTPViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E48162B252741E10010966A /* OTPViewController.xib */; };
+		3E48162F252741F90010966A /* OTPViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E48162E252741F90010966A /* OTPViewModel.swift */; };
 		3E5641C325061A1300716D8B /* SelectLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5641C125061A1300716D8B /* SelectLanguageViewController.swift */; };
 		3E5641C425061A1300716D8B /* SelectLanguageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E5641C225061A1300716D8B /* SelectLanguageViewController.xib */; };
 		3E5641C625061A2600716D8B /* SelectLanguageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5641C525061A2600716D8B /* SelectLanguageViewModel.swift */; };
@@ -182,6 +186,10 @@
 		3E3CABA62510D56500EAF826 /* PaymentDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentDetailViewController.swift; sourceTree = "<group>"; };
 		3E3CABA72510D56500EAF826 /* PaymentDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaymentDetailViewController.xib; sourceTree = "<group>"; };
 		3E3CABAB2510D60B00EAF826 /* PaymentDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentDetailViewModel.swift; sourceTree = "<group>"; };
+		3E4816282526EA110010966A /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		3E48162A252741E10010966A /* OTPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPViewController.swift; sourceTree = "<group>"; };
+		3E48162B252741E10010966A /* OTPViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OTPViewController.xib; sourceTree = "<group>"; };
+		3E48162E252741F90010966A /* OTPViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPViewModel.swift; sourceTree = "<group>"; };
 		3E5641C125061A1300716D8B /* SelectLanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLanguageViewController.swift; sourceTree = "<group>"; };
 		3E5641C225061A1300716D8B /* SelectLanguageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectLanguageViewController.xib; sourceTree = "<group>"; };
 		3E5641C525061A2600716D8B /* SelectLanguageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLanguageViewModel.swift; sourceTree = "<group>"; };
@@ -328,6 +336,7 @@
 			isa = PBXGroup;
 			children = (
 				3E5641E72507B21100716D8B /* RegisterViewController.swift */,
+				3E4816282526EA110010966A /* RegisterViewModel.swift */,
 				3E5641E82507B21100716D8B /* RegisterViewController.xib */,
 			);
 			path = Register;
@@ -479,6 +488,16 @@
 				3E3CABA72510D56500EAF826 /* PaymentDetailViewController.xib */,
 			);
 			path = ScheduleDetail;
+			sourceTree = "<group>";
+		};
+		3E481630252742010010966A /* OTP */ = {
+			isa = PBXGroup;
+			children = (
+				3E48162A252741E10010966A /* OTPViewController.swift */,
+				3E48162E252741F90010966A /* OTPViewModel.swift */,
+				3E48162B252741E10010966A /* OTPViewController.xib */,
+			);
+			path = OTP;
 			sourceTree = "<group>";
 		};
 		3E5641C0250619E500716D8B /* Languages */ = {
@@ -733,6 +752,7 @@
 				3E800264250B87DB00503267 /* ApplyLoan */,
 				3E834E5D2508FCB300D9E700 /* Notification */,
 				3E62A2F42519F3BC0072CAB3 /* CheckCredit */,
+				3E481630252742010010966A /* OTP */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -896,6 +916,7 @@
 				3EF9195C24F5008200E77958 /* Main.storyboard in Resources */,
 				3ED2C522251B3420007B0B9A /* PhotoViewController.xib in Resources */,
 				3E80026F2510681100503267 /* LoanSubmissionResultViewController.xib in Resources */,
+				3E48162D252741E10010966A /* OTPViewController.xib in Resources */,
 				3E834E612509016400D9E700 /* SideMenuViewController.xib in Resources */,
 				3E3CAB962510C5B000EAF826 /* PaymentConditionViewController.xib in Resources */,
 				3E5641DB2506504900716D8B /* HomeViewController.xib in Resources */,
@@ -1057,6 +1078,7 @@
 				3E23675C24F63FF6003FD6D4 /* UIWindow+RootController.swift in Sources */,
 				3E3CAB992510C62B00EAF826 /* PaymentConditionViewModel.swift in Sources */,
 				3E3CABA82510D56500EAF826 /* PaymentDetailViewController.swift in Sources */,
+				3E4816292526EA110010966A /* RegisterViewModel.swift in Sources */,
 				3E23676724F64E99003FD6D4 /* LanuchViewController.swift in Sources */,
 				3E834E602509016400D9E700 /* SideMenuViewController.swift in Sources */,
 				3E80026A250B881700503267 /* ApplyLoanViewModel.swift in Sources */,
@@ -1067,6 +1089,7 @@
 				3E23676024F6431F003FD6D4 /* NavigationController.swift in Sources */,
 				3E5641E92507B21100716D8B /* RegisterViewController.swift in Sources */,
 				3E56EE9A251864800083CC49 /* SelfieViewController.swift in Sources */,
+				3E48162F252741F90010966A /* OTPViewModel.swift in Sources */,
 				3EF9195724F5008200E77958 /* SceneDelegate.swift in Sources */,
 				3E5641DD2507273900716D8B /* UIView+Layout.swift in Sources */,
 				3E800263250B75A000503267 /* UINavigationController + Extension.swift in Sources */,
@@ -1090,6 +1113,7 @@
 				3E5641E62507941900716D8B /* CollectionViewDataSource.swift in Sources */,
 				3E2F400D25109B1200C8875B /* PaymentOptionViewController.swift in Sources */,
 				3E113F492501DC1C008132CB /* Services.swift in Sources */,
+				3E48162C252741E10010966A /* OTPViewController.swift in Sources */,
 				3E56EE9E251864CA0083CC49 /* SelfieViewModel.swift in Sources */,
 				3E56EE97251846E10083CC49 /* TakePhotoViewModel.swift in Sources */,
 				3E3CABA52510D26000EAF826 /* PaymentScheduleViewModel.swift in Sources */,

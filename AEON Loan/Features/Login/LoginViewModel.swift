@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit.UIImage
+import BCryptSwift
 
 public class LoginViewModel {
     let defaults = "Loading..."
@@ -31,17 +32,26 @@ public class LoginViewModel {
                 print(user)
                 self.token.value = user.data?.token ?? ""
                 
-            /*
-             let int: Int = 555
-             let data = Data(from: int)
-             let status = KeyChain.save(key: "MyNumber", data: data)
-             print("status: ", status)
-             
-             if let receivedData = KeyChain.load(key: "MyNumber") {
-             let result = receivedData.to(type: Int.self)
-             print("result: ", result)
-             }
-             */
+                
+                let int: Int = 555
+                let data = Data(from: int)
+                let status = KeyChain.save(key: "MyNumber", data: data)
+                print("status: ", status)
+                
+                if let receivedData = KeyChain.load(key: "MyNumber") {
+                    let result = receivedData.to(type: Int.self)
+                    print("result keycahin...: ", result)
+                }
+                
+                
+                let password = "12345678"
+                
+                let salt =  BCryptSwift.generateSaltWithNumberOfRounds(12)
+                let hashed = BCryptSwift.hashPassword(password, withSalt: salt)
+                print("Hashed result is: \(hashed ?? "failed")")
+                
+                
+                
             case .failure(let error):
                 print(error.localizedDescription)
             }

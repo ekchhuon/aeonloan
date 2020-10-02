@@ -31,6 +31,10 @@ class APIClient {
     static func testLogin(email: String, password: String, completion:@escaping(Result<Login, AFError>)->Void) {
         fetch(route: APIRouter.testLogin(email: email, password: password), completion: completion)
     }
+    
+    static func register(with param: Param.Register, completion:@escaping(Result<Register, AFError>) -> Void) {
+        fetch(route: APIRouter.register(param: param), completion: completion)
+    }
 }
 
 private extension DataResponse {

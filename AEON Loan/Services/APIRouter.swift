@@ -10,6 +10,7 @@ import Alamofire
 enum APIRouter: URLRequestConvertible {
     
     case login(email:String, password:String)
+    case register(param: Param.Register)
     case testLogin(email: String, password: String)
     case articles
     case article(id: Int)
@@ -17,7 +18,7 @@ enum APIRouter: URLRequestConvertible {
     // MARK: - HTTPMethod
     private var method: HTTPMethod {
         switch self {
-        case .login, .testLogin:
+        case .login, .testLogin, .register:
             return .post
         case .articles, .article:
             return .get
@@ -29,6 +30,8 @@ enum APIRouter: URLRequestConvertible {
         switch self {
         case .login:
             return "/login"
+        case .register:
+            return "/register"
         case .testLogin:
             return "/login"
         case .articles:
@@ -43,6 +46,9 @@ enum APIRouter: URLRequestConvertible {
         switch self {
         case .login(let email, let password):
             return [Constants.APIParameterKey.email: email, Constants.APIParameterKey.password: password]
+        case .register(let param):
+            return ["username": param.username, "phoneNumber":param.phone, "email": param.email, "password": param.password]
+//            return ["name": "abc", "email": "abc@gmail.com", "password": "password"]
         case .testLogin(let email, let password):
             return [Constants.APIParameterKey.email: email, Constants.APIParameterKey.password: password]
         case .articles, .article:
@@ -76,5 +82,14 @@ enum APIRouter: URLRequestConvertible {
         }
         
         return urlRequest
+    }
+}
+
+struct Param {
+    struct Register: Codable {
+        let username: String
+        let phone: String
+        let email: String
+        let password: String
     }
 }
