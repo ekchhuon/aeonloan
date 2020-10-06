@@ -348,6 +348,14 @@ extension UIView {
         
     }
     
+    func setBorder(_ radius: CGFloat = 5, border borderColor: UIColor = .white, width: CGFloat = 0, background backgroundColor: UIColor? = nil, alpha: CGFloat = 1) {
+        self.layer.cornerRadius = radius
+        self.layer.borderWidth = width
+        self.layer.borderColor = borderColor.cgColor
+        self.alpha = alpha
+        self.layer.backgroundColor = backgroundColor?.cgColor
+    }
+    
 }
 
 

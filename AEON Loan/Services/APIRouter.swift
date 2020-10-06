@@ -31,7 +31,8 @@ enum APIRouter: URLRequestConvertible {
         case .login:
             return "/login"
         case .register:
-            return "/register"
+//            return "/register"
+            return "/users"
         case .testLogin:
             return "/login"
         case .articles:
@@ -47,7 +48,7 @@ enum APIRouter: URLRequestConvertible {
         case .login(let email, let password):
             return [Constants.APIParameterKey.email: email, Constants.APIParameterKey.password: password]
         case .register(let param):
-            return ["username": param.username, "phoneNumber":param.phone, "email": param.email, "password": param.password]
+            return ["username": param.username, "phoneNumber":"012345678", "email": param.email, "password": param.password.bcrypted]
 //            return ["name": "abc", "email": "abc@gmail.com", "password": "password"]
         case .testLogin(let email, let password):
             return [Constants.APIParameterKey.email: email, Constants.APIParameterKey.password: password]

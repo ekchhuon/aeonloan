@@ -1,0 +1,12 @@
+
+/* Class = "UILabel"; text = "Forgot your username or password?"; ObjectID = "5Zf-qK-JSw"; */
+"5Zf-qK-JSw.text" = "Forgot your username or password?";
+
+/* Class = "UIButton"; normalTitle = "Login"; ObjectID = "6WX-eU-26a"; */
+"6WX-eU-26a.normalTitle" = "Login";
+
+/* Class = "UILabel"; text = "OR"; ObjectID = "78K-ZC-53B"; */
+"78K-ZC-53B.text" = "OR";
+
+/* Class = "UIButton"; normalTitle = "Create Account"; ObjectID = "L6V-ak-Tgt"; */
+"L6V-ak-Tgt.normalTitle" = "Create Account";

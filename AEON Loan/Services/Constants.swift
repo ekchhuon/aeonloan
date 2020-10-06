@@ -37,8 +37,8 @@ import Foundation
 
 struct Constants {
     struct ProductionServer {
-        static let baseURL = "https://api.jsonapi.co/rest/v1/user" //"http://itechnodev.com/api"
-//        static let baseURL = "http://192.168.169.13:8182/webservice/"
+//        static let baseURL = "https://api.jsonapi.co/rest/v1/user" //"http://itechnodev.com/api"
+        static let baseURL = "http://192.168.169.13:8182/webservice"
     }
     
     struct APIParameterKey {

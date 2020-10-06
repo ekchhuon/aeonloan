@@ -38,6 +38,10 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        UserDefaults.standard.set(["fr"], forKey: "AppleLanguages")
+//        UserDefaults.standard.synchronize()
+        
         viewModel.menus.bind { [weak self] menus in
             guard let self = self else {return}
             self.menus = menus

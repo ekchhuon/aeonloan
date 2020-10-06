@@ -32,6 +32,7 @@ enum Scene {
     case paymentCondition
     case paymentSchedule
     case paymentScheduleDetail(String)
+    case OTP
 }
 
 enum Loan {

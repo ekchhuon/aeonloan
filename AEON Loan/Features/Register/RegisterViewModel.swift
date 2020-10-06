@@ -15,27 +15,8 @@ public class RegisterViewModel {
     let loading = Box(false)
     let error = Box("")
     let success = Box("")
+    
     init() {
-        
-    }
-    
-    func fetch() {
-        
-    }
-    
-    func login(username: String, password: String) {
-        loading.value = true
-        APIClient.testLogin(email: "abc@gmail.com", password: "password") { result in
-            
-            switch result {
-            case .success(let user):
-                print(user)
-            //                self.token.value = user.data?.token ?? ""
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
-        
     }
     
     func register(with param: Param.Register) {
@@ -53,3 +34,4 @@ public class RegisterViewModel {
         }
     }
 }
+

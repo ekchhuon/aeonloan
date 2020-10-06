@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 extension UIButton {
-    func setBorder(radius: CGFloat = 5, title titleColor: Color = .gray , border borderColor: Color, width: CGFloat = 1, bg: Color = .none, alpha: CGFloat = 1) {
+    func setButtonBorder(radius: CGFloat = 5, title titleColor: Color = .gray , border borderColor: Color, width: CGFloat = 1, bg: Color = .none, alpha: CGFloat = 1) {
         self.layer.cornerRadius = radius
         self.layer.borderWidth = width
         self.layer.borderColor = borderColor.color.cgColor

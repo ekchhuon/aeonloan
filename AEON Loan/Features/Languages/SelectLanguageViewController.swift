@@ -32,17 +32,17 @@ class SelectLanguageViewController: UIViewController {
     
     private func setup() {
         select(defaultLang)
-        continueButton.setBorder(title: .none, border: .none, bg: .purple)
+        continueButton.setButtonBorder(title: .none, border: .none, bg: .purple)
     }
     
     private func select(_ language: Language) {
-        KHButton.setBorder(border: .gray, width: 1, alpha: 0.8)
-        ENButton.setBorder(border: .gray, width: 1, alpha: 0.8)
+        KHButton.setButtonBorder(border: .gray, width: 1, alpha: 0.8)
+        ENButton.setButtonBorder(border: .gray, width: 1, alpha: 0.8)
         defaultLang = language
         if language == .EN {
-            ENButton.setBorder(title: .purple, border: .purple, width: 1)
+            ENButton.setButtonBorder(title: .purple, border: .purple, width: 1)
         } else {
-            KHButton.setBorder(title: .purple, border: .purple, width: 1)
+            KHButton.setButtonBorder(title: .purple, border: .purple, width: 1)
         }
     }
     

@@ -77,3 +77,9 @@ struct User : Codable{
 
 
 
+extension String {
+    var bcrypted: String {
+        let salt = BCryptSwift.generateSaltWithNumberOfRounds(12)
+        return BCryptSwift.hashPassword(self, withSalt: salt) ?? ""
+    }
+}

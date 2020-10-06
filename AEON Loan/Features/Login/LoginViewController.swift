@@ -27,6 +27,9 @@ class LoginViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        forgotPassword.text = NSLocalizedString("Forgot Password or passowrd?", comment: "")
+        
         setupView()
         bind()
         setup(title: "Login")
@@ -42,7 +45,7 @@ class LoginViewController: BaseViewController {
         }
         
         viewModel.token.bind { (token) in
-            self.showAlert(message: token)
+//            self.showAlert(message: token)
         }
     }
     
@@ -62,6 +65,8 @@ class LoginViewController: BaseViewController {
     }
     
     
+    @IBOutlet weak var forgotPassword: UILabel!
+    
     
     
     func navigateToHome() {
@@ -71,7 +76,7 @@ class LoginViewController: BaseViewController {
     }
     
     private func setupView(){
-        setup(title: "Login")
+        setup(title: "Login".localized)
         setupTextField()
         
         loginButton.rounds(radius: 10, background: .brandPurple, border: .brandPurple, width: 1)
@@ -79,8 +84,8 @@ class LoginViewController: BaseViewController {
     }
     
     func setupTextField() {
-        usernameTextField.placeholder = "Username / Phone Number"
-        passwordTextField.placeholder = "Password"
+        usernameTextField.placeholder = "Username/Phone Number".localized
+        passwordTextField.placeholder = "Password".localized
         passwordTextField.isSecureTextEntry = true
         eyeballButton.setImage(UIImage(systemName: "eye.slash")?.withTintColor(.brandGray, renderingMode: .alwaysOriginal), for: .normal)
     }

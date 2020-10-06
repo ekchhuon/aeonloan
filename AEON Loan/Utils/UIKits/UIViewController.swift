@@ -67,6 +67,9 @@ extension UIViewController {
         case let .paymentScheduleDetail(data):
             let controller = PaymentDetailViewController.instantiate(item: data)
             navigationController?.pushViewController(controller, animated: true)
+        case .OTP:
+            let controller = OTPViewController.instantiate()
+            navigationController?.pushViewController(controller, animated: true)
         default:
             debugPrint("Scene Not Found!")
         }

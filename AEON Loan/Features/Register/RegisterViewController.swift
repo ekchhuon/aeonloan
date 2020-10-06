@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import BCryptSwift
 
 extension RegisterViewController {
     static func instantiate() -> RegisterViewController {
@@ -33,10 +34,6 @@ class RegisterViewController: BaseViewController {
     }
     
     private func bind() {
-//        viewModel.user.bind { (user) in
-//
-//        }
-//
         viewModel.loading.bind { (loading) in
             self.show(indicator: loading)
         }
@@ -61,6 +58,7 @@ class RegisterViewController: BaseViewController {
     @IBAction func registerButtonTapped(_ sender: Any) {
         //        viewModel.login(username: usernameTextField.text ?? "", password: passwordTextField.text ?? "")
 //        navigates(to: .home(.push(subtype: .fromLeft)))
+//        navigates(to: .OTP)
         validate()
     }
     
@@ -88,8 +86,6 @@ class RegisterViewController: BaseViewController {
 //        self.present(login, animated: true, completion: {})
     }
     
-
-    
     private func setupView(){
         setup(title: NSLocalizedString("Register", comment: ""))
         setupTextField()
@@ -108,6 +104,7 @@ class RegisterViewController: BaseViewController {
         passwordTextField.isSecureTextEntry = true
         confirmPasswordTextField.isSecureTextEntry = true
         eyeballButtons.forEach { $0.setImage(eyeball, for: .normal) }
+        textFields.forEach { $0?.autocorrectionType = .no}
     }
     
     func validate() {
@@ -115,37 +112,30 @@ class RegisterViewController: BaseViewController {
             let username = try usernameTextField.validatedText(type: .username)
             let phone = try phoneTextField.validatedText(type: .username)
             let email = try emailTextField.validatedText(type: .requiredField(field: "Helloooo.."))
-            let password = try phoneTextField.validatedText(type: .username)
+            let password = try passwordTextField.validatedText(type: .username)
             let confirm = try confirmPasswordTextField.validatedText(type: .username)
-            
-            if password != confirm {
-                showAlert(message: "Password mismatched")
+
+            guard password == confirm else {
+                showAlert(message: "Password Mismatched")
+                return
             }
             
-//            let data = LoginDataTest(username: username, password: password)
             let data = Param.Register(username: username, phone: phone, email: email, password: password)
             fetch(with: data)
         } catch (let error) {
-            
             showAlert(message: (error as! ValidationError).message)
         }
     }
     
     func fetch(with param: Param.Register) {
         viewModel.register(with: param)
+        
 //        viewModel.login(username: usernameTextField.text ?? "", password: passwordTextField.text ?? "")
         //        showAlert(title: "Success", message: "Hello World", buttonTitle: "Try again")
     }
 }
 
-// MARK: - Register
-struct Register: Codable {
-//    let timestamp: Int
-    let success: Bool
-//    let message: String
-//    let code: Int
-//    let data: String
-}
+
 
 
 
