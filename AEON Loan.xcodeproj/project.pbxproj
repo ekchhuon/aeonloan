@@ -110,6 +110,7 @@
 		3E834E5C2508FCAC00D9E700 /* NotificationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E834E5A2508FCAC00D9E700 /* NotificationViewController.xib */; };
 		3E834E602509016400D9E700 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E834E5E2509016400D9E700 /* SideMenuViewController.swift */; };
 		3E834E612509016400D9E700 /* SideMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E834E5F2509016400D9E700 /* SideMenuViewController.xib */; };
+		3EB04856252DB27600A395E2 /* BuildConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB04855252DB27600A395E2 /* BuildConfig.swift */; };
 		3ED2C51E251AF8C0007B0B9A /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED2C51D251AF8C0007B0B9A /* UIViewController.swift */; };
 		3ED2C521251B3420007B0B9A /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED2C51F251B3420007B0B9A /* PhotoViewController.swift */; };
 		3ED2C522251B3420007B0B9A /* PhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ED2C520251B3420007B0B9A /* PhotoViewController.xib */; };
@@ -258,6 +259,7 @@
 		3E834E5A2508FCAC00D9E700 /* NotificationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationViewController.xib; sourceTree = "<group>"; };
 		3E834E5E2509016400D9E700 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		3E834E5F2509016400D9E700 /* SideMenuViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SideMenuViewController.xib; sourceTree = "<group>"; };
+		3EB04855252DB27600A395E2 /* BuildConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildConfig.swift; sourceTree = "<group>"; };
 		3ED2C51D251AF8C0007B0B9A /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		3ED2C51F251B3420007B0B9A /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		3ED2C520251B3420007B0B9A /* PhotoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoViewController.xib; sourceTree = "<group>"; };
@@ -280,13 +282,22 @@
 		3EF9199324F509AE00E77958 /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
 		3EF9199724F509C300E77958 /* LanuchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanuchViewModel.swift; sourceTree = "<group>"; };
 		3EF9199924F509DA00E77958 /* Launch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Launch.swift; sourceTree = "<group>"; };
+		477C11979333D9D132582074 /* Pods-AEON Loan-AEON LoanUITests.development.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AEON Loan-AEON LoanUITests.development.xcconfig"; path = "Target Support Files/Pods-AEON Loan-AEON LoanUITests/Pods-AEON Loan-AEON LoanUITests.development.xcconfig"; sourceTree = "<group>"; };
 		49086C34FF5FB7A744C85793 /* Pods-AEON Loan-AEON LoanUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AEON Loan-AEON LoanUITests.debug.xcconfig"; path = "Target Support Files/Pods-AEON Loan-AEON LoanUITests/Pods-AEON Loan-AEON LoanUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		53A9A28581E8230ED3C162C8 /* Pods_AEON_LoanTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AEON_LoanTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F34EEAD29F08C525F8CE36F /* Pods-AEON LoanTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AEON LoanTests.debug.xcconfig"; path = "Target Support Files/Pods-AEON LoanTests/Pods-AEON LoanTests.debug.xcconfig"; sourceTree = "<group>"; };
 		726B7A21AF9A90A1993157BA /* Pods_AEON_Loan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AEON_Loan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		900F6C1D23D361FDB447525F /* Pods-AEON LoanTests.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AEON LoanTests.production.xcconfig"; path = "Target Support Files/Pods-AEON LoanTests/Pods-AEON LoanTests.production.xcconfig"; sourceTree = "<group>"; };
 		B829AA2DFC41867CB5E1DF48 /* Pods-AEON LoanTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AEON LoanTests.release.xcconfig"; path = "Target Support Files/Pods-AEON LoanTests/Pods-AEON LoanTests.release.xcconfig"; sourceTree = "<group>"; };
 		BB8925F858361D6F2DEBCC35 /* Pods-AEON Loan-AEON LoanUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AEON Loan-AEON LoanUITests.release.xcconfig"; path = "Target Support Files/Pods-AEON Loan-AEON LoanUITests/Pods-AEON Loan-AEON LoanUITests.release.xcconfig"; sourceTree = "<group>"; };
 		C263574E1ADBEE65F4CA77AA /* Pods-AEON Loan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AEON Loan.release.xcconfig"; path = "Target Support Files/Pods-AEON Loan/Pods-AEON Loan.release.xcconfig"; sourceTree = "<group>"; };
+		C9B4B63BE9BF23373CDE14FD /* Pods-AEON Loan-AEON LoanUITests.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AEON Loan-AEON LoanUITests.production.xcconfig"; path = "Target Support Files/Pods-AEON Loan-AEON LoanUITests/Pods-AEON Loan-AEON LoanUITests.production.xcconfig"; sourceTree = "<group>"; };
+		CCFA23179320A3BAED7CA609 /* Pods-AEON LoanTests.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AEON LoanTests.staging.xcconfig"; path = "Target Support Files/Pods-AEON LoanTests/Pods-AEON LoanTests.staging.xcconfig"; sourceTree = "<group>"; };
+		DFE4A5FDE529D39443EC264A /* Pods-AEON Loan.development.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AEON Loan.development.xcconfig"; path = "Target Support Files/Pods-AEON Loan/Pods-AEON Loan.development.xcconfig"; sourceTree = "<group>"; };
+		E2B92FD35FA7B057D72D3FCD /* Pods-AEON Loan.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AEON Loan.staging.xcconfig"; path = "Target Support Files/Pods-AEON Loan/Pods-AEON Loan.staging.xcconfig"; sourceTree = "<group>"; };
+		E742819EAE285ED6ABFF60CD /* Pods-AEON Loan-AEON LoanUITests.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AEON Loan-AEON LoanUITests.staging.xcconfig"; path = "Target Support Files/Pods-AEON Loan-AEON LoanUITests/Pods-AEON Loan-AEON LoanUITests.staging.xcconfig"; sourceTree = "<group>"; };
+		E946BC39551C95BE6278CCC9 /* Pods-AEON LoanTests.development.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AEON LoanTests.development.xcconfig"; path = "Target Support Files/Pods-AEON LoanTests/Pods-AEON LoanTests.development.xcconfig"; sourceTree = "<group>"; };
+		FA22C6DA58501C0829BFC31A /* Pods-AEON Loan.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AEON Loan.production.xcconfig"; path = "Target Support Files/Pods-AEON Loan/Pods-AEON Loan.production.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -326,6 +337,15 @@
 				BB8925F858361D6F2DEBCC35 /* Pods-AEON Loan-AEON LoanUITests.release.xcconfig */,
 				5F34EEAD29F08C525F8CE36F /* Pods-AEON LoanTests.debug.xcconfig */,
 				B829AA2DFC41867CB5E1DF48 /* Pods-AEON LoanTests.release.xcconfig */,
+				DFE4A5FDE529D39443EC264A /* Pods-AEON Loan.development.xcconfig */,
+				E2B92FD35FA7B057D72D3FCD /* Pods-AEON Loan.staging.xcconfig */,
+				FA22C6DA58501C0829BFC31A /* Pods-AEON Loan.production.xcconfig */,
+				477C11979333D9D132582074 /* Pods-AEON Loan-AEON LoanUITests.development.xcconfig */,
+				E742819EAE285ED6ABFF60CD /* Pods-AEON Loan-AEON LoanUITests.staging.xcconfig */,
+				C9B4B63BE9BF23373CDE14FD /* Pods-AEON Loan-AEON LoanUITests.production.xcconfig */,
+				E946BC39551C95BE6278CCC9 /* Pods-AEON LoanTests.development.xcconfig */,
+				CCFA23179320A3BAED7CA609 /* Pods-AEON LoanTests.staging.xcconfig */,
+				900F6C1D23D361FDB447525F /* Pods-AEON LoanTests.production.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -414,8 +434,8 @@
 		3E23674D24F618A4003FD6D4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				3E05D5D6252C17B6003C5432 /* L10n.swift */,
-				3E47FF7E252C4F7E00A73E61 /* Localizable.strings */,
+				3EB04854252DB1CD00A395E2 /* Configure */,
+				3EB04857252DB2D600A395E2 /* Localization */,
 				3EF9195D24F5008200E77958 /* Assets.xcassets */,
 				3EF9195F24F5008200E77958 /* LaunchScreen.storyboard */,
 				3EF9196224F5008200E77958 /* Info.plist */,
@@ -700,6 +720,23 @@
 				3E834E5F2509016400D9E700 /* SideMenuViewController.xib */,
 			);
 			path = SideMenu;
+			sourceTree = "<group>";
+		};
+		3EB04854252DB1CD00A395E2 /* Configure */ = {
+			isa = PBXGroup;
+			children = (
+				3EB04855252DB27600A395E2 /* BuildConfig.swift */,
+			);
+			path = Configure;
+			sourceTree = "<group>";
+		};
+		3EB04857252DB2D600A395E2 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				3E05D5D6252C17B6003C5432 /* L10n.swift */,
+				3E47FF7E252C4F7E00A73E61 /* Localizable.strings */,
+			);
+			path = Localization;
 			sourceTree = "<group>";
 		};
 		3ED2C523251B3492007B0B9A /* New Group */ = {
@@ -1137,6 +1174,7 @@
 				3EF3427D2525E14C003AA712 /* Keychain.swift in Sources */,
 				3E834E562508EE5E00D9E700 /* SliderDetailViewController.swift in Sources */,
 				3E47FFD0252C866200A73E61 /* ViewModelRepresentable.swift in Sources */,
+				3EB04856252DB27600A395E2 /* BuildConfig.swift in Sources */,
 				3E23676224F6437D003FD6D4 /* NavigationBar.swift in Sources */,
 				3E2AFBC425232AA00090A17D /* UIImageView + Extenstion.swift in Sources */,
 				3EF9199824F509C300E77958 /* LanuchViewModel.swift in Sources */,
@@ -1245,7 +1283,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		3EF9197924F5008300E77958 /* Debug */ = {
+		3EB04850252DAA4300A395E2 /* Staging */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -1302,12 +1340,137 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = STAGING;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
-			name = Debug;
+			name = Staging;
 		};
-		3EF9197A24F5008300E77958 /* Release */ = {
+		3EB04851252DAA4300A395E2 /* Staging */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E2B92FD35FA7B057D72D3FCD /* Pods-AEON Loan.staging.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = AJ92HXHS77;
+				INFOPLIST_FILE = "AEON Loan/Resources/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.aeon.AEON-Loan";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Staging;
+		};
+		3EB04852252DAA4300A395E2 /* Staging */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CCFA23179320A3BAED7CA609 /* Pods-AEON LoanTests.staging.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "AEON LoanTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.aeon.AEON-LoanTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AEON Loan.app/AEON Loan";
+			};
+			name = Staging;
+		};
+		3EB04853252DAA4300A395E2 /* Staging */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E742819EAE285ED6ABFF60CD /* Pods-AEON Loan-AEON LoanUITests.staging.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "AEON LoanUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.aeon.AEON-LoanUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "AEON Loan";
+			};
+			name = Staging;
+		};
+		3EF9197924F5008300E77958 /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEVELOPMENT;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Development;
+		};
+		3EF9197A24F5008300E77958 /* Production */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -1357,15 +1520,16 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = PRODUCTION;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				VALIDATE_PRODUCT = YES;
 			};
-			name = Release;
+			name = Production;
 		};
-		3EF9197C24F5008300E77958 /* Debug */ = {
+		3EF9197C24F5008300E77958 /* Development */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 30565776BD8217784231863C /* Pods-AEON Loan.debug.xcconfig */;
+			baseConfigurationReference = DFE4A5FDE529D39443EC264A /* Pods-AEON Loan.development.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1382,11 +1546,11 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
-			name = Debug;
+			name = Development;
 		};
-		3EF9197D24F5008300E77958 /* Release */ = {
+		3EF9197D24F5008300E77958 /* Production */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C263574E1ADBEE65F4CA77AA /* Pods-AEON Loan.release.xcconfig */;
+			baseConfigurationReference = FA22C6DA58501C0829BFC31A /* Pods-AEON Loan.production.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1403,11 +1567,11 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
-			name = Release;
+			name = Production;
 		};
-		3EF9197F24F5008300E77958 /* Debug */ = {
+		3EF9197F24F5008300E77958 /* Development */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5F34EEAD29F08C525F8CE36F /* Pods-AEON LoanTests.debug.xcconfig */;
+			baseConfigurationReference = E946BC39551C95BE6278CCC9 /* Pods-AEON LoanTests.development.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1425,11 +1589,11 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AEON Loan.app/AEON Loan";
 			};
-			name = Debug;
+			name = Development;
 		};
-		3EF9198024F5008300E77958 /* Release */ = {
+		3EF9198024F5008300E77958 /* Production */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B829AA2DFC41867CB5E1DF48 /* Pods-AEON LoanTests.release.xcconfig */;
+			baseConfigurationReference = 900F6C1D23D361FDB447525F /* Pods-AEON LoanTests.production.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1447,11 +1611,11 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AEON Loan.app/AEON Loan";
 			};
-			name = Release;
+			name = Production;
 		};
-		3EF9198224F5008300E77958 /* Debug */ = {
+		3EF9198224F5008300E77958 /* Development */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 49086C34FF5FB7A744C85793 /* Pods-AEON Loan-AEON LoanUITests.debug.xcconfig */;
+			baseConfigurationReference = 477C11979333D9D132582074 /* Pods-AEON Loan-AEON LoanUITests.development.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1467,11 +1631,11 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = "AEON Loan";
 			};
-			name = Debug;
+			name = Development;
 		};
-		3EF9198324F5008300E77958 /* Release */ = {
+		3EF9198324F5008300E77958 /* Production */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BB8925F858361D6F2DEBCC35 /* Pods-AEON Loan-AEON LoanUITests.release.xcconfig */;
+			baseConfigurationReference = C9B4B63BE9BF23373CDE14FD /* Pods-AEON Loan-AEON LoanUITests.production.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1487,7 +1651,7 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = "AEON Loan";
 			};
-			name = Release;
+			name = Production;
 		};
 /* End XCBuildConfiguration section */
 
@@ -1495,38 +1659,42 @@
 		3EF9194C24F5008200E77958 /* Build configuration list for PBXProject "AEON Loan" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				3EF9197924F5008300E77958 /* Debug */,
-				3EF9197A24F5008300E77958 /* Release */,
+				3EF9197924F5008300E77958 /* Development */,
+				3EB04850252DAA4300A395E2 /* Staging */,
+				3EF9197A24F5008300E77958 /* Production */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Production;
 		};
 		3EF9197B24F5008300E77958 /* Build configuration list for PBXNativeTarget "AEON Loan" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				3EF9197C24F5008300E77958 /* Debug */,
-				3EF9197D24F5008300E77958 /* Release */,
+				3EF9197C24F5008300E77958 /* Development */,
+				3EB04851252DAA4300A395E2 /* Staging */,
+				3EF9197D24F5008300E77958 /* Production */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Production;
 		};
 		3EF9197E24F5008300E77958 /* Build configuration list for PBXNativeTarget "AEON LoanTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				3EF9197F24F5008300E77958 /* Debug */,
-				3EF9198024F5008300E77958 /* Release */,
+				3EF9197F24F5008300E77958 /* Development */,
+				3EB04852252DAA4300A395E2 /* Staging */,
+				3EF9198024F5008300E77958 /* Production */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Production;
 		};
 		3EF9198124F5008300E77958 /* Build configuration list for PBXNativeTarget "AEON LoanUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				3EF9198224F5008300E77958 /* Debug */,
-				3EF9198324F5008300E77958 /* Release */,
+				3EF9198224F5008300E77958 /* Development */,
+				3EB04853252DAA4300A395E2 /* Staging */,
+				3EF9198324F5008300E77958 /* Production */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Production;
 		};
 /* End XCConfigurationList section */
 	};

@@ -29,16 +29,16 @@ enum APIRouter: URLRequestConvertible {
     private var path: String {
         switch self {
         case .login:
-            return "/login"
+            return "login"
         case .register:
 //            return "/register"
-            return "/users"
+            return "users"
         case .testLogin:
-            return "/login"
+            return "login"
         case .articles:
-            return "/articles/all.json"
+            return "articles/all.json"
         case .article(let id):
-            return "/article/\(id)"
+            return "article/\(id)"
         }
     }
     
@@ -49,7 +49,6 @@ enum APIRouter: URLRequestConvertible {
             return [Constants.APIParameterKey.email: email, Constants.APIParameterKey.password: password]
         case .register(let param):
             return ["username": param.username, "phoneNumber":"012345678", "email": param.email, "password": param.password.bcrypted]
-//            return ["name": "abc", "email": "abc@gmail.com", "password": "password"]
         case .testLogin(let email, let password):
             return [Constants.APIParameterKey.email: email, Constants.APIParameterKey.password: password]
         case .articles, .article:
@@ -59,7 +58,8 @@ enum APIRouter: URLRequestConvertible {
     
     // MARK: - URLRequestConvertible
     func asURLRequest() throws -> URLRequest {
-        let url = try Constants.ProductionServer.baseURL.asURL()
+//        let url = try Constants.ProductionServer.baseURL.asURL()
+        let url = try Constantss.server.asURL()
         
         var urlRequest = URLRequest(url: url.appendingPathComponent(path))
         

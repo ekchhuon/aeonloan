@@ -35,6 +35,20 @@
 
 import Foundation
 
+
+enum ConstantEnum {
+    enum UserAttributes: String {
+        case name
+        case email
+        case address
+        case position = "custom:position"
+        case organization = "custom:organization"
+        case picture
+        case phone = "phone_number"
+        case topics = "custom:topics"
+    }
+}
+
 struct Constants {
     struct ProductionServer {
 //        static let baseURL = "https://api.jsonapi.co/rest/v1/user" //"http://itechnodev.com/api"
@@ -44,7 +58,24 @@ struct Constants {
     struct APIParameterKey {
         static let password = "password"
         static let email = "email"
+        
+
     }
+}
+
+enum Constantss {
+    enum UserAttributes: String {
+        case name
+        case email
+        case address
+        case position = "custom:position"
+        case organization = "custom:organization"
+        case picture
+        case phone = "phone_number"
+        case topics = "custom:topics"
+    }
+    
+    
 }
 
 enum HTTPHeaderField: String {

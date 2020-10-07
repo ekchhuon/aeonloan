@@ -12,7 +12,23 @@ struct Register: Codable {
     let success: Bool
     let message: String
     let code: Int
-    let data: Data?
+    let data: String
+    
+    // MARK: - DataClass
+    struct Data: Codable {
+        let code, timeout: Int
+    }
+}
+
+struct RegisterError: Codable {
+    let timestamp: String?
+    let status: Int?
+    let error: String?
+    let path: String?
+    let success: Bool?
+    let message: String?
+    let code: Int?
+    let data: String?
     
     // MARK: - DataClass
     struct Data: Codable {

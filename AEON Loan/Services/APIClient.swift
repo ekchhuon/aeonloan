@@ -10,9 +10,13 @@ import Alamofire
 class APIClient {
     @discardableResult
     private static func fetch<M:Decodable>(route:APIRouter, decoder: JSONDecoder = JSONDecoder(), completion:@escaping (Result<M, AFError>)->Void) -> DataRequest {
-        return AF.request(route)
-                        .responseDecodable (decoder: decoder){ (response: DataResponse<M, AFError>) in
+        return AF.request(route).validate().responseDecodable (decoder: decoder){ (response: DataResponse<M, AFError>) in
                             response.logs()
+                            
+                            let respns = response.response?.statusCode
+                            
+                            print("Statuscode.............>>>", respns)
+                            
                             completion(response.result)
         }
     }

@@ -38,9 +38,9 @@ class RegisterViewController: BaseViewController {
             self.show(indicator: loading)
         }
         
-        viewModel.error.bind { [weak self] (msg) in
-            guard let self = self, !msg.isEmpty else { return }
-            self.showAlert(message: msg)
+        viewModel.error.bind { [weak self] (err) in
+            guard let self = self, let err = err  else { return }
+            self.showAlert(title: "\(err.code) \(err.description) ", message: "\(err.localized)")
         }
         
 //        viewModel.success.bind { (success) in
