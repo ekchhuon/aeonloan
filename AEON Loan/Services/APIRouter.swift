@@ -31,7 +31,6 @@ enum APIRouter: URLRequestConvertible {
         case .login:
             return "login"
         case .register:
-//            return "/register"
             return "users"
         case .testLogin:
             return "login"
@@ -58,7 +57,6 @@ enum APIRouter: URLRequestConvertible {
     
     // MARK: - URLRequestConvertible
     func asURLRequest() throws -> URLRequest {
-//        let url = try Constants.ProductionServer.baseURL.asURL()
         let url = try Constantss.server.asURL()
         
         var urlRequest = URLRequest(url: url.appendingPathComponent(path))

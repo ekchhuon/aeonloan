@@ -10,6 +10,7 @@ target 'AEON Loan' do
   pod 'IQKeyboardManagerSwift'
   pod 'SideMenu'
   pod 'BCryptSwift'
+  pod 'PhoneNumberKit', '~> 3.3'
 
   # Pods for AEON Loan
 

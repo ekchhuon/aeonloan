@@ -24,6 +24,8 @@ enum ValidatorType {
     case email
     case password
     case username
+    case phone
+    case other(message: String)
     case projectIdentifier
     case requiredField(field: String)
     case age
@@ -35,11 +37,38 @@ enum VaildatorFactory {
         case .email: return EmailValidator()
         case .password: return PasswordValidator()
         case .username: return UserNameValidator()
+        case .phone: return PhoneValidator()
+        case .other(let msg): return OtherFieldValidator(msg)
         case .projectIdentifier: return ProjectIdentifierValidator()
         case .requiredField(let fieldName): return RequiredFieldValidator(fieldName)
         case .age: return AgeValidator()
         }
     }
+}
+
+struct PhoneValidator: ValidatorConvertible {
+    func validated(_ value: String, _ field: UITextField) throws -> String {
+        guard value != "" else {throw ValidationError("Phone Number is Required")}
+        guard value.isPhone else { throw ValidationError("Invalid phone number") }
+        return value
+    }
+}
+
+// validate empty
+struct OtherFieldValidator: ValidatorConvertible {
+    private let message: String
+    
+    init(_ message: String) {
+        self.message = message
+    }
+    
+    func validated(_ value: String, _ field: UITextField) throws -> String {
+        guard !value.isEmpty else {
+            throw ValidationError(message)
+        }
+        return value
+    }
+    
 }
 
 //"J3-123A" i.e
@@ -128,5 +157,13 @@ struct EmailValidator: ValidatorConvertible {
             throw ValidationError("Invalid e-mail Address")
         }
         return value
+    }
+}
+
+
+extension UITextField {
+    func buz(){
+        self.becomeFirstResponder()
+        self.buzz()
     }
 }

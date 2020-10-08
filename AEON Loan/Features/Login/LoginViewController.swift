@@ -50,6 +50,13 @@ class LoginViewController: BaseViewController {
     }
     
     @IBAction func loginTapped(_ sender: Any) {
+        
+//        guard let phone = usernameTextField.text, phone.isPhone else {
+//            showAlert(message: "not digit/invalid")
+//            return
+//        }
+//        showAlert(message: "is digit/valid \(phone)")
+
         validate()
     }
     
@@ -92,17 +99,21 @@ class LoginViewController: BaseViewController {
     
     func validate() {
         do {
-            let username = try usernameTextField.validatedText(type: .username)
-            let password = try passwordTextField.validatedText(type: .username)
+            let username = try usernameTextField.validatedText(type: .phone)
+            let password = try passwordTextField.validatedText(type: .password)
             let data = LoginDataTest(username: username, password: password)
             fetch(data)
         } catch (let error) {
             print((error as! ValidationError).message)
+            showAlert(message: "\((error as! ValidationError).message)")
         }
     }
     
     func fetch(_ data: LoginDataTest) {
-         viewModel.login(username: usernameTextField.text ?? "", password: passwordTextField.text ?? "")
+        
+        showAlert(message: "Success")
+        
+//         viewModel.login(username: usernameTextField.text ?? "", password: passwordTextField.text ?? "")
 //        showAlert(title: "Success", message: "Hello World", buttonTitle: "Try again")
     }
 }
@@ -115,3 +126,38 @@ struct LoginDataTest {
 
 
 
+extension String {
+    //    let regEx = "^\\+(?:[0-9]?){6,14}[0-9]$"
+    //    let phoneRegex = "[235689][0-9]{6}([0-9]{3})?"
+    //    let phoneRegex = "0[1-9]{2}[0-9]{6}([0-9]{1})?"
+    func isValidPhone(phone: String) -> Bool {
+        let phoneRegex = "0[1-9]{2}[0-9]{6}([0-9]{1})?"  //"^[0-9+]{0,1}+[0-9]{5,16}$"
+        let phoneTest = NSPredicate(format: "SELF MATCHES %@", phoneRegex)
+        return phoneTest.evaluate(with: phone)
+    }
+    
+    var isPhone: Bool {
+        //012345678, 0123456789 or +85512345678
+        let phoneRegex = "(0|\\+855)[1-9]{2}[0-9]{6}([0-9]{1})?"  //"^[0-9+]{0,1}+[0-9]{5,16}$"
+        let phoneTest = NSPredicate(format: "SELF MATCHES %@", phoneRegex)
+        return phoneTest.evaluate(with: self)
+    }
+    
+    var isDigit: Bool {
+        guard !self.isEmpty else { return false }
+        let charcterSet  = NSCharacterSet(charactersIn: "+0123456789").inverted
+        let inputString = self.components(separatedBy: charcterSet)
+        let filtered = inputString.joined(separator: "")
+        return  self == filtered
+    }
+    
+    var trimmed: String {
+        return self.trimmingCharacters(in: .whitespaces)
+    }
+    
+    var isValidPassword: Bool {
+        let regex = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{6,}$"
+        let password = NSPredicate(format: "SELF MATCHES %@", regex)
+        return password.evaluate(with: self)
+    }
+}

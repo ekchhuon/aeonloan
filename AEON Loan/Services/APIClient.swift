@@ -12,15 +12,9 @@ class APIClient {
     private static func fetch<M:Decodable>(route:APIRouter, decoder: JSONDecoder = JSONDecoder(), completion:@escaping (Result<M, AFError>)->Void) -> DataRequest {
         return AF.request(route).validate().responseDecodable (decoder: decoder){ (response: DataResponse<M, AFError>) in
                             response.logs()
-                            
-                            let respns = response.response?.statusCode
-                            
-                            print("Statuscode.............>>>", respns)
-                            
                             completion(response.result)
         }
     }
-    
     
     static func login(email: String, password: String, completion:@escaping (Result<User, AFError>)->Void) {
         fetch(route: APIRouter.login(email: email, password: password), completion: completion)
@@ -74,7 +68,6 @@ private extension URLRequest {
         return output
     }
 }
-
 
 //struct User: Codable {
 //    let firstName: String

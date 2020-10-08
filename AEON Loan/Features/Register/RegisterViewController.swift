@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import BCryptSwift
 
 extension RegisterViewController {
     static func instantiate() -> RegisterViewController {

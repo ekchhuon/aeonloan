@@ -7,7 +7,6 @@
 
 import Foundation
 import UIKit.UIImage
-import BCryptSwift
 
 public class LoginViewModel {
     let defaults = "Loading..."
@@ -43,15 +42,6 @@ public class LoginViewModel {
                     print("result keycahin...: ", result)
                 }
                 
-                
-                let password = "12345678"
-                
-                let salt =  BCryptSwift.generateSaltWithNumberOfRounds(12)
-                let hashed = BCryptSwift.hashPassword(password, withSalt: salt)
-                print("Hashed result is: \(hashed ?? "failed")")
-                
-                
-                
             case .failure(let error):
                 print(error.localizedDescription)
             }
@@ -73,13 +63,4 @@ public class LoginViewModel {
 struct User : Codable{
     var username, password: String
     let profile: String
-}
-
-
-
-extension String {
-    var bcrypted: String {
-        let salt = BCryptSwift.generateSaltWithNumberOfRounds(12)
-        return BCryptSwift.hashPassword(self, withSalt: salt) ?? ""
-    }
 }
