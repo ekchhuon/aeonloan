@@ -14,6 +14,10 @@ class ValidationError: Error {
     init(_ message: String) {
         self.message = message
     }
+    
+    class func becomeResponder(_ field: UITextField){
+        field.becomeFirstResponder()
+    }
 }
 
 protocol ValidatorConvertible {
@@ -48,8 +52,14 @@ enum VaildatorFactory {
 
 struct PhoneValidator: ValidatorConvertible {
     func validated(_ value: String, _ field: UITextField) throws -> String {
-        guard value != "" else {throw ValidationError("Phone Number is Required")}
-        guard value.isPhone else { throw ValidationError("Invalid phone number") }
+        guard value != "" else {
+            field.buz()
+            throw ValidationError("Phone Number is Required")
+        }
+        guard value.isPhone else {
+            field.buz()
+            throw ValidationError("Invalid phone number")
+        }
         return value
     }
 }
@@ -64,6 +74,7 @@ struct OtherFieldValidator: ValidatorConvertible {
     
     func validated(_ value: String, _ field: UITextField) throws -> String {
         guard !value.isEmpty else {
+            field.buz()
             throw ValidationError(message)
         }
         return value
@@ -133,14 +144,22 @@ struct UserNameValidator: ValidatorConvertible {
 
 struct PasswordValidator: ValidatorConvertible {
     func validated(_ value: String, _ field: UITextField) throws -> String {
-        guard value != "" else {throw ValidationError("Password is Required")}
-        guard value.count >= 6 else { throw ValidationError("Password must have at least 6 characters") }
+        guard value != "" else {
+            field.buz()
+            throw ValidationError("Password is Required")
+        }
+        guard value.count >= 6 else {
+            field.buz()
+            throw ValidationError("Password must have at least 6 characters")
+        }
         
         do {
             if try NSRegularExpression(pattern: "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{6,}$",  options: .caseInsensitive).firstMatch(in: value, options: [], range: NSRange(location: 0, length: value.count)) == nil {
+                field.buz()
                 throw ValidationError("Password must be more than 6 characters, with at least one character and one numeric character")
             }
         } catch {
+            field.buz()
             throw ValidationError("Password must be more than 6 characters, with at least one character and one numeric character")
         }
         return value

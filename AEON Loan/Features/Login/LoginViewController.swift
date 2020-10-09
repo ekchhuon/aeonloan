@@ -99,8 +99,8 @@ class LoginViewController: BaseViewController {
     
     func validate() {
         do {
-            let username = try usernameTextField.validatedText(type: .phone)
-            let password = try passwordTextField.validatedText(type: .password)
+            let username = try usernameTextField.validatedText(type:  .phone)
+            let password = try passwordTextField.validatedText(type: .other(message: "Required"))
             let data = LoginDataTest(username: username, password: password)
             fetch(data)
         } catch (let error) {

@@ -62,6 +62,7 @@
 		3E48162D252741E10010966A /* OTPViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E48162B252741E10010966A /* OTPViewController.xib */; };
 		3E48162F252741F90010966A /* OTPViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E48162E252741F90010966A /* OTPViewModel.swift */; };
 		3E50C756252EB4800051D809 /* BCrypt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E50C755252EB4800051D809 /* BCrypt.swift */; };
+		3E50C759253007C90051D809 /* HttpStatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E50C758253007C90051D809 /* HttpStatusCode.swift */; };
 		3E5641C325061A1300716D8B /* SelectLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5641C125061A1300716D8B /* SelectLanguageViewController.swift */; };
 		3E5641C425061A1300716D8B /* SelectLanguageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E5641C225061A1300716D8B /* SelectLanguageViewController.xib */; };
 		3E5641C625061A2600716D8B /* SelectLanguageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5641C525061A2600716D8B /* SelectLanguageViewModel.swift */; };
@@ -212,6 +213,7 @@
 		3E48162B252741E10010966A /* OTPViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OTPViewController.xib; sourceTree = "<group>"; };
 		3E48162E252741F90010966A /* OTPViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPViewModel.swift; sourceTree = "<group>"; };
 		3E50C755252EB4800051D809 /* BCrypt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BCrypt.swift; sourceTree = "<group>"; };
+		3E50C758253007C90051D809 /* HttpStatusCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpStatusCode.swift; sourceTree = "<group>"; };
 		3E5641C125061A1300716D8B /* SelectLanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLanguageViewController.swift; sourceTree = "<group>"; };
 		3E5641C225061A1300716D8B /* SelectLanguageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectLanguageViewController.xib; sourceTree = "<group>"; };
 		3E5641C525061A2600716D8B /* SelectLanguageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLanguageViewModel.swift; sourceTree = "<group>"; };
@@ -411,6 +413,7 @@
 				3E23674724F617C3003FD6D4 /* Date+DayAndTime.swift */,
 				3E23674924F617ED003FD6D4 /* TimeInterval.swift */,
 				3E05D582252B2C84003C5432 /* NSString + Extension.swift */,
+				3E50C757253007B30051D809 /* NSInteger + Extension */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -551,6 +554,14 @@
 				3E48162B252741E10010966A /* OTPViewController.xib */,
 			);
 			path = OTP;
+			sourceTree = "<group>";
+		};
+		3E50C757253007B30051D809 /* NSInteger + Extension */ = {
+			isa = PBXGroup;
+			children = (
+				3E50C758253007C90051D809 /* HttpStatusCode.swift */,
+			);
+			path = "NSInteger + Extension";
 			sourceTree = "<group>";
 		};
 		3E5641C0250619E500716D8B /* Languages */ = {
@@ -1159,6 +1170,7 @@
 				3E23676724F64E99003FD6D4 /* LanuchViewController.swift in Sources */,
 				3E834E602509016400D9E700 /* SideMenuViewController.swift in Sources */,
 				3E80026A250B881700503267 /* ApplyLoanViewModel.swift in Sources */,
+				3E50C759253007C90051D809 /* HttpStatusCode.swift in Sources */,
 				3ED2C51E251AF8C0007B0B9A /* UIViewController.swift in Sources */,
 				3E834E5125087F2E00D9E700 /* SliderCollectionViewCell.swift in Sources */,
 				3E62A2F7251A0DA40072CAB3 /* Enum.swift in Sources */,
