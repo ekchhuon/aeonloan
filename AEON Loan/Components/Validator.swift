@@ -14,10 +14,6 @@ class ValidationError: Error {
     init(_ message: String) {
         self.message = message
     }
-    
-    class func becomeResponder(_ field: UITextField){
-        field.becomeFirstResponder()
-    }
 }
 
 protocol ValidatorConvertible {
