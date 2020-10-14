@@ -15,8 +15,7 @@ public class LoginViewModel {
     let password = Box("")
     let loading = Box(false)
     let token = Box("")
-    
-    
+
     init() {
         //        login(username: "", password: "")
     }
@@ -56,8 +55,6 @@ public class LoginViewModel {
             self.user.value = User(username: "Chhuon OK", password: "Password OK", profile: "")
         }
     }
-    
-    
 }
 
 struct User : Codable{
