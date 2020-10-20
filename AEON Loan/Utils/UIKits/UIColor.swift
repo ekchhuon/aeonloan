@@ -51,6 +51,10 @@ extension UIColor {
     public class var brandMaginta: UIColor {
         return UIColor.init(rgb: 0xA20061)
     }
+    
+    public class var disabled: UIColor {
+        return UIColor.init(rgb: 0xC6C6C6)
+    }
 
 }
 

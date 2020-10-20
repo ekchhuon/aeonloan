@@ -55,6 +55,9 @@ extension UIViewController {
         case .payment:
             let controller = PaymentOptionViewController.instantiate()
             navigationController?.pushViewController(controller, animated: true)
+        case .calculator:
+            let controller = CalculatorViewController.instantiate()
+            navigationController?.pushViewController(controller, animated: true)
         case .paymentLocation:
             let controller = PaymentLocationViewController.instantiate()
             navigationController?.pushViewController(controller, animated: true)
@@ -100,5 +103,14 @@ extension UIViewController {
         alert.addAction(okAction)
         self.present(alert, animated: true, completion: nil)
     }
+}
 
+extension UIViewController {
+    // MARK: - Add child controller to another controller
+    func add(child controller: UIViewController) {
+        controller.willMove(toParent: self)
+        self.view.addSubview(controller.view)
+        self.addChild(controller)
+        controller.didMove(toParent: self)
+    }
 }

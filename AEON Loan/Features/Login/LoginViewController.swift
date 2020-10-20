@@ -22,7 +22,7 @@ class LoginViewController: BaseViewController {
     @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var eyeballButton: UIButton!
     
-    
+    let touchMe = BiometricIDAuth()
     var hidden: Bool = true
     
     override func viewDidLoad() {
@@ -33,6 +33,32 @@ class LoginViewController: BaseViewController {
         setupView()
         bind()
         setup(title: "Login")
+        
+        startTouchID()
+        
+    }
+    
+    func startTouchID() {
+      // 1
+      touchMe.authenticateUser() { [weak self] (status, message) in
+        // 2
+        if let message = message {
+          // if the completion is not nil show an alert
+//          let alertView = UIAlertController(title: "Error",
+//                                            message: message,
+//                                            preferredStyle: .alert)
+//          let okAction = UIAlertAction(title: "Darn!", style: .default)
+//          alertView.addAction(okAction)
+//          self?.present(alertView, animated: true)
+            self?.showAlert(message: message)
+        } else {
+          // 3
+//          self?.performSegue(withIdentifier: "dismissLogin", sender: self)
+            
+            self?.navigates(to: .home(.push(subtype: .fromLeft)))
+            
+        }
+      }
     }
     
     private func bind() {

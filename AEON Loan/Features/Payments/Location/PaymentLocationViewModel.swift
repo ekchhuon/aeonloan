@@ -35,7 +35,7 @@ public class PaymentLocationViewModel {
     
     func setupMockData() {
         var channels: [Channel] = [Channel]()
-        let names = ["Acleda", "BOC", "CPB", "CIMB", "MayBank", "TrueMoney", "Wing"]
+        let names = ["Acleda", "Bank of China", "Cambodian Public Bank", "CIMB", "MayBank", "TrueMoney", "Wing"]
         let accounts = ["0000001", "0000002", "0000003", "0000004", "0000005", "0000006", "0000007"]
         let autoDebits = [true, false, false, false, true, true, true, true]
         let counterFees = ["0.50","0.40","0.30", "0.40","0.50","0.40","0.30"]

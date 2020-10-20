@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17147" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17120"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FirstSegmentViewController" customModule="AEON_Loan" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="xc3-bu-zpK">
+                    <rect key="frame" x="18" y="408" width="378" height="80.5"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sWw-9R-T7x">
+                            <rect key="frame" x="0.0" y="0.0" width="378" height="20.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CgW-YR-SS0">
+                            <rect key="frame" x="0.0" y="30.5" width="378" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="hlS-3K-gIJ"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="CgW-YR-SS0" firstAttribute="leading" secondItem="xc3-bu-zpK" secondAttribute="leading" id="MzM-Ap-qXq"/>
+                        <constraint firstAttribute="trailing" secondItem="sWw-9R-T7x" secondAttribute="trailing" id="dQB-Wh-CCT"/>
+                        <constraint firstItem="sWw-9R-T7x" firstAttribute="leading" secondItem="xc3-bu-zpK" secondAttribute="leading" id="gY5-sE-ufg"/>
+                        <constraint firstAttribute="trailing" secondItem="CgW-YR-SS0" secondAttribute="trailing" id="lgO-3e-43h"/>
+                    </constraints>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="xc3-bu-zpK" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="JNw-Rv-Gtv"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="xc3-bu-zpK" secondAttribute="trailing" constant="18" id="QkV-19-EjQ"/>
+                <constraint firstItem="xc3-bu-zpK" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="18" id="zMa-Lg-3dI"/>
+            </constraints>
+            <point key="canvasLocation" x="22" y="87"/>
+        </view>
+    </objects>
+</document>

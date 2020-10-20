@@ -28,7 +28,7 @@ class LoanSubmissionResultViewController: UIViewController {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             guard self.result == .success else {return}
-            self.navigates(to: .home(.push(subtype: .fromLeft)))
+            // self.navigates(to: .home(.push(subtype: .fromLeft)))
         }
     }
     

@@ -87,11 +87,14 @@ extension HomeViewController: UICollectionViewDataSource {
         } else {
             let cell : HomeCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCollectionViewCell", for: indexPath) as! HomeCollectionViewCell
             cell.setupMenu(menu: menus[indexPath.row])
+            cell.disableCell(index: indexPath.row)
+            
             return cell
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        
         
     }
     
@@ -124,6 +127,8 @@ extension HomeViewController: UICollectionViewDelegate {
                 navigates(to: .applyLoan)
             case 4:
                 navigates(to: .payment)
+            case 5:
+                navigates(to: .calculator)
             default: break
             }
         default: break
@@ -223,6 +228,9 @@ extension HomeViewController{
     private func customView() {
         locationView.roundByCorners(10, for: [.layerMinXMaxYCorner, .layerMinXMinYCorner])
         contactusView.roundByCorners(10, for: [.layerMaxXMaxYCorner, .layerMaxXMinYCorner])
+        
+        locationView.backgroundColor = .disabled
+        contactusView.backgroundColor = .disabled
     }
     
     private func setupRefreshControl() {

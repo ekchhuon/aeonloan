@@ -22,4 +22,13 @@ class HomeCollectionViewCell: UICollectionViewCell {
         self.icon.image = menu.icon
         self.title.text = menu.title
     }
+    
+    func disableCell(index: Int){
+        switch index {
+        case 2, 3:
+            cellContentView.backgroundColor = .disabled
+        default:
+            break
+        }
+    }
 }

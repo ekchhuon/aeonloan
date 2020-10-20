@@ -28,6 +28,7 @@ enum Scene {
     case applyLoan
     case loanResult(SubmitResult)
     case payment
+    case calculator
     case paymentLocation
     case paymentCondition
     case paymentSchedule

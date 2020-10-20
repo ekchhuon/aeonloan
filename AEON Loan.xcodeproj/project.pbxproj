@@ -18,6 +18,13 @@
 		3E113F4F2501E3C9008132CB /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E113F4E2501E3C9008132CB /* APIRouter.swift */; };
 		3E113F5125020228008132CB /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E113F5025020228008132CB /* APIClient.swift */; };
 		3E113F53250228E0008132CB /* Connectivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E113F52250228E0008132CB /* Connectivity.swift */; };
+		3E14F101253ECEE70066F0AB /* CalculatorViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E14F100253ECEE70066F0AB /* CalculatorViewModel.swift */; };
+		3E14F104253ECF0C0066F0AB /* CalculatorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E14F102253ECF0C0066F0AB /* CalculatorViewController.swift */; };
+		3E14F105253ECF0C0066F0AB /* CalculatorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E14F103253ECF0C0066F0AB /* CalculatorViewController.xib */; };
+		3E14F10C253EDE610066F0AB /* FirstSegmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E14F10A253EDE610066F0AB /* FirstSegmentViewController.swift */; };
+		3E14F10D253EDE610066F0AB /* FirstSegmentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E14F10B253EDE610066F0AB /* FirstSegmentViewController.xib */; };
+		3E14F110253EDE780066F0AB /* SecondSegmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E14F10E253EDE780066F0AB /* SecondSegmentViewController.swift */; };
+		3E14F111253EDE780066F0AB /* SecondSegmentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E14F10F253EDE780066F0AB /* SecondSegmentViewController.xib */; };
 		3E23674824F617C3003FD6D4 /* Date+DayAndTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E23674724F617C3003FD6D4 /* Date+DayAndTime.swift */; };
 		3E23674A24F617ED003FD6D4 /* TimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E23674924F617ED003FD6D4 /* TimeInterval.swift */; };
 		3E23674C24F6184C003FD6D4 /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E23674B24F6184C003FD6D4 /* UIDevice.swift */; };
@@ -38,6 +45,7 @@
 		3E2AFBCA25258E640090A17D /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2AFBC925258E640090A17D /* Validator.swift */; };
 		3E2F400D25109B1200C8875B /* PaymentOptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E2F400B25109B1200C8875B /* PaymentOptionViewController.swift */; };
 		3E2F400E25109B1200C8875B /* PaymentOptionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E2F400C25109B1200C8875B /* PaymentOptionViewController.xib */; };
+		3E380778253E8DC50048AAB3 /* TouchIDAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E380777253E8DC50048AAB3 /* TouchIDAuth.swift */; };
 		3E3CAB8A2510A4A000EAF826 /* PaymentLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3CAB882510A4A000EAF826 /* PaymentLocationViewController.swift */; };
 		3E3CAB8B2510A4A000EAF826 /* PaymentLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E3CAB892510A4A000EAF826 /* PaymentLocationViewController.xib */; };
 		3E3CAB8E2510A61100EAF826 /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E3CAB8C2510A61100EAF826 /* LocationTableViewCell.swift */; };
@@ -165,6 +173,13 @@
 		3E113F4E2501E3C9008132CB /* APIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
 		3E113F5025020228008132CB /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		3E113F52250228E0008132CB /* Connectivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connectivity.swift; sourceTree = "<group>"; };
+		3E14F100253ECEE70066F0AB /* CalculatorViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewModel.swift; sourceTree = "<group>"; };
+		3E14F102253ECF0C0066F0AB /* CalculatorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorViewController.swift; sourceTree = "<group>"; };
+		3E14F103253ECF0C0066F0AB /* CalculatorViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CalculatorViewController.xib; sourceTree = "<group>"; };
+		3E14F10A253EDE610066F0AB /* FirstSegmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstSegmentViewController.swift; sourceTree = "<group>"; };
+		3E14F10B253EDE610066F0AB /* FirstSegmentViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FirstSegmentViewController.xib; sourceTree = "<group>"; };
+		3E14F10E253EDE780066F0AB /* SecondSegmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondSegmentViewController.swift; sourceTree = "<group>"; };
+		3E14F10F253EDE780066F0AB /* SecondSegmentViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SecondSegmentViewController.xib; sourceTree = "<group>"; };
 		3E23674724F617C3003FD6D4 /* Date+DayAndTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+DayAndTime.swift"; sourceTree = "<group>"; };
 		3E23674924F617ED003FD6D4 /* TimeInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeInterval.swift; sourceTree = "<group>"; };
 		3E23674B24F6184C003FD6D4 /* UIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
@@ -185,6 +200,7 @@
 		3E2AFBC925258E640090A17D /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		3E2F400B25109B1200C8875B /* PaymentOptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentOptionViewController.swift; sourceTree = "<group>"; };
 		3E2F400C25109B1200C8875B /* PaymentOptionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaymentOptionViewController.xib; sourceTree = "<group>"; };
+		3E380777253E8DC50048AAB3 /* TouchIDAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchIDAuth.swift; sourceTree = "<group>"; };
 		3E3CAB882510A4A000EAF826 /* PaymentLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentLocationViewController.swift; sourceTree = "<group>"; };
 		3E3CAB892510A4A000EAF826 /* PaymentLocationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaymentLocationViewController.xib; sourceTree = "<group>"; };
 		3E3CAB8C2510A61100EAF826 /* LocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableViewCell.swift; sourceTree = "<group>"; };
@@ -377,6 +393,28 @@
 			path = KeyChain;
 			sourceTree = "<group>";
 		};
+		3E14F106253ECF1D0066F0AB /* Calculator */ = {
+			isa = PBXGroup;
+			children = (
+				3E14F100253ECEE70066F0AB /* CalculatorViewModel.swift */,
+				3E14F102253ECF0C0066F0AB /* CalculatorViewController.swift */,
+				3E14F103253ECF0C0066F0AB /* CalculatorViewController.xib */,
+				3E14F107253EDCF70066F0AB /* Views */,
+			);
+			path = Calculator;
+			sourceTree = "<group>";
+		};
+		3E14F107253EDCF70066F0AB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3E14F10A253EDE610066F0AB /* FirstSegmentViewController.swift */,
+				3E14F10B253EDE610066F0AB /* FirstSegmentViewController.xib */,
+				3E14F10E253EDE780066F0AB /* SecondSegmentViewController.swift */,
+				3E14F10F253EDE780066F0AB /* SecondSegmentViewController.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		3E23673C24F611C2003FD6D4 /* Login */ = {
 			isa = PBXGroup;
 			children = (
@@ -403,6 +441,7 @@
 				3E10C53B2536A68D008518B4 /* KeyChain */,
 				3E23674E24F61CA1003FD6D4 /* Box.swift */,
 				3EF3427C2525E14C003AA712 /* Keychain.swift */,
+				3E380777253E8DC50048AAB3 /* TouchIDAuth.swift */,
 				3E23675F24F6431F003FD6D4 /* NavigationController.swift */,
 				3E23676124F6437D003FD6D4 /* NavigationBar.swift */,
 				3E6397D124F763DC00C5BB86 /* ActivityIndicatorOverlay.swift */,
@@ -846,6 +885,7 @@
 				3E23673D24F6141C003FD6D4 /* Register */,
 				3E23673C24F611C2003FD6D4 /* Login */,
 				3E2F400A25109AE400C8875B /* Payments */,
+				3E14F106253ECF1D0066F0AB /* Calculator */,
 				3E800264250B87DB00503267 /* ApplyLoan */,
 				3E834E5D2508FCB300D9E700 /* Notification */,
 				3E62A2F42519F3BC0072CAB3 /* CheckCredit */,
@@ -992,6 +1032,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3E3CAB8F2510A61100EAF826 /* LocationTableViewCell.xib in Resources */,
+				3E14F111253EDE780066F0AB /* SecondSegmentViewController.xib in Resources */,
 				3E05D5D8252C1A15003C5432 /* LoginViewController.xib in Resources */,
 				3E56EE94251846B90083CC49 /* TakePhotoViewController.xib in Resources */,
 				3E56EEA225186B070083CC49 /* ApplicantInfoViewController.xib in Resources */,
@@ -1007,12 +1048,14 @@
 				3E47FF7C252C4F7E00A73E61 /* Localizable.strings in Resources */,
 				3E3CABA92510D56500EAF826 /* PaymentDetailViewController.xib in Resources */,
 				3E2AFBC825246A640090A17D /* ScanViewController.xib in Resources */,
+				3E14F105253ECF0C0066F0AB /* CalculatorViewController.xib in Resources */,
 				3E56EE9B251864800083CC49 /* SelfieViewController.xib in Resources */,
 				3E5641C425061A1300716D8B /* SelectLanguageViewController.xib in Resources */,
 				3E834E572508EE5E00D9E700 /* SliderDetailViewController.xib in Resources */,
 				3E3CABA22510D01000EAF826 /* ScheduleTableViewCell.xib in Resources */,
 				3E62A2E92519BA8B0072CAB3 /* CreditAcceptedViewController.xib in Resources */,
 				3EF9195C24F5008200E77958 /* Main.storyboard in Resources */,
+				3E14F10D253EDE610066F0AB /* FirstSegmentViewController.xib in Resources */,
 				3ED2C522251B3420007B0B9A /* PhotoViewController.xib in Resources */,
 				3E80026F2510681100503267 /* LoanSubmissionResultViewController.xib in Resources */,
 				3E48162D252741E10010966A /* OTPViewController.xib in Resources */,
@@ -1180,9 +1223,11 @@
 				3E23675C24F63FF6003FD6D4 /* UIWindow+RootController.swift in Sources */,
 				3E3CAB992510C62B00EAF826 /* PaymentConditionViewModel.swift in Sources */,
 				3E3CABA82510D56500EAF826 /* PaymentDetailViewController.swift in Sources */,
+				3E380778253E8DC50048AAB3 /* TouchIDAuth.swift in Sources */,
 				3E4816292526EA110010966A /* RegisterViewModel.swift in Sources */,
 				3E23676724F64E99003FD6D4 /* LanuchViewController.swift in Sources */,
 				3E834E602509016400D9E700 /* SideMenuViewController.swift in Sources */,
+				3E14F10C253EDE610066F0AB /* FirstSegmentViewController.swift in Sources */,
 				3E80026A250B881700503267 /* ApplyLoanViewModel.swift in Sources */,
 				3E50C759253007C90051D809 /* HttpStatusCode.swift in Sources */,
 				3ED2C51E251AF8C0007B0B9A /* UIViewController.swift in Sources */,
@@ -1193,6 +1238,7 @@
 				3E5641E92507B21100716D8B /* RegisterViewController.swift in Sources */,
 				3E56EE9A251864800083CC49 /* SelfieViewController.swift in Sources */,
 				3E48162F252741F90010966A /* OTPViewModel.swift in Sources */,
+				3E14F101253ECEE70066F0AB /* CalculatorViewModel.swift in Sources */,
 				3EF9195724F5008200E77958 /* SceneDelegate.swift in Sources */,
 				3E5641DD2507273900716D8B /* UIView+Layout.swift in Sources */,
 				3E800263250B75A000503267 /* UINavigationController + Extension.swift in Sources */,
@@ -1205,6 +1251,7 @@
 				3E834E562508EE5E00D9E700 /* SliderDetailViewController.swift in Sources */,
 				3E47FFD0252C866200A73E61 /* ViewModelRepresentable.swift in Sources */,
 				3EB04856252DB27600A395E2 /* BuildConfig.swift in Sources */,
+				3E14F110253EDE780066F0AB /* SecondSegmentViewController.swift in Sources */,
 				3E23676224F6437D003FD6D4 /* NavigationBar.swift in Sources */,
 				3E2AFBC425232AA00090A17D /* UIImageView + Extenstion.swift in Sources */,
 				3EF9199824F509C300E77958 /* LanuchViewModel.swift in Sources */,
@@ -1238,6 +1285,7 @@
 				3E62A2E52519A65B0072CAB3 /* CreditRejectedViewModel.swift in Sources */,
 				3E56EE93251846B90083CC49 /* TakePhotoViewController.swift in Sources */,
 				3E113F5125020228008132CB /* APIClient.swift in Sources */,
+				3E14F104253ECF0C0066F0AB /* CalculatorViewController.swift in Sources */,
 				3E2AFBC725246A640090A17D /* ScanViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
