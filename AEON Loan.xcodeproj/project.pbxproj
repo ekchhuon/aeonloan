@@ -126,6 +126,8 @@
 		3ED2C51E251AF8C0007B0B9A /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED2C51D251AF8C0007B0B9A /* UIViewController.swift */; };
 		3ED2C521251B3420007B0B9A /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED2C51F251B3420007B0B9A /* PhotoViewController.swift */; };
 		3ED2C522251B3420007B0B9A /* PhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ED2C520251B3420007B0B9A /* PhotoViewController.xib */; };
+		3ED6A179254179D0005E7DD7 /* Encode + Decode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED6A178254179D0005E7DD7 /* Encode + Decode.swift */; };
+		3ED6A17B2541971C005E7DD7 /* Encryption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED6A17A2541971C005E7DD7 /* Encryption.swift */; };
 		3EF3427A25258ED4003AA712 /* UITextField + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF3427925258ED4003AA712 /* UITextField + Extensions.swift */; };
 		3EF3427D2525E14C003AA712 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF3427C2525E14C003AA712 /* Keychain.swift */; };
 		3EF9195524F5008200E77958 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF9195424F5008200E77958 /* AppDelegate.swift */; };
@@ -287,6 +289,8 @@
 		3ED2C51D251AF8C0007B0B9A /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		3ED2C51F251B3420007B0B9A /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		3ED2C520251B3420007B0B9A /* PhotoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoViewController.xib; sourceTree = "<group>"; };
+		3ED6A178254179D0005E7DD7 /* Encode + Decode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encode + Decode.swift"; sourceTree = "<group>"; };
+		3ED6A17A2541971C005E7DD7 /* Encryption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encryption.swift; sourceTree = "<group>"; };
 		3EF3427925258ED4003AA712 /* UITextField + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField + Extensions.swift"; sourceTree = "<group>"; };
 		3EF3427C2525E14C003AA712 /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		3EF9195124F5008200E77958 /* AEON Loan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AEON Loan.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -447,6 +451,7 @@
 				3E6397D124F763DC00C5BB86 /* ActivityIndicatorOverlay.swift */,
 				3E2AFBC925258E640090A17D /* Validator.swift */,
 				3E50C755252EB4800051D809 /* BCrypt.swift */,
+				3ED6A17A2541971C005E7DD7 /* Encryption.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -467,6 +472,7 @@
 				3E23674924F617ED003FD6D4 /* TimeInterval.swift */,
 				3E05D582252B2C84003C5432 /* NSString + Extension.swift */,
 				3E50C757253007B30051D809 /* NSInteger + Extension */,
+				3ED6A178254179D0005E7DD7 /* Encode + Decode.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -1231,6 +1237,7 @@
 				3E80026A250B881700503267 /* ApplyLoanViewModel.swift in Sources */,
 				3E50C759253007C90051D809 /* HttpStatusCode.swift in Sources */,
 				3ED2C51E251AF8C0007B0B9A /* UIViewController.swift in Sources */,
+				3ED6A179254179D0005E7DD7 /* Encode + Decode.swift in Sources */,
 				3E834E5125087F2E00D9E700 /* SliderCollectionViewCell.swift in Sources */,
 				3E62A2F7251A0DA40072CAB3 /* Enum.swift in Sources */,
 				3E62A2EF2519D2C40072CAB3 /* ApplicationAcceptedTableViewCell.swift in Sources */,
@@ -1246,6 +1253,7 @@
 				3E5641C325061A1300716D8B /* SelectLanguageViewController.swift in Sources */,
 				3E10C53F2536A71A008518B4 /* KeychainPasswordItem.swift in Sources */,
 				3E56EEA525186B3A0083CC49 /* ApplicantInfoViewModel.swift in Sources */,
+				3ED6A17B2541971C005E7DD7 /* Encryption.swift in Sources */,
 				3E23674F24F61CA1003FD6D4 /* Box.swift in Sources */,
 				3EF3427D2525E14C003AA712 /* Keychain.swift in Sources */,
 				3E834E562508EE5E00D9E700 /* SliderDetailViewController.swift in Sources */,

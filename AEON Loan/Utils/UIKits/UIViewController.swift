@@ -38,11 +38,19 @@ extension UIViewController {
             let selectLanguage = SelectLanguageViewController.instantiate()
             view.window?.setRootViewController(selectLanguage)
         case .login:
-            let login = LoginViewController.instantiate()
-            navigationController?.pushViewController(login, animated: true)
+            
+            let home = LoginViewController.instantiate()
+            // let controller = NavigationController.main(with: home)
+            self.view.window?.setRootViewController(home, options: .init(type: .push(subtype: .fromRight)))
+            
+            // let login = LoginViewController.instantiate()
+            // navigationController?.pushViewController(login, animated: true)
         case .register:
             let register = RegisterViewController.instantiate()
-            navigationController?.pushViewController(register, animated: true)
+//            navigationController?.pushViewController(register, animated: true)
+            
+            self.view.window?.setRootViewController(register, options: .init(type: .push(subtype: .fromRight)))
+            
         case .notification:
             let notification = NotificationViewController.instantiate()
             navigationController?.pushViewController(notification, animated: true)

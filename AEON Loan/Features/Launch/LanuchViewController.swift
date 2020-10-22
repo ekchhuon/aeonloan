@@ -41,7 +41,8 @@ class LanuchViewController: UIViewController {
 //        let controller = NavigationController.main(with: home)
 //        view.window?.setRootViewController(controller)
         
-        navigates(to: .home(.push(subtype: .fromLeft)))
+//        navigates(to: .home(.push(subtype: .fromLeft)))
+        navigates(to: .login)
     }
     
     func navigateToLogin() {

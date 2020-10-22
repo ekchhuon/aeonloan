@@ -109,10 +109,10 @@ class RegisterViewController: BaseViewController {
     func validate() {
         do {
             let username = try usernameTextField.validatedText(type: .username)
-            let phone = try phoneTextField.validatedText(type: .username)
-            let email = try emailTextField.validatedText(type: .requiredField(field: "Helloooo.."))
-            let password = try passwordTextField.validatedText(type: .username)
-            let confirm = try confirmPasswordTextField.validatedText(type: .username)
+            let phone = try phoneTextField.validatedText(type: .phone)
+            let email = try emailTextField.validatedText(type: .email)
+            let password = try passwordTextField.validatedText(type: .password)
+            let confirm = try confirmPasswordTextField.validatedText(type: .password)
 
             guard password == confirm else {
                 showAlert(message: "Password Mismatched")

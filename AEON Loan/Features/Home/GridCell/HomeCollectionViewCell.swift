@@ -15,7 +15,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        cellContentView.rounds(10)
+        cellContentView.setBorder(10)
     }
     
     func setupMenu(menu: Menu) {

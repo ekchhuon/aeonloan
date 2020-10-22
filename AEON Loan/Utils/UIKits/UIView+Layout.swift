@@ -345,17 +345,17 @@ extension UIView {
         self.layer.borderColor = borderColor.cgColor
         
     }
-    
+    /*
     func rounds(_ radius: CGFloat = 5, border borderColor: UIColor = .white, width: CGFloat = 0, background backgroundColor: UIColor = .white, alpha: CGFloat = 1) {
         self.layer.cornerRadius = radius
         self.layer.borderWidth = width
         self.layer.borderColor = borderColor.cgColor
         self.alpha = alpha
         self.layer.backgroundColor = backgroundColor.cgColor
-        
     }
+    */
     
-    func setBorder(_ radius: CGFloat = 5, border borderColor: UIColor = .white, width: CGFloat = 0, alpha: CGFloat = 1) {
+    func setBorder(_ radius: CGFloat = 5, border borderColor: UIColor = .clear, width: CGFloat = 0, alpha: CGFloat = 1) {
         self.layer.cornerRadius = radius
         self.layer.borderWidth = width
         self.layer.borderColor = borderColor.cgColor

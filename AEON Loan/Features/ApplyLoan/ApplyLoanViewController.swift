@@ -33,7 +33,7 @@ class ApplyLoanViewController: BaseViewController {
         //        let controller = LoanSubmissionResultViewController.instantiate(result: .success)
         //        navigationController?.pushViewController(controller, animated: true)
         
-        navigates(to: .loanResult(.success))
+        navigates(to: .loanResult(.failure))
     }
 }
 

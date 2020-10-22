@@ -11,7 +11,7 @@ target 'AEON Loan' do
   pod 'SideMenu'
   pod 'BCryptSwift'
   pod 'PhoneNumberKit', '~> 3.3'
-
+  pod 'RNCryptor', '~> 5.0'
   # Pods for AEON Loan
 
   target 'AEON LoanTests' do

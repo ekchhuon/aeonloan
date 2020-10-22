@@ -8,6 +8,7 @@ PODS:
   - PhoneNumberKit/PhoneNumberKitCore (3.3.1)
   - PhoneNumberKit/UIKit (3.3.1):
     - PhoneNumberKit/PhoneNumberKitCore
+  - RNCryptor (5.1.0)
   - SideMenu (6.4.9)
   - SwiftGen (6.3.0)
   - SwiftLint (0.40.0)
@@ -17,6 +18,7 @@ DEPENDENCIES:
   - BCryptSwift
   - IQKeyboardManagerSwift
   - PhoneNumberKit (~> 3.3)
+  - RNCryptor (~> 5.0)
   - SideMenu
   - SwiftGen
   - SwiftLint
@@ -27,6 +29,7 @@ SPEC REPOS:
     - BCryptSwift
     - IQKeyboardManagerSwift
     - PhoneNumberKit
+    - RNCryptor
     - SideMenu
     - SwiftGen
     - SwiftLint
@@ -36,10 +39,11 @@ SPEC CHECKSUMS:
   BCryptSwift: f69992ea5685f6714260842c2770688043b89ab2
   IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
   PhoneNumberKit: ff153d5e299f6da566cb73c6aa71e354933b2932
+  RNCryptor: a369134686cd2ad391323cc856b62e591193ba79
   SideMenu: 8ef57a3cfc024a2d3fc1c036c7fe98537baec9e0
   SwiftGen: 3d5024a47ea79e408cded20763d7a17d18a4548c
   SwiftLint: 4154893c73a4c52d6240195507eb7a3e3c64087e
 
-PODFILE CHECKSUM: 4ba85bbacdb2ae7d4062298b14052076d9c6bf4b
+PODFILE CHECKSUM: e1fd0ad619fd1b3ac0606ed27fbe1b10ef97e741
 
 COCOAPODS: 1.9.3

@@ -136,7 +136,7 @@ class ApplicantInfoViewController: BaseViewController {
     
     // MARK: Outlet Action
     @IBAction func submitButtonTapped(_ sender: Any) {
-        navigates(to: .creditRejected(.failure))
+        navigates(to: .creditRejected(.success))
     }
 }
 

@@ -215,13 +215,14 @@ extension HomeViewController{
         menuButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         let menu = UIBarButtonItem(customView: menuButton)
         
+        /*
         let userButton : UIButton = UIButton.init(type: .custom)
         userButton.setImage(userIcon, for: .normal)
         userButton.addTarget(self, action: #selector(handleClick), for: .touchUpInside)
         userButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         let user = UIBarButtonItem(customView: userButton)
-        
-        navigationItem.setRightBarButtonItems([menu, notification, user], animated: false)
+        */
+        navigationItem.setRightBarButtonItems([menu, notification], animated: false)
         navigationItem.leftBarButtonItems = [banner]
     }
     

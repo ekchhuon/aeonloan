@@ -27,36 +27,19 @@ class LoginViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         forgotPassword.text = NSLocalizedString("Forgot Password or passowrd?", comment: "")
-        
         setupView()
         bind()
         setup(title: "Login")
-        
-        startTouchID()
-        
+        // startTouchID()
     }
     
     func startTouchID() {
-      // 1
       touchMe.authenticateUser() { [weak self] (status, message) in
-        // 2
         if let message = message {
-          // if the completion is not nil show an alert
-//          let alertView = UIAlertController(title: "Error",
-//                                            message: message,
-//                                            preferredStyle: .alert)
-//          let okAction = UIAlertAction(title: "Darn!", style: .default)
-//          alertView.addAction(okAction)
-//          self?.present(alertView, animated: true)
             self?.showAlert(message: message)
         } else {
-          // 3
-//          self?.performSegue(withIdentifier: "dismissLogin", sender: self)
-            
             self?.navigates(to: .home(.push(subtype: .fromLeft)))
-            
         }
       }
     }
@@ -71,18 +54,11 @@ class LoginViewController: BaseViewController {
         }
         
         viewModel.token.bind { (token) in
-//            self.showAlert(message: token)
+            // self.showAlert(message: token)
         }
     }
     
     @IBAction func loginTapped(_ sender: Any) {
-        
-//        guard let phone = usernameTextField.text, phone.isPhone else {
-//            showAlert(message: "not digit/invalid")
-//            return
-//        }
-//        showAlert(message: "is digit/valid \(phone)")
-
         validate()
     }
     
@@ -100,13 +76,6 @@ class LoginViewController: BaseViewController {
     
     @IBOutlet weak var forgotPassword: UILabel!
     
-    
-    
-    func navigateToHome() {
-//        let login = HomeView.instantiate()
-//        let controller = NavigationController.blue(with: login)
-//        self.present(login, animated: true, completion: {})
-    }
     
     private func setupView(){
         setup(title: "Login".localized)
@@ -137,10 +106,11 @@ class LoginViewController: BaseViewController {
     
     func fetch(_ data: LoginDataTest) {
         
-        showAlert(message: "Success")
+//        showAlert(message: "Success")
+        navigates(to: .home(.push(subtype: .fromRight)))
         
-//         viewModel.login(username: usernameTextField.text ?? "", password: passwordTextField.text ?? "")
-//        showAlert(title: "Success", message: "Hello World", buttonTitle: "Try again")
+        // viewModel.login(username: usernameTextField.text ?? "", password: passwordTextField.text ?? "")
+        // showAlert(title: "Success", message: "Hello World", buttonTitle: "Try again")
     }
 }
 

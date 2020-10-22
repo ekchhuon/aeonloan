@@ -5,6 +5,8 @@
 //  Created by aeon on 8/25/20.
 //
 
+
+
 import UIKit
 
 class LaunchView: UIViewController {
@@ -18,7 +20,10 @@ class LaunchView: UIViewController {
     override func viewDidLoad() {
         
         DispatchQueue.main.asyncAfter(deadline: .now()) {
-            self.navigates(to: .home(.push(subtype: .fromRight)))
+//            self.navigates(to: .home(.push(subtype: .fromRight)))
+            
+//            self.navigates(to: .login)
+            self.navigates(to: .language)
         }
         
         
@@ -67,8 +72,10 @@ class LaunchView: UIViewController {
         
         //        navigateToLogin()
         //        navigateToHome()
-        navigates(to: .home(.push(subtype: .fromRight)))
+//        navigates(to: .home(.push(subtype: .fromRight)))
 //        navigates(to: .language)
+        
+        navigates(to: .login)
         
     }
     
