@@ -6,7 +6,9 @@
 //
 
 import Foundation
+
 public class CalculatorViewModel {
+
     let defaults = "Loading..."
     let user: Box<User?> = Box(nil)
     let username = Box("")
@@ -16,5 +18,7 @@ public class CalculatorViewModel {
     init() {
         
     }
-    
+
 }
+
+

@@ -25,6 +25,8 @@
 		3E14F10D253EDE610066F0AB /* FirstSegmentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E14F10B253EDE610066F0AB /* FirstSegmentViewController.xib */; };
 		3E14F110253EDE780066F0AB /* SecondSegmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E14F10E253EDE780066F0AB /* SecondSegmentViewController.swift */; };
 		3E14F111253EDE780066F0AB /* SecondSegmentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E14F10F253EDE780066F0AB /* SecondSegmentViewController.xib */; };
+		3E197BA12546E52100F106B2 /* Double + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E197BA02546E52100F106B2 /* Double + Extension.swift */; };
+		3E197BA32546EA4100F106B2 /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E197BA22546EA4100F106B2 /* Calculator.swift */; };
 		3E23674824F617C3003FD6D4 /* Date+DayAndTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E23674724F617C3003FD6D4 /* Date+DayAndTime.swift */; };
 		3E23674A24F617ED003FD6D4 /* TimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E23674924F617ED003FD6D4 /* TimeInterval.swift */; };
 		3E23674C24F6184C003FD6D4 /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E23674B24F6184C003FD6D4 /* UIDevice.swift */; };
@@ -182,6 +184,8 @@
 		3E14F10B253EDE610066F0AB /* FirstSegmentViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FirstSegmentViewController.xib; sourceTree = "<group>"; };
 		3E14F10E253EDE780066F0AB /* SecondSegmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondSegmentViewController.swift; sourceTree = "<group>"; };
 		3E14F10F253EDE780066F0AB /* SecondSegmentViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SecondSegmentViewController.xib; sourceTree = "<group>"; };
+		3E197BA02546E52100F106B2 /* Double + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double + Extension.swift"; sourceTree = "<group>"; };
+		3E197BA22546EA4100F106B2 /* Calculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
 		3E23674724F617C3003FD6D4 /* Date+DayAndTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+DayAndTime.swift"; sourceTree = "<group>"; };
 		3E23674924F617ED003FD6D4 /* TimeInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeInterval.swift; sourceTree = "<group>"; };
 		3E23674B24F6184C003FD6D4 /* UIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
@@ -452,6 +456,7 @@
 				3E2AFBC925258E640090A17D /* Validator.swift */,
 				3E50C755252EB4800051D809 /* BCrypt.swift */,
 				3ED6A17A2541971C005E7DD7 /* Encryption.swift */,
+				3E197BA22546EA4100F106B2 /* Calculator.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -473,6 +478,7 @@
 				3E05D582252B2C84003C5432 /* NSString + Extension.swift */,
 				3E50C757253007B30051D809 /* NSInteger + Extension */,
 				3ED6A178254179D0005E7DD7 /* Encode + Decode.swift */,
+				3E197BA02546E52100F106B2 /* Double + Extension.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -1231,10 +1237,12 @@
 				3E3CABA82510D56500EAF826 /* PaymentDetailViewController.swift in Sources */,
 				3E380778253E8DC50048AAB3 /* TouchIDAuth.swift in Sources */,
 				3E4816292526EA110010966A /* RegisterViewModel.swift in Sources */,
+				3E197BA12546E52100F106B2 /* Double + Extension.swift in Sources */,
 				3E23676724F64E99003FD6D4 /* LanuchViewController.swift in Sources */,
 				3E834E602509016400D9E700 /* SideMenuViewController.swift in Sources */,
 				3E14F10C253EDE610066F0AB /* FirstSegmentViewController.swift in Sources */,
 				3E80026A250B881700503267 /* ApplyLoanViewModel.swift in Sources */,
+				3E197BA32546EA4100F106B2 /* Calculator.swift in Sources */,
 				3E50C759253007C90051D809 /* HttpStatusCode.swift in Sources */,
 				3ED2C51E251AF8C0007B0B9A /* UIViewController.swift in Sources */,
 				3ED6A179254179D0005E7DD7 /* Encode + Decode.swift in Sources */,
