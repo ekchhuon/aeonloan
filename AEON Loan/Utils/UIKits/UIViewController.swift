@@ -39,17 +39,23 @@ extension UIViewController {
             view.window?.setRootViewController(selectLanguage)
         case .login:
             
-            let home = LoginViewController.instantiate()
+            /*
+            let login = LoginViewController.instantiate()
             // let controller = NavigationController.main(with: home)
             self.view.window?.setRootViewController(home, options: .init(type: .push(subtype: .fromRight)))
-            
-            // let login = LoginViewController.instantiate()
-            // navigationController?.pushViewController(login, animated: true)
+            */
+             let controller = LoginViewController.instantiate()
+             navigationController?.pushViewController(controller, animated: true)
         case .register:
+            /*
             let register = RegisterViewController.instantiate()
-//            navigationController?.pushViewController(register, animated: true)
+             // navigationController?.pushViewController(register, animated: true)
             
             self.view.window?.setRootViewController(register, options: .init(type: .push(subtype: .fromRight)))
+            */
+            
+            let controller = RegisterViewController.instantiate()
+            navigationController?.pushViewController(controller, animated: true)
             
         case .notification:
             let notification = NotificationViewController.instantiate()

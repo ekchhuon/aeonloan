@@ -107,7 +107,7 @@ class LoginViewController: BaseViewController {
     func fetch(_ data: LoginDataTest) {
         
 //        showAlert(message: "Success")
-        navigates(to: .home(.push(subtype: .fromRight)))
+        navigates(to: .home(.push(subtype: .fromLeft)))
         
         // viewModel.login(username: usernameTextField.text ?? "", password: passwordTextField.text ?? "")
         // showAlert(title: "Success", message: "Hello World", buttonTitle: "Try again")

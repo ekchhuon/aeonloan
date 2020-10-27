@@ -42,13 +42,11 @@ class CalculatorViewController: BaseViewController, UITextFieldDelegate {
         select(currency: currency)
         setup(title: "Loan Calculation".localized)
         
-        textFields.forEach { $0.delegate = self }
-        /*
-        if textFields[2].text!.isEmpty{
-            calculateButtons[0].isUserInteractionEnabled = false
-            calculateButtons[0].backgroundColor = .gray
+        textFields.forEach {
+            $0.delegate = self
+            $0.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+            disableCalculateButtons(disabled: $0.text!.isEmpty)
         }
-        */
     }
     
     fileprivate func setupView() {
@@ -82,7 +80,6 @@ class CalculatorViewController: BaseViewController, UITextFieldDelegate {
         currencyButtons.forEach {
             $0.backgroundColor = .white
             $0.setTitleColor(.brandPurple, for: .normal)
-            // $0.dropShadow()
             $0.setBorder()
         }
         currencyButtons[currency.index].setTitleColor(.white, for: .normal)
@@ -95,12 +92,28 @@ class CalculatorViewController: BaseViewController, UITextFieldDelegate {
         fieldTitleLabels[3].text = flexibleTitles.reversed()[segment.index].localized
     }
     
-    fileprivate func validate() {
+    fileprivate func disableCalculateButtons(disabled: Bool) {
+        calculateButtons.forEach {
+            $0.isUserInteractionEnabled = !disabled
+            $0.alpha = disabled ? 0.5 : 1
+        }
+    }
+    
+    fileprivate func updateFieldValue() {
         calculator.amount = Double(textFields[0].text!)!
         calculator.rate = Double(textFields[1].text!)!
         calculator.term = Double(textFields[2].text!)!
     }
     
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        let containEmpty = textFields.contains { $0.text!.isEmpty } // true if every field has value
+        disableCalculateButtons(disabled: containEmpty)
+        containEmpty ? nil : updateFieldValue()
+    }
+}
+
+// MARK: - Outlet action
+extension CalculatorViewController {
     @IBAction func firstSegmentButtonTapped(_ sender: Any) {
         select(segment: .first)
     }
@@ -109,13 +122,11 @@ class CalculatorViewController: BaseViewController, UITextFieldDelegate {
     }
     
     @IBAction func flateRateButtonTapped(_ sender: Any) {
-        validate()
         let result = calculator.calculate(.repayment(.flatRate))
         calculationResultLabel.text = "\(currency.symbol) " + result.format(for: currency)
     }
     
     @IBAction func effectiveRateButtonTapped(_ sender: Any) {
-        validate()
         let result = calculator.calculate(.repayment(.effectiveRate))
         calculationResultLabel.text = "\(currency.symbol) " + result.format(for: currency)
     }
@@ -127,32 +138,6 @@ class CalculatorViewController: BaseViewController, UITextFieldDelegate {
     @IBAction func KHRButtonTapped(_ sender: Any) {
         select(currency: .khr)
     }
-    
-    
-    func repaymentEffective(amount: Double, rate: Double, term: Double) -> Double {
-        return amount * ( rate.percent / (1 - (1 + rate.percent).expo(-term)))
-    }
-    
 }
-
-extension CalculatorViewController {
-    /*
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        
-        let text = (textField.text! as NSString).replacingCharacters(in: range, with: string)
-        
-        if !textFields[2].text!.isEmpty{
-            calculateButtons[0].isUserInteractionEnabled = true
-            calculateButtons[0].backgroundColor = .brandPurple
-        } else {
-            calculateButtons[0].isUserInteractionEnabled = false
-            calculateButtons[0].backgroundColor = .gray
-        }
-        return true
-    }
-    */
-}
-
-
 
 
