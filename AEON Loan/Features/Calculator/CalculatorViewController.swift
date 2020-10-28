@@ -7,6 +7,24 @@
 
 import UIKit
 
+enum Housing {
+    case owned
+    case rental
+    var index: Int {
+        switch self {
+        case .owned: return 0
+        case .rental:return 1
+        }
+    }
+    
+    var rate: Double {
+        switch self {
+        case .owned: return 50.0.percent // 50%
+        case .rental:return 40.0.percent // 40%
+        }
+    }
+}
+
 extension CalculatorViewController {
     static func instantiate() -> CalculatorViewController {
         return CalculatorViewController()
@@ -23,30 +41,42 @@ class CalculatorViewController: BaseViewController, UITextFieldDelegate {
             return self.rawValue
         }
     }
-    @IBOutlet var segmentButtons: [UIButton]!
-    @IBOutlet var calculateButtons: [UIButton]!
+
     @IBOutlet weak var containerView: UIView!
-    @IBOutlet var textFields: [UITextField]!
-    @IBOutlet var fieldTitleLabels: [UILabel]!
-    @IBOutlet var currencyButtons: [UIButton]!
-    @IBOutlet weak var inputLabel: UILabel!
+    //Outlets: Label
+    @IBOutlet weak var resultTitleLabel: UILabel!
     @IBOutlet weak var resultLabel: UILabel!
-    @IBOutlet weak var calculationResultLabel: UILabel!
+    //Outlets: TextField Outletes
+    @IBOutlet weak var incomeTextField: UITextField!
+    @IBOutlet weak var otherLoanTextField: UITextField!
+    @IBOutlet weak var financeAmountTextField: UITextField!
+    @IBOutlet weak var interestRateTextField: UITextField!
+    @IBOutlet weak var loanTermTextField: UITextField!
+    //Outlets: Button & Button Group
+    @IBOutlet var segmentButtons: [UIButton]!
+    @IBOutlet var currencyButtons: [UIButton]!
+    @IBOutlet var housingTypeButtons: [UIButton]!
+    @IBOutlet var calculateButtons: [UIButton]!
+
+    @IBOutlet var loanLimitAdditionalStackViews: [UIStackView]!
+    
+    @IBOutlet weak var financeAmountStackView: UIStackView!
+    
+    var loanLimitTextFields: [UITextField]!
+    var repaymentTextFields: [UITextField]!
+    var allTextFields: [UITextField]!
+    
     
     var currency: Currency = .usd
     var segment: Segment = .first
+    var housing: Housing = .owned
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
         select(segment: segment)
         select(currency: currency)
+        select(housing: housing)
         setup(title: "Loan Calculation".localized)
-        
-        textFields.forEach {
-            $0.delegate = self
-            $0.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
-            disableCalculateButtons(disabled: $0.text!.isEmpty)
-        }
     }
     
     fileprivate func setupView() {
@@ -56,8 +86,17 @@ class CalculatorViewController: BaseViewController, UITextFieldDelegate {
             $0.setBorder()
             $0.backgroundColor = .brandPurple
         }
-        textFields.forEach { $0.setBorder(border: .brandPurple, width: 1) }
-        [inputLabel, resultLabel].forEach { $0.textColor = .brandYellow }
+
+        loanLimitTextFields = [incomeTextField, otherLoanTextField, interestRateTextField, loanTermTextField]
+        repaymentTextFields = [financeAmountTextField, interestRateTextField, loanTermTextField]
+        allTextFields = loanLimitTextFields + repaymentTextFields
+        
+        allTextFields.forEach {
+            $0.delegate = self
+            $0.setBorder(border: .brandPurple, width: 1)
+            $0.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+            disableCalculateButtons(disabled: $0.text!.isEmpty)
+        }
     }
     
     // switch segment
@@ -71,7 +110,7 @@ class CalculatorViewController: BaseViewController, UITextFieldDelegate {
         }
         segmentButtons[segment.index].setTitleColor(.brandPurple, for: .normal)
         segmentButtons[segment.index].backgroundColor = .white
-        changeView(for: segment)
+        updateView(for: segment)
     }
     
     // switch currency
@@ -86,10 +125,30 @@ class CalculatorViewController: BaseViewController, UITextFieldDelegate {
         currencyButtons[currency.index].backgroundColor = .brandPurple
     }
     
-    fileprivate func changeView(for segment: Segment) {
-        let flexibleTitles = ["Finance Amount", "Re-Payment"]
-        fieldTitleLabels[0].text = flexibleTitles[segment.index].localized
-        fieldTitleLabels[3].text = flexibleTitles.reversed()[segment.index].localized
+    fileprivate func select(housing: Housing) {
+        self.housing = housing
+        housingTypeButtons.forEach {
+            $0.backgroundColor = .white
+            $0.setTitleColor(.brandPurple, for: .normal)
+            $0.setBorder(border: .brandPurple, width: 1)
+            $0.dropShadow()
+        }
+        housingTypeButtons[housing.index].setTitleColor(.white, for: .normal)
+        housingTypeButtons[housing.index].backgroundColor = .brandPurple
+        updateFieldValue()
+    }
+    
+    fileprivate func updateView(for segment: Segment) {
+        let resultTitles = ["Re-Payment", "Finance Amount"]
+        resultLabel.reset()
+        resultTitleLabel.text = resultTitles[segment.index].localized
+        loanLimitAdditionalStackViews.forEach {
+            $0.isHidden = segment == .first
+        }
+        financeAmountStackView.isHidden = segment == .second
+        let fields = segment == .first ? repaymentTextFields : loanLimitTextFields
+        disableCalculateButtons(disabled: !(fields?.hasValue ?? false))
+        
     }
     
     fileprivate func disableCalculateButtons(disabled: Bool) {
@@ -100,15 +159,21 @@ class CalculatorViewController: BaseViewController, UITextFieldDelegate {
     }
     
     fileprivate func updateFieldValue() {
-        calculator.amount = Double(textFields[0].text!)!
-        calculator.rate = Double(textFields[1].text!)!
-        calculator.term = Double(textFields[2].text!)!
+        calculator.income = incomeTextField.text?.asDouble ?? 0.0
+        calculator.otherLoan = otherLoanTextField.text?.asDouble ?? 0.0
+        calculator.amount = financeAmountTextField.text?.asDouble ?? 0.0
+        calculator.rate = interestRateTextField.text?.asDouble ?? 0.0
+        calculator.term = loanTermTextField.text?.asDouble ?? 0.0
+        calculator.housing = housing
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
-        let containEmpty = textFields.contains { $0.text!.isEmpty } // true if every field has value
-        disableCalculateButtons(disabled: containEmpty)
-        containEmpty ? nil : updateFieldValue()
+        let fields = segment == .first ? repaymentTextFields : loanLimitTextFields
+        disableCalculateButtons(disabled: !(fields?.hasValue ?? false))
+        
+        textField.text?.prefix(4)
+        
+        updateFieldValue()
     }
 }
 
@@ -120,24 +185,51 @@ extension CalculatorViewController {
     @IBAction func secondSegmentButtonTapped(_ sender: Any) {
         select(segment: .second)
     }
-    
-    @IBAction func flateRateButtonTapped(_ sender: Any) {
-        let result = calculator.calculate(.repayment(.flatRate))
-        calculationResultLabel.text = "\(currency.symbol) " + result.format(for: currency)
-    }
-    
-    @IBAction func effectiveRateButtonTapped(_ sender: Any) {
-        let result = calculator.calculate(.repayment(.effectiveRate))
-        calculationResultLabel.text = "\(currency.symbol) " + result.format(for: currency)
-    }
-    
     @IBAction func USDButtonTapped(_ sender: Any) {
         select(currency: .usd)
     }
-    
     @IBAction func KHRButtonTapped(_ sender: Any) {
         select(currency: .khr)
+    }
+    @IBAction func ownHouseButtonTapped(_ sender: Any) {
+        select(housing: .owned)
+    }
+    @IBAction func rentalHouseButtonTapped(_ sender: Any) {
+        select(housing: .rental)
+    }
+    @IBAction func flateRateButtonTapped(_ sender: Any) {
+        let repayResult = calculator.calculate(.repayment(.flatRate))
+        let loanResult = calculator.calculate(.loanLimit(.flatRate))
+        let result = segment == .first ? repayResult : loanResult
+        resultLabel.text = "\(currency.symbol) " + result.format(for: currency)
+        calculator.value()
+    }
+    @IBAction func effectiveRateButtonTapped(_ sender: Any) {
+        let repayResult = calculator.calculate(.repayment(.effectiveRate))
+        let loanResult = calculator.calculate(.loanLimit(.effectiveRate))
+        let result = segment == .first ? repayResult : loanResult
+        resultLabel.text = "\(currency.symbol) " + result.format(for: currency)
+        
+        calculator.value()
     }
 }
 
 
+extension String {
+    var asDouble: Double {
+        return Double(self) ?? 0.0
+    }
+}
+
+extension Array where Element == UITextField {
+    /// ensure all fields have value
+    var hasValue: Bool {
+        return !(self.contains{ $0.text?.isEmpty ?? false })
+    }
+}
+
+extension UILabel {
+    func reset() {
+        self.text = ""
+    }
+}

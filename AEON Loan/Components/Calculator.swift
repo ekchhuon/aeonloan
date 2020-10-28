@@ -17,31 +17,47 @@ class Calculator {
         case flatRate
         case effectiveRate
     }
+    var income: Double = 0
+    var otherLoan: Double = 0
     var amount: Double = 0
     var rate: Double = 0
     var term: Double = 0
+    var housing: Housing = .owned
     
     func calculate(_ serviceType: ServiceType) -> Double {
         switch serviceType {
         case .repayment(.flatRate):
-            return repaymentFlatRate(amount: amount, rate: rate, term: term)
+            return repaymentFlatRate()
         case .repayment(.effectiveRate):
-            return repaymentEffectiveRate(amount: amount, rate: rate, term: term)
-        default:
-            debugPrint("Incorrect Calculation")
-            return 0
+            return repaymentEffectiveRate()
+        case .loanLimit(.flatRate):
+            return loanLimitFlatRate()
+        case .loanLimit(.effectiveRate):
+            return loandLimitEffectiveRate()
         }
+    }
+    
+    func value() {
+        print("value:", income, otherLoan, amount, rate.percent, term, housing.rate)
     }
 }
 
 extension Calculator {
     //MARK: - Formular
     
-    private func repaymentFlatRate(amount: Double, rate: Double, term: Double) -> Double {
+    private func repaymentFlatRate() -> Double {
         return amount * (((rate.percent * term) + 1)/term)
     }
     
-    private func repaymentEffectiveRate(amount: Double, rate: Double, term: Double) -> Double {
+    private func repaymentEffectiveRate() -> Double {
         return amount * ( rate.percent / (1 - (1 + rate.percent).expo(-term)))
+    }
+    
+    private func loanLimitFlatRate() -> Double {
+        return term * ((income * housing.rate) - otherLoan) / ((rate.percent * term) + 1)
+    }
+    
+    private func loandLimitEffectiveRate() -> Double {
+        return (((income * housing.rate) - otherLoan) * (1 - (1+rate.percent).expo(-term)))/rate.percent
     }
 }
