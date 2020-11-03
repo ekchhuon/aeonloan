@@ -46,6 +46,7 @@ class CalculatorViewController: BaseViewController, UITextFieldDelegate {
     //Outlets: Label
     @IBOutlet weak var resultTitleLabel: UILabel!
     @IBOutlet weak var resultLabel: UILabel!
+    @IBOutlet var currencyLabels: [UILabel]!
     //Outlets: TextField Outletes
     @IBOutlet weak var incomeTextField: UITextField!
     @IBOutlet weak var otherLoanTextField: UITextField!
@@ -57,10 +58,14 @@ class CalculatorViewController: BaseViewController, UITextFieldDelegate {
     @IBOutlet var currencyButtons: [UIButton]!
     @IBOutlet var housingTypeButtons: [UIButton]!
     @IBOutlet var calculateButtons: [UIButton]!
-
-    @IBOutlet var loanLimitAdditionalStackViews: [UIStackView]!
-    
+    //Outlets: stackview
+    @IBOutlet weak var incomeStackView: UIStackView!
+    @IBOutlet weak var otherLoanStackView: UIStackView!
+    @IBOutlet weak var housingTypeStackView: UIStackView!
     @IBOutlet weak var financeAmountStackView: UIStackView!
+    
+    @IBOutlet var roundableViews: [UIView]!
+    
     
     var loanLimitTextFields: [UITextField]!
     var repaymentTextFields: [UITextField]!
@@ -93,9 +98,12 @@ class CalculatorViewController: BaseViewController, UITextFieldDelegate {
         
         allTextFields.forEach {
             $0.delegate = self
-            $0.setBorder(border: .brandPurple, width: 1)
             $0.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
             disableCalculateButtons(disabled: $0.text!.isEmpty)
+        }
+        
+        roundableViews.forEach {
+            $0.setBorder(border: .brandPurple, width: 1)
         }
     }
     
@@ -121,6 +129,12 @@ class CalculatorViewController: BaseViewController, UITextFieldDelegate {
             $0.setTitleColor(.brandPurple, for: .normal)
             $0.setBorder()
         }
+        
+        currencyLabels.forEach {
+            $0.text = "  \(currency.symbol) "
+            $0.textColor = .gray
+        }
+        
         currencyButtons[currency.index].setTitleColor(.white, for: .normal)
         currencyButtons[currency.index].backgroundColor = .brandPurple
     }
@@ -142,7 +156,7 @@ class CalculatorViewController: BaseViewController, UITextFieldDelegate {
         let resultTitles = ["Re-Payment", "Finance Amount"]
         resultLabel.reset()
         resultTitleLabel.text = resultTitles[segment.index].localized
-        loanLimitAdditionalStackViews.forEach {
+        [incomeStackView, otherLoanStackView, housingTypeStackView].forEach {
             $0.isHidden = segment == .first
         }
         financeAmountStackView.isHidden = segment == .second
@@ -170,9 +184,6 @@ class CalculatorViewController: BaseViewController, UITextFieldDelegate {
     @objc func textFieldDidChange(_ textField: UITextField) {
         let fields = segment == .first ? repaymentTextFields : loanLimitTextFields
         disableCalculateButtons(disabled: !(fields?.hasValue ?? false))
-        
-        textField.text?.prefix(4)
-        
         updateFieldValue()
     }
 }
@@ -233,3 +244,4 @@ extension UILabel {
         self.text = ""
     }
 }
+

@@ -15,7 +15,6 @@ public class HomeViewModel {
     let password = Box("")
     let loading = Box(false)
     let menus : Box<[Menu]> = Box([Menu]())
-    
 
     init() {
         setupMenu()
@@ -23,7 +22,7 @@ public class HomeViewModel {
     
     func setupMenu() {
         var menus: [Menu] = [Menu]()
-        let names: [String] = ["credit.fill", "docs.fill", "loan", "promotion", "calendar", "calculator.fill"]
+        let names: [String] = ["menu1", "menu2", "menu3", "menu4", "menu5", "menu6"]
         let titles: [String] = ["Check Credit", "Apply Loan/Installment", "AEON SPB Product", "Promotion", "Check Your Payment Schedule", "Loan Calculation"]
         for (index, _) in names.enumerated() {
             let menu = Menu(icon: UIImage(named: names[index]) ?? UIImage(), title: NSLocalizedString(titles[index], comment: ""))

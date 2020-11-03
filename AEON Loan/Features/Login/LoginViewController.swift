@@ -105,12 +105,14 @@ class LoginViewController: BaseViewController {
     }
     
     func fetch(_ data: LoginDataTest) {
-        
-//        showAlert(message: "Success")
-        navigates(to: .home(.push(subtype: .fromLeft)))
-        
-        // viewModel.login(username: usernameTextField.text ?? "", password: passwordTextField.text ?? "")
-        // showAlert(title: "Success", message: "Hello World", buttonTitle: "Try again")
+        // check if current controller is part of UINavigatinController!
+        if let stack = self.navigationController?.viewControllers {
+          for vc in stack where vc.isKind(of: LoginViewController) {
+            navigates(to: .home(.push(subtype: .fromLeft)))
+          }
+        } else {
+            navigates(to: .home(.push(subtype: .fromRight)))
+        }
     }
 }
 
@@ -157,3 +159,4 @@ extension String {
         return password.evaluate(with: self)
     }
 }
+

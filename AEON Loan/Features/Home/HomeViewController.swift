@@ -222,8 +222,11 @@ extension HomeViewController{
         userButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         let user = UIBarButtonItem(customView: userButton)
         
-        navigationItem.setRightBarButtonItems([menu, notification, user], animated: false)
-        navigationItem.leftBarButtonItems = [banner]
+        let spacer = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: self, action: nil)
+          spacer.width = 15
+        
+        navigationItem.setRightBarButtonItems([notification,spacer, user], animated: false)
+        navigationItem.setLeftBarButtonItems([menu, banner], animated: false) //leftBarButtonItems = [banner]
     }
     
     private func customView() {
@@ -342,8 +345,9 @@ extension HomeViewController {
     @objc
     private func showSideMenu() {
         let menu = SideMenuNavigationController(rootViewController: SideMenuViewController.instantiate())
-        menu.leftSide = false
-        menu.navigationBar.barTintColor = .brandPurple
+        menu.leftSide = true
+        menu.isNavigationBarHidden = true
+//        menu.navigationBar.barTintColor = .brandPurple
         menu.settings = sideMenuSetting()
         present(menu, animated: true, completion: nil)
     }

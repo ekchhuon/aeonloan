@@ -105,12 +105,12 @@ extension UIViewController {
     }
     
     //alert with title completion & style. 
-    func showALertWithTitleAndMessages(title: String, message: String, dismissButtonTitle: String, okButtonTitle: String, style: UIAlertController.Style = .alert, dismissAction:@escaping ()-> Void, okAction:@escaping ()-> Void) {
+    func showALertWithOption(title: String, message: String, dismissButtonTitle: String, okButtonTitle: String, style: UIAlertController.Style = .alert, dismissActionStyle: UIAlertAction.Style = .default, okActionStyle: UIAlertAction.Style = .default, dismissAction:@escaping ()-> Void, okAction:@escaping ()-> Void) {
         let alert = UIAlertController(title:title, message:message, preferredStyle: style)
-        let dismissAction = UIAlertAction(title: dismissButtonTitle, style: .default) { (action) in
+        let dismissAction = UIAlertAction(title: dismissButtonTitle, style: dismissActionStyle) { (action) in
             dismissAction()
         }
-        let okAction = UIAlertAction(title: okButtonTitle, style: .default) { (action) in
+        let okAction = UIAlertAction(title: okButtonTitle, style: okActionStyle) { (action) in
             okAction()
         }
         alert.addAction(dismissAction)

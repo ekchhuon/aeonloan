@@ -125,6 +125,8 @@
 		3E834E602509016400D9E700 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E834E5E2509016400D9E700 /* SideMenuViewController.swift */; };
 		3E834E612509016400D9E700 /* SideMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E834E5F2509016400D9E700 /* SideMenuViewController.xib */; };
 		3EB04856252DB27600A395E2 /* BuildConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB04855252DB27600A395E2 /* BuildConfig.swift */; };
+		3EB505BF25513E6B0033E82A /* SideMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB505BD25513E6B0033E82A /* SideMenuTableViewCell.swift */; };
+		3EB505C025513E6B0033E82A /* SideMenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EB505BE25513E6B0033E82A /* SideMenuTableViewCell.xib */; };
 		3ED2C51E251AF8C0007B0B9A /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED2C51D251AF8C0007B0B9A /* UIViewController.swift */; };
 		3ED2C521251B3420007B0B9A /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED2C51F251B3420007B0B9A /* PhotoViewController.swift */; };
 		3ED2C522251B3420007B0B9A /* PhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ED2C520251B3420007B0B9A /* PhotoViewController.xib */; };
@@ -290,6 +292,8 @@
 		3E834E5E2509016400D9E700 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		3E834E5F2509016400D9E700 /* SideMenuViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SideMenuViewController.xib; sourceTree = "<group>"; };
 		3EB04855252DB27600A395E2 /* BuildConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildConfig.swift; sourceTree = "<group>"; };
+		3EB505BD25513E6B0033E82A /* SideMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewCell.swift; sourceTree = "<group>"; };
+		3EB505BE25513E6B0033E82A /* SideMenuTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SideMenuTableViewCell.xib; sourceTree = "<group>"; };
 		3ED2C51D251AF8C0007B0B9A /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		3ED2C51F251B3420007B0B9A /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		3ED2C520251B3420007B0B9A /* PhotoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoViewController.xib; sourceTree = "<group>"; };
@@ -797,6 +801,7 @@
 			children = (
 				3E834E5E2509016400D9E700 /* SideMenuViewController.swift */,
 				3E834E5F2509016400D9E700 /* SideMenuViewController.xib */,
+				3EB505C125513E770033E82A /* Cell */,
 			);
 			path = SideMenu;
 			sourceTree = "<group>";
@@ -816,6 +821,15 @@
 				3E47FF7E252C4F7E00A73E61 /* Localizable.strings */,
 			);
 			path = Localization;
+			sourceTree = "<group>";
+		};
+		3EB505C125513E770033E82A /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				3EB505BD25513E6B0033E82A /* SideMenuTableViewCell.swift */,
+				3EB505BE25513E6B0033E82A /* SideMenuTableViewCell.xib */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		3ED2C523251B3492007B0B9A /* New Group */ = {
@@ -1058,6 +1072,7 @@
 				3EF9195E24F5008200E77958 /* Assets.xcassets in Resources */,
 				3E5641E32507449500716D8B /* HomeCollectionViewCell.xib in Resources */,
 				3E47FF7C252C4F7E00A73E61 /* Localizable.strings in Resources */,
+				3EB505C025513E6B0033E82A /* SideMenuTableViewCell.xib in Resources */,
 				3E3CABA92510D56500EAF826 /* PaymentDetailViewController.xib in Resources */,
 				3E2AFBC825246A640090A17D /* ScanViewController.xib in Resources */,
 				3E14F105253ECF0C0066F0AB /* CalculatorViewController.xib in Resources */,
@@ -1247,6 +1262,7 @@
 				3ED2C51E251AF8C0007B0B9A /* UIViewController.swift in Sources */,
 				3ED6A179254179D0005E7DD7 /* Encode + Decode.swift in Sources */,
 				3E834E5125087F2E00D9E700 /* SliderCollectionViewCell.swift in Sources */,
+				3EB505BF25513E6B0033E82A /* SideMenuTableViewCell.swift in Sources */,
 				3E62A2F7251A0DA40072CAB3 /* Enum.swift in Sources */,
 				3E62A2EF2519D2C40072CAB3 /* ApplicationAcceptedTableViewCell.swift in Sources */,
 				3E23676024F6431F003FD6D4 /* NavigationController.swift in Sources */,

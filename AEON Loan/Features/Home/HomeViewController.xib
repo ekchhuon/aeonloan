@@ -81,7 +81,7 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="JoD-o4-a3f">
                                             <rect key="frame" x="15" y="10" width="159.5" height="30"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location.fill" translatesAutoresizingMaskIntoConstraints="NO" id="pUY-LX-nKQ">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menu7" translatesAutoresizingMaskIntoConstraints="NO" id="pUY-LX-nKQ">
                                                     <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="pUY-LX-nKQ" secondAttribute="height" multiplier="1:1" id="bGk-o8-RRD"/>
@@ -117,7 +117,7 @@
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="VCT-FT-jGH">
                                             <rect key="frame" x="15" y="10" width="159.5" height="30"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="contactus" translatesAutoresizingMaskIntoConstraints="NO" id="x7z-Jc-0V2">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menu8" translatesAutoresizingMaskIntoConstraints="NO" id="x7z-Jc-0V2">
                                                     <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="x7z-Jc-0V2" secondAttribute="height" multiplier="1:1" id="t2O-jv-5nN"/>
@@ -184,8 +184,8 @@
         </view>
     </objects>
     <resources>
-        <image name="contactus" width="513" height="513"/>
-        <image name="location.fill" width="512.5" height="512.5"/>
+        <image name="menu7" width="129" height="185.5"/>
+        <image name="menu8" width="128" height="121.5"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
