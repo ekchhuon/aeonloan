@@ -222,8 +222,6 @@ class PhotoViewController: BaseViewController, AVCapturePhotoCaptureDelegate {
         capturedImageView.image = image
         print("Image size \(image?.getSizeIn(.megabyte)) mb")
     }
-    
-    
 }
 
 

@@ -26,6 +26,6 @@ class SelfieViewController: BaseViewController {
     @IBAction func next(_ sender: Any) {
 //        let controller = ApplicantInfoViewController.instantiate()
 //        navigationController?.pushViewController(controller, animated: true)
-        navigates(to: .applicantInfo)
+        navigates(to: .checkCredit(.form))
     }
 }

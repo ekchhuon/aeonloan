@@ -15,20 +15,21 @@ extension UIViewController {
         case let .loanResult(result):
             let controller = LoanSubmissionResultViewController.instantiate(result: result)
             navigationController?.pushViewController(controller, animated: true)
-        case .checkCredit:
-            let controller = TakePhotoViewController.instantiate()
+        case .checkCredit(.takePhoto):
+             let controller = TakePhotoViewController.instantiate()
+//            let controller = PhotoViewController.instantiate()
             navigationController?.pushViewController(controller, animated: true)
-        case .selfie:
+        case .checkCredit(.selfie):
             let controller = SelfieViewController.instantiate()
             navigationController?.pushViewController(controller, animated: true)
-        case .applicantInfo:
+        case .checkCredit(.form):
             let controller = ApplicantInfoViewController.instantiate()
             navigationController?.pushViewController(controller, animated: true)
-        case .creditAccepted:
+        case .checkCredit(.result(.accepted)):
             let controller = CreditAcceptedViewController.instantiate()
             navigationController?.pushViewController(controller, animated: true)
-        case let .creditRejected(result):
-            let controller = CreditRejectedViewController.instantiate(result: result)
+        case .checkCredit(.result(.rejected)):
+            let controller = CreditRejectedViewController.instantiate()
             navigationController?.pushViewController(controller, animated: true)
         case let .home(transition):
             let home = HomeViewController.instantiate()
@@ -66,23 +67,23 @@ extension UIViewController {
         case .applyLoan:
             let detailed = ApplyLoanViewController.instantiate()
             navigationController?.pushViewController(detailed, animated: true)
-        case .payment:
+        case .payment(.main):
             let controller = PaymentOptionViewController.instantiate()
+            navigationController?.pushViewController(controller, animated: true)
+        case .payment(.location):
+            let controller = PaymentLocationViewController.instantiate()
+            navigationController?.pushViewController(controller, animated: true)
+        case .payment(.condition):
+            let controller = PaymentConditionViewController.instantiate()
+            navigationController?.pushViewController(controller, animated: true)
+        case .payment(.schedule):
+            let controller = PaymentScheduleViewController.instantiate()
+            navigationController?.pushViewController(controller, animated: true)
+        case let .payment(.scheduleDetailed(data)):
+            let controller = PaymentDetailViewController.instantiate(item: data)
             navigationController?.pushViewController(controller, animated: true)
         case .calculator:
             let controller = CalculatorViewController.instantiate()
-            navigationController?.pushViewController(controller, animated: true)
-        case .paymentLocation:
-            let controller = PaymentLocationViewController.instantiate()
-            navigationController?.pushViewController(controller, animated: true)
-        case .paymentCondition:
-            let controller = PaymentConditionViewController.instantiate()
-            navigationController?.pushViewController(controller, animated: true)
-        case .paymentSchedule:
-            let controller = PaymentScheduleViewController.instantiate()
-            navigationController?.pushViewController(controller, animated: true)
-        case let .paymentScheduleDetail(data):
-            let controller = PaymentDetailViewController.instantiate(item: data)
             navigationController?.pushViewController(controller, animated: true)
         case .OTP:
             let controller = OTPViewController.instantiate()

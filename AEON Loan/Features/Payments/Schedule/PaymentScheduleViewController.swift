@@ -48,6 +48,6 @@ extension PaymentScheduleViewController: UITableViewDataSource, UITableViewDeleg
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        navigates(to: .paymentScheduleDetail(agreements[indexPath.row]))
+        navigates(to: .payment(.scheduleDetailed(agreements[indexPath.row])))
     }
 }

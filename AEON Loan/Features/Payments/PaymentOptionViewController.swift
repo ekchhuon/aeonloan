@@ -24,21 +24,18 @@ class PaymentOptionViewController: UIViewController {
         for (index, button) in buttons.enumerated() {
             button.setTitle(NSLocalizedString(buttonTitles[index], comment: ""), for: .normal)
         }
-        
-
-
     }
 
     @IBAction func locationButtonTapped(_ sender: Any) {
-        navigates(to: .paymentLocation)
+        navigates(to: .payment(.location))
     }
     
     @IBAction func conditionButtonTapped(_ sender: Any) {
-        navigates(to: .paymentCondition)
+        navigates(to: .payment(.condition))
     }
 
     @IBAction func ScheduleButtonTapped(_ sender: Any) {
-        navigates(to: .paymentSchedule)
+        navigates(to: .payment(.schedule))
     }
 
 }

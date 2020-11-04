@@ -77,3 +77,6 @@ struct WeatherbitData: Decodable {
   }
   
 }
+
+
+

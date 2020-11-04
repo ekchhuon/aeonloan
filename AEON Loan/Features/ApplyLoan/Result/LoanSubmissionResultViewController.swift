@@ -51,6 +51,6 @@ class LoanSubmissionResultViewController: UIViewController {
     }
     
     @IBAction func checkCreditButtonTapped(_ sender: Any) {
-        navigates(to: .checkCredit)
+        navigates(to: .checkCredit(.takePhoto))
     }
 }

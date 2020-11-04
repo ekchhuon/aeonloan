@@ -81,7 +81,7 @@ class TakePhotoViewController: BaseViewController, UINavigationControllerDelegat
     
     //MARK: - Next Tapped
     @IBAction func next(_ sender: Any) {
-        navigates(to: .selfie)
+        navigates(to: .checkCredit(.selfie))
 //        let controller = PhotoViewController.instantiate()
 //        navigationController?.pushViewController(controller, animated: true)
     }
