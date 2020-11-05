@@ -7,6 +7,8 @@
 
 import UIKit
 import AVFoundation
+import Vision
+import ImageIO
 
 extension PhotoViewController {
     static func instantiate() -> PhotoViewController {
@@ -32,7 +34,7 @@ class PhotoViewController: BaseViewController, AVCapturePhotoCaptureDelegate {
     var attributeViews = [UIView]()
     var images = [UIImage]()
     
-    lazy var myView: UIView = {
+    lazy var instructionView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .clear
@@ -77,9 +79,27 @@ class PhotoViewController: BaseViewController, AVCapturePhotoCaptureDelegate {
         return imgView
     }()
     
-//     var supportedInterfaceOrientations: UIInterfaceOrientationMask
-//     var prefersStatusBarHidden: Bool
+    // MARK: - Image Classification
     
+    /// - Tag: MLModelSetup
+    lazy var classificationRequest: VNCoreMLRequest = {
+        do {
+            /*
+             Use the Swift class `MobileNet` Core ML generates from the model.
+             To use a different Core ML classifier model, add it to the project
+             and replace `MobileNet` with that model's generated Swift class.
+             */
+            let model = try VNCoreMLModel(for: Resnet50().model)
+            
+            let request = VNCoreMLRequest(model: model, completionHandler: { [weak self] request, error in
+                self?.processClassifications(for: request, error: error)
+            })
+            request.imageCropAndScaleOption = .centerCrop
+            return request
+        } catch {
+            fatalError("Failed to load Vision ML model: \(error)")
+        }
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -126,13 +146,12 @@ class PhotoViewController: BaseViewController, AVCapturePhotoCaptureDelegate {
         print(gesture.direction)
 
         if gesture.direction == .right {
-            self.myView.slideOut()
-            self.myView.fadeOut()
+            self.instructionView.slideOut()
+            self.instructionView.fadeOut()
         } else if gesture.direction == .left {
-            self.myView.slideIn()
-            self.myView.fadeIn()
+            self.instructionView.slideIn()
+            self.instructionView.fadeIn()
         }
-        
     }
     
     @IBAction func switchTapped(_ sender: Any) {
@@ -140,7 +159,7 @@ class PhotoViewController: BaseViewController, AVCapturePhotoCaptureDelegate {
         setupCamera(with: isFront ? .front : .back)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             if self.isFront {
-                self.setAttributes(camera: .front, title: "Selfie", subtitle: "Please take selfie to help us confirm your identity")
+                self.setAttributes(camera: .front, title: "Selfie", subtitle: "")
             } else {
                 self.setAttributes(camera: .back, title: "Take a photo of ID or Passport")
             }
@@ -184,18 +203,18 @@ class PhotoViewController: BaseViewController, AVCapturePhotoCaptureDelegate {
         previewView.layer.addSublayer(videoPreviewLayer)
         
         // add subviews
-        previewView.addSubview(myView)
-        myView.setLeft(equalTo: previewView.leftAnchor, constant: 0)
-        myView.setRight(equalTo: previewView.rightAnchor, constant: 0)
-        myView.setBottom(qualTo: previewView.bottomAnchor, constant: 0)
+        previewView.addSubview(instructionView)
+        instructionView.setLeft(equalTo: previewView.leftAnchor, constant: 0)
+        instructionView.setRight(equalTo: previewView.rightAnchor, constant: 0)
+        instructionView.setBottom(qualTo: previewView.bottomAnchor, constant: 0)
          
-        myView.addSubViews([checkmark1, checkmark2, hint1Label, hint2Label])
-        hint2Label.setLeft(equalTo: myView.leftAnchor, constant: 40)
-        hint2Label.setBottom(qualTo: myView.bottomAnchor, constant: -20)
-        hint2Label.setRight(equalTo: myView.rightAnchor, constant: -20)
-        hint1Label.setLeft(equalTo: myView.leftAnchor, constant: 40)
+        instructionView.addSubViews([checkmark1, checkmark2, hint1Label, hint2Label])
+        hint2Label.setLeft(equalTo: instructionView.leftAnchor, constant: 40)
+        hint2Label.setBottom(qualTo: instructionView.bottomAnchor, constant: -20)
+        hint2Label.setRight(equalTo: instructionView.rightAnchor, constant: -20)
+        hint1Label.setLeft(equalTo: instructionView.leftAnchor, constant: 40)
         hint1Label.setBottom(qualTo: hint2Label.topAnchor, constant: -20)
-        hint1Label.setRight(equalTo: myView.rightAnchor, constant: -20)
+        hint1Label.setRight(equalTo: instructionView.rightAnchor, constant: -20)
         checkmark2.centers(.vertically(.left), to: hint2Label, constant: -10)
         checkmark1.centers(.vertically(.left), to: hint1Label, constant: -10)
         // ..
@@ -221,7 +240,86 @@ class PhotoViewController: BaseViewController, AVCapturePhotoCaptureDelegate {
         let image = UIImage(data: imageData)
         capturedImageView.image = image
         print("Image size \(image?.getSizeIn(.megabyte)) mb")
+        guard let img = image else {return}
+//        classifyImage(img)
+        updateClassifications(for: img)
     }
+    
+    /// - Tag: PerformRequests
+    func updateClassifications(for image: UIImage) {
+        titleLabel.text = "Classifying..."
+        
+        guard let orientation = CGImagePropertyOrientation(
+          rawValue: UInt32(image.imageOrientation.rawValue)) else {
+          return
+        }
+        guard let ciImage = CIImage(image: image) else { fatalError("Unable to create \(CIImage.self) from \(image).") }
+        
+        DispatchQueue.global(qos: .userInitiated).async {
+            let handler = VNImageRequestHandler(ciImage: ciImage, orientation: orientation)
+            do {
+                try handler.perform([self.classificationRequest])
+            } catch {
+                /*
+                 This handler catches general image processing errors. The `classificationRequest`'s
+                 completion handler `processClassifications(_:error:)` catches errors specific
+                 to processing that request.
+                 */
+                print("Failed to perform classification.\n\(error.localizedDescription)")
+            }
+        }
+    }
+    
+    /// Updates the UI with the results of the classification.
+    /// - Tag: ProcessClassifications
+    func processClassifications(for request: VNRequest, error: Error?) {
+        DispatchQueue.main.async {
+            guard let results = request.results else {
+                self.titleLabel.text = "Unable to classify image.\n\(error!.localizedDescription)"
+                return
+            }
+            // The `results` will always be `VNClassificationObservation`s, as specified by the Core ML model in this project.
+            let classifications = results as! [VNClassificationObservation]
+        
+            if classifications.isEmpty {
+                self.titleLabel.text = "Nothing recognized."
+            } else {
+                // Display top classifications ranked by confidence in the UI.
+                let topClassifications = classifications.prefix(2)
+                let descriptions = topClassifications.map { classification in
+                    // Formats the classification for display; e.g. "(0.37) cliff, drop, drop-off".
+                   return String(format: "  (%.2f) %@", classification.confidence, classification.identifier)
+                }
+                self.titleLabel.text = "Classification:\n" + descriptions.joined(separator: "\n")
+            }
+        }
+    }
+    
+    
+    func f() {
+        guard let model = try? VNCoreMLModel(for: Resnet50().model) else {return}
+
+        let request = VNCoreMLRequest(model: model, completionHandler: { [weak self] request, error in
+//            self?.processClassifications(for: request, error: error)
+
+            guard let result = request.results as? [VNClassificationObservation] else {return}
+            guard let firstObservation = result.first else {return}
+
+            print(firstObservation.identifier, firstObservation.confidence)
+
+
+        })
+//        request.imageCropAndScaleOption = .centerCrop
+//        return request
+        
+        // VNImageRequestHandler(cvPixelBuffer: <#T##CVPixelBuffer#>, options: <#T##[VNImageOption : Any]#>)
+        
+    }
+    
+//    func vnRequest() {
+//        let aaa = VNImageRequestHandler
+//    }
+
 }
 
 
@@ -258,11 +356,7 @@ extension UIView {
     func slideOut() {
         slide(x: self.bounds.width, y: 0)
     }
-    
-    
 }
-
-
 
 
 

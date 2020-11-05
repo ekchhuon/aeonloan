@@ -98,6 +98,7 @@
 		3E56EEA125186B070083CC49 /* ApplicantInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E56EE9F25186B070083CC49 /* ApplicantInfoViewController.swift */; };
 		3E56EEA225186B070083CC49 /* ApplicantInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E56EEA025186B070083CC49 /* ApplicantInfoViewController.xib */; };
 		3E56EEA525186B3A0083CC49 /* ApplicantInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E56EEA425186B3A0083CC49 /* ApplicantInfoViewModel.swift */; };
+		3E5A049B2553E45B0017064F /* Resnet50.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 3E5A049A2553E45B0017064F /* Resnet50.mlmodel */; };
 		3E62A2E12519A61A0072CAB3 /* CreditRejectedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E62A2DF2519A61A0072CAB3 /* CreditRejectedViewController.swift */; };
 		3E62A2E22519A61A0072CAB3 /* CreditRejectedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E62A2E02519A61A0072CAB3 /* CreditRejectedViewController.xib */; };
 		3E62A2E52519A65B0072CAB3 /* CreditRejectedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E62A2E42519A65B0072CAB3 /* CreditRejectedViewModel.swift */; };
@@ -265,6 +266,7 @@
 		3E56EE9F25186B070083CC49 /* ApplicantInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicantInfoViewController.swift; sourceTree = "<group>"; };
 		3E56EEA025186B070083CC49 /* ApplicantInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ApplicantInfoViewController.xib; sourceTree = "<group>"; };
 		3E56EEA425186B3A0083CC49 /* ApplicantInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicantInfoViewModel.swift; sourceTree = "<group>"; };
+		3E5A049A2553E45B0017064F /* Resnet50.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Resnet50.mlmodel; sourceTree = "<group>"; };
 		3E62A2DF2519A61A0072CAB3 /* CreditRejectedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditRejectedViewController.swift; sourceTree = "<group>"; };
 		3E62A2E02519A61A0072CAB3 /* CreditRejectedViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreditRejectedViewController.xib; sourceTree = "<group>"; };
 		3E62A2E42519A65B0072CAB3 /* CreditRejectedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditRejectedViewModel.swift; sourceTree = "<group>"; };
@@ -868,6 +870,7 @@
 		3EF9195324F5008200E77958 /* AEON Loan */ = {
 			isa = PBXGroup;
 			children = (
+				3E5A049A2553E45B0017064F /* Resnet50.mlmodel */,
 				3EF9195424F5008200E77958 /* AppDelegate.swift */,
 				3EF9195624F5008200E77958 /* SceneDelegate.swift */,
 				3EF9195A24F5008200E77958 /* Main.storyboard */,
@@ -1232,6 +1235,7 @@
 				3E47FFCD252C860200A73E61 /* ModelRepresentable.swift in Sources */,
 				3E5641C82506396C00716D8B /* UIButton.swift in Sources */,
 				3E62A2F32519DB2A0072CAB3 /* UITableVIew + Extension.swift in Sources */,
+				3E5A049B2553E45B0017064F /* Resnet50.mlmodel in Sources */,
 				3E3CAB9C2510CE8F00EAF826 /* PaymentScheduleViewController.swift in Sources */,
 				3E3CABAC2510D60B00EAF826 /* PaymentDetailViewModel.swift in Sources */,
 				3E3CAB8A2510A4A000EAF826 /* PaymentLocationViewController.swift in Sources */,
