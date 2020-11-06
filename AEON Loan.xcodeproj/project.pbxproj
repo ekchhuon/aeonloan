@@ -838,9 +838,9 @@
 			isa = PBXGroup;
 			children = (
 				3ED2C51F251B3420007B0B9A /* PhotoViewController.swift */,
+				3ED2C520251B3420007B0B9A /* PhotoViewController.xib */,
 				3E2AFBC525246A640090A17D /* ScanViewController.swift */,
 				3E2AFBC625246A640090A17D /* ScanViewController.xib */,
-				3ED2C520251B3420007B0B9A /* PhotoViewController.xib */,
 			);
 			path = "New Group";
 			sourceTree = "<group>";

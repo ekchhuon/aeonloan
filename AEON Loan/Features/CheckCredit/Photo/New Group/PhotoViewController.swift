@@ -8,7 +8,7 @@
 import UIKit
 import AVFoundation
 import Vision
-import ImageIO
+import VisionKit
 
 extension PhotoViewController {
     static func instantiate() -> PhotoViewController {
@@ -26,10 +26,12 @@ class PhotoViewController: BaseViewController, AVCapturePhotoCaptureDelegate {
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var mrzScannerView: UIView!
     
+    
     var captureSession: AVCaptureSession!
     var stillImageOutput: AVCapturePhotoOutput!
     var videoPreviewLayer: AVCaptureVideoPreviewLayer!
     var isFront: Bool = false
+    var taken: Bool = false
     
     var attributeViews = [UIView]()
     var images = [UIImage]()
@@ -79,6 +81,34 @@ class PhotoViewController: BaseViewController, AVCapturePhotoCaptureDelegate {
         return imgView
     }()
     
+    var selectedImage: UIImageView = {
+        let imgView = UIImageView()
+        imgView.translatesAutoresizingMaskIntoConstraints = false
+        imgView.image = UIImage(systemName: "checkmark")?.withTintColor(.white, renderingMode:.alwaysOriginal)
+        imgView.contentMode = .scaleAspectFit
+
+        return imgView
+    }()
+    
+    var catImage: UIImage!
+    var textRecognitionRequest = VNRecognizeTextRequest()
+    var recognizedText = ""
+    
+    /*
+    private func cropToPreviewLayer(originalImage: UIImage) -> UIImage {
+        let outputRect = previewLayer.metadataOutputRectConverted(fromLayerRect: previewLayer.bounds)
+        var cgImage = originalImage.cgImage!
+        let width = CGFloat(cgImage.width)
+        let height = CGFloat(cgImage.height)
+        let cropRect = CGRect(x: outputRect.origin.x * width, y: outputRect.origin.y * height, width: outputRect.size.width * width, height: outputRect.size.height * height)
+        
+        cgImage = cgImage.cropping(to: cropRect)!
+        let croppedUIImage = UIImage(cgImage: cgImage, scale: 1.0, orientation: originalImage.imageOrientation)
+        
+        return croppedUIImage
+    }
+     */
+    
     // MARK: - Image Classification
     
     /// - Tag: MLModelSetup
@@ -109,6 +139,7 @@ class PhotoViewController: BaseViewController, AVCapturePhotoCaptureDelegate {
         attributeViews = [checkmark1, checkmark2, hint1Label, hint2Label]
         setAttributes(camera: .back, title: "Take a photo of ID or Passport")
         setupSwipeGestureRecognizerOnCollection()
+        translateImage()
     }
     
     
@@ -159,7 +190,7 @@ class PhotoViewController: BaseViewController, AVCapturePhotoCaptureDelegate {
         setupCamera(with: isFront ? .front : .back)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             if self.isFront {
-                self.setAttributes(camera: .front, title: "Selfie", subtitle: "")
+                self.setAttributes(camera: .front, title: "Selfie", subtitle: "Lorem ipsum dolor sit amet, ")
             } else {
                 self.setAttributes(camera: .back, title: "Take a photo of ID or Passport")
             }
@@ -194,6 +225,17 @@ class PhotoViewController: BaseViewController, AVCapturePhotoCaptureDelegate {
         catch let error  {
             print("Error Unable to initialize back camera:  \(error.localizedDescription)")
         }
+    }
+    
+    func setupImagePreview(image: UIImage) {
+        
+        previewView.addSubview(selectedImage)
+        selectedImage.setLeft(equalTo: previewView.leftAnchor, constant: 0)
+        selectedImage.setRight(equalTo: previewView.rightAnchor, constant: 0)
+        selectedImage.setTop(equalTo: previewView.topAnchor, constant: 0)
+        selectedImage.setBottom(qualTo: previewView.bottomAnchor, constant: 0)
+        selectedImage.image = image
+        
     }
     
     func setupLivePreview() {
@@ -242,9 +284,87 @@ class PhotoViewController: BaseViewController, AVCapturePhotoCaptureDelegate {
         print("Image size \(image?.getSizeIn(.megabyte)) mb")
         guard let img = image else {return}
 //        classifyImage(img)
-        updateClassifications(for: img)
+        // updateClassifications(for: img)
+        guard let croped = img.crop(to: videoPreviewLayer) else {
+            print("Unable to crop image")
+            return
+        }
+        setupImagePreview(image: croped)
+        readImage(image: croped)
     }
     
+    func translateImage() {
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        self.title = "New Cat"
+//        catImageView.image = catImage
+        
+        textRecognitionRequest = VNRecognizeTextRequest(completionHandler: { (request, error) in
+            if let results = request.results, !results.isEmpty {
+                if let requestResults = request.results as? [VNRecognizedTextObservation] {
+                    self.recognizedText = ""
+                    for observation in requestResults {
+                        guard let candidiate = observation.topCandidates(1).first else { return }
+                        self.recognizedText += candidiate.string
+                        self.recognizedText += "\n"
+                    }
+                    self.titleLabel.text = self.recognizedText
+                    
+                    self.showAlert(message: self.recognizedText)
+                }
+            }
+        })
+        textRecognitionRequest.recognitionLevel = .accurate
+        textRecognitionRequest.usesLanguageCorrection = false
+        textRecognitionRequest.customWords = ["@gmail.com", "@outlook.com", "@yahoo.com", "@icloud.com"]
+    }
+    
+    func readImage(image: UIImage) {
+        // let image = scan.imageOfPage(at: 0)
+        let handler = VNImageRequestHandler(cgImage: image.cgImage!, options: [:])
+        do {
+            try handler.perform([textRecognitionRequest])
+        } catch {
+            print(error)
+        }
+    }
+}
+// Image Picker
+extension PhotoViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    @IBAction func photoLibraryButtonTapped(_ sender: Any) {
+        //presentPhotoPicker(sourceType: .photoLibrary)
+        
+        selectedImage.removeFromSuperview()
+    }
+    
+    func presentPhotoPicker(sourceType: UIImagePickerController.SourceType) {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.sourceType = sourceType
+        present(picker, animated: true)
+    }
+    
+    // MARK: - Handling Image Picker Selection
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true)
+        
+        // We always expect `imagePickerController(:didFinishPickingMediaWithInfo:)` to supply the original image.
+        let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
+        capturedImageView.image = image
+//        updateClassifications(for: image)
+        
+        
+        
+        guard let croped = image.crop(to: videoPreviewLayer) else {
+            print("Unable to crop image")
+            return
+        }
+        setupImagePreview(image: croped)
+        readImage(image: croped)
+    }
+}
+
+// MARK - Handle CoreML
+extension PhotoViewController {
     /// - Tag: PerformRequests
     func updateClassifications(for image: UIImage) {
         titleLabel.text = "Classifying..."
@@ -294,32 +414,25 @@ class PhotoViewController: BaseViewController, AVCapturePhotoCaptureDelegate {
             }
         }
     }
-    
-    
-    func f() {
-        guard let model = try? VNCoreMLModel(for: Resnet50().model) else {return}
-
-        let request = VNCoreMLRequest(model: model, completionHandler: { [weak self] request, error in
-//            self?.processClassifications(for: request, error: error)
-
-            guard let result = request.results as? [VNClassificationObservation] else {return}
-            guard let firstObservation = result.first else {return}
-
-            print(firstObservation.identifier, firstObservation.confidence)
+}
 
 
-        })
-//        request.imageCropAndScaleOption = .centerCrop
-//        return request
-        
-        // VNImageRequestHandler(cvPixelBuffer: <#T##CVPixelBuffer#>, options: <#T##[VNImageOption : Any]#>)
-        
+extension UIImage {
+    func crop(to previewLayer: AVCaptureVideoPreviewLayer) -> UIImage? {
+        guard let cgImage = self.cgImage else { return nil }
+
+        let outputRect = previewLayer.metadataOutputRectConverted(fromLayerRect: previewLayer.bounds)
+
+        let width = CGFloat(cgImage.width)
+        let height = CGFloat(cgImage.height)
+        let cropRect = CGRect(x: outputRect.origin.x * width, y: outputRect.origin.y * height, width: outputRect.size.width * width, height: outputRect.size.height * height)
+
+        if let croppedCGImage = cgImage.cropping(to: cropRect) {
+            return UIImage(cgImage: croppedCGImage, scale: 1.0, orientation: self.imageOrientation)
+        }
+
+        return nil
     }
-    
-//    func vnRequest() {
-//        let aaa = VNImageRequestHandler
-//    }
-
 }
 
 
