@@ -186,6 +186,7 @@ class PhotoViewController: BaseViewController, AVCapturePhotoCaptureDelegate {
     }
     
     @IBAction func switchTapped(_ sender: Any) {
+        /*
         isFront = !isFront
         setupCamera(with: isFront ? .front : .back)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
@@ -195,6 +196,13 @@ class PhotoViewController: BaseViewController, AVCapturePhotoCaptureDelegate {
                 self.setAttributes(camera: .back, title: "Take a photo of ID or Passport")
             }
         }
+ 
+    */
+        
+        // Use VisionKit to scan business cards
+        let documentCameraViewController = VNDocumentCameraViewController()
+        documentCameraViewController.delegate = self
+        self.present(documentCameraViewController, animated: true, completion: nil)
     }
     
     private func setAttributes(camera position: AVCaptureDevice.Position, title: String = "", subtitle: String = "") {
@@ -363,6 +371,19 @@ extension PhotoViewController: UIImagePickerControllerDelegate, UINavigationCont
     }
 }
 
+extension PhotoViewController: VNDocumentCameraViewControllerDelegate {
+    func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFinishWith scan: VNDocumentCameraScan) {
+        let image = scan.imageOfPage(at: 0)
+        let handler = VNImageRequestHandler(cgImage: image.cgImage!, options: [:])
+        do {
+            try handler.perform([textRecognitionRequest])
+        } catch {
+            print(error)
+        }
+        controller.dismiss(animated: true)
+    }
+}
+
 // MARK - Handle CoreML
 extension PhotoViewController {
     /// - Tag: PerformRequests
@@ -453,10 +474,10 @@ extension UIView {
         fadeTo(0.0, duration: duration)
     }
     
-    func slide(x: CGFloat = 0, y: CGFloat = 0) {
+    func slide(x: CGFloat = 0, y: CGFloat = 0, duration: TimeInterval = 0.35) {
         
         DispatchQueue.main.async {
-            UIView.animate(withDuration: 0.35, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            UIView.animate(withDuration: duration, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
                     self.transform = CGAffineTransform(translationX: x, y: y)
             }, completion: nil)
         }

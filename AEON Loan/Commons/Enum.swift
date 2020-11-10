@@ -21,6 +21,7 @@ enum Scene {
     case payment(PaymentScene)
     case calculator
     case OTP
+    case scan
 }
 
 extension Scene {

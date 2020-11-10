@@ -19,6 +19,9 @@ extension UIViewController {
             // let controller = TakePhotoViewController.instantiate()
             let controller = PhotoViewController.instantiate()
             navigationController?.pushViewController(controller, animated: true)
+        case .scan:
+            let controller = ScanViewController.instantiate()
+            navigationController?.pushViewController(controller, animated: true)
         case .checkCredit(.selfie):
             let controller = SelfieViewController.instantiate()
             navigationController?.pushViewController(controller, animated: true)

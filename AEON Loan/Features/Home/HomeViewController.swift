@@ -122,7 +122,8 @@ extension HomeViewController: UICollectionViewDelegate {
         case gridCollectionView:
             switch indexPath.row {
             case 0:
-                navigates(to: .checkCredit(.takePhoto))
+                //navigates(to: .checkCredit(.takePhoto))
+                navigates(to: .scan)
             case 1:
                 navigates(to: .applyLoan)
             case 4:
