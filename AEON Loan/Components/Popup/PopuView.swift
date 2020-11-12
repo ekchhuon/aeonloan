@@ -6,3 +6,14 @@
 //
 
 import Foundation
+import UIKit
+
+extension PopupView {
+    static func instantiate() -> PopupView {
+        return PopupView()
+    }
+}
+
+class PopupView:UIView {
+    
+}

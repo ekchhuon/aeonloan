@@ -232,13 +232,6 @@ extension String {
     }
 }
 
-extension Array where Element == UITextField {
-    /// ensure all fields have value
-    var hasValue: Bool {
-        return !(self.contains{ $0.text?.isEmpty ?? false })
-    }
-}
-
 extension UILabel {
     func reset() {
         self.text = ""
