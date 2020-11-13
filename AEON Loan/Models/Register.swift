@@ -6,6 +6,7 @@
 //
 
 import Foundation
+
 // MARK: - Register
 struct Register: Codable {
     let timestamp: Int64
@@ -13,10 +14,20 @@ struct Register: Codable {
     let message: String
     let code: Int
     let data: String
+    let user: User
     
     // MARK: - DataClass
     struct Data: Codable {
         let code, timeout: Int
+    }
+}
+
+struct Users2: Codable {
+    let name, phone, email, password, profile: String
+    let document: Document
+    
+    struct Document: Codable {
+        let type, id, holderName: String
     }
 }
 

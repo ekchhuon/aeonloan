@@ -23,6 +23,8 @@ class SelfieViewController: BaseViewController, AVCapturePhotoCaptureDelegate {
     @IBOutlet weak var checkmarkImageVIew: UIImageView!
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var captureButton: UIButton!
+    @IBOutlet weak var retakeButton: UIButton!
+    @IBOutlet weak var continueButton: UIButton!
     
     
     var activityCompenentViews: [UIView]!
@@ -36,7 +38,7 @@ class SelfieViewController: BaseViewController, AVCapturePhotoCaptureDelegate {
         imgView.translatesAutoresizingMaskIntoConstraints = false
         imgView.image = UIImage(systemName: "checkmark")?.withTintColor(.white, renderingMode:.alwaysOriginal)
         imgView.contentMode = .scaleAspectFit
-
+        
         return imgView
     }()
     
@@ -53,6 +55,7 @@ class SelfieViewController: BaseViewController, AVCapturePhotoCaptureDelegate {
         loading(started: false)
         checkmarkImageVIew.isHidden = true
         subtitleLabel.isHidden = true
+        updateActionButton(selfie: false)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -67,10 +70,12 @@ class SelfieViewController: BaseViewController, AVCapturePhotoCaptureDelegate {
     
     fileprivate func validateSelfie(with observation: [VNFaceObservation]) {
         let isValid = observation.count == 1
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.loading(started: false)
             self.checkmarkImageVIew.isHidden = !isValid
             self.subtitleLabel.isHidden = isValid
+            self.updateActionButton(selfie: isValid)
+//            self.updateCaptureButton(selfie: isValid)
             if isValid {
                 self.titleLabel.text = "Awesome"
                 self.checkmarkImageVIew.isHidden = false
@@ -90,18 +95,32 @@ class SelfieViewController: BaseViewController, AVCapturePhotoCaptureDelegate {
         capturedImageView.image = image
     }
     
+    fileprivate func updateCaptureButton(selfie isValid: Bool) {
+        let buttonIcon = isCaptured && isValid ? "camera.snap" : "camera.refresh.fill"
+        
+        self.captureButton.setImage(UIImage(named: buttonIcon), for: .normal)
+    }
     
+    fileprivate func updateActionButton(selfie isValid: Bool) {
+        captureButton.isHidden = isValid
+        retakeButton.isHidden = !isValid
+        continueButton.isUserInteractionEnabled = isValid
+        continueButton.alpha = isValid ? 1:0.5
+    }
+    
+
     @IBAction func captureButtonTapped(_ sender: Any) {
-        let buttonIcon = isCaptured ? "camera.refresh.fill" : "camera.snap"
-        captureButton.setImage(UIImage(named: buttonIcon), for: .normal)
         isCaptured ? capturedImageView.removeFromSuperview() : startCapture()
         isCaptured = !isCaptured
     }
     
-    @IBAction func photoLibrary(_ sender: Any) {
+    @IBAction func retakeLibrary(_ sender: Any) {
+        capturedImageView.removeFromSuperview()
+        updateActionButton(selfie: false)
+        isCaptured = !isCaptured
     }
     
-    @IBAction func switchButtonTapped(_ sender: Any) {
+    @IBAction func continueButtonTapped(_ sender: Any) {
         capturedImageView.removeFromSuperview()
     }
 }
@@ -182,7 +201,7 @@ extension SelfieViewController {
 
 // MARK: - Face Recognition
 extension SelfieViewController  {
-
+    
     fileprivate func launchDetection(image: UIImage) {
         loading(started: true)
         titleLabel.text = "Verifying..."

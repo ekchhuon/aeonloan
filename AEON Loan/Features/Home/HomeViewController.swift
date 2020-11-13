@@ -123,7 +123,7 @@ extension HomeViewController: UICollectionViewDelegate {
             switch indexPath.row {
             case 0:
                 //navigates(to: .checkCredit(.takePhoto))
-                navigates(to: .scan)
+                navigates(to: .checkCredit(.form))
                 /*
                 let controller = ScanViewController.instantiate()
                 // controller.modalTransitionStyle = .crossDissolve

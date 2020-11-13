@@ -11,23 +11,34 @@ enum DocumentType: Equatable {
     case passport(Nationality)
     case unknown
     
-    var identifier: String {
+    var description: String {
         switch self {
         case .nId(.khmer):
             return "Khmer Identity Card"
-        case .nId(.foreigner):
-            return "xxx identity Card"
+        case .nId(.japanese):
+            return "Japanese identity Card"
         case .passport(.khmer):
             return "Cambodia Passport"
-        case .passport(.foreigner):
-            return "xxx Passport"
+        case .passport(.japanese):
+            return "Japanese Passport"
         default:
             return "Unknown Document"
         }
     }
     
+    var regex: String {
+        switch self {
+        case .nId(.khmer):
+            return "^[0-9]{9}$" // 9 digit for Khmer ID:
+        case .passport(.japanese):
+            return "^[A-Za-z]{2}[0-9]{7}$" // 2Char + 7Digit, eg. TR6492357
+        default:
+            return ""
+        }
+    }
+    
     enum Nationality {
         case khmer
-        case foreigner
+        case japanese
     }
 }

@@ -17,8 +17,10 @@ extension ScanViewController {
 
 class ScanViewController: UIViewController {
     @IBOutlet weak var scannedImage: UIImageView!
-    @IBOutlet weak var docsIdentifierLabel: UILabel!
+    @IBOutlet weak var recognitionLabel: UILabel!
     @IBOutlet weak var checkmarkImageView: UIImageView!
+    
+    @IBOutlet weak var indicatorView: UIActivityIndicatorView!
     @IBOutlet var instructionView: [UIView]!
     @IBOutlet weak var continueButton: UIButton!
     
@@ -28,35 +30,35 @@ class ScanViewController: UIViewController {
     var textRecognitionRequest = VNRecognizeTextRequest()
     let validator = DocumentValidator()
     var moved: Bool = false
-    var docsIdentifierViews: [UIView]!
+    //var docsIdentifierViews: [UIView]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         recognizeRequest()
         checkmarkImageView.isHidden = true
-        docsIdentifierViews = [docsIdentifierLabel, checkmarkImageView]
-        docsIdentifierViews.forEach { $0.isHidden = true }
+        [recognitionLabel, checkmarkImageView].forEach { $0.isHidden = true }
         disableContinueButton(disabled: false)
+        loading(started: false)
+    }
+    
+    fileprivate func loading(started: Bool) {
+        indicatorView.isHidden = !started
+        indicatorView.startAnimating()
     }
     
     private func validate(_ recognizedTexts: [String]) {
-        show(indicator: true)
-        docsIdentifierViews.forEach { $0.isHidden = true }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.show(indicator: false)
-            self.docsIdentifierViews.forEach { $0.isHidden = false }
-        }
+        //docsIdentifierViews.forEach { $0.isHidden = true }
         
         validator.recognizedTexts = recognizedTexts
         let result = validator.validate()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.loading(started: false)
+            self.recognitionLabel.text = "\(result.description) \(recognizedTexts.getIdNumber(for: result))"
+            self.checkmarkImageView.isHidden = result == .unknown
+            //disableContinueButton(disabled: result == .unknown)
+        }
         
-        docsIdentifierLabel.text = result.identifier
-        checkmarkImageView.image = UIImage(systemName: result == .unknown ? "xmark.circle.fill" : "checkmark.circle.fill")
-        checkmarkImageView.tintColor = result == .unknown ? .red : .systemGreen
-        
-        print("result", recognizedTexts)
-        
-        //disableContinueButton(disabled: result == .unknown)
+        print("result", recognizedTexts.getIdNumber(for: result))
     }
     
     fileprivate func disableContinueButton(disabled: Bool) {
@@ -81,11 +83,7 @@ class ScanViewController: UIViewController {
                     self.validate(self.recognizedTexts)
                 }
             } else {
-                self.show(indicator: true)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                    self.show(indicator: false)
-                    self.showAlert(message: "Invalid")
-                }
+                 self.validate(self.recognizedTexts)
             }
         })
         textRecognitionRequest.recognitionLevel = .accurate
@@ -101,6 +99,11 @@ class ScanViewController: UIViewController {
     }
     
     fileprivate func handleTextRecognition(with image: UIImage) {
+        recognitionLabel.isHidden = false
+        recognitionLabel.text = "Identifying..."
+        checkmarkImageView.isHidden = true
+        loading(started: true)
+        
         scannedImage.image = image
         let handler = VNImageRequestHandler(cgImage: image.cgImage!, options: [:])
         do {
@@ -122,7 +125,7 @@ class ScanViewController: UIViewController {
     }
     
     @IBAction func nextButtonTapped(_ sender: Any) {
-        let controller = ScanInstructionViewController.instantiate()
+        let controller = SelfieInstructionViewController.instantiate()
         navigationController?.pushViewController(controller, animated: true)
         
     }
@@ -153,12 +156,13 @@ extension ScanViewController: VNDocumentCameraViewControllerDelegate {
 }
 
 extension Array where Element == String {
-    func getIDInfo() -> [String] {
-        let id = self.findDigit(of: 9)[0]
-        let name = self[2]
-        return [id, name]
-    }
+//    func getIDInfo() -> [String] {
+//        let id = self.findDigit(of: 9)[0]
+//        let name = self[2]
+//        return [id, name]
+//    }
 }
+
 
 
 

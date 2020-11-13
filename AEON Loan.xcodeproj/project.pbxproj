@@ -73,8 +73,8 @@
 		3E48162C252741E10010966A /* OTPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E48162A252741E10010966A /* OTPViewController.swift */; };
 		3E48162D252741E10010966A /* OTPViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E48162B252741E10010966A /* OTPViewController.xib */; };
 		3E48162F252741F90010966A /* OTPViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E48162E252741F90010966A /* OTPViewModel.swift */; };
-		3E4A4CA2255CF65A003FB345 /* ScanInstructionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4A4CA0255CF65A003FB345 /* ScanInstructionViewController.swift */; };
-		3E4A4CA3255CF65A003FB345 /* ScanInstructionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E4A4CA1255CF65A003FB345 /* ScanInstructionViewController.xib */; };
+		3E4A4CA2255CF65A003FB345 /* SelfieInstructionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4A4CA0255CF65A003FB345 /* SelfieInstructionViewController.swift */; };
+		3E4A4CA3255CF65A003FB345 /* SelfieInstructionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E4A4CA1255CF65A003FB345 /* SelfieInstructionViewController.xib */; };
 		3E50C756252EB4800051D809 /* BCrypt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E50C755252EB4800051D809 /* BCrypt.swift */; };
 		3E50C759253007C90051D809 /* HttpStatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E50C758253007C90051D809 /* HttpStatusCode.swift */; };
 		3E5641C325061A1300716D8B /* SelectLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5641C125061A1300716D8B /* SelectLanguageViewController.swift */; };
@@ -250,8 +250,8 @@
 		3E48162A252741E10010966A /* OTPViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPViewController.swift; sourceTree = "<group>"; };
 		3E48162B252741E10010966A /* OTPViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OTPViewController.xib; sourceTree = "<group>"; };
 		3E48162E252741F90010966A /* OTPViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPViewModel.swift; sourceTree = "<group>"; };
-		3E4A4CA0255CF65A003FB345 /* ScanInstructionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanInstructionViewController.swift; sourceTree = "<group>"; };
-		3E4A4CA1255CF65A003FB345 /* ScanInstructionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScanInstructionViewController.xib; sourceTree = "<group>"; };
+		3E4A4CA0255CF65A003FB345 /* SelfieInstructionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfieInstructionViewController.swift; sourceTree = "<group>"; };
+		3E4A4CA1255CF65A003FB345 /* SelfieInstructionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelfieInstructionViewController.xib; sourceTree = "<group>"; };
 		3E50C755252EB4800051D809 /* BCrypt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BCrypt.swift; sourceTree = "<group>"; };
 		3E50C758253007C90051D809 /* HttpStatusCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpStatusCode.swift; sourceTree = "<group>"; };
 		3E5641C125061A1300716D8B /* SelectLanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLanguageViewController.swift; sourceTree = "<group>"; };
@@ -460,9 +460,9 @@
 		3E23673D24F6141C003FD6D4 /* Register */ = {
 			isa = PBXGroup;
 			children = (
-				3E5641E72507B21100716D8B /* RegisterViewController.swift */,
-				3E4816282526EA110010966A /* RegisterViewModel.swift */,
-				3E5641E82507B21100716D8B /* RegisterViewController.xib */,
+				3EC8D739255E7EA500AD3987 /* Scan */,
+				3E56EE9C2518648D0083CC49 /* Selfie */,
+				3EC8D73A255E7ED000AD3987 /* Form */,
 			);
 			path = Register;
 			sourceTree = "<group>";
@@ -649,13 +649,13 @@
 			path = OTP;
 			sourceTree = "<group>";
 		};
-		3E4A4CA4255CF672003FB345 /* Instruction */ = {
+		3E4A4CA4255CF672003FB345 /* Selfie Instruction */ = {
 			isa = PBXGroup;
 			children = (
-				3E4A4CA0255CF65A003FB345 /* ScanInstructionViewController.swift */,
-				3E4A4CA1255CF65A003FB345 /* ScanInstructionViewController.xib */,
+				3E4A4CA0255CF65A003FB345 /* SelfieInstructionViewController.swift */,
+				3E4A4CA1255CF65A003FB345 /* SelfieInstructionViewController.xib */,
 			);
-			path = Instruction;
+			path = "Selfie Instruction";
 			sourceTree = "<group>";
 		};
 		3E50C757253007B30051D809 /* NSInteger + Extension */ = {
@@ -685,7 +685,7 @@
 			path = GridCell;
 			sourceTree = "<group>";
 		};
-		3E56EE95251846BE0083CC49 /* Photo */ = {
+		3E56EE95251846BE0083CC49 /* DetectImage */ = {
 			isa = PBXGroup;
 			children = (
 				3ED2C523251B3492007B0B9A /* New Group */,
@@ -693,12 +693,13 @@
 				3E56EE92251846B90083CC49 /* TakePhotoViewController.xib */,
 				3E56EE96251846E10083CC49 /* TakePhotoViewModel.swift */,
 			);
-			path = Photo;
+			path = DetectImage;
 			sourceTree = "<group>";
 		};
 		3E56EE9C2518648D0083CC49 /* Selfie */ = {
 			isa = PBXGroup;
 			children = (
+				3E4A4CA4255CF672003FB345 /* Selfie Instruction */,
 				3E56EE98251864800083CC49 /* SelfieViewController.swift */,
 				3E56EE9D251864CA0083CC49 /* SelfieViewModel.swift */,
 				3E56EE99251864800083CC49 /* SelfieViewController.xib */,
@@ -749,8 +750,7 @@
 		3E62A2F42519F3BC0072CAB3 /* CheckCredit */ = {
 			isa = PBXGroup;
 			children = (
-				3E56EE95251846BE0083CC49 /* Photo */,
-				3E56EE9C2518648D0083CC49 /* Selfie */,
+				3E56EE95251846BE0083CC49 /* DetectImage */,
 				3E56EEA325186B120083CC49 /* Form */,
 				3E62A2E32519A6230072CAB3 /* Rejected */,
 				3E62A2EC2519CEB40072CAB3 /* Accepted */,
@@ -884,14 +884,30 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
+		3EC8D739255E7EA500AD3987 /* Scan */ = {
+			isa = PBXGroup;
+			children = (
+				3E2AFBC525246A640090A17D /* ScanViewController.swift */,
+				3E2AFBC625246A640090A17D /* ScanViewController.xib */,
+			);
+			path = Scan;
+			sourceTree = "<group>";
+		};
+		3EC8D73A255E7ED000AD3987 /* Form */ = {
+			isa = PBXGroup;
+			children = (
+				3E5641E72507B21100716D8B /* RegisterViewController.swift */,
+				3E4816282526EA110010966A /* RegisterViewModel.swift */,
+				3E5641E82507B21100716D8B /* RegisterViewController.xib */,
+			);
+			path = Form;
+			sourceTree = "<group>";
+		};
 		3ED2C523251B3492007B0B9A /* New Group */ = {
 			isa = PBXGroup;
 			children = (
-				3E4A4CA4255CF672003FB345 /* Instruction */,
 				3ED2C51F251B3420007B0B9A /* PhotoViewController.swift */,
 				3ED2C520251B3420007B0B9A /* PhotoViewController.xib */,
-				3E2AFBC525246A640090A17D /* ScanViewController.swift */,
-				3E2AFBC625246A640090A17D /* ScanViewController.xib */,
 			);
 			path = "New Group";
 			sourceTree = "<group>";
@@ -1115,7 +1131,7 @@
 				3E14F111253EDE780066F0AB /* SecondSegmentViewController.xib in Resources */,
 				3E05D5D8252C1A15003C5432 /* LoginViewController.xib in Resources */,
 				3E56EE94251846B90083CC49 /* TakePhotoViewController.xib in Resources */,
-				3E4A4CA3255CF65A003FB345 /* ScanInstructionViewController.xib in Resources */,
+				3E4A4CA3255CF65A003FB345 /* SelfieInstructionViewController.xib in Resources */,
 				3E56EEA225186B070083CC49 /* ApplicantInfoViewController.xib in Resources */,
 				3E5641EA2507B21100716D8B /* RegisterViewController.xib in Resources */,
 				3E23676824F64E99003FD6D4 /* LanuchViewController.xib in Resources */,
@@ -1278,7 +1294,7 @@
 			files = (
 				3E99883A255BDBD300C6C95E /* PopuView.swift in Sources */,
 				3E5641E22507449500716D8B /* HomeCollectionViewCell.swift in Sources */,
-				3E4A4CA2255CF65A003FB345 /* ScanInstructionViewController.swift in Sources */,
+				3E4A4CA2255CF65A003FB345 /* SelfieInstructionViewController.swift in Sources */,
 				3E23674824F617C3003FD6D4 /* Date+DayAndTime.swift in Sources */,
 				3EF9199A24F509DA00E77958 /* Launch.swift in Sources */,
 				3E62A2EB2519BAA10072CAB3 /* CreditAcceptedViewModel.swift in Sources */,

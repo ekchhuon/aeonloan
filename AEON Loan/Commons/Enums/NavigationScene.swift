@@ -13,7 +13,7 @@ enum Scene {
     case language
     case notification
     case login
-    case register
+    case register(RegistrationScene)
     case slider(IndexPath, String)
     case checkCredit(CheckCreditScene)
     case applyLoan
@@ -21,14 +21,14 @@ enum Scene {
     case payment(PaymentScene)
     case calculator
     case OTP
-    case scan
+    //case scan
 }
 
 extension Scene {
     
     enum CheckCreditScene {
-        case takePhoto
-        case selfie
+        // case takePhoto
+        // case selfie
         case form
         case result(Result)
         enum Result {
@@ -45,10 +45,17 @@ extension Scene {
         case scheduleDetailed(String)
     }
     
+    enum RegistrationScene {
+        case scanID
+        case selfie
+        case fillingForm
+    }
+    
     enum Loan {
         case loan
         case loanResult(SubmitResult)
     }
+    
 }
 
 enum SubmitResult {

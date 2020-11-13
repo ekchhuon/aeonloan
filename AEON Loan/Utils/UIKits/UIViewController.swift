@@ -15,16 +15,16 @@ extension UIViewController {
         case let .loanResult(result):
             let controller = LoanSubmissionResultViewController.instantiate(result: result)
             navigationController?.pushViewController(controller, animated: true)
-        case .checkCredit(.takePhoto):
-            // let controller = TakePhotoViewController.instantiate()
-            let controller = PhotoViewController.instantiate()
-            navigationController?.pushViewController(controller, animated: true)
-        case .scan:
-            let controller = ScanViewController.instantiate()
-            navigationController?.pushViewController(controller, animated: true)
-        case .checkCredit(.selfie):
-            let controller = SelfieViewController.instantiate()
-            navigationController?.pushViewController(controller, animated: true)
+//        case .checkCredit(.takePhoto):
+//            // let controller = TakePhotoViewController.instantiate()
+//            let controller = PhotoViewController.instantiate()
+//            navigationController?.pushViewController(controller, animated: true)
+//        case .scan:
+//            let controller = ScanViewController.instantiate()
+//            navigationController?.pushViewController(controller, animated: true)
+//        case .checkCredit(.selfie):
+//            let controller = SelfieViewController.instantiate()
+//            navigationController?.pushViewController(controller, animated: true)
         case .checkCredit(.form):
             let controller = ApplicantInfoViewController.instantiate()
             navigationController?.pushViewController(controller, animated: true)
@@ -50,7 +50,13 @@ extension UIViewController {
             */
              let controller = LoginViewController.instantiate()
              navigationController?.pushViewController(controller, animated: true)
-        case .register:
+        case .register(.scanID):
+            let controller = ScanViewController.instantiate()
+            navigationController?.pushViewController(controller, animated: true)
+        case .register(.selfie):
+            let controller = SelfieViewController.instantiate()
+            navigationController?.pushViewController(controller, animated: true)
+        case .register(.fillingForm):
             /*
             let register = RegisterViewController.instantiate()
              // navigationController?.pushViewController(register, animated: true)
@@ -60,7 +66,6 @@ extension UIViewController {
             
             let controller = RegisterViewController.instantiate()
             navigationController?.pushViewController(controller, animated: true)
-            
         case .notification:
             let notification = NotificationViewController.instantiate()
             navigationController?.pushViewController(notification, animated: true)

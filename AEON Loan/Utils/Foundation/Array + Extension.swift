@@ -41,16 +41,27 @@ extension Array where Element == String {
     }
     
     // has exact number of digit. eg. ^[0-9]{9}$ = 012345678 (nine digit)
-    func findDigit(of digit: Int) -> [String] {
+//    func findDigit(of digit: Int) -> [String] {
+//        let filtered = self.filter {
+//            return  $0.range(of: "^[0-9]{\(digit)}$", options: .regularExpression) != nil
+//        }
+//        return filtered
+//    }
+    
+    func getItem(using regex: String) -> String? {
         let filtered = self.filter {
-            return  $0.range(of: "^[0-9]{\(digit)}$", options: .regularExpression) != nil
+            return  $0.range(of: regex, options: .regularExpression) != nil
         }
-        return filtered
+        return filtered[0]
     }
     
-    func hasDigit(of digit: Int) -> Bool {
-        let results = findDigit(of: digit)
-        return results.count > 0
+//    func hasDigit(of digit: Int) -> Bool {
+//        let results = findDigit(of: digit)
+//        return results.count > 0
+//    }
+    
+    func getIdNumber(for document: DocumentType) -> String {
+        return getItem(using: document.regex) ?? "N/A"
     }
 }
 

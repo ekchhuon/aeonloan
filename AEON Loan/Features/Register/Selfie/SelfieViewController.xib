@@ -13,8 +13,10 @@
             <connections>
                 <outlet property="captureButton" destination="ssB-8V-bpz" id="jxI-IJ-BM0"/>
                 <outlet property="checkmarkImageVIew" destination="fd6-BW-OBw" id="PUP-V5-8co"/>
+                <outlet property="continueButton" destination="4tf-uc-dAh" id="lYy-VI-mkI"/>
                 <outlet property="indicatorView" destination="XdO-bt-Khq" id="eMc-s0-xgj"/>
                 <outlet property="previewView" destination="620-B5-S26" id="Rzq-6R-hen"/>
+                <outlet property="retakeButton" destination="LJF-li-xJX" id="rSh-cQ-TZj"/>
                 <outlet property="subtitleLabel" destination="A4r-oo-qxD" id="eUq-iU-AUp"/>
                 <outlet property="titleLabel" destination="wPg-kz-gIQ" id="B4C-Dq-H3Q"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -86,27 +88,19 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LJF-li-xJX">
-                            <rect key="frame" x="20" y="45" width="32.5" height="30"/>
-                            <constraints>
-                                <constraint firstAttribute="width" secondItem="LJF-li-xJX" secondAttribute="height" multiplier="12:11" id="Wsc-bY-vly"/>
-                                <constraint firstAttribute="height" constant="30" id="rl8-yh-urZ"/>
-                            </constraints>
+                            <rect key="frame" x="20" y="43" width="55" height="34"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <state key="normal" image="photo" catalog="system"/>
+                            <state key="normal" title="Retake"/>
                             <connections>
-                                <action selector="photoLibrary:" destination="-1" eventType="touchUpInside" id="ohd-Lg-U8S"/>
+                                <action selector="retakeLibrary:" destination="-1" eventType="touchUpInside" id="ohd-Lg-U8S"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4tf-uc-dAh">
-                            <rect key="frame" x="354" y="40" width="40" height="40"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="40" id="1cZ-IA-jwb"/>
-                                <constraint firstAttribute="width" secondItem="4tf-uc-dAh" secondAttribute="height" multiplier="1:1" id="8xJ-3p-gAT"/>
-                            </constraints>
+                            <rect key="frame" x="321" y="43" width="73" height="34"/>
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <state key="normal" image="repeat" catalog="system"/>
+                            <state key="normal" title="Continue"/>
                             <connections>
-                                <action selector="switchButtonTapped:" destination="-1" eventType="touchUpInside" id="Xzo-nS-SWB"/>
+                                <action selector="continueButtonTapped:" destination="-1" eventType="touchUpInside" id="Xzo-nS-SWB"/>
                             </connections>
                         </button>
                     </subviews>
@@ -146,8 +140,6 @@
     <resources>
         <image name="camera.snap" width="256" height="256"/>
         <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
-        <image name="photo" catalog="system" width="128" height="93"/>
-        <image name="repeat" catalog="system" width="128" height="99"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

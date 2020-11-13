@@ -7,13 +7,13 @@
 
 import UIKit
 
-extension ScanInstructionViewController {
-    static func instantiate() -> ScanInstructionViewController {
-        return ScanInstructionViewController()
+extension SelfieInstructionViewController {
+    static func instantiate() -> SelfieInstructionViewController {
+        return SelfieInstructionViewController()
     }
 }
 
-class ScanInstructionViewController: UIViewController {
+class SelfieInstructionViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +25,6 @@ class ScanInstructionViewController: UIViewController {
 
     
     @IBAction func cameraButtonTapped(_ sender: Any) {
-        navigates(to: .checkCredit(.selfie))
+        navigates(to: .register(.selfie))
     }
 }

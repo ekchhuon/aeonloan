@@ -6,15 +6,15 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17120"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ScanViewController" customModule="AEON_Loan" customModuleProvider="target">
             <connections>
-                <outlet property="checkmarkImageView" destination="AMC-qa-Axf" id="A9o-Xh-zUS"/>
+                <outlet property="checkmarkImageView" destination="ol4-C5-WYg" id="Rf5-6w-oXR"/>
                 <outlet property="continueButton" destination="6Vw-fV-kNX" id="fgv-W5-lQu"/>
-                <outlet property="docsIdentifierLabel" destination="IQy-IR-x51" id="mgy-lv-yQ6"/>
+                <outlet property="indicatorView" destination="Y81-n8-qfD" id="Vha-y3-dWF"/>
+                <outlet property="recognitionLabel" destination="uJL-pV-TQ4" id="pJv-mh-D1q"/>
                 <outlet property="scannedImage" destination="jdd-qG-Ra8" id="UDx-xU-cXx"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outletCollection property="instructionView" destination="b5F-z3-sUE" collectionClass="NSMutableArray" id="9ta-GU-cJ5"/>
@@ -33,19 +33,6 @@
                         <constraint firstAttribute="width" secondItem="jdd-qG-Ra8" secondAttribute="height" multiplier="1:1" id="IPP-rv-Cky"/>
                     </constraints>
                 </imageView>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="AMC-qa-Axf">
-                    <rect key="frame" x="238" y="566" width="20" height="19"/>
-                    <color key="tintColor" systemColor="systemGreenColor"/>
-                    <constraints>
-                        <constraint firstAttribute="width" secondItem="AMC-qa-Axf" secondAttribute="height" multiplier="1:1" id="wvL-l1-Voo"/>
-                    </constraints>
-                </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IQy-IR-x51">
-                    <rect key="frame" x="186.5" y="565.5" width="41.5" height="20.5"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FHe-kX-aCL">
                     <rect key="frame" x="20" y="801" width="26.5" height="22"/>
                     <constraints>
@@ -95,33 +82,53 @@
                         <constraint firstAttribute="height" constant="240" id="yer-Ma-PoT"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To continue, you need to scan yur original valid Khmer ID or Passport" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KhU-dZ-PNh">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To register, you need to scan yur original valid Khmer ID or Passport" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KhU-dZ-PNh">
                     <rect key="frame" x="20" y="428" width="374" height="31.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Ph5-Sj-ez6">
+                    <rect key="frame" x="161.5" y="565.5" width="91.5" height="20"/>
+                    <subviews>
+                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="Y81-n8-qfD">
+                            <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                            <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </activityIndicatorView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uJL-pV-TQ4">
+                            <rect key="frame" x="25" y="0.0" width="41.5" height="20"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ol4-C5-WYg">
+                            <rect key="frame" x="71.5" y="0.5" width="20" height="19"/>
+                            <color key="tintColor" red="0.20392156862745098" green="0.78431372549019607" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="20" id="EIc-pV-u3l"/>
+                                <constraint firstAttribute="width" constant="20" id="m4q-if-bG9"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" red="0.4549019608" green="0.3803921569" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="IQy-IR-x51" firstAttribute="top" secondItem="jdd-qG-Ra8" secondAttribute="bottom" constant="20" id="3gC-go-9Uu"/>
+                <constraint firstItem="Ph5-Sj-ez6" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="6VX-dZ-GU2"/>
                 <constraint firstItem="FHe-kX-aCL" firstAttribute="centerY" secondItem="Poj-m6-Sti" secondAttribute="centerY" id="9Xf-3q-b2v"/>
                 <constraint firstItem="3tG-u7-BOF" firstAttribute="top" secondItem="b5F-z3-sUE" secondAttribute="bottom" constant="40" id="Mn6-1z-VG5"/>
                 <constraint firstItem="KhU-dZ-PNh" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="NSf-5e-NKg"/>
                 <constraint firstItem="3tG-u7-BOF" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="QVT-P5-f9r"/>
                 <constraint firstItem="FHe-kX-aCL" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="RGv-sI-2EE"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Poj-m6-Sti" secondAttribute="bottom" constant="20" id="Xoh-Nx-Fb6"/>
-                <constraint firstItem="IQy-IR-x51" firstAttribute="centerX" secondItem="jdd-qG-Ra8" secondAttribute="centerX" id="YAm-zY-tcl"/>
-                <constraint firstItem="AMC-qa-Axf" firstAttribute="height" secondItem="IQy-IR-x51" secondAttribute="height" multiplier="0.97561" id="cFp-EE-ts2"/>
                 <constraint firstItem="Poj-m6-Sti" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="er5-Ra-mrb"/>
                 <constraint firstItem="b5F-z3-sUE" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="iiD-kA-qtG"/>
-                <constraint firstItem="AMC-qa-Axf" firstAttribute="centerY" secondItem="IQy-IR-x51" secondAttribute="centerY" id="kVB-ME-7Q7"/>
                 <constraint firstItem="jdd-qG-Ra8" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" multiplier="0.8" id="kqV-Fi-ISR"/>
+                <constraint firstItem="Ph5-Sj-ez6" firstAttribute="top" secondItem="jdd-qG-Ra8" secondAttribute="bottom" constant="20" id="qOV-kD-His"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="jdd-qG-Ra8" secondAttribute="trailing" constant="20" id="rBW-Ig-PqG"/>
                 <constraint firstItem="b5F-z3-sUE" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="40" id="u66-sW-ho1"/>
                 <constraint firstItem="6Vw-fV-kNX" firstAttribute="centerY" secondItem="Poj-m6-Sti" secondAttribute="centerY" id="vcX-LW-2ro"/>
-                <constraint firstItem="AMC-qa-Axf" firstAttribute="leading" secondItem="IQy-IR-x51" secondAttribute="trailing" constant="10" id="wVX-HT-0n7"/>
                 <constraint firstItem="jdd-qG-Ra8" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="wlR-9F-SFH"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="6Vw-fV-kNX" secondAttribute="trailing" constant="20" id="wtL-IT-NZG"/>
                 <constraint firstItem="KhU-dZ-PNh" firstAttribute="top" secondItem="3tG-u7-BOF" secondAttribute="bottom" constant="40" id="xSB-G4-DOp"/>
@@ -135,8 +142,5 @@
         <image name="checkmark.circle.fill" catalog="system" width="128" height="121"/>
         <image name="mobile_scan" width="512" height="512"/>
         <image name="photo.fill" catalog="system" width="128" height="93"/>
-        <systemColor name="systemGreenColor">
-            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
     </resources>
 </document>
