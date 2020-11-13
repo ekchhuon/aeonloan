@@ -36,6 +36,7 @@ class PhotoViewController: BaseViewController, AVCapturePhotoCaptureDelegate {
     var attributeViews = [UIView]()
     var images = [UIImage]()
     
+    /*
     lazy var instructionView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -80,7 +81,7 @@ class PhotoViewController: BaseViewController, AVCapturePhotoCaptureDelegate {
         imgView.setHeight(20)
         return imgView
     }()
-    
+    */
     var selectedImage: UIImageView = {
         let imgView = UIImageView()
         imgView.translatesAutoresizingMaskIntoConstraints = false
@@ -133,13 +134,16 @@ class PhotoViewController: BaseViewController, AVCapturePhotoCaptureDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.view.backgroundColor = .brandPurple
+        /*
         hint1Label.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget libero a arcu feugiat malesuada ut ut lectus. Nunc pharetra"
         hint2Label.text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eget libero a arcu feugiat malesuada ut ut lectus. Nunc pharetra"
         
         attributeViews = [checkmark1, checkmark2, hint1Label, hint2Label]
+        */
         setAttributes(camera: .back, title: "Take a photo of ID or Passport")
-        setupSwipeGestureRecognizerOnCollection()
-        translateImage()
+        // setupSwipeGestureRecognizerOnCollection()
+        //translateImage()
     }
     
     
@@ -160,7 +164,7 @@ class PhotoViewController: BaseViewController, AVCapturePhotoCaptureDelegate {
 //        scanVC.delegate = self
 //        self.presentViewController(scanVC, animated: true, completion: nil)
     }
-    
+    /*
     // gesture
     private func setupSwipeGestureRecognizerOnCollection() {
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture(gesture:)))
@@ -171,7 +175,8 @@ class PhotoViewController: BaseViewController, AVCapturePhotoCaptureDelegate {
         swipeLeft.direction = .left
         self.view.addGestureRecognizer(swipeLeft)
     }
-    
+    */
+    /*
     @objc
     private func handleGesture(gesture: UISwipeGestureRecognizer) {
         print(gesture.direction)
@@ -184,11 +189,13 @@ class PhotoViewController: BaseViewController, AVCapturePhotoCaptureDelegate {
             self.instructionView.fadeIn()
         }
     }
+    */
     
     @IBAction func switchTapped(_ sender: Any) {
-        /*
+        
         isFront = !isFront
         setupCamera(with: isFront ? .front : .back)
+        /*
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             if self.isFront {
                 self.setAttributes(camera: .front, title: "Selfie", subtitle: "Lorem ipsum dolor sit amet, ")
@@ -196,13 +203,14 @@ class PhotoViewController: BaseViewController, AVCapturePhotoCaptureDelegate {
                 self.setAttributes(camera: .back, title: "Take a photo of ID or Passport")
             }
         }
- 
-    */
-        
+        */
+    
+        /*
         // Use VisionKit to scan business cards
         let documentCameraViewController = VNDocumentCameraViewController()
         documentCameraViewController.delegate = self
         self.present(documentCameraViewController, animated: true, completion: nil)
+    */
     }
     
     private func setAttributes(camera position: AVCaptureDevice.Position, title: String = "", subtitle: String = "") {
@@ -236,14 +244,12 @@ class PhotoViewController: BaseViewController, AVCapturePhotoCaptureDelegate {
     }
     
     func setupImagePreview(image: UIImage) {
-        
         previewView.addSubview(selectedImage)
         selectedImage.setLeft(equalTo: previewView.leftAnchor, constant: 0)
         selectedImage.setRight(equalTo: previewView.rightAnchor, constant: 0)
         selectedImage.setTop(equalTo: previewView.topAnchor, constant: 0)
         selectedImage.setBottom(qualTo: previewView.bottomAnchor, constant: 0)
         selectedImage.image = image
-        
     }
     
     func setupLivePreview() {
@@ -251,7 +257,7 @@ class PhotoViewController: BaseViewController, AVCapturePhotoCaptureDelegate {
         videoPreviewLayer.videoGravity = .resizeAspectFill
         videoPreviewLayer.connection?.videoOrientation = .portrait
         previewView.layer.addSublayer(videoPreviewLayer)
-        
+        /*
         // add subviews
         previewView.addSubview(instructionView)
         instructionView.setLeft(equalTo: previewView.leftAnchor, constant: 0)
@@ -269,6 +275,7 @@ class PhotoViewController: BaseViewController, AVCapturePhotoCaptureDelegate {
         checkmark1.centers(.vertically(.left), to: hint1Label, constant: -10)
         // ..
         
+        */
         //Step12
         DispatchQueue.global(qos: .userInitiated).async { //[weak self] in
             self.captureSession.startRunning()
@@ -291,16 +298,17 @@ class PhotoViewController: BaseViewController, AVCapturePhotoCaptureDelegate {
         capturedImageView.image = image
         print("Image size \(image?.getSizeIn(.megabyte)) mb")
         guard let img = image else {return}
-//        classifyImage(img)
-        // updateClassifications(for: img)
+        // classifyImage(img)
+        classifyImage(for: img)
         guard let croped = img.crop(to: videoPreviewLayer) else {
             print("Unable to crop image")
             return
         }
         setupImagePreview(image: croped)
-        readImage(image: croped)
+        // readImage(image: croped)
     }
     
+    /*
     func translateImage() {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.title = "New Cat"
@@ -325,7 +333,8 @@ class PhotoViewController: BaseViewController, AVCapturePhotoCaptureDelegate {
         textRecognitionRequest.usesLanguageCorrection = false
         textRecognitionRequest.customWords = ["@gmail.com", "@outlook.com", "@yahoo.com", "@icloud.com"]
     }
-    
+    */
+    /*
     func readImage(image: UIImage) {
         // let image = scan.imageOfPage(at: 0)
         let handler = VNImageRequestHandler(cgImage: image.cgImage!, options: [:])
@@ -335,6 +344,7 @@ class PhotoViewController: BaseViewController, AVCapturePhotoCaptureDelegate {
             print(error)
         }
     }
+    */
 }
 // Image Picker
 extension PhotoViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -367,10 +377,11 @@ extension PhotoViewController: UIImagePickerControllerDelegate, UINavigationCont
             return
         }
         setupImagePreview(image: croped)
-        readImage(image: croped)
+        //readImage(image: croped)
     }
 }
 
+/*
 extension PhotoViewController: VNDocumentCameraViewControllerDelegate {
     func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFinishWith scan: VNDocumentCameraScan) {
         let image = scan.imageOfPage(at: 0)
@@ -383,11 +394,12 @@ extension PhotoViewController: VNDocumentCameraViewControllerDelegate {
         controller.dismiss(animated: true)
     }
 }
+*/
 
 // MARK - Handle CoreML
 extension PhotoViewController {
     /// - Tag: PerformRequests
-    func updateClassifications(for image: UIImage) {
+    func classifyImage(for image: UIImage) {
         titleLabel.text = "Classifying..."
         
         guard let orientation = CGImagePropertyOrientation(
@@ -439,6 +451,7 @@ extension PhotoViewController {
 
 
 extension UIImage {
+    // crop image
     func crop(to previewLayer: AVCaptureVideoPreviewLayer) -> UIImage? {
         guard let cgImage = self.cgImage else { return nil }
 

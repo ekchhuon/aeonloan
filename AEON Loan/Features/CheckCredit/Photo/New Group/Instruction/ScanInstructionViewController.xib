@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17147" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17120"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ScanInstructionViewController" customModule="AEON_Loan" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Face Selfie" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dra-7G-G4x">
+                    <rect key="frame" x="148.5" y="84" width="117.5" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mobile_scan" translatesAutoresizingMaskIntoConstraints="NO" id="Ale-fC-e2u">
+                    <rect key="frame" x="81" y="203" width="252" height="269"/>
+                    <color key="tintColor" systemColor="systemBlueColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="269" id="988-wv-ab8"/>
+                        <constraint firstAttribute="width" constant="252" id="HLU-Iz-v31"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8oS-AL-9vF">
+                    <rect key="frame" x="177" y="782" width="60" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="FjE-uS-0FG"/>
+                        <constraint firstAttribute="width" constant="60" id="yPX-P7-ngA"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal">
+                        <imageReference key="image" image="camera.snap" renderingMode="template"/>
+                    </state>
+                    <connections>
+                        <action selector="cameraButtonTapped:" destination="-1" eventType="touchUpInside" id="eRf-9K-2NY"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To continue, you need to use your original valid Khmer ID or Passport" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LNY-sD-0hJ">
+                    <rect key="frame" x="20" y="134" width="374" height="29"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="WHO-FV-1pV">
+                    <rect key="frame" x="20" y="512" width="374" height="78"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Y6S-Fh-Kvf">
+                            <rect key="frame" x="0.0" y="0.0" width="374" height="29"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="GcO-4f-EeD">
+                                    <rect key="frame" x="0.0" y="2" width="20" height="25.5"/>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="20" id="bpH-PK-uii"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To continue, you need to use your original valid Khmer ID or Passport" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="36q-ib-p8y">
+                                    <rect key="frame" x="30" y="0.0" width="344" height="29"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                        <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="2wE-9r-aYs">
+                            <rect key="frame" x="0.0" y="49" width="374" height="29"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Acx-Xq-rTs">
+                                    <rect key="frame" x="0.0" y="2" width="20" height="25.5"/>
+                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="20" id="d7K-sv-r9g"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Align your head inside the frame and capture a clear image of yourself" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IsQ-j6-Ogt">
+                                    <rect key="frame" x="30" y="0.0" width="344" height="29"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="Y6S-Fh-Kvf" secondAttribute="trailing" id="a8U-th-JcP"/>
+                        <constraint firstAttribute="trailing" secondItem="2wE-9r-aYs" secondAttribute="trailing" id="csj-XR-bDC"/>
+                    </constraints>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" red="0.4549019608" green="0.3803921569" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="LNY-sD-0hJ" secondAttribute="trailing" constant="20" id="93J-Nx-u8U"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="WHO-FV-1pV" secondAttribute="trailing" constant="20" id="ILX-2H-jTl"/>
+                <constraint firstItem="LNY-sD-0hJ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="MgL-TR-SqP"/>
+                <constraint firstItem="WHO-FV-1pV" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="SDr-0a-X9M"/>
+                <constraint firstItem="Ale-fC-e2u" firstAttribute="top" secondItem="LNY-sD-0hJ" secondAttribute="bottom" constant="40" id="T9h-UF-wt3"/>
+                <constraint firstItem="WHO-FV-1pV" firstAttribute="top" secondItem="Ale-fC-e2u" secondAttribute="bottom" constant="40" id="ThI-iO-7Uu"/>
+                <constraint firstItem="Ale-fC-e2u" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Zwk-H6-ygV"/>
+                <constraint firstItem="LNY-sD-0hJ" firstAttribute="top" secondItem="dra-7G-G4x" secondAttribute="bottom" constant="20" id="ajP-gM-k1u"/>
+                <constraint firstItem="dra-7G-G4x" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="40" id="gVw-cG-qYz"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="8oS-AL-9vF" secondAttribute="bottom" constant="20" id="jCa-oe-LRn"/>
+                <constraint firstItem="8oS-AL-9vF" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="jd7-iV-rw3"/>
+                <constraint firstItem="dra-7G-G4x" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="nfS-Wu-5FC"/>
+            </constraints>
+            <point key="canvasLocation" x="44.927536231884062" y="108.48214285714285"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="camera.snap" width="256" height="256"/>
+        <image name="checkmark" catalog="system" width="128" height="114"/>
+        <image name="mobile_scan" width="512" height="512"/>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

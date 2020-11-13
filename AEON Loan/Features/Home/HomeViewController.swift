@@ -124,6 +124,13 @@ extension HomeViewController: UICollectionViewDelegate {
             case 0:
                 //navigates(to: .checkCredit(.takePhoto))
                 navigates(to: .scan)
+                /*
+                let controller = ScanViewController.instantiate()
+                // controller.modalTransitionStyle = .crossDissolve
+                controller.modalPresentationStyle = .popover
+                navigationController?.pushViewController(controller, animated: true)
+                */
+                
             case 1:
                 navigates(to: .applyLoan)
             case 4:

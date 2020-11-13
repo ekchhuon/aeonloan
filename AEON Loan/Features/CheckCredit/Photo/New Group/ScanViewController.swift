@@ -18,15 +18,15 @@ extension ScanViewController {
 class ScanViewController: UIViewController {
     @IBOutlet weak var scannedImage: UIImageView!
     @IBOutlet weak var docsIdentifierLabel: UILabel!
-    @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var checkmarkImageView: UIImageView!
-    
+    @IBOutlet var instructionView: [UIView]!
+    @IBOutlet weak var continueButton: UIButton!
     
     
     var recognizedText = ""
     var recognizedTexts = [String]()
     var textRecognitionRequest = VNRecognizeTextRequest()
-    let document = DocumentValidator()
+    let validator = DocumentValidator()
     var moved: Bool = false
     var docsIdentifierViews: [UIView]!
     
@@ -36,6 +36,7 @@ class ScanViewController: UIViewController {
         checkmarkImageView.isHidden = true
         docsIdentifierViews = [docsIdentifierLabel, checkmarkImageView]
         docsIdentifierViews.forEach { $0.isHidden = true }
+        disableContinueButton(disabled: false)
     }
     
     private func validate(_ recognizedTexts: [String]) {
@@ -46,8 +47,8 @@ class ScanViewController: UIViewController {
             self.docsIdentifierViews.forEach { $0.isHidden = false }
         }
         
-        document.recognizedTexts = recognizedTexts
-        let result = document.validate()
+        validator.recognizedTexts = recognizedTexts
+        let result = validator.validate()
         
         docsIdentifierLabel.text = result.identifier
         checkmarkImageView.image = UIImage(systemName: result == .unknown ? "xmark.circle.fill" : "checkmark.circle.fill")
@@ -55,6 +56,12 @@ class ScanViewController: UIViewController {
         
         print("result", recognizedTexts)
         
+        //disableContinueButton(disabled: result == .unknown)
+    }
+    
+    fileprivate func disableContinueButton(disabled: Bool) {
+            continueButton.isUserInteractionEnabled = !disabled
+            continueButton.alpha = disabled ? 0.5 : 1
     }
     
     func recognizeRequest() {
@@ -74,8 +81,11 @@ class ScanViewController: UIViewController {
                     self.validate(self.recognizedTexts)
                 }
             } else {
-                print("Unknow")
-                self.showAlert(message: "Invalid")
+                self.show(indicator: true)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    self.show(indicator: false)
+                    self.showAlert(message: "Invalid")
+                }
             }
         })
         textRecognitionRequest.recognitionLevel = .accurate
@@ -90,7 +100,7 @@ class ScanViewController: UIViewController {
         present(picker, animated: true)
     }
     
-    func readImage(image: UIImage) {
+    fileprivate func handleTextRecognition(with image: UIImage) {
         scannedImage.image = image
         let handler = VNImageRequestHandler(cgImage: image.cgImage!, options: [:])
         do {
@@ -100,25 +110,35 @@ class ScanViewController: UIViewController {
         }
     }
     
+    func openScanner() {
+        // Use VisionKit to scan business document
+        let documentCameraViewController = VNDocumentCameraViewController()
+        documentCameraViewController.delegate = self
+        self.present(documentCameraViewController, animated: true, completion: nil)
+    }
+    
     @IBAction func choosePhoto(_ sender: Any) {
         presentPhotoPicker(sourceType: .photoLibrary)
     }
     
+    @IBAction func nextButtonTapped(_ sender: Any) {
+        let controller = ScanInstructionViewController.instantiate()
+        navigationController?.pushViewController(controller, animated: true)
+        
+    }
+    
     @IBAction func scanButtonTapped(_ sender: Any) {
-        // Use VisionKit to scan business cards
-        let documentCameraViewController = VNDocumentCameraViewController()
-        documentCameraViewController.delegate = self
-        self.present(documentCameraViewController, animated: true, completion: nil)
+        openScanner()
     }
 }
 
 extension ScanViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     // MARK: - Handling Image Picker Selection
-    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         picker.dismiss(animated: true)
         let image = info[UIImagePickerController.InfoKey.originalImage] as! UIImage
-        readImage(image: image)
+        handleTextRecognition(with: image)
+        instructionView.forEach { $0.isHidden = true }
     }
 }
 
@@ -126,7 +146,8 @@ extension ScanViewController: UIImagePickerControllerDelegate, UINavigationContr
 extension ScanViewController: VNDocumentCameraViewControllerDelegate {
     func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFinishWith scan: VNDocumentCameraScan) {
         let image = scan.imageOfPage(at: 0)
-        readImage(image: image)
+        handleTextRecognition(with: image)
+        instructionView.forEach { $0.isHidden = true }
         controller.dismiss(animated: true)
     }
 }
