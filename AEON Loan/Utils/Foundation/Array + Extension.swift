@@ -35,18 +35,10 @@ extension Array where Element == String {
         return filter.count > 0
     }
     
-    // exact the word
+    // return exact word
     func hasExact(_ searchText: String)  -> Bool {
         return self.contains { $0 == searchText }
     }
-    
-    // has exact number of digit. eg. ^[0-9]{9}$ = 012345678 (nine digit)
-//    func findDigit(of digit: Int) -> [String] {
-//        let filtered = self.filter {
-//            return  $0.range(of: "^[0-9]{\(digit)}$", options: .regularExpression) != nil
-//        }
-//        return filtered
-//    }
     
     func getItem(using regex: String) -> String? {
         let filtered = self.filter {
@@ -55,13 +47,13 @@ extension Array where Element == String {
         return filtered[0]
     }
     
-//    func hasDigit(of digit: Int) -> Bool {
-//        let results = findDigit(of: digit)
-//        return results.count > 0
-//    }
-    
+    // extract id
     func getIdNumber(for document: DocumentType) -> String {
-        return getItem(using: document.regex) ?? "N/A"
+        return getItem(using: document.regex) ?? ""
+    }
+    
+    func hasId(_ type: DocumentType) -> Bool {
+        return (getItem(using: type.regex) != nil)
     }
 }
 

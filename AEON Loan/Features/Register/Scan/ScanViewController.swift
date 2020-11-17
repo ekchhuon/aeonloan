@@ -47,18 +47,17 @@ class ScanViewController: UIViewController {
     }
     
     private func validate(_ recognizedTexts: [String]) {
-        //docsIdentifierViews.forEach { $0.isHidden = true }
         
         validator.recognizedTexts = recognizedTexts
         let result = validator.validate()
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             self.loading(started: false)
-            self.recognitionLabel.text = "\(result.description) \(recognizedTexts.getIdNumber(for: result))"
-            self.checkmarkImageView.isHidden = result == .unknown
+            self.recognitionLabel.text = "\(result.description)"
+            self.checkmarkImageView.isHidden = (result == .unknown)
             //disableContinueButton(disabled: result == .unknown)
         }
         
-        print("result", recognizedTexts.getIdNumber(for: result))
+        // print("result", recognizedTexts.getIdNumber(for: result))
     }
     
     fileprivate func disableContinueButton(disabled: Bool) {
@@ -83,7 +82,11 @@ class ScanViewController: UIViewController {
                     self.validate(self.recognizedTexts)
                 }
             } else {
-                 self.validate(self.recognizedTexts)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    self.recognitionLabel.text = "Invalid"
+                    self.loading(started: false)
+                }
+                return
             }
         })
         textRecognitionRequest.recognitionLevel = .accurate
@@ -162,8 +165,4 @@ extension Array where Element == String {
 //        return [id, name]
 //    }
 }
-
-
-
-
 

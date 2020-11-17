@@ -75,7 +75,7 @@ class SelfieViewController: BaseViewController, AVCapturePhotoCaptureDelegate {
             self.checkmarkImageVIew.isHidden = !isValid
             self.subtitleLabel.isHidden = isValid
             self.updateActionButton(selfie: isValid)
-//            self.updateCaptureButton(selfie: isValid)
+            //            self.updateCaptureButton(selfie: isValid)
             if isValid {
                 self.titleLabel.text = "Awesome"
                 self.checkmarkImageVIew.isHidden = false
@@ -108,8 +108,12 @@ class SelfieViewController: BaseViewController, AVCapturePhotoCaptureDelegate {
         continueButton.alpha = isValid ? 1:0.5
     }
     
-
+    
     @IBAction func captureButtonTapped(_ sender: Any) {
+        guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
+            print("Camera is not avaiable")
+            return
+        }
         isCaptured ? capturedImageView.removeFromSuperview() : startCapture()
         isCaptured = !isCaptured
     }
