@@ -75,9 +75,6 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OdD-FK-0AC">
                                     <rect key="frame" x="0.0" y="0.0" width="189.5" height="50"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wi8-R6-zgO">
-                                            <rect key="frame" x="0.0" y="0.0" width="189.5" height="50"/>
-                                        </button>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="JoD-o4-a3f">
                                             <rect key="frame" x="15" y="10" width="159.5" height="30"/>
                                             <subviews>
@@ -95,6 +92,12 @@
                                                 </label>
                                             </subviews>
                                         </stackView>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wi8-R6-zgO">
+                                            <rect key="frame" x="0.0" y="0.0" width="189.5" height="50"/>
+                                            <connections>
+                                                <action selector="locationButtonTapped:" destination="-1" eventType="touchUpInside" id="NHb-Ql-DVO"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                                     <constraints>
@@ -111,9 +114,6 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hme-KY-M4T">
                                     <rect key="frame" x="194.5" y="0.0" width="189.5" height="50"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KZZ-wE-GVT">
-                                            <rect key="frame" x="0.0" y="0.0" width="189.5" height="50"/>
-                                        </button>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="VCT-FT-jGH">
                                             <rect key="frame" x="15" y="10" width="159.5" height="30"/>
                                             <subviews>
@@ -131,6 +131,12 @@
                                                 </label>
                                             </subviews>
                                         </stackView>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KZZ-wE-GVT">
+                                            <rect key="frame" x="0.0" y="0.0" width="189.5" height="50"/>
+                                            <connections>
+                                                <action selector="contactUsButtonTapped:" destination="-1" eventType="touchUpInside" id="NHf-Na-3Hf"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                                     <constraints>

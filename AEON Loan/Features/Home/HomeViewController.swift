@@ -67,6 +67,17 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
             self.indicator.isHidden = !loading
         }
     }
+    @IBAction func contactUsButtonTapped(_ sender: Any) {
+        navigateToWebview(with: .contactUs)
+    }
+    @IBAction func locationButtonTapped(_ sender: Any) {
+        navigateToWebview(with: .location)
+    }
+    
+    private func navigateToWebview(with request: WKRequest) {
+        let controller = WKViewController.instantiate(request: request)
+        navigationController?.pushViewController(controller, animated: true)
+    }
 }
 
 // MARK: Collection
@@ -87,7 +98,7 @@ extension HomeViewController: UICollectionViewDataSource {
         } else {
             let cell : HomeCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCollectionViewCell", for: indexPath) as! HomeCollectionViewCell
             cell.setupMenu(menu: menus[indexPath.row])
-            cell.disableCell(index: indexPath.row)
+            //cell.disableCell(index: indexPath.row)
             
             return cell
         }
@@ -130,9 +141,12 @@ extension HomeViewController: UICollectionViewDelegate {
                 controller.modalPresentationStyle = .popover
                 navigationController?.pushViewController(controller, animated: true)
                 */
-                
             case 1:
                 navigates(to: .applyLoan)
+            case 2:
+                navigateToWebview(with: .product)
+            case 3:
+                navigateToWebview(with: .promotion)
             case 4:
                 navigates(to: .payment(.main))
             case 5:
@@ -241,8 +255,8 @@ extension HomeViewController{
         locationView.roundByCorners(10, for: [.layerMinXMaxYCorner, .layerMinXMinYCorner])
         contactusView.roundByCorners(10, for: [.layerMaxXMaxYCorner, .layerMaxXMinYCorner])
         
-        locationView.backgroundColor = .disabled
-        contactusView.backgroundColor = .disabled
+        //locationView.backgroundColor = .disabled
+        //contactusView.backgroundColor = .disabled
     }
     
     private func setupRefreshControl() {
@@ -308,6 +322,9 @@ extension HomeViewController{
         
         return settings
     }
+    
+    
+    
 }
 
 // MARK: @objc
