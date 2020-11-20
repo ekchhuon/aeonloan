@@ -137,6 +137,7 @@
 		3EA5778B25662F8C00312E5F /* WKViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA5778925662F8C00312E5F /* WKViewController.swift */; };
 		3EA5778C25662F8C00312E5F /* WKViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EA5778A25662F8C00312E5F /* WKViewController.xib */; };
 		3EB04856252DB27600A395E2 /* BuildConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB04855252DB27600A395E2 /* BuildConfig.swift */; };
+		3EB2161C256769AB00751DD6 /* UIView + Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB2161B256769AB00751DD6 /* UIView + Loading.swift */; };
 		3EB505BF25513E6B0033E82A /* SideMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB505BD25513E6B0033E82A /* SideMenuTableViewCell.swift */; };
 		3EB505C025513E6B0033E82A /* SideMenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EB505BE25513E6B0033E82A /* SideMenuTableViewCell.xib */; };
 		3ED2C51E251AF8C0007B0B9A /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED2C51D251AF8C0007B0B9A /* UIViewController.swift */; };
@@ -316,6 +317,7 @@
 		3EA5778925662F8C00312E5F /* WKViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WKViewController.swift; sourceTree = "<group>"; };
 		3EA5778A25662F8C00312E5F /* WKViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WKViewController.xib; sourceTree = "<group>"; };
 		3EB04855252DB27600A395E2 /* BuildConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildConfig.swift; sourceTree = "<group>"; };
+		3EB2161B256769AB00751DD6 /* UIView + Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Loading.swift"; sourceTree = "<group>"; };
 		3EB505BD25513E6B0033E82A /* SideMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewCell.swift; sourceTree = "<group>"; };
 		3EB505BE25513E6B0033E82A /* SideMenuTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SideMenuTableViewCell.xib; sourceTree = "<group>"; };
 		3ED2C51D251AF8C0007B0B9A /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
@@ -530,6 +532,7 @@
 				3ED2C51D251AF8C0007B0B9A /* UIViewController.swift */,
 				3E2AFBC325232AA00090A17D /* UIImageView + Extenstion.swift */,
 				3EF3427925258ED4003AA712 /* UITextField + Extensions.swift */,
+				3EB2161B256769AB00751DD6 /* UIView + Loading.swift */,
 			);
 			path = UIKits;
 			sourceTree = "<group>";
@@ -1351,6 +1354,7 @@
 				3E197BA32546EA4100F106B2 /* Calculator.swift in Sources */,
 				3E50C759253007C90051D809 /* HttpStatusCode.swift in Sources */,
 				3ED2C51E251AF8C0007B0B9A /* UIViewController.swift in Sources */,
+				3EB2161C256769AB00751DD6 /* UIView + Loading.swift in Sources */,
 				3ED6A179254179D0005E7DD7 /* Encode + Decode.swift in Sources */,
 				3E834E5125087F2E00D9E700 /* SliderCollectionViewCell.swift in Sources */,
 				3EB505BF25513E6B0033E82A /* SideMenuTableViewCell.swift in Sources */,

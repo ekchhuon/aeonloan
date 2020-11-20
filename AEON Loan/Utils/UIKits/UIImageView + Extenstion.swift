@@ -36,6 +36,10 @@ extension UIImage {
         
         return String(format: "%.2f", size)
     }
+    
+    func withColor(_ color: UIColor) -> UIImage {
+        self.withTintColor(color, renderingMode: .alwaysOriginal)
+    }
 }
 
 extension UIImageView {

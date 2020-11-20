@@ -43,18 +43,39 @@ class ApplicantInfoViewController: BaseViewController {
     var occupations = [String]()
     var educations = [String]()
     var periods = [String]()
-    
+    var count = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
         bind()
         setupDatePicker()
+        
+//        self.showLoadingIndicator(with: .default, animated: true)
+//        showLoadingIndicator(with: .default, animated: true)
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+//            self.showLoadingIndicator(with: .textOnly("Checking..."), animated: true)
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+//                self.showLoadingIndicator(with: .success("Valid"), animated: true)
+//                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+//                    self.showLoadingIndicator(with: .failure("Failed"), animated: true)
+//                    DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+//                    }
+//                }
+//            }
+//        }
+        
+        self.view.isSkeletonable = true
+//        self.view.showAnimatedGradientSkeleton()
+        textFields.forEach {
+            $0.isSkeletonable = true
+            $0.showSkeleton(usingColor: .gray, transition: .none)
+        }
     }
     
     private func bind(){
         viewModel.loading.bind { [weak self] (loading) in
             guard let self = self else { return }
-            self.show(indicator: loading)
+            //self.show(indicator: loading)
         }
         viewModel.maritals.bind { [weak self] (maritals) in
             guard let self = self else { return }

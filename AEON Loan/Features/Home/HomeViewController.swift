@@ -7,6 +7,7 @@
 
 import UIKit
 import SideMenu
+import SkeletonView
 
 extension HomeViewController {
     static func instantiate() -> HomeViewController {
@@ -38,9 +39,18 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        let ab = showLoadingIndicator(with: .default, animated: true)
+        ab.backgroundColor = .white
+        ab.show(animated: true)
 //        UserDefaults.standard.set(["fr"], forKey: "AppleLanguages")
 //        UserDefaults.standard.synchronize()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            ab.hide(animated: true)
+        }
+        
+        self.sliderCollectionView.isSkeletonable = true
+        self.sliderCollectionView.showSkeleton()
         
         viewModel.menus.bind { [weak self] menus in
             guard let self = self else {return}

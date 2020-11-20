@@ -12,6 +12,10 @@ target 'AEON Loan' do
   pod 'BCryptSwift'
   pod 'PhoneNumberKit', '~> 3.3'
   pod 'RNCryptor', '~> 5.0'
+  pod 'MBProgressHUD', '~> 1.2.0'
+  pod 'ActivityIndicatorView'
+  pod 'MaterialActivityIndicator'
+  pod 'SkeletonView'
   # Pods for AEON Loan
 
   target 'AEON LoanTests' do

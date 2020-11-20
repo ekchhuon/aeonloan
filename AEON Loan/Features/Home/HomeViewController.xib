@@ -118,7 +118,7 @@
                                             <rect key="frame" x="15" y="10" width="159.5" height="30"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menu8" translatesAutoresizingMaskIntoConstraints="NO" id="x7z-Jc-0V2">
-                                                    <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                                                    <rect key="frame" x="0.0" y="2" width="30" height="25.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="x7z-Jc-0V2" secondAttribute="height" multiplier="1:1" id="t2O-jv-5nN"/>
                                                     </constraints>
