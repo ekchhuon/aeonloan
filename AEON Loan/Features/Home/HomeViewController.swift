@@ -7,7 +7,6 @@
 
 import UIKit
 import SideMenu
-import SkeletonView
 
 extension HomeViewController {
     static func instantiate() -> HomeViewController {
@@ -26,8 +25,6 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var locationView: UIView!
     @IBOutlet weak var contactusView: UIView!
-    @IBOutlet weak var indicator: UIActivityIndicatorView!
-    @IBOutlet weak var loadingLabel: UILabel!
 
     var timer = Timer()
     var counter = 0
@@ -39,18 +36,6 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let ab = showLoadingIndicator(with: .default, animated: true)
-        ab.backgroundColor = .white
-        ab.show(animated: true)
-//        UserDefaults.standard.set(["fr"], forKey: "AppleLanguages")
-//        UserDefaults.standard.synchronize()
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            ab.hide(animated: true)
-        }
-        
-        self.sliderCollectionView.isSkeletonable = true
-        self.sliderCollectionView.showSkeleton()
         
         viewModel.menus.bind { [weak self] menus in
             guard let self = self else {return}
@@ -59,7 +44,11 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
         
         setupView()
         bindSliderData()
-
+        
+        self.showIndicator(true, style: .whiteBackground)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+            self.showIndicator(false)
+        }
     }
     
     func bindSliderData() {
@@ -72,9 +61,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
         
         siderViewModel.loading.bind { [weak self] loading in
             guard let self = self else {return}
-            self.loadingLabel.text = loading ? "loading..." : ""
-            self.indicator.startAnimating()
-            self.indicator.isHidden = !loading
+            self.sliderCollectionView.showIndicator(loading, style: .whiteBackground)
         }
     }
     @IBAction func contactUsButtonTapped(_ sender: Any) {
@@ -332,9 +319,6 @@ extension HomeViewController{
         
         return settings
     }
-    
-    
-    
 }
 
 // MARK: @objc

@@ -34,7 +34,7 @@ class RegisterViewController: BaseViewController {
     
     private func bind() {
         viewModel.loading.bind { (loading) in
-            self.show(indicator: loading)
+            self.showIndicator(loading)
         }
         
         viewModel.error.bind { [weak self] (err) in

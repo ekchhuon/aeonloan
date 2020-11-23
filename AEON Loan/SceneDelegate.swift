@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         func instantiateMainWindow() {
             window = UIWindow(frame: UIScreen.main.bounds)
-            window?.rootViewController = LanuchViewController.instantiate()
+//            window?.rootViewController = LanuchViewController.instantiate()
             window?.makeKeyAndVisible()
         }
         

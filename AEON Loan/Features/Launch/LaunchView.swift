@@ -20,7 +20,7 @@ class LaunchView: UIViewController {
     override func viewDidLoad() {
         
         DispatchQueue.main.asyncAfter(deadline: .now()) {
-            self.navigates(to: .home(.push(subtype: .fromRight)))
+            self.navigates(to: .home(.fade))
             
 //            self.navigates(to: .login)
 //            self.navigates(to: .language)

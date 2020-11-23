@@ -64,7 +64,7 @@ public class SliderViewModel {
     
     func fetch(){
         loading.value = true
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             self.loading.value = false
             let imageArray = [UIImage(named: "1"), UIImage(named: "2"), UIImage(named: "3"), UIImage(named: "4"), UIImage(named: "5"), UIImage(named: "6")]
             self.images.value = imageArray

@@ -50,7 +50,7 @@ class LoginViewController: BaseViewController {
         }
         
         viewModel.loading.bind { (loading) in
-            self.show(indicator: loading)
+            self.showIndicator(loading)
         }
         
         viewModel.token.bind { (token) in

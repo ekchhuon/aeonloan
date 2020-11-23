@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 extension ApplicantInfoViewController {
     static func instantiate() -> ApplicantInfoViewController {
@@ -63,19 +64,12 @@ class ApplicantInfoViewController: BaseViewController {
 //                }
 //            }
 //        }
-        
-        self.view.isSkeletonable = true
-//        self.view.showAnimatedGradientSkeleton()
-        textFields.forEach {
-            $0.isSkeletonable = true
-            $0.showSkeleton(usingColor: .gray, transition: .none)
-        }
     }
     
     private func bind(){
         viewModel.loading.bind { [weak self] (loading) in
             guard let self = self else { return }
-            //self.show(indicator: loading)
+            self.showIndicator(loading)
         }
         viewModel.maritals.bind { [weak self] (maritals) in
             guard let self = self else { return }
