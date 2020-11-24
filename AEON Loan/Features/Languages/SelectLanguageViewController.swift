@@ -8,11 +8,16 @@
 import UIKit
 import RNCryptor
 
-enum Language: Int {
-    case en = 0
-    case km = 1
+enum Language: Int, Codable {
+    case en
+    case km
     var index: Int {
-        return self.rawValue
+        switch self {
+        case .en:
+            return 0
+        default:
+            return 1
+        }
     }
 }
 
@@ -69,4 +74,5 @@ class SelectLanguageViewController: UIViewController {
         */
     }
 }
+
 

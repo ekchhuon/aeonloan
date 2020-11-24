@@ -20,22 +20,19 @@ class LaunchView: UIViewController {
     override func viewDidLoad() {
         
         DispatchQueue.main.asyncAfter(deadline: .now()) {
-            self.navigates(to: .home(.fade))
+//            self.navigates(to: .home(.fade))
             
 //            self.navigates(to: .login)
-//            self.navigates(to: .language)
+            self.navigates(to: .language)
+            
         }
         
+        Preference.user = MyUser(firstName: "Chhuon", lastName: "Ek")
+        print("Before",Preference.user)
         
-//        viewModel.locationName.bind { [weak self] locationName in
-//            self?.label.text = locationName
-//        }
-        
-        //        navigateToLogin()
-        
-//        navigateToHome()
-        
-        
+        Preference.reset(forKey: .user)
+        print("After",Preference.user)
+
     }
     
     
