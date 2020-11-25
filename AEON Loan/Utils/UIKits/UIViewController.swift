@@ -122,10 +122,41 @@ extension UIViewController {
         let okAction = UIAlertAction(title: okButtonTitle, style: okActionStyle) { (action) in
             okAction()
         }
+        alert.addAction(okAction)
         alert.addAction(dismissAction)
         alert.addAction(okAction)
         self.present(alert, animated: true, completion: nil)
     }
+    
+    @discardableResult
+    func showAlt(title: String, message: String, style: UIAlertController.Style) -> UIAlertController {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: style)
+        
+//        let paragraphStyle = NSMutableParagraphStyle()
+//        paragraphStyle.alignment = .right
+//        let messageText = NSAttributedString(
+//            string: "message",
+//            attributes: [
+//                NSAttributedString.Key.paragraphStyle: paragraphStyle,
+//                NSAttributedString.Key.foregroundColor : UIColor.brandPurple,
+//                //NSAttributedString.Key.font : UIFont(name: "name", size: 17)
+//            ]
+//        )
+        
+        
+
+//        alert.setValue(messageText, forKey: "attributedMessage")
+        
+        
+        let dismiss = UIAlertAction(title: "Cancel".localized, style: .cancel, handler: nil)
+        
+        
+        
+        alert.addAction(dismiss)
+        self.present(alert, animated: true, completion: nil)
+        return alert
+    }
+    
 }
 
 extension UIViewController {

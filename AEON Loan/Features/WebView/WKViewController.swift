@@ -53,24 +53,28 @@ enum WKRequest: String{
     case location = "Location"
     case promotion = "Promotion"
     case product = "Products"
-    
+    case aboutUs = "About Us"
+    var lang: String {
+        return Preference.language == .en ? "" : "/kh"
+    }
     var path: String {
-        return "https://aeon.com.kh/"
+        return "https://aeon.com.kh"
     }
     var endpoint: String {
         switch self {
+        case .aboutUs:
+            return "/about-us"
         case .contactUs:
-            return "contact-us/"
+            return "/contact-us"
         case .location:
-            return "branches/"
+            return "/branches"
         case .promotion:
-            return "promotions/"
+            return "/promotions"
         case .product:
-            return "promotions"
+            return "/promotions"
         }
     }
-    
     var url: URL {
-        return URL(string: path + endpoint)!
+        return URL(string: path + lang + endpoint)!
     }
 }

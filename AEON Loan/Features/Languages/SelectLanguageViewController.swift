@@ -11,6 +11,15 @@ import RNCryptor
 enum Language: Int, Codable {
     case en
     case km
+    var identifier: String {
+        switch self {
+        case .km:
+            return "km"
+        default:
+            return "en"
+        }
+    }
+    
     var index: Int {
         switch self {
         case .en:
@@ -31,7 +40,7 @@ class SelectLanguageViewController: UIViewController {
     @IBOutlet weak var KHButton: UIButton!
     @IBOutlet weak var ENButton: UIButton!
     @IBOutlet weak var continueButton: UIButton!
-    
+    var selected: Language = .en
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -55,6 +64,9 @@ class SelectLanguageViewController: UIViewController {
         buttons[language.index]?.setTitleColor(.white, for: .normal)
         buttons[language.index]?.setBorder()
         
+        Preference.language = language
+//        Languages(lang: language).change()
+        selected = language
     }
     
     @IBAction func KHSelected(_ sender: Any) {
@@ -66,12 +78,33 @@ class SelectLanguageViewController: UIViewController {
     }
     
     @IBAction func selectButtonTapped(_ sender: Any) {
-        navigates(to: .login)
+        // navigates(to: .login)
         /*
         let encrypted = "How are you!".encrypt()
         print("encrypted cipher", encrypted)
         print("decrypted original", encrypted.decrypt())
         */
+        
+        
+        
+        
+        
+        
+        
+        
+        
+            // This is done so that network calls now have the Accept-Language as Language.getCurrentLanguage() (Using Alamofire) Check if you can remove these
+            UserDefaults.standard.set([selected.identifier], forKey: "AppleLanguages")
+            UserDefaults.standard.synchronize()
+
+            // Update the language by swaping bundle
+            Bundle.setLanguage(selected.identifier)
+
+            // Done to reintantiate the storyboards instantly
+//            let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+//            UIApplication.shared.keyWindow?.rootViewController = storyboard.instantiateInitialViewController()
+        
+        self.navigates(to: .home(.push(subtype: .fromRight)))
     }
 }
 

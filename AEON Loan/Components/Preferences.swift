@@ -55,11 +55,6 @@ struct Preference {
     static var enableAutoLogin: Bool
     
     @Storage(key: .hasSeenInstruction, defaultValue: false) var hasSeenInstruction
-
-    static func remove() {
-        let prefs = UserDefaults.standard
-        prefs.removeObject(forKey:"TESTKEY")
-    }
     
     static func resetAll() {
         UserDefaults.Key.allCases.forEach {
@@ -72,7 +67,10 @@ struct Preference {
     }
     
     static func show(){
-        print(UserDefaults.standard.dictionaryRepresentation())
+        debugPrint(UserDefaults.standard.dictionaryRepresentation())
+        let user = Useres(firstName: "", lastName: "", lastLogin: Date(), contact: Useres.Contact(email: "", phone: ""))
+        
+        user.contact?.email
     }
 }
 

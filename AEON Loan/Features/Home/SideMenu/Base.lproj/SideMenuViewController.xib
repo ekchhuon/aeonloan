@@ -72,7 +72,7 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Vca-1a-J4s" secondAttribute="bottom" constant="20" id="vHC-tL-m7f"/>
                 <constraint firstItem="Vca-1a-J4s" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="y8G-fx-kOr"/>
             </constraints>
-            <point key="canvasLocation" x="8.6956521739130448" y="77.678571428571431"/>
+            <point key="canvasLocation" x="-383" y="58"/>
         </view>
     </objects>
     <resources>

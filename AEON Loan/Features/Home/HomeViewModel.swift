@@ -25,7 +25,7 @@ public class HomeViewModel {
         let names: [String] = ["menu1", "menu2", "menu3", "menu4", "menu5", "menu6"]
         let titles: [String] = ["Check Credit", "Apply Loan/Installment", "AEON SPB Product", "Promotion", "Check Your Payment Schedule", "Loan Calculation"]
         for (index, _) in names.enumerated() {
-            let menu = Menu(icon: UIImage(named: names[index]) ?? UIImage(), title: NSLocalizedString(titles[index], comment: ""))
+            let menu = Menu(icon: UIImage(named: names[index]) ?? UIImage(), title: titles[index].localized)
             menus.append(menu)
         }
         self.menus.value = menus

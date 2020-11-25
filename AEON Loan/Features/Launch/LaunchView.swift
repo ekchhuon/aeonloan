@@ -72,7 +72,9 @@ class LaunchView: UIViewController {
 //        navigates(to: .home(.push(subtype: .fromRight)))
 //        navigates(to: .language)
         
-        navigates(to: .login)
+//        navigates(to: .login)
+        
+        
         
     }
     

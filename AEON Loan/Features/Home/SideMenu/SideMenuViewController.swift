@@ -69,6 +69,11 @@ class SideMenuViewController: UIViewController {
         let login = LoginViewController.instantiate()
         self.view.window?.setRootViewController(login, options: .init(type: .push(subtype: .fromRight)))
     }
+    
+    private func navigateToWebview(with request: WKRequest) {
+        let controller = WKViewController.instantiate(request: request)
+        navigationController?.pushViewController(controller, animated: true)
+    }
 }
 
 // MARK: - TableView Delegate & Datasource
@@ -79,7 +84,7 @@ extension SideMenuViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SideMenuTableViewCell", for: indexPath) as! SideMenuTableViewCell
-        cell.setup(label: items[indexPath.row])
+        cell.setup(label: items[indexPath.row].localized)
         return cell
     }
     
@@ -87,6 +92,62 @@ extension SideMenuViewController: UITableViewDataSource, UITableViewDelegate {
         print("Selected", indexPath.row)
         
         switch indexPath.row {
+        case 0:
+            navigateToWebview(with: .aboutUs)
+        case 1:
+            navigateToWebview(with: .contactUs)
+        case 4:
+            
+            let controller = SettingViewController.instantiate()
+            navigationController?.pushViewController(controller, animated: true)
+            
+//            let controller = LanguageListViewController.instantiate()
+//            self.present(controller, animated: true, completion: nil)
+            
+
+            
+            /*
+            let alert = showAlt(title: "Choose Language", message: "", style: .actionSheet)
+            let khAction = UIAlertAction(title: "KH   \(Preference.language == .km ? "✓" : "")  ", style: .default) {_ in
+                print("KH Selected...")
+                Preference.language = .km
+                Languages(lang: .km).change()
+                Bundle.setLanguage("km")
+                self.tableView.reloadData()
+                self.view.setNeedsLayout()
+                self.view.layoutIfNeeded()
+            }
+            
+            let enAction = UIAlertAction(title: "EN   \(Preference.language == .en ? "✓" : "") ", style: .default) { _ in
+                print("EN Selected...")
+                Preference.language = .en
+                Languages(lang: .en).change()
+                Bundle.setLanguage("en")
+
+                self.tableView.reloadData()
+
+                
+                self.view.setNeedsLayout()
+                self.view.layoutIfNeeded()
+                
+                
+                
+            }
+            
+            let cameraImage = UIImage(systemName: "tray")!
+            let cameraImageFill = UIImage(systemName: "tray.fill")!
+            
+//            khAction.setImage(image: cameraImage)
+//            enAction.setImage(image: cameraImageFill)
+            khAction.setAlignment(mode: .justified)
+            enAction.setAlignment(mode: .justified)
+            
+            
+            
+            alert.addAction(khAction)
+            alert.addAction(enAction)
+            */
+        
         case 5:
             showALertWithOption(title: "Logout", message: "Are you sure you want to logout?", dismissButtonTitle: "Cancel", okButtonTitle: "Logout", style: .actionSheet, dismissActionStyle: .cancel, okActionStyle: .destructive) {
                 print("Canceled")
@@ -98,4 +159,28 @@ extension SideMenuViewController: UITableViewDataSource, UITableViewDelegate {
             break
         }
     }
+}
+
+
+extension UIAlertAction {
+    func setImage(image: UIImage) {
+        self.setValue(image, forKey: "image")
+    }
+    
+    func setAlignment(mode alignment: CATextLayerAlignmentMode) {
+        self.setValue(alignment, forKey: "titleTextAlignment")
+    }
+}
+
+class Languages{
+    private var language: Language
+    init(lang: Language) {
+        self.language = lang
+    }
+    
+    func change() {
+        UserDefaults.standard.set([language.identifier], forKey: "AppleLanguages")
+        UserDefaults.standard.synchronize()
+    }
+    
 }
