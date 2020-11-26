@@ -98,8 +98,13 @@ extension SideMenuViewController: UITableViewDataSource, UITableViewDelegate {
             navigateToWebview(with: .contactUs)
         case 4:
             
-            let controller = SettingViewController.instantiate()
+            //let controller = SettingViewController.instantiate()
+            //navigationController?.pushViewController(controller, animated: true)
+            
+            
+            let controller = LanguageListViewController.instantiate()
             navigationController?.pushViewController(controller, animated: true)
+            
             
 //            let controller = LanguageListViewController.instantiate()
 //            self.present(controller, animated: true, completion: nil)
@@ -172,15 +177,11 @@ extension UIAlertAction {
     }
 }
 
-class Languages{
-    private var language: Language
-    init(lang: Language) {
-        self.language = lang
-    }
-    
-    func change() {
-        UserDefaults.standard.set([language.identifier], forKey: "AppleLanguages")
-        UserDefaults.standard.synchronize()
-    }
-    
-}
+//class Languages{
+//    static func setLanguage(lang: Language) {
+//        UserDefaults.standard.set([lang.identifier], forKey: "AppleLanguages")
+//        UserDefaults.standard.synchronize()
+//        Bundle.setLanguage(lang.identifier)
+//        Preference.language = lang
+//    }
+//}

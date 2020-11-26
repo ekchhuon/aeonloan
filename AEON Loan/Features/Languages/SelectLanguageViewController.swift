@@ -11,21 +11,27 @@ import RNCryptor
 enum Language: Int, Codable {
     case en
     case km
+    case none
+    var name: String {
+        switch self {
+        case .km: return "ភាសារខ្មែរ"
+        case .en: return "English"
+        default: return "N/A"
+        }
+    }
     var identifier: String {
         switch self {
-        case .km:
-            return "km"
-        default:
-            return "en"
+        case .km: return "km"
+        case .en: return "en"
+        default: return "N/A"
         }
     }
     
     var index: Int {
         switch self {
-        case .en:
-            return 0
-        default:
-            return 1
+        case .en: return 0
+        case .km: return 1
+        default: return 3
         }
     }
 }
@@ -65,7 +71,8 @@ class SelectLanguageViewController: UIViewController {
         buttons[language.index]?.setBorder()
         
         Preference.language = language
-//        Languages(lang: language).change()
+        //        Languages(lang: language).change()
+        
         selected = language
     }
     
@@ -80,30 +87,12 @@ class SelectLanguageViewController: UIViewController {
     @IBAction func selectButtonTapped(_ sender: Any) {
         // navigates(to: .login)
         /*
-        let encrypted = "How are you!".encrypt()
-        print("encrypted cipher", encrypted)
-        print("decrypted original", encrypted.decrypt())
-        */
+         let encrypted = "How are you!".encrypt()
+         print("encrypted cipher", encrypted)
+         print("decrypted original", encrypted.decrypt())
+         */
         
-        
-        
-        
-        
-        
-        
-        
-        
-            // This is done so that network calls now have the Accept-Language as Language.getCurrentLanguage() (Using Alamofire) Check if you can remove these
-            UserDefaults.standard.set([selected.identifier], forKey: "AppleLanguages")
-            UserDefaults.standard.synchronize()
-
-            // Update the language by swaping bundle
-            Bundle.setLanguage(selected.identifier)
-
-            // Done to reintantiate the storyboards instantly
-//            let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-//            UIApplication.shared.keyWindow?.rootViewController = storyboard.instantiateInitialViewController()
-        
+        AppLanguage.set(language: selected)
         self.navigates(to: .home(.push(subtype: .fromRight)))
     }
 }

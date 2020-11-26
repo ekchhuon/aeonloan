@@ -49,7 +49,7 @@ extension SettingViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print( data[indexPath.section][indexPath.row]  ) 
+        print( data[indexPath.section][indexPath.row ]  )
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {

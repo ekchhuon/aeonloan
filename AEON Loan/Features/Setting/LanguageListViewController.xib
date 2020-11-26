@@ -21,25 +21,16 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9pL-o9-yir">
-                    <rect key="frame" x="0.0" y="100" width="414" height="762"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oqt-2O-XOG">
-                    <rect key="frame" x="361" y="60" width="37" height="30"/>
-                    <state key="normal" title="Done"/>
-                    <connections>
-                        <action selector="doneButtonTapped:" destination="-1" eventType="touchUpInside" id="JdC-hN-WSp"/>
-                    </connections>
-                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="9pL-o9-yir" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="IfK-Z7-dO5"/>
-                <constraint firstItem="oqt-2O-XOG" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="16" id="J1a-Nh-ddq"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="oqt-2O-XOG" secondAttribute="trailing" constant="16" id="VRU-Wo-bVz"/>
+                <constraint firstItem="9pL-o9-yir" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="Qmb-CP-WR1"/>
                 <constraint firstItem="9pL-o9-yir" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="sXi-1D-kRr"/>
-                <constraint firstItem="9pL-o9-yir" firstAttribute="top" secondItem="oqt-2O-XOG" secondAttribute="bottom" constant="10" id="vNC-aj-OAO"/>
                 <constraint firstItem="9pL-o9-yir" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="vUX-De-mfg"/>
             </constraints>
             <point key="canvasLocation" x="18.840579710144929" y="65.625"/>

@@ -48,7 +48,7 @@ struct Preference {
     @Storage(key: .user, defaultValue: MyUser(firstName: "", lastName: ""))
     static var user:MyUser
     
-    @Storage(key: .language, defaultValue: .en)
+    @Storage(key: .language, defaultValue: .none)
     static var language: Language
     
     @Storage(key: .enableAutoLogin, defaultValue: false)

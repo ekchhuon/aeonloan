@@ -45,9 +45,9 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
         setupView()
         bindSliderData()
         
-        self.showIndicator(true, style: .whiteBackground)
+        //self.showIndicator(true, style: .whiteBackground)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
-            self.showIndicator(false)
+            //self.showIndicator(false)
         }
     }
     

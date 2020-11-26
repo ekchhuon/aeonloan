@@ -24,7 +24,7 @@ class WKViewController: BaseViewController, WKUIDelegate, WKNavigationDelegate {
         self.setup(title: request.rawValue)
         let backButton = UIBarButtonItem(image: UIImage(systemName: "chevron.backward"), style: .plain, target: self, action: #selector(back(sender:)))
         self.navigationItem.leftBarButtonItem = backButton
-        
+        webView.navigationDelegate = self
         let request = URLRequest(url: self.request.url)
         webView.load(request)
     }
@@ -36,6 +36,36 @@ class WKViewController: BaseViewController, WKUIDelegate, WKNavigationDelegate {
         webView.navigationDelegate = self
         webView.allowsBackForwardNavigationGestures = true
         view = webView
+    }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+
+        var script = ""
+        let headerElementID = "header"
+        let headerClassName = "header-title"//"vc_row"
+        
+        let classNames = ["header-title", "vc_row", "back-promotion"]
+        
+        let element1 = "var header = document.getElementById('\(headerElementID)'); header.parentElement.removeChild(header);"
+        
+        var element2 = ""
+
+        for (_,item) in classNames.enumerated() {
+            let element = "var elements = document.getElementsByClassName('\(item)'); while(elements.length > 0){ elements[0].parentNode.removeChild(elements[0]);}"
+            element2 += element
+        }
+        
+        if request == .promotion || request == .location {
+            script = element1 + element2 //+ element3
+        } else {
+            script = element1
+        }
+        
+        webView.evaluateJavaScript(script) { (result, error) in
+            if error != nil {
+                print(result)
+            }
+        }
     }
     
     @objc

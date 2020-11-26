@@ -107,7 +107,7 @@ class LoginViewController: BaseViewController {
     func fetch(_ data: LoginDataTest) {
         // check if current controller is part of UINavigatinController!
         if let stack = self.navigationController?.viewControllers {
-          for vc in stack where vc.isKind(of: LoginViewController) {
+            for vc in stack where vc.isKind(of: LoginViewController.self) {
             navigates(to: .home(.push(subtype: .fromLeft)))
           }
         } else {

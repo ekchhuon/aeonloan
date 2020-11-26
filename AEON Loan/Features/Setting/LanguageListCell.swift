@@ -8,16 +8,20 @@
 import UIKit
 
 class LanguageListCell: UITableViewCell {
-
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        self.selectionStyle = .none
+        /*
+        self.contentView.backgroundColor = .brandPurple
+        self.tintColor = .white
+        self.textLabel?.textColor = .white
+        self.backgroundColor = .brandPurple
+        */
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        accessoryType = selected ? .checkmark : .none
     }
     
 }

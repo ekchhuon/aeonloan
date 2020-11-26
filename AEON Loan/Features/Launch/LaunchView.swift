@@ -20,11 +20,11 @@ class LaunchView: UIViewController {
     override func viewDidLoad() {
         
         DispatchQueue.main.asyncAfter(deadline: .now()) {
-//            self.navigates(to: .home(.fade))
-            
-//            self.navigates(to: .login)
-            self.navigates(to: .language)
-            
+            if Preference.language == .none {
+                self.navigates(to: .language)
+            } else {
+                self.navigates(to: .home(.fade))
+            }
         }
         
         Preference.user = MyUser(firstName: "Chhuon", lastName: "Ek")
