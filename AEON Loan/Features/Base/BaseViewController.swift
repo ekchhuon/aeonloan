@@ -15,7 +15,7 @@ class BaseViewController: UIViewController {
     }
     
     func setup(title: String = "") {
-        self.navigationItem.title = NSLocalizedString(title, comment: "")
+        self.navigationItem.title = title.localized
         
         // self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "sdfsadsdf", style: .plain, target: nil, action: nil)
     }

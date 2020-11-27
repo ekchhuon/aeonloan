@@ -20,11 +20,14 @@ class LaunchView: UIViewController {
     override func viewDidLoad() {
         
         DispatchQueue.main.asyncAfter(deadline: .now()) {
-            if Preference.language == .none {
-                self.navigates(to: .language)
-            } else {
-                self.navigates(to: .home(.fade))
-            }
+            
+//            if Preference.language == .none {
+//                self.navigates(to: .language)
+//            } else {
+//                self.navigates(to: .home(.fade))
+//            }
+            
+            self.navigates(to: .home(.fade))
         }
         
         Preference.user = MyUser(firstName: "Chhuon", lastName: "Ek")
@@ -35,18 +38,6 @@ class LaunchView: UIViewController {
 
     }
     
-    
-    func navigateToLogin() {
-        //        let login = LoginViewController.instantiate()
-        //        let controller = NavigationController.blue(with: login)
-        //        view.window?.setRootViewController(login)
-        
-        //        let selectLanguage = SelectLanguageViewController.instantiate()
-        //        view.window?.setRootViewController(selectLanguage)
-        
-        navigates(to: .language)
-        
-    }
     
     func navigateToHome() {
         let home = HomeViewController.instantiate()
@@ -66,16 +57,7 @@ class LaunchView: UIViewController {
      */
     
     @IBAction func tapped(_ sender: Any) {
-        
-        //        navigateToLogin()
-        //        navigateToHome()
-//        navigates(to: .home(.push(subtype: .fromRight)))
-//        navigates(to: .language)
-        
-//        navigates(to: .login)
-        
-        
-        
+          
     }
     
     

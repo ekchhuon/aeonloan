@@ -88,5 +88,3 @@ struct MyUser: Codable{
     let firstName: String
     let lastName: String
 }
-
-

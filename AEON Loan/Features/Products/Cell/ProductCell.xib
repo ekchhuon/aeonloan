@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="155" id="KGk-i7-Jjw" customClass="ProductCell" customModule="AEON_Loan" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="155"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="155"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="4" translatesAutoresizingMaskIntoConstraints="NO" id="TsU-wK-cm6">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="155"/>
+                    </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lwl-mM-GkK" customClass="Gradient" customModule="AEON_Loan" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="77.5" width="320" height="77.5"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="endColor">
+                                <color key="value" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="displayP3"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="startLocation">
+                                <real key="value" value="0.0"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="endLocation">
+                                <real key="value" value="1"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="horizontalMode" value="NO"/>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="diagonalMode" value="NO"/>
+                            <userDefinedRuntimeAttribute type="color" keyPath="startColor">
+                                <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Chc-rH-yk9">
+                        <rect key="frame" x="15" y="116" width="48" height="24"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="lwl-mM-GkK" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="0.5" id="52u-us-jmE"/>
+                    <constraint firstAttribute="trailing" secondItem="TsU-wK-cm6" secondAttribute="trailing" id="6xh-4l-APn"/>
+                    <constraint firstAttribute="bottom" secondItem="lwl-mM-GkK" secondAttribute="bottom" id="MdT-ib-FCY"/>
+                    <constraint firstAttribute="bottom" secondItem="TsU-wK-cm6" secondAttribute="bottom" id="OI7-WT-5ce"/>
+                    <constraint firstItem="TsU-wK-cm6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="POn-F7-07g"/>
+                    <constraint firstAttribute="trailing" secondItem="lwl-mM-GkK" secondAttribute="trailing" id="alk-xb-0KN"/>
+                    <constraint firstItem="lwl-mM-GkK" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="c8k-Q7-djI"/>
+                    <constraint firstItem="TsU-wK-cm6" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="eQi-lA-SMj"/>
+                    <constraint firstAttribute="bottom" secondItem="Chc-rH-yk9" secondAttribute="bottom" constant="15" id="g49-hJ-BAy"/>
+                    <constraint firstItem="Chc-rH-yk9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="oYr-LN-Ehh"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="overlayView" destination="lwl-mM-GkK" id="iNt-aQ-vlV"/>
+                <outlet property="productImageView" destination="TsU-wK-cm6" id="HqL-zh-fny"/>
+                <outlet property="productTitleLabel" destination="Chc-rH-yk9" id="rla-BF-9UR"/>
+            </connections>
+            <point key="canvasLocation" x="-191.30434782608697" y="95.424107142857139"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="4" width="850" height="567"/>
+    </resources>
+</document>

@@ -21,7 +21,7 @@ class WKViewController: BaseViewController, WKUIDelegate, WKNavigationDelegate {
     var request: WKRequest!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setup(title: request.rawValue)
+        self.setup(title: request.title)
         let backButton = UIBarButtonItem(image: UIImage(systemName: "chevron.backward"), style: .plain, target: self, action: #selector(back(sender:)))
         self.navigationItem.leftBarButtonItem = backButton
         webView.navigationDelegate = self
@@ -38,33 +38,17 @@ class WKViewController: BaseViewController, WKUIDelegate, WKNavigationDelegate {
         view = webView
     }
     
+    //remove elements from webview
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-
-        var script = ""
-        let headerElementID = "header"
-        let headerClassName = "header-title"//"vc_row"
-        
-        let classNames = ["header-title", "vc_row", "back-promotion"]
-        
-        let element1 = "var header = document.getElementById('\(headerElementID)'); header.parentElement.removeChild(header);"
-        
-        var element2 = ""
-
-        for (_,item) in classNames.enumerated() {
-            let element = "var elements = document.getElementsByClassName('\(item)'); while(elements.length > 0){ elements[0].parentNode.removeChild(elements[0]);}"
-            element2 += element
-        }
-        
-        if request == .promotion || request == .location {
-            script = element1 + element2 //+ element3
-        } else {
-            script = element1
-        }
-        
-        webView.evaluateJavaScript(script) { (result, error) in
-            if error != nil {
-                print(result)
-            }
+        switch request {
+        case .promotion:
+            webView.remove(element: "header-title", by: .className)
+            webView.remove(element: "vc_row", by: .className)
+            webView.remove(element: "back-promotion", by: .className)
+            webView.remove(element: "header", by: .elementID)
+        case .contactUs, .aboutUs, .product:
+            webView.remove(element: "header", by: .elementID)
+        default: break
         }
     }
     
@@ -78,33 +62,83 @@ class WKViewController: BaseViewController, WKUIDelegate, WKNavigationDelegate {
     }
 }
 
-enum WKRequest: String{
-    case contactUs = "Contact Us"
-    case location = "Location"
-    case promotion = "Promotion"
-    case product = "Products"
-    case aboutUs = "About Us"
+enum WKRequest {
+    case contactUs
+    case location
+    case promotion
+    case product(AeonProduct)
+    case aboutUs
     var lang: String {
         return Preference.language == .en ? "" : "/kh"
     }
+    
+    var title: String {
+        switch self {
+        case .contactUs: return "Contact Us"
+        case .location: return "Location"
+        case .promotion: return "Promotion"
+        case let .product(pro): return pro.title
+        case .aboutUs: return "About Us"
+        }
+    }
+    
     var path: String {
         return "https://aeon.com.kh"
     }
     var endpoint: String {
         switch self {
-        case .aboutUs:
-            return "/about-us"
-        case .contactUs:
-            return "/contact-us"
-        case .location:
-            return "/branches"
-        case .promotion:
-            return "/promotions"
-        case .product:
-            return "/promotions"
+        case .aboutUs: return "/about-us"
+        case .contactUs: return "/contact-us"
+        case .location: return "/branches"
+        case .promotion: return "/promotions"
+        case let .product(pro): return "/product" + pro.endpoint
         }
     }
     var url: URL {
         return URL(string: path + lang + endpoint)!
+    }
+}
+
+extension WKWebView {
+    enum ScriptType {
+        case elementID, className
+    }
+    func remove(element: String, by type: ScriptType) {
+        var script = ""
+        switch type {
+        case .elementID:
+            script = "var header = document.getElementById('\(element)'); header.parentElement.removeChild(header);"
+        case .className:
+            script = "var elements = document.getElementsByClassName('\(element)'); while(elements.length > 0){ elements[0].parentNode.removeChild(elements[0]);}"
+        }
+        
+        self.evaluateJavaScript(script) { (result, error) in
+            if error != nil {
+                print(result)
+            }
+        }
+    }
+}
+
+///
+
+enum AeonProduct{
+    case card, loan, installment, digital
+    var title: String {
+        switch self {
+        case .card: return "Aeon Card"
+        case .loan: return "Aeon Loan"
+        case .installment: return "Aeon Installments"
+        case .digital: return "Aeon Digital"
+        }
+    }
+    
+    var endpoint: String {
+        switch self {
+        case .card: return "/aeon-cards"
+        case .loan: return "/loans"
+        case .installment: return "/installments"
+        case .digital: return "/digital-products"
+        }
     }
 }

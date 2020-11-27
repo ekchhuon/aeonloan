@@ -141,7 +141,11 @@ extension HomeViewController: UICollectionViewDelegate {
             case 1:
                 navigates(to: .applyLoan)
             case 2:
-                navigateToWebview(with: .product)
+                //navigateToWebview(with: .product)
+            
+                let controller = ProductListViewController.instantiate()
+                navigationController?.pushViewController(controller, animated: true)
+            
             case 3:
                 navigateToWebview(with: .promotion)
             case 4:
