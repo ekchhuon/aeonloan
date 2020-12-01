@@ -50,7 +50,7 @@ class ApplicantInfoViewController: BaseViewController {
         setupView()
         bind()
         setupDatePicker()
-        
+        self.setup(title: "Check Credit".localized)
 //        self.showLoadingIndicator(with: .default, animated: true)
 //        showLoadingIndicator(with: .default, animated: true)
 //        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {

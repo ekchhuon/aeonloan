@@ -74,11 +74,11 @@ enum WKRequest {
     
     var title: String {
         switch self {
-        case .contactUs: return "Contact Us"
-        case .location: return "Location"
-        case .promotion: return "Promotion"
+        case .contactUs: return "Contact Us".localized
+        case .location: return "Location".localized
+        case .promotion: return "Promotion".localized
         case let .product(pro): return pro.title
-        case .aboutUs: return "About Us"
+        case .aboutUs: return "About Us".localized
         }
     }
     
@@ -120,16 +120,15 @@ extension WKWebView {
     }
 }
 
-///
 
 enum AeonProduct{
     case card, loan, installment, digital
     var title: String {
         switch self {
-        case .card: return "Aeon Card"
-        case .loan: return "Aeon Loan"
-        case .installment: return "Aeon Installments"
-        case .digital: return "Aeon Digital"
+        case .card: return "AEON Cards".localized
+        case .loan: return "Loans".localized
+        case .installment: return "Installments".localized
+        case .digital: return "Digital Products".localized
         }
     }
     

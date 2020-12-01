@@ -23,7 +23,7 @@ public class HomeViewModel {
     func setupMenu() {
         var menus: [Menu] = [Menu]()
         let names: [String] = ["menu1", "menu2", "menu3", "menu4", "menu5", "menu6"]
-        let titles: [String] = ["Check Credit", "Apply Loan/Installment", "AEON SPB Product", "Promotion", "Check Your Payment Schedule", "Loan Calculation"]
+        let titles: [String] = ["Check Credit", "Apply Loan/Installment", "AEON Products", "Promotion", "Payment Schedule", "Loan Calculation"]
         for (index, _) in names.enumerated() {
             let menu = Menu(icon: UIImage(named: names[index]) ?? UIImage(), title: titles[index].localized)
             menus.append(menu)
@@ -31,6 +31,7 @@ public class HomeViewModel {
         self.menus.value = menus
     }
     
+    /*
     func login(username: String, password: String) {
         
         APIClient.testLogin(email: "abc@gmail.com", password: "") { result in
@@ -43,6 +44,7 @@ public class HomeViewModel {
             }
         }
     }
+    */
     
     func fetch(user: User) {
         loading.value = true
@@ -52,7 +54,6 @@ public class HomeViewModel {
             self.user.value = User(username: "Chhuon OK", password: "Password OK", profile: "")
         }
     }
-    
 }
 
 public class SliderViewModel {

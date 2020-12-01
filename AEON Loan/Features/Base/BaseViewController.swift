@@ -12,10 +12,11 @@ class BaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.setupAppearance()
+        // self.navigationController?.navigationBar.topItem?.title = " "
     }
     
     func setup(title: String = "") {
-        self.navigationItem.title = title.localized
+        self.navigationItem.title = title
         
         // self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "sdfsadsdf", style: .plain, target: nil, action: nil)
     }

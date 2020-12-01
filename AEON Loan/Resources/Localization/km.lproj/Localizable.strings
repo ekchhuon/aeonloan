@@ -6,13 +6,13 @@
   
 */
 
-"Username/Phone Number" = "ឈ្មោះ​ ឬ លេខទូរស័ព្ទ";
+"Username/Phone Number" = "ឈ្មោះ​ ឬលេខទូរស័ព្ទ";
 "Password" = "លេខសំងាត់";
-"Check Credit" = "ពិនិត្យក្រឌីត";
+"Check Credit" = "ពិនិត្យក្រេឌីត";
 "Apply Loan/Installment" = "ស្នើសុំកម្ចី/បង់រំលោះ";
 "AEON SPB Product" = "ផលិតផល";
 "Promotion" = "ប្រូម៉ូសិន";
-"Check Your Payment Schedule" = "កាលវិភាគបង់ប្រាក់";
+"Payment Schedule" = "កាលវិភាគបង់ប្រាក់";
 "Loan Calculation" = "គណនាកម្ចី";
 
 "About Us" = "អំពីយើង";
@@ -22,3 +22,9 @@
 "Change Language" = "ប្តូរភាសារ";
 "Logout" = "ចាកចេញ";
 "Cancel" = "បញ្ឈប់";
+
+"AEON Products" = "ផលិតផល និងសេវាកម្ម";
+"AEON Cards" = "អ៉ីអនកាត";
+"Loans" = "កម្ចីសាច់ប្រាក់";
+"Installments" = "សេវាកម្មបង់រំលោះ";
+"Digital Products" = "ផលិតផលឌីជីថល";

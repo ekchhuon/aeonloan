@@ -130,8 +130,12 @@ extension HomeViewController: UICollectionViewDelegate {
         case gridCollectionView:
             switch indexPath.row {
             case 0:
+                
+                let controller = CheckCreditHistoryViewController.instantiate()
+                navigationController?.pushViewController(controller, animated: true)
+                
                 //navigates(to: .checkCredit(.takePhoto))
-                navigates(to: .checkCredit(.form))
+                //navigates(to: .checkCredit(.form))
                 /*
                 let controller = ScanViewController.instantiate()
                 // controller.modalTransitionStyle = .crossDissolve

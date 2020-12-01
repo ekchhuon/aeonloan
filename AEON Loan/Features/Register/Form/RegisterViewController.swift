@@ -58,7 +58,8 @@ class RegisterViewController: BaseViewController {
         //        viewModel.login(username: usernameTextField.text ?? "", password: passwordTextField.text ?? "")
 //        navigates(to: .home(.push(subtype: .fromLeft)))
 //        navigates(to: .OTP)
-        validate()
+//        validate()
+        viewModel.fetchRsa()
     }
     
     @IBAction func passwordEyeballTapped(_ sender: Any) {

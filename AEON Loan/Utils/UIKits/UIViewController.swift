@@ -56,7 +56,7 @@ extension UIViewController {
         case .register(.selfie):
             let controller = SelfieViewController.instantiate()
             navigationController?.pushViewController(controller, animated: true)
-        case .register(.fillingForm):
+        case .register(.form):
             /*
             let register = RegisterViewController.instantiate()
              // navigationController?.pushViewController(register, animated: true)

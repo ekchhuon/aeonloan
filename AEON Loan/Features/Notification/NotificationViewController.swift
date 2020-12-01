@@ -27,7 +27,7 @@ class NotificationViewController: BaseViewController {
         self.tableView.dataSource = self
         tableView.reloadData()
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.shouldAnimate = false
             self.tableView.reloadData()
         }

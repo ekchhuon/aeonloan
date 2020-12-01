@@ -18,31 +18,28 @@ class ProductListViewController: BaseViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var tableView: UITableView!
     
-    let products = [Menu(icon: UIImage(named: "banner.aeon.card")!, title: "Aeon Card"), Menu(icon: UIImage(named: "banner.aeon.loan")!, title: "Aeon Loan"), Menu(icon: UIImage(named: "banner.aeon.installment")!, title: "Aeon Installments"), Menu(icon: UIImage(named: "banner.aeon.digital")!, title: "Digital Products") ]
+    let products = [Menu(icon: UIImage(named: "banner.aeon.card")!, title: AeonProduct.card.title), Menu(icon: UIImage(named: "banner.aeon.loan")!, title: AeonProduct.loan.title), Menu(icon: UIImage(named: "banner.aeon.installment")!, title: AeonProduct.installment.title), Menu(icon: UIImage(named: "banner.aeon.digital")!, title: AeonProduct.digital.title) ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setup(title: "Aeon Products")
-        
+        setup(title: "AEON Products".localized)
         setupTableView()
-        //        navigationController?.navigationBar.barTintColor = .white
-        //        navigationController?.navigationBar.prefersLargeTitles = true
-        //        navigationController?.view.backgroundColor = UIColor.brandPurple
-        //        collectionView.delegate = self
-        //        collectionView.dataSource = self
-        //        self.collectionView.register(UINib(nibName: "ProductCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "ProductCollectionViewCell")
-        //        collectionView.backgroundColor = .brandPurple
-        
+        tableView.alwaysBounceVertical = false
     }
     
     private func setupTableView() {
+        
+        let height = self.navigationController!.navigationBar.frame.height
+        
         self.tableView.register(UINib(nibName: "ProductCell", bundle: nil), forCellReuseIdentifier: "ProductCell")
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.tableFooterView = UIView(frame: .zero)
-        self.tableView.rowHeight = ((self.view.bounds.height - 64) / 4) - 15
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return ((tableView.frame.height - 15) / 4)
+    }
     
     private func navigateToWebview(with request: WKRequest) {
         let controller = WKViewController.instantiate(request: request)
@@ -116,6 +113,8 @@ extension ProductListViewController: UITableViewDataSource, UITableViewDelegate 
         return cell
     }
     
+    
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0: navigateToWebview(with: .product(.card))
@@ -125,6 +124,8 @@ extension ProductListViewController: UITableViewDataSource, UITableViewDelegate 
         default: break
         }
     }
+    
+    
     
 //    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
 //        return 20

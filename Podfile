@@ -17,6 +17,8 @@ target 'AEON Loan' do
   pod 'MaterialActivityIndicator'
   pod 'SkeletonView'
   pod 'SVProgressHUD'
+  pod 'CryptoSwift', '~> 1.3.7'
+  pod 'SwiftyRSA'
   # Pods for AEON Loan
 
   target 'AEON LoanTests' do

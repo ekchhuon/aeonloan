@@ -24,7 +24,7 @@ class SideMenuViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        
+        self.view.backgroundColor = .brandPurple
         self.tableView.register(UINib(nibName: "SideMenuTableViewCell", bundle: nil), forCellReuseIdentifier: "SideMenuTableViewCell")
         self.tableView.delegate = self
         self.tableView.dataSource = self

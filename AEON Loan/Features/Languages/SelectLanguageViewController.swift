@@ -86,14 +86,14 @@ class SelectLanguageViewController: UIViewController {
     
     @IBAction func selectButtonTapped(_ sender: Any) {
         // navigates(to: .login)
-        /*
+        
          let encrypted = "How are you!".encrypt()
          print("encrypted cipher", encrypted)
          print("decrypted original", encrypted.decrypt())
-         */
+         
         
-        AppLanguage.set(language: selected)
-        self.navigates(to: .home(.push(subtype: .fromRight)))
+//        AppLanguage.set(language: selected)
+//        self.navigates(to: .home(.push(subtype: .fromRight)))
     }
 }
 

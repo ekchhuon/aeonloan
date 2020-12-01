@@ -7,6 +7,8 @@
 
 import Foundation
 import RNCryptor
+import CryptoSwift
+import SwiftyRSA
 
 extension String {
     func encrypt() -> String {
@@ -24,5 +26,42 @@ extension String {
             print(error)
             return ""
         }
+    }
+}
+
+//extension String {
+//    func aesEncrypt() throws -> String {
+//        let encrypted = try AES(key: KEY, iv: IV, padding: .pkcs7).encrypt([UInt8](self.data(using: .utf8)!))
+//        return Data(encrypted).base64EncodedString()
+//    }
+//
+//    func aesDecrypt() throws -> String {
+//        guard let data = Data(base64Encoded: self) else { return "" }
+//        let decrypted = try AES(key: KEY, iv: IV, padding: .pkcs7).decrypt([UInt8](data))
+//        return String(bytes: decrypted, encoding: .utf8) ?? self
+//    }
+//}
+
+enum Operation {
+    case encrypt
+    case decrypt
+}
+
+
+/*
+ 
+ 
+
+ 
+ 
+ 
+ */
+
+
+extension String {
+    func aaa() {
+        let publicKey = try! PublicKey
+        let clear = try! ClearMessage(string: "Clear Text", using: .utf8)
+        let encrypted = try! clear.encrypted(with: publicKey, padding: .PKCS1)
     }
 }

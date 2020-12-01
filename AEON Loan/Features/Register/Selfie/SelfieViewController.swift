@@ -126,6 +126,7 @@ class SelfieViewController: BaseViewController, AVCapturePhotoCaptureDelegate {
     
     @IBAction func continueButtonTapped(_ sender: Any) {
         capturedImageView.removeFromSuperview()
+        navigates(to: .register(.form))
     }
 }
 

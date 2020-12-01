@@ -48,7 +48,7 @@ extension Scene {
     enum RegistrationScene {
         case scanID
         case selfie
-        case fillingForm
+        case form
     }
     
     enum Loan {

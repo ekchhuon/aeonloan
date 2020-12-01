@@ -56,6 +56,9 @@ struct Preference {
     
     @Storage(key: .hasSeenInstruction, defaultValue: false) var hasSeenInstruction
     
+    @Storage(key: .publicKey, defaultValue: "")
+    static var publicKey
+    
     static func resetAll() {
         UserDefaults.Key.allCases.forEach {
             UserDefaults.standard.removeObject(forKey: $0.rawValue)
@@ -81,6 +84,7 @@ extension UserDefaults {
         case hasSeenInstruction
         case enableAutoLogin
         case user
+        case publicKey
     }
 }
 

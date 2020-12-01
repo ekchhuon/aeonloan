@@ -30,6 +30,8 @@
 		3E1F91812570ED5400ACC476 /* ProductCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1F917F2570ED5400ACC476 /* ProductCollectionViewCell.swift */; };
 		3E1F91822570ED5400ACC476 /* ProductCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E1F91802570ED5400ACC476 /* ProductCollectionViewCell.xib */; };
 		3E1F91872571187A00ACC476 /* IBDesignable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1F91862571187A00ACC476 /* IBDesignable.swift */; };
+		3E1F918D25751B2100ACC476 /* CheckCreditHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E1F918B25751B2100ACC476 /* CheckCreditHistoryViewController.swift */; };
+		3E1F918E25751B2100ACC476 /* CheckCreditHistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E1F918C25751B2100ACC476 /* CheckCreditHistoryViewController.xib */; };
 		3E23674824F617C3003FD6D4 /* Date+DayAndTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E23674724F617C3003FD6D4 /* Date+DayAndTime.swift */; };
 		3E23674A24F617ED003FD6D4 /* TimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E23674924F617ED003FD6D4 /* TimeInterval.swift */; };
 		3E23674C24F6184C003FD6D4 /* UIDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E23674B24F6184C003FD6D4 /* UIDevice.swift */; };
@@ -223,6 +225,8 @@
 		3E1F917F2570ED5400ACC476 /* ProductCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCollectionViewCell.swift; sourceTree = "<group>"; };
 		3E1F91802570ED5400ACC476 /* ProductCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductCollectionViewCell.xib; sourceTree = "<group>"; };
 		3E1F91862571187A00ACC476 /* IBDesignable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBDesignable.swift; sourceTree = "<group>"; };
+		3E1F918B25751B2100ACC476 /* CheckCreditHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckCreditHistoryViewController.swift; sourceTree = "<group>"; };
+		3E1F918C25751B2100ACC476 /* CheckCreditHistoryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CheckCreditHistoryViewController.xib; sourceTree = "<group>"; };
 		3E23674724F617C3003FD6D4 /* Date+DayAndTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+DayAndTime.swift"; sourceTree = "<group>"; };
 		3E23674924F617ED003FD6D4 /* TimeInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeInterval.swift; sourceTree = "<group>"; };
 		3E23674B24F6184C003FD6D4 /* UIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
@@ -813,6 +817,8 @@
 				3E56EEA325186B120083CC49 /* Form */,
 				3E62A2E32519A6230072CAB3 /* Rejected */,
 				3E62A2EC2519CEB40072CAB3 /* Accepted */,
+				3E1F918B25751B2100ACC476 /* CheckCreditHistoryViewController.swift */,
+				3E1F918C25751B2100ACC476 /* CheckCreditHistoryViewController.xib */,
 			);
 			path = CheckCredit;
 			sourceTree = "<group>";
@@ -1313,6 +1319,7 @@
 				3E2F400E25109B1200C8875B /* PaymentOptionViewController.xib in Resources */,
 				3E834E5225087F2E00D9E700 /* SliderCollectionViewCell.xib in Resources */,
 				3E834E5C2508FCAC00D9E700 /* NotificationViewController.xib in Resources */,
+				3E1F918E25751B2100ACC476 /* CheckCreditHistoryViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1541,6 +1548,7 @@
 				3E50C756252EB4800051D809 /* BCrypt.swift in Sources */,
 				3E56EE97251846E10083CC49 /* TakePhotoViewModel.swift in Sources */,
 				3E10C53D2536A6B0008518B4 /* KeychainConfiguration.swift in Sources */,
+				3E1F918D25751B2100ACC476 /* CheckCreditHistoryViewController.swift in Sources */,
 				3E1F91812570ED5400ACC476 /* ProductCollectionViewCell.swift in Sources */,
 				3E99882D255BB7A800C6C95E /* Array + Extension.swift in Sources */,
 				3E3CABA52510D26000EAF826 /* PaymentScheduleViewModel.swift in Sources */,

@@ -16,9 +16,9 @@ class APIClient {
         }
     }
     
-    static func login(email: String, password: String, completion:@escaping (Result<User, AFError>)->Void) {
-        fetch(route: APIRouter.login(email: email, password: password), completion: completion)
-    }
+//    static func login(email: String, password: String, completion:@escaping (Result<User, AFError>)->Void) {
+//        fetch(route: APIRouter.login(email: email, password: password), completion: completion)
+//    }
     
     static func getArticles(completion:@escaping (Result<[Article], AFError>)->Void) {
         let jsonDecoder = JSONDecoder()
@@ -26,12 +26,16 @@ class APIClient {
         fetch(route: APIRouter.articles, decoder: jsonDecoder, completion: completion)
     }
     
-    static func testLogin(email: String, password: String, completion:@escaping(Result<Login, AFError>)->Void) {
-        fetch(route: APIRouter.testLogin(email: email, password: password), completion: completion)
-    }
+//    static func testLogin(email: String, password: String, completion:@escaping(Result<Login, AFError>)->Void) {
+//        fetch(route: APIRouter.testLogin(email: email, password: password), completion: completion)
+//    }
     
     static func register(with param: Param.Register, completion:@escaping(Result<Register, AFError>) -> Void) {
         fetch(route: APIRouter.register(param: param), completion: completion)
+    }
+    
+    static func getRSA(param: Parameters, completion:@escaping(Result<RegisterResponse, AFError>) -> Void) {
+        fetch(route: APIRouter.rsa(param: param), completion: completion)
     }
 }
 
@@ -109,4 +113,3 @@ extension DateFormatter {
         return formatter
     }
 }
-

@@ -19,7 +19,7 @@ public class LoginViewModel {
     init() {
         //        login(username: "", password: "")
     }
-    
+    /*
     func login(username: String, password: String) {
         loading.value = true
         APIClient.testLogin(email: "abc@gmail.com", password: "password") { result in
@@ -46,7 +46,7 @@ public class LoginViewModel {
             }
         }
     }
-    
+    */
     func fetch(user: User) {
         loading.value = true
         
