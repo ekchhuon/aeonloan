@@ -19,7 +19,7 @@ public class RegisterViewModel {
     init() {
     }
     
-    func fetchRsa() {
+    func fetchRSA(completion:@escaping(RegisterResponse) -> Void) {
         loading.value = true
         let header = Param.Header(timestamp: "", encode: "", lan: "", channel: "", ipAddress: "", userID: "", appID: "", appVersion: "", deviceBrand: "", deviceModel: "", devicePlanform: "", deviceID: "", osVersion: "")
         let param = Param.MyRegister(header: header, body: "")
@@ -46,9 +46,9 @@ public class RegisterViewModel {
                 case let .success(data):
                     print("Data....Register",data)
                     self.success.value = "success: \(data)"
-                    Preference.publicKey = data.data.publicKey
-                    
+//                    Preference.sha256 = data.data.publicKey
                     print("public key", data.data.publicKey)
+                    completion(data)
                 case let .failure(err):
                     guard let code = err.responseCode else {
                         debugPrint("Error", err.localizedDescription)

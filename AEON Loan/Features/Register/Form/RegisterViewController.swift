@@ -6,6 +6,9 @@
 //
 
 import UIKit
+import SwiftyRSA
+import CryptoKit
+
 
 extension RegisterViewController {
     static func instantiate() -> RegisterViewController {
@@ -42,10 +45,10 @@ class RegisterViewController: BaseViewController {
             self.showAlert(title: "\(err.code) \(err.description) ", message: "\(err.localized)")
         }
         
-//        viewModel.success.bind { (success) in
-//
-//            self.showAlert(message: success)
-//        }
+        //        viewModel.success.bind { (success) in
+        //
+        //            self.showAlert(message: success)
+        //        }
         
         viewModel.success.bind { [weak self] msg in
             guard let self = self, !msg.isEmpty else { return }
@@ -56,10 +59,34 @@ class RegisterViewController: BaseViewController {
     
     @IBAction func registerButtonTapped(_ sender: Any) {
         //        viewModel.login(username: usernameTextField.text ?? "", password: passwordTextField.text ?? "")
-//        navigates(to: .home(.push(subtype: .fromLeft)))
-//        navigates(to: .OTP)
-//        validate()
-        viewModel.fetchRsa()
+        //        navigates(to: .home(.push(subtype: .fromLeft)))
+        //        navigates(to: .OTP)
+        //        validate()
+        
+        
+        
+        
+        viewModel.fetchRSA { (result) in
+            let publicKey = result.data.publicKey
+            
+            //let plainText = "abcdefg".toBase64()
+            
+            let sha256 = String.random(length: 5).asSha256 // randomsha
+            Preference.sha256 = sha256
+            let encrypted = RSA.encrypt(string: sha256, publicKey: publicKey)
+            
+            print(encrypted)
+            
+        }
+        
+        print("shar256", String.random(length: 5) )
+        
+        
+        // 1. get publickey (onetime)
+        // 2.encrypt
+        //  - store shar
+        //  - send encrypted to sever
+        // 3. 
     }
     
     @IBAction func passwordEyeballTapped(_ sender: Any) {
@@ -78,12 +105,10 @@ class RegisterViewController: BaseViewController {
         passwordFields[index]?.isSecureTextEntry = secured
     }
     
-    
-    
     func navigateToHome() {
-//        let login = HomeView.instantiate()
-//        let controller = NavigationController.blue(with: login)
-//        self.present(login, animated: true, completion: {})
+        //        let login = HomeView.instantiate()
+        //        let controller = NavigationController.blue(with: login)
+        //        self.present(login, animated: true, completion: {})
     }
     
     private func setupView(){
@@ -114,7 +139,7 @@ class RegisterViewController: BaseViewController {
             let email = try emailTextField.validatedText(type: .email)
             let password = try passwordTextField.validatedText(type: .password)
             let confirm = try confirmPasswordTextField.validatedText(type: .password)
-
+            
             guard password == confirm else {
                 showAlert(message: "Password Mismatched")
                 return
@@ -130,12 +155,52 @@ class RegisterViewController: BaseViewController {
     func fetch(with param: Param.Register) {
         viewModel.register(with: param)
         
-//        viewModel.login(username: usernameTextField.text ?? "", password: passwordTextField.text ?? "")
+        //        viewModel.login(username: usernameTextField.text ?? "", password: passwordTextField.text ?? "")
         //        showAlert(title: "Success", message: "Hello World", buttonTitle: "Try again")
     }
 }
 
 
 
+//extension String {
+//
+//    func sha256() -> String{
+//        if let stringData = self.data(using: String.Encoding.utf8) {
+//            return hexStringFromData(input: digest(input: stringData as NSData))
+//        }
+//        return ""
+//    }
+//
+//    private func digest(input : NSData) -> NSData {
+//        let digestLength = Int(CC_SHA256_DIGEST_LENGTH)
+//        var hash = [UInt8](repeating: 0, count: digestLength)
+//        CC_SHA256(input.bytes, UInt32(input.length), &hash)
+//        return NSData(bytes: hash, length: digestLength)
+//    }
+//
+//    private  func hexStringFromData(input: NSData) -> String {
+//        var bytes = [UInt8](repeating: 0, count: input.length)
+//        input.getBytes(&bytes, length: input.length)
+//
+//        var hexString = ""
+//        for byte in bytes {
+//            hexString += String(format:"%02x", UInt8(byte))
+//        }
+//
+//        return hexString
+//    }
+//
+//}
+
+extension String {
+    var asSha256: String {
+        return SHA256.hash(data: self.asData ).description
+    }
+    
+    static func random(length: Int = 5) -> String {
+        let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        return String((0..<length).map{ _ in letters.randomElement()! })
+    }
+}
 
 

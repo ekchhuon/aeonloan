@@ -56,8 +56,8 @@ struct Preference {
     
     @Storage(key: .hasSeenInstruction, defaultValue: false) var hasSeenInstruction
     
-    @Storage(key: .publicKey, defaultValue: "")
-    static var publicKey
+    @Storage(key: .sha256, defaultValue: "")
+    static var sha256
     
     static func resetAll() {
         UserDefaults.Key.allCases.forEach {
@@ -84,7 +84,7 @@ extension UserDefaults {
         case hasSeenInstruction
         case enableAutoLogin
         case user
-        case publicKey
+        case sha256
     }
 }
 
