@@ -30,8 +30,7 @@ extension String {
     }
     // strings to data as utf8
     var asData: Data {
-        let utf8 = Data(self.utf8)
-        return utf8
+        return Data(self.utf8)        
     }
 }
 

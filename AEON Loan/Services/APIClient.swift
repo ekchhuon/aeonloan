@@ -13,6 +13,7 @@ class APIClient {
         return AF.request(route).validate().responseDecodable (decoder: decoder){ (response: DataResponse<M, AFError>) in
                             response.logs()
                             completion(response.result)
+            print("response result:", response.response?.statusCode)
         }
     }
     
@@ -36,6 +37,26 @@ class APIClient {
     
     static func getRSA(param: Parameters, completion:@escaping(Result<RegisterResponse, AFError>) -> Void) {
         fetch(route: APIRouter.rsa(param: param), completion: completion)
+    }
+    
+    static func submitEncryption(param: Parameters, completion:@escaping(Result<AESResponse, AFError>) -> Void) {
+        fetch(route: APIRouter.aes(param: param), completion: completion)
+    }
+    
+    static func register2(param: Parameters, completion:@escaping(Result<AESResponse, AFError>) -> Void ) {
+        fetch(route: APIRouter.register2(param: param), completion: completion)
+    }
+    
+    static func getOTP(param: Parameters, completion:@escaping(Result<OTP, AFError>) -> Void ) {
+        fetch(route: APIRouter.getOTP(param: param), completion: completion)
+    }
+    
+    static func verifyOTP(param: Parameters, completion:@escaping(Result<AESResponse, AFError>) -> Void ) {
+        fetch(route: APIRouter.verifyOTP(param: param), completion: completion)
+    }
+    
+    static func login(param: Parameters, completion:@escaping(Result<AESResponse, AFError>) -> Void ) {
+        fetch(route: APIRouter.login(param), completion: completion)
     }
 }
 

@@ -59,7 +59,27 @@ class LoginViewController: BaseViewController {
     }
     
     @IBAction func loginTapped(_ sender: Any) {
-        validate()
+        //validate()
+        Preference.isLogin = false
+        viewModel.fetchRSA { (result) in
+            let publicKey = result.data.publicKey
+            let sha256 = String.random(length: 5).asSha256 // randomsha
+            Preference.sha256 = sha256
+            
+            print("ShaKey===>", Preference.sha256)
+            
+            let encrypted = RSA.encrypt(string: sha256, publicKey: publicKey)
+
+            self.viewModel.submitAES(encryption: encrypted!) {
+                Preference.isLogin = true
+                self.viewModel.login {
+                    
+                    
+                    
+                    Preference.isLogin = false
+                }
+            }
+        }
     }
     
     @IBAction func registerButtonTapped(_ sender: Any) {

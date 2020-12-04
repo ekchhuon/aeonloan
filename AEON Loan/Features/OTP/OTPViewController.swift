@@ -16,9 +16,12 @@ extension OTPViewController {
 class OTPViewController: BaseViewController, UITextFieldDelegate {
     private let viewModel = OTPViewModel()
     @IBOutlet var textFields: [UITextField]!
+    
+    @IBOutlet weak var otpTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        otpTextField.textContentType = .oneTimeCode
         textFields.forEach {
             $0.setBorder(5, border: .white, width: 1)
             $0.delegate = self
@@ -26,14 +29,35 @@ class OTPViewController: BaseViewController, UITextFieldDelegate {
             $0.keyboardType = .numberPad
             $0.addTarget(self, action: #selector(self.textFieldDidChange(textField:)), for: .editingChanged)
         }
-        
+        bind()
         textFields[0].becomeFirstResponder()
+    }
+    
+    func bind() {
+        viewModel.loading.bind { [weak self] (loading) in
+            guard let self = self else { return }
+            self.showIndicator(loading)
+        }
     }
     
     func validOTP(value: String) {
         showAlert(message: "Valid \(value)")
     }
     
+    @objc func textFieldDidChange(textField: UITextField) {
+        if otpTextField.text?.count == 6 {
+            viewModel.verifyOTP(otp: otpTextField.text ?? "")
+        }
+    }
+    
+    @IBAction func submitButton(_ sender: Any) {
+        if otpTextField.text?.count == 6 {
+            viewModel.verifyOTP(otp: otpTextField.text ?? "")
+        }
+    }
+    
+    
+    /*
     @objc func textFieldDidChange(textField: UITextField){
         let text = textField.text
         let first = textFields[0], second = textFields[1], third = textFields[2], fourth = textFields[3]
@@ -75,4 +99,5 @@ class OTPViewController: BaseViewController, UITextFieldDelegate {
         }
         
     }
+    */
 }

@@ -12,13 +12,13 @@ import SwiftyRSA
 
 extension String {
     func encrypt() -> String {
-        let key = "e9a9483dec41aebc5ae7da7257d195d8" //key: shar // data: json
+        let key = Preference.sha256 // "e9a9483dec41aebc5ae7da7257d195d8" //key: shar // data: json
         let encrypted = RNCryptor.encrypt(data: self.asData, withPassword: key)
         return encrypted.base64Encoded
     }
     
     func decrypt() -> String {
-        let key = "e9a9483dec41aebc5ae7da7257d195d8"
+        let key = Preference.sha256
         do {
             let decrypted = try RNCryptor.decrypt(data: self.base64Decoded, withPassword: key)
             return decrypted.asString

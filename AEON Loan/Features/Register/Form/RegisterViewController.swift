@@ -52,10 +52,20 @@ class RegisterViewController: BaseViewController {
         
         viewModel.success.bind { [weak self] msg in
             guard let self = self, !msg.isEmpty else { return }
-            self.showAlert(message: msg)
+//            self.showAlert(message: msg)
+        }
+        
+        viewModel.isRegisterSuccess.bind { success in
+            
+            print("success",success)
+            
+            if success {
+                // self.navigates(to: .home(.push(subtype: .fromLeft)))
+                self.navigates(to: .OTP)
+
+            }
         }
     }
-    
     
     @IBAction func registerButtonTapped(_ sender: Any) {
         //        viewModel.login(username: usernameTextField.text ?? "", password: passwordTextField.text ?? "")
@@ -73,9 +83,25 @@ class RegisterViewController: BaseViewController {
             
             let sha256 = String.random(length: 5).asSha256 // randomsha
             Preference.sha256 = sha256
+            
+            
+            
             let encrypted = RSA.encrypt(string: sha256, publicKey: publicKey)
             
-            print(encrypted)
+            print("public Key===>", publicKey )
+            print("Random sha===>", sha256)
+            print("Blank sha===>", "".asSha256)
+            
+            
+            
+//            print(encrypted, sha256, String.random(), "".asSha256)
+            
+            
+            
+            self.viewModel.submitAES(encryption: encrypted!) {
+//                self.viewModel.register(with: Param.Register(username: "Dara", phone: "095344527", email: "abc@gmail.com", password: "123"))
+                self.viewModel.register2()
+            }
             
         }
         
@@ -145,7 +171,7 @@ class RegisterViewController: BaseViewController {
                 return
             }
             
-            let data = Param.Register(username: username, phone: phone, email: email, password: password)
+            let data = Param.Register(username: username, phoneNumber: phone, email: email, password: password)
             fetch(with: data)
         } catch (let error) {
             showAlert(message: (error as! ValidationError).message)
@@ -194,7 +220,12 @@ class RegisterViewController: BaseViewController {
 
 extension String {
     var asSha256: String {
-        return SHA256.hash(data: self.asData ).description
+//        let sha = SHA256.hash(data: self.asData )
+        
+//        let digest = SHA256.hash(data: self.asData).
+        let hash = SHA256.hash(data: self.asData)
+        return hash.map { String(format: "%02hhx", $0) }.joined()
+    
     }
     
     static func random(length: Int = 5) -> String {

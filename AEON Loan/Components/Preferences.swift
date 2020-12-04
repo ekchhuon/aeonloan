@@ -59,6 +59,15 @@ struct Preference {
     @Storage(key: .sha256, defaultValue: "")
     static var sha256
     
+    @Storage(key: .loginUser, defaultValue: LoginUser(username: "", password: ""))
+    static var loginUser
+    
+    @Storage(key: .isLogin, defaultValue: false)
+    static var isLogin
+    
+    @Storage(key: .header, defaultValue: "")
+    static var header
+    
     static func resetAll() {
         UserDefaults.Key.allCases.forEach {
             UserDefaults.standard.removeObject(forKey: $0.rawValue)
@@ -85,10 +94,18 @@ extension UserDefaults {
         case enableAutoLogin
         case user
         case sha256
+        case loginUser
+        case isLogin
+        case header
     }
 }
 
 struct MyUser: Codable{
     let firstName: String
     let lastName: String
+}
+
+struct LoginUser: Codable {
+    let username: String
+    let password: String
 }

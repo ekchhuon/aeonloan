@@ -15,15 +15,34 @@ public class RegisterViewModel {
     let loading = Box(false)
     let error: Box<APIError?> = Box(nil)
     let success = Box("")
+    let isRegisterSuccess = Box(false)
+    let header = Param.Header(timestamp: "", encode: "", lan: "", channel: "", ipAddress: "", userID: "", appID: "", appVersion: "", deviceBrand: "", deviceModel: "", devicePlanform: "", deviceID: "", osVersion: "")
     
     init() {
     }
     
-    func fetchRSA(completion:@escaping(RegisterResponse) -> Void) {
+    func submitAES(encryption body: String, completion:@escaping() -> Void) {
         loading.value = true
-        let header = Param.Header(timestamp: "", encode: "", lan: "", channel: "", ipAddress: "", userID: "", appID: "", appVersion: "", deviceBrand: "", deviceModel: "", devicePlanform: "", deviceID: "", osVersion: "")
-        let param = Param.MyRegister(header: header, body: "")
         
+        let param = Param.MyRegister2(header: header, body: Param.Body(encode: body))
+        
+        APIClient.submitEncryption(param: param.toJSON()) { (result) in
+            self.loading.value = false
+            switch result {
+            case let .success(data):
+                print("AES Success==>:",data)
+                completion()
+                //self.register2()
+            case let .failure(err):
+                print("AES Errror==>:",err)
+            }
+        }
+    }
+    
+    func fetchRSA(completion:@escaping(RegisterResponse) -> Void) {
+        
+        loading.value = true
+        let param = Param.MyRegister(header: header, body: "")
         
         print("param====>",param)
         
@@ -63,6 +82,43 @@ public class RegisterViewModel {
 //        }
     }
     
+    func register2() {
+        
+        loading.value = true
+        let user = Param.Register(username: "dara", phoneNumber: "098765431", email: "abc@gmail.com", password: "1234".bcrypted)
+        
+        let string = "\(user)"
+        
+        
+        
+        let userString = String(describing: user)
+        
+        let replaced = userString.replacingOccurrences(of: "[", with: "{").replacingOccurrences(of: "]", with: "}")
+        
+//        print("replaced", replaced, userString, user )
+//        print("stringjson", string, user)
+        
+        let jsonEncoder = JSONEncoder()
+        let jsonData = try! jsonEncoder.encode(user)
+        let json = String(data: jsonData, encoding: String.Encoding.utf8)?.replacingOccurrences(of: "\\", with: "")
+        
+        
+        
+        let param = Param.MyRegister2(header: header, body: Param.Body(encode: "\(json!)".encrypt()))
+        
+        APIClient.register2(param: param.toJSON()) { (result) in
+            self.loading.value = false
+            switch result {
+            case let .success(data):
+                print("RegisterSuccess Success==>:",data)
+                self.isRegisterSuccess.value = true
+            case let .failure(err):
+                self.isRegisterSuccess.value = false
+                print("Register Error Errror==>:",err)
+             }
+        }
+    }
+    
     func register(with param: Param.Register) {
         loading.value = true
         APIClient.register(with: param) { (result) in
@@ -72,7 +128,6 @@ public class RegisterViewModel {
             case let .success(data):
                 print("Data....Register",data)
                 self.success.value = "success: \(data)"
-                
             case let .failure(err):
                 guard let code = err.responseCode else {
                     debugPrint("Error", err.localizedDescription)

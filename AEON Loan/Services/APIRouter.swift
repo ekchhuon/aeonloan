@@ -9,6 +9,11 @@ import Alamofire
 
 enum APIRouter: URLRequestConvertible {
     case rsa(param: Parameters)
+    case aes(param: Parameters)
+    case register2(param: Parameters)
+    case getOTP(param: Parameters)
+    case verifyOTP(param: Parameters)
+    case login(Parameters)
     //case login(email:String, password:String)
     case register(param: Param.Register)
     //case testLogin(email: String, password: String)
@@ -18,7 +23,7 @@ enum APIRouter: URLRequestConvertible {
     // MARK: - HTTPMethod
     private var method: HTTPMethod {
         switch self {
-        case .register, .rsa:
+        case .register, .rsa, .aes, .register2, .getOTP, .verifyOTP, .login:
             return .post
         case .articles, .article:
             return .get
@@ -30,12 +35,22 @@ enum APIRouter: URLRequestConvertible {
         switch self {
         case .rsa:
             return "rsa"
-//        case .login:
-//            return "login"
+        case .aes:
+            return "aes"
+        case .register2:
+            return "user"
+        case .getOTP:
+            return "otp"
+        case .verifyOTP:
+            return "otp/verification"
+        case .login:
+            return "signin"
+        //        case .login:
+        //            return "login"
         case .register:
             return "users"
-//        case .testLogin:
-//            return "login"
+        //        case .testLogin:
+        //            return "login"
         case .articles:
             return "articles/all.json"
         case .article(let id):
@@ -48,12 +63,22 @@ enum APIRouter: URLRequestConvertible {
         switch self {
         case let .rsa(param):
             return param
-//        case .login(let email, let password):
-//            return [Constants.APIParameterKey.email: email, Constants.APIParameterKey.password: password]
+        case let .aes(param):
+            return param
+        case let .register2(param):
+            return param
+        case let .getOTP(param):
+            return param
+        case let .verifyOTP(param):
+            return param
+        case let .login(param):
+            return param
+        //        case .login(let email, let password):
+        //            return [Constants.APIParameterKey.email: email, Constants.APIParameterKey.password: password]
         case .register(let param):
             return ["username": param.username, "phoneNumber":"012345678", "email": param.email, "password": param.password.bcrypted]
-//        case .testLogin(let email, let password):
-//            return [Constants.APIParameterKey.email: email, Constants.APIParameterKey.password: password]
+        //        case .testLogin(let email, let password):
+        //            return [Constants.APIParameterKey.email: email, Constants.APIParameterKey.password: password]
         case .articles, .article:
             return nil
             
@@ -70,18 +95,46 @@ enum APIRouter: URLRequestConvertible {
         urlRequest.httpMethod = method.rawValue
         
         // Common Headers
-        urlRequest.setValue(ContentType.json.rawValue, forHTTPHeaderField: HTTPHeaderField.acceptType.rawValue)
-        urlRequest.setValue(ContentType.json.rawValue, forHTTPHeaderField: HTTPHeaderField.contentType.rawValue)
+        //        urlRequest.setValue(ContentType.json.value, forHTTPHeaderField: HTTPHeaderField.acceptType.rawValue)
+        //        urlRequest.setValue(ContentType.json.value, forHTTPHeaderField: HTTPHeaderField.contentType.rawValue)
+        
+        if Preference.isLogin {
+            var components = URLComponents()
+            
+            //            let login = Param.LoginData(username: "aeonrohas".encrypt(), password: "2020@Loan#Aeon4User".encrypt(), grant_type: "password", header: "\(json!)")
+            //
+            //
+            components.queryItems = [URLQueryItem(name: "grant_type", value: "password"), URLQueryItem(name: "username", value: "aeonrohas".encrypt()), URLQueryItem(name: "password", value: "2020@Loan#Aeon4User".encrypt()), URLQueryItem(name: "header", value: Preference.header)]
+            
+            print("Encrypted username:====","aeonrohas".encrypt())
+            print("Encrypted username:====","aeonrohas".encrypt())
+            
+            urlRequest.httpBody = components.query?.data(using: .utf8)
+            let comp = components.query?.asData
+            print("components.query?.data(using: .utf8)", comp?.asString )
+            
+            urlRequest.setValue(ContentType.raw.value, forHTTPHeaderField: HTTPHeaderField.contentType.rawValue)
+            urlRequest.setValue(ContentType.basic.value, forHTTPHeaderField: HTTPHeaderField.authentication.rawValue)
+            
+            print("urlRequest", urlRequest)
+            
+        } else {
+            urlRequest.setValue(ContentType.json.value, forHTTPHeaderField: HTTPHeaderField.acceptType.rawValue)
+            urlRequest.setValue(ContentType.json.value, forHTTPHeaderField: HTTPHeaderField.contentType.rawValue)
+        }
         
         // Default timeout
-        urlRequest.timeoutInterval = 10
+        //urlRequest.timeoutInterval = 10
         
         // Parameters
-        if let parameters = parameters {
-            do {
-                urlRequest.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: [])
-            } catch {
-                throw AFError.parameterEncodingFailed(reason: .jsonEncodingFailed(error: error))
+        
+        if !Preference.isLogin  {
+            if let parameters = parameters {
+                do {
+                    urlRequest.httpBody = try JSONSerialization.data(withJSONObject: parameters, options: [])
+                } catch {
+                    throw AFError.parameterEncodingFailed(reason: .jsonEncodingFailed(error: error))
+                }
             }
         }
         
@@ -92,7 +145,7 @@ enum APIRouter: URLRequestConvertible {
 struct Param {
     struct Register: Codable {
         let username: String
-        let phone: String
+        let phoneNumber: String
         let email: String
         let password: String
     }
@@ -102,14 +155,14 @@ struct Param {
         let header: Header
         let body: String
     }
-
+    
     // MARK: - Header
     struct Header: Codable {
         let timestamp, encode, lan, channel: String
         let ipAddress, userID, appID, appVersion: String
         let deviceBrand, deviceModel, devicePlanform, deviceID: String
         let osVersion: String
-
+        
         enum CodingKeys: String, CodingKey {
             case timestamp, encode, lan, channel, ipAddress
             case userID = "userId"
@@ -118,6 +171,26 @@ struct Param {
             case deviceID = "deviceId"
             case osVersion
         }
+    }
+    
+    // MARK: - Register
+    struct MyRegister2: Codable {
+        let header: Header
+        let body: Body
+    }
+    
+    // MARK: - Body
+    struct Body: Codable {
+        let encode: String
+    }
+    
+    struct OTP: Codable {
+        let code: String
+    }
+    
+    struct LoginData: Codable {
+        let username, password, grant_type: String
+        let header: String
     }
 }
 
@@ -135,3 +208,13 @@ struct RegisterResponse: Codable {
 struct DataClass: Codable {
     let publicKey: String
 }
+
+// MARK: - Register
+struct AESResponse: Codable {
+    let timestamp: Int
+    let success: Bool
+    let message: String
+    let code: Int
+    let data: String
+}
+

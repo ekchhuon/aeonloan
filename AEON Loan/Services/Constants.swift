@@ -84,5 +84,25 @@ enum HTTPHeaderField: String {
 }
 
 enum ContentType: String {
-    case json = "application/json"
+    case json
+    case basic
+    case raw
+    
+    var value: String {
+        switch self {
+        case .json:
+            return "application/json"
+        case .basic:
+            let username = Preference.loginUser.username  //"username"
+            let password = Preference.loginUser.password
+            let loginData = "\(username):\(password)".asData
+            let base64LoginString = loginData.base64EncodedString()
+            
+            print("Basic \(base64LoginString)")
+            
+            return "Basic \(base64LoginString)"
+        case .raw:
+            return "application/x-www-form-urlencoded"
+        }
+    }
 }
