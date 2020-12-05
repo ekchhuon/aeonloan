@@ -10,80 +10,10 @@ import Alamofire
 class APIClient {
     @discardableResult
     private static func fetch<M:Decodable>(route:APIRouter, decoder: JSONDecoder = JSONDecoder(), completion:@escaping (Result<M, AFError>)->Void) -> DataRequest {
-        Preference.isLogin = false
         return AF.request(route).validate().responseDecodable (decoder: decoder){ (response: DataResponse<M, AFError>) in
                             response.logs()
                             completion(response.result)
             print("response result:", response.response?.statusCode)
-        }
-    }
-    
-    private static func upload<M:Decodable>(route:APIRouter, decoder: JSONDecoder = JSONDecoder(), completion:@escaping (Result<M, AFError>)->Void) -> DataRequest {
-        return AF.upload(multipartFormData: { (multipart) in
-//            for (key, value)
-        }, to: <#T##URLConvertible#>)
-        }
-    }
-    
-func uploadImage(isUser:Bool, endUrl: String, imageData: Data?, parameters: [String : Any], onCompletion: ((_ isSuccess:Bool) -> Void)? = nil, onError: ((Error?) -> Void)? = nil){
-
-    headerFile()
-   
-    AF.upload(multipartFormData: { multipartFormData in
-        
-        for (key, value) in parameters {
-            if let temp = value as? String {
-                multipartFormData.append(temp.data(using: .utf8)!, withName: key)
-            }
-            if let temp = value as? Int {
-                multipartFormData.append("\(temp)".data(using: .utf8)!, withName: key)
-            }
-            if let temp = value as? NSArray {
-                temp.forEach({ element in
-                    let keyObj = key + "[]"
-                    if let string = element as? String {
-                        multipartFormData.append(string.data(using: .utf8)!, withName: keyObj)
-                    } else
-                        if let num = element as? Int {
-                            let value = "\(num)"
-                            multipartFormData.append(value.data(using: .utf8)!, withName: keyObj)
-                    }
-                })
-            }
-        }
-        
-        if let data = imageData{
-            multipartFormData.append(data, withName: "file", fileName: "\(Date.init().timeIntervalSince1970).png", mimeType: "image/png")
-        }
-    },
-              to: endUrl, method: .post , headers: headers)
-        .responseJSON(completionHandler: { (response) in
-            
-            print(response)
-            
-            if let err = response.error{
-                print(err)
-                onError?(err)
-                return
-            }
-            print("Succesfully uploaded")
-            
-            let json = response.data
-            
-            if (json != nil)
-            {
-                let jsonObject = JSON(json!)
-                print(jsonObject)
-            }
-        })
-  }
-    
-    
-    private static func upload<M:Decodable>(route:APIRouter, decoder: JSONDecoder = JSONDecoder(), completion:@escaping (Result<M, AFError>)->Void) -> DataRequest {
-        Preference.isLogin = false
-        return AF.upload(multipartFormData: { (multipart) in
-            <#code#>
-        }, with: <#T##URLRequestConvertible#>)
         }
     }
     
