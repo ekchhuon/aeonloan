@@ -57,7 +57,7 @@ class RegisterViewController: BaseViewController {
         
         viewModel.isRegisterSuccess.bind { success in
             
-            print("success",success)
+            print("success====>", success)
             
             if success {
                 // self.navigates(to: .home(.push(subtype: .fromLeft)))
@@ -171,8 +171,8 @@ class RegisterViewController: BaseViewController {
                 return
             }
             
-            let data = Param.Register(username: username, phoneNumber: phone, email: email, password: password)
-            fetch(with: data)
+            //let data = Param.Register(username: username, phoneNumber: phone, email: email, password: password)
+            //fetch(with: data)
         } catch (let error) {
             showAlert(message: (error as! ValidationError).message)
         }

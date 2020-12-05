@@ -85,7 +85,9 @@ public class RegisterViewModel {
     func register2() {
         
         loading.value = true
-        let user = Param.Register(username: "dara", phoneNumber: "098765431", email: "abc@gmail.com", password: "1234".bcrypted)
+//        let user = Param.Register(username: "chhuon", phoneNumber: "012234501", email: "abc@gmail.com", password: "1234".bcrypted)
+        
+        let user = Param.Register(username: "chhuon2", phoneNumber: "01234502", email: "abc@gmail.com", password: "1234", idPhoto: String.random(length: 32), nidPassport: "12")
         
         let string = "\(user)"
         
@@ -103,15 +105,16 @@ public class RegisterViewModel {
         let json = String(data: jsonData, encoding: String.Encoding.utf8)?.replacingOccurrences(of: "\\", with: "")
         
         
-        
         let param = Param.MyRegister2(header: header, body: Param.Body(encode: "\(json!)".encrypt()))
         
         APIClient.register2(param: param.toJSON()) { (result) in
             self.loading.value = false
+            
+            print("resultuser====>", result)
             switch result {
             case let .success(data):
                 print("RegisterSuccess Success==>:",data)
-                self.isRegisterSuccess.value = true
+                self.isRegisterSuccess.value = data.success
             case let .failure(err):
                 self.isRegisterSuccess.value = false
                 print("Register Error Errror==>:",err)

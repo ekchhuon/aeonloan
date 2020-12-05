@@ -14,6 +14,8 @@ extension Constantss {
 //    static let server = URL(string: "https://api.v2.sharelookapp.com/v1/")!
 //     static let server = "http://192.168.1.40:8182/webservice/public/v1/"
     static let server = "http://192.168.1.40:8089/webservice/public/v1/"
+//    static let server = "http://192.168.169.34:8182/webservice/public/v1/"
+    
 //    static let socket = URL(string: "wss://mbdl5ztc18.execute-api.ap-southeast-1.amazonaws.com/PROD/")!
 //
 //    static let web = URL(string: "https://app.sharelookapp.com/")!

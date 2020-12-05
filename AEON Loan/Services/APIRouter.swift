@@ -7,6 +7,14 @@
 
 import Alamofire
 
+//enum aa: URLRequestConvertible {
+//    func asURLRequest() throws -> URLRequest {
+//        <#code#>
+//    }
+//
+//
+//}
+
 enum APIRouter: URLRequestConvertible {
     case rsa(param: Parameters)
     case aes(param: Parameters)
@@ -106,6 +114,8 @@ enum APIRouter: URLRequestConvertible {
             //
             components.queryItems = [URLQueryItem(name: "grant_type", value: "password"), URLQueryItem(name: "username", value: "aeonrohas".encrypt()), URLQueryItem(name: "password", value: "2020@Loan#Aeon4User".encrypt()), URLQueryItem(name: "header", value: Preference.header)]
             
+//            components.query = components.query?.replacingOccurrences(of: "+", with: "%2B")
+            
             print("Encrypted username:====","aeonrohas".encrypt())
             print("Encrypted username:====","aeonrohas".encrypt())
             
@@ -148,6 +158,8 @@ struct Param {
         let phoneNumber: String
         let email: String
         let password: String
+        let idPhoto: String
+        let nidPassport: String
     }
     
     // MARK: - Register
@@ -215,6 +227,6 @@ struct AESResponse: Codable {
     let success: Bool
     let message: String
     let code: Int
-    let data: String
+    let data: String?
 }
 
