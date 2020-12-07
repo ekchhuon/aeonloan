@@ -17,7 +17,7 @@ public class LoginViewModel {
     let token = Box("")
     let success = Box("")
     let error: Box<APIError?> = Box(nil)
-    let header = Param.Header(timestamp: "", encode: "", lan: "", channel: "", ipAddress: "", userID: "", appID: "", appVersion: "", deviceBrand: "", deviceModel: "", devicePlanform: "", deviceID: "", osVersion: "")
+    let header = Param.Header(transactionId: "",timestamp: "", encode: "", lan: "", channel: "", ipAddress: "", userID: "", appID: "", appVersion: "", deviceBrand: "", deviceModel: "", devicePlanform: "", deviceID: "", osVersion: "")
     
     init() {
         //        login(username: "", password: "")
@@ -51,7 +51,7 @@ public class LoginViewModel {
     }
     */
     
-    func fetchRSA(completion:@escaping(RegisterResponse) -> Void) {
+    func fetchRSA(completion:@escaping(Register2) -> Void) {
         
         loading.value = true
         let param = Param.MyRegister(header: header, body: "")
@@ -65,7 +65,7 @@ public class LoginViewModel {
                     print("Data....Register",data)
                     self.success.value = "success: \(data)"
 //                    Preference.sha256 = data.data.publicKey
-                    print("public key", data.data.publicKey)
+                    print("public key", data)
                     completion(data)
                 case let .failure(err):
                     guard let code = err.responseCode else {

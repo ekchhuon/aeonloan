@@ -170,13 +170,13 @@ struct Param {
     
     // MARK: - Header
     struct Header: Codable {
-        let timestamp, encode, lan, channel: String
+        let transactionId ,timestamp, encode, lan, channel: String
         let ipAddress, userID, appID, appVersion: String
         let deviceBrand, deviceModel, devicePlanform, deviceID: String
         let osVersion: String
         
         enum CodingKeys: String, CodingKey {
-            case timestamp, encode, lan, channel, ipAddress
+            case transactionId,timestamp, encode, lan, channel, ipAddress
             case userID = "userId"
             case appID = "appId"
             case appVersion, deviceBrand, deviceModel, devicePlanform
@@ -205,6 +205,58 @@ struct Param {
         let header: String
     }
 }
+
+
+
+
+
+
+// MARK: - Register
+struct Register2: Codable {
+    let header: Header
+    let body: Body
+    // MARK: - Body
+    struct Body: Codable {
+        let success: Bool
+        let message: String
+        let code: Int
+        let data: DataClass?
+    }
+    
+    // MARK: - DataClass
+    struct DataClass: Codable {
+        let publicKey: String
+    }
+    
+    // MARK: - Header
+    struct Header: Codable {
+        let transactionID, timestamp, lan, channel: String
+        let ipAddress, userID, appID, appVersion: String
+        let deviceBrand, deviceModel, devicePlanform, deviceID: String
+        let osVersion: String
+
+        enum CodingKeys: String, CodingKey {
+            case transactionID = "transactionId"
+            case timestamp, lan, channel, ipAddress
+            case userID = "userId"
+            case appID = "appId"
+            case appVersion, deviceBrand, deviceModel, devicePlanform
+            case deviceID = "deviceId"
+            case osVersion
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 // MARK: - Register

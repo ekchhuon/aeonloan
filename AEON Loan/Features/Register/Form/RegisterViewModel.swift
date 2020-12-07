@@ -16,7 +16,7 @@ public class RegisterViewModel {
     let error: Box<APIError?> = Box(nil)
     let success = Box("")
     let isRegisterSuccess = Box(false)
-    let header = Param.Header(timestamp: "", encode: "", lan: "", channel: "", ipAddress: "", userID: "", appID: "", appVersion: "", deviceBrand: "", deviceModel: "", devicePlanform: "", deviceID: "", osVersion: "")
+    let header = Param.Header(transactionId: "", timestamp: "", encode: "", lan: "", channel: "", ipAddress: "", userID: "", appID: "", appVersion: "", deviceBrand: "", deviceModel: "", devicePlanform: "", deviceID: "", osVersion: "")
     
     init() {
     }
@@ -39,10 +39,10 @@ public class RegisterViewModel {
         }
     }
     
-    func fetchRSA(completion:@escaping(RegisterResponse) -> Void) {
+    func fetchRSA(completion:@escaping(Register2) -> Void) {
         
         loading.value = true
-        let param = Param.MyRegister(header: header, body: "")
+        let param = Param.MyRegister2(header: header, body: Param.Body(encode: ""))
         
         print("param====>",param)
         
@@ -66,7 +66,7 @@ public class RegisterViewModel {
                     print("Data....Register",data)
                     self.success.value = "success: \(data)"
 //                    Preference.sha256 = data.data.publicKey
-                    print("public key", data.data.publicKey)
+                    print("public key", data)
                     completion(data)
                 case let .failure(err):
                     guard let code = err.responseCode else {
@@ -114,7 +114,7 @@ public class RegisterViewModel {
             switch result {
             case let .success(data):
                 print("RegisterSuccess Success==>:",data)
-                self.isRegisterSuccess.value = data.success
+                self.isRegisterSuccess.value = data.body.success
             case let .failure(err):
                 self.isRegisterSuccess.value = false
                 print("Register Error Errror==>:",err)

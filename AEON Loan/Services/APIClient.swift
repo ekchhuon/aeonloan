@@ -17,6 +17,38 @@ class APIClient {
         }
     }
     
+    func upload(image: UIImage,
+                progressCompletion: @escaping (_ percent: Float) -> Void,
+                completion: @escaping (_ result: Bool) -> Void) {
+        guard let imageData = image.jpegData(compressionQuality: 0.5) else {
+            print("Could not get JPEG representation of UIImage")
+            return
+        }
+        
+        let parameters = ["encode": String.random(length: 32).encrypt()]
+        let upload = AF.upload(
+            multipartFormData: { multipartFormData in
+                multipartFormData.append(imageData,
+                                         withName: "file",
+                                         fileName: "\(Date().currentTimeMillis())",
+                                         mimeType: "image/jpeg")
+                
+                for (key, value) in parameters {
+                    multipartFormData.append(value.asData, withName: key)
+                }
+            },
+            to: "http://192.168.169.34:8089/webservice/public/v1/upload/profile", usingThreshold: UInt64.init(), method: .post)
+            
+            upload
+            
+            .uploadProgress { progress in
+                progressCompletion(Float(progress.fractionCompleted))
+            }
+            .response { response in
+                debugPrint(response)
+            }
+    }
+    
 //    static func login(email: String, password: String, completion:@escaping (Result<User, AFError>)->Void) {
 //        fetch(route: APIRouter.login(email: email, password: password), completion: completion)
 //    }
@@ -35,27 +67,27 @@ class APIClient {
         fetch(route: APIRouter.register(param: param), completion: completion)
     }
     
-    static func getRSA(param: Parameters, completion:@escaping(Result<RegisterResponse, AFError>) -> Void) {
+    static func getRSA(param: Parameters, completion:@escaping(Result<Register2, AFError>) -> Void) {
         fetch(route: APIRouter.rsa(param: param), completion: completion)
     }
     
-    static func submitEncryption(param: Parameters, completion:@escaping(Result<AESResponse, AFError>) -> Void) {
+    static func submitEncryption(param: Parameters, completion:@escaping(Result<Register2, AFError>) -> Void) {
         fetch(route: APIRouter.aes(param: param), completion: completion)
     }
     
-    static func register2(param: Parameters, completion:@escaping(Result<AESResponse, AFError>) -> Void ) {
+    static func register2(param: Parameters, completion:@escaping(Result<Register2, AFError>) -> Void ) {
         fetch(route: APIRouter.register2(param: param), completion: completion)
     }
     
-    static func getOTP(param: Parameters, completion:@escaping(Result<OTP, AFError>) -> Void ) {
+    static func getOTP(param: Parameters, completion:@escaping(Result<Register2, AFError>) -> Void ) {
         fetch(route: APIRouter.getOTP(param: param), completion: completion)
     }
     
-    static func verifyOTP(param: Parameters, completion:@escaping(Result<AESResponse, AFError>) -> Void ) {
+    static func verifyOTP(param: Parameters, completion:@escaping(Result<Register2, AFError>) -> Void ) {
         fetch(route: APIRouter.verifyOTP(param: param), completion: completion)
     }
     
-    static func login(param: Parameters, completion:@escaping(Result<AESResponse, AFError>) -> Void ) {
+    static func login(param: Parameters, completion:@escaping(Result<Register2, AFError>) -> Void ) {
         fetch(route: APIRouter.login(param), completion: completion)
     }
 }
@@ -133,4 +165,9 @@ extension DateFormatter {
         formatter.dateFormat = "yyyy-MM-dd"
         return formatter
     }
+}
+
+struct ImageUpload{
+    let success: Bool
+    let status: Int
 }

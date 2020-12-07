@@ -77,7 +77,7 @@ class RegisterViewController: BaseViewController {
         
         
         viewModel.fetchRSA { (result) in
-            let publicKey = result.data.publicKey
+            let publicKey = result.body.data?.publicKey
             
             //let plainText = "abcdefg".toBase64()
             
@@ -100,7 +100,14 @@ class RegisterViewController: BaseViewController {
             
             self.viewModel.submitAES(encryption: encrypted!) {
 //                self.viewModel.register(with: Param.Register(username: "Dara", phone: "095344527", email: "abc@gmail.com", password: "123"))
-                self.viewModel.register2()
+//                self.viewModel.register2()
+                
+                
+                Upload().upload(image: UIImage(named: "AEONSPB-logo.png")!) { (progress) in
+                    print("Progress", progress)
+                } completion: { (completed) in
+                    print("Upload completed", completed)
+                }
             }
             
         }

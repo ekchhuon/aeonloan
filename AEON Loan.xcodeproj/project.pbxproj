@@ -164,6 +164,7 @@
 		3ED2C51E251AF8C0007B0B9A /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED2C51D251AF8C0007B0B9A /* UIViewController.swift */; };
 		3ED2C521251B3420007B0B9A /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED2C51F251B3420007B0B9A /* PhotoViewController.swift */; };
 		3ED2C522251B3420007B0B9A /* PhotoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ED2C520251B3420007B0B9A /* PhotoViewController.xib */; };
+		3ED3A2D7257DE2B9006639DA /* Upload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED3A2D6257DE2B9006639DA /* Upload.swift */; };
 		3ED6A179254179D0005E7DD7 /* Encode + Decode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED6A178254179D0005E7DD7 /* Encode + Decode.swift */; };
 		3ED6A17B2541971C005E7DD7 /* Encryption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED6A17A2541971C005E7DD7 /* Encryption.swift */; };
 		3EF3427A25258ED4003AA712 /* UITextField + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF3427925258ED4003AA712 /* UITextField + Extensions.swift */; };
@@ -367,6 +368,7 @@
 		3ED2C51D251AF8C0007B0B9A /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		3ED2C51F251B3420007B0B9A /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		3ED2C520251B3420007B0B9A /* PhotoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PhotoViewController.xib; sourceTree = "<group>"; };
+		3ED3A2D6257DE2B9006639DA /* Upload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Upload.swift; sourceTree = "<group>"; };
 		3ED6A178254179D0005E7DD7 /* Encode + Decode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encode + Decode.swift"; sourceTree = "<group>"; };
 		3ED6A17A2541971C005E7DD7 /* Encryption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encryption.swift; sourceTree = "<group>"; };
 		3EF3427925258ED4003AA712 /* UITextField + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField + Extensions.swift"; sourceTree = "<group>"; };
@@ -613,6 +615,7 @@
 				3E113F4E2501E3C9008132CB /* APIRouter.swift */,
 				3E113F5025020228008132CB /* APIClient.swift */,
 				3E113F52250228E0008132CB /* Connectivity.swift */,
+				3ED3A2D6257DE2B9006639DA /* Upload.swift */,
 				3E113F4A2501E316008132CB /* Constants.swift */,
 				3E23675324F61DCA003FD6D4 /* LocationGeocoder.swift */,
 			);
@@ -1503,6 +1506,7 @@
 				3E62A2EF2519D2C40072CAB3 /* ApplicationAcceptedTableViewCell.swift in Sources */,
 				3E23676024F6431F003FD6D4 /* NavigationController.swift in Sources */,
 				3E5641E92507B21100716D8B /* RegisterViewController.swift in Sources */,
+				3ED3A2D7257DE2B9006639DA /* Upload.swift in Sources */,
 				3E56EE9A251864800083CC49 /* SelfieViewController.swift in Sources */,
 				3E48162F252741F90010966A /* OTPViewModel.swift in Sources */,
 				3E14F101253ECEE70066F0AB /* CalculatorViewModel.swift in Sources */,

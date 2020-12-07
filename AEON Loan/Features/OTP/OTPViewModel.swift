@@ -13,7 +13,7 @@ public class OTPViewModel {
     let username = Box("")
     let password = Box("")
     let loading = Box(false)
-    let header = Param.Header(timestamp: "", encode: "", lan: "", channel: "", ipAddress: "", userID: "", appID: "", appVersion: "", deviceBrand: "", deviceModel: "", devicePlanform: "", deviceID: "", osVersion: "")
+    let header = Param.Header(transactionId: "", timestamp: "", encode: "", lan: "", channel: "", ipAddress: "", userID: "", appID: "", appVersion: "", deviceBrand: "", deviceModel: "", devicePlanform: "", deviceID: "", osVersion: "")
     
     init() {
         getOTP()

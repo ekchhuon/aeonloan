@@ -59,10 +59,11 @@ class LoginViewController: BaseViewController {
     }
     
     @IBAction func loginTapped(_ sender: Any) {
+        
         //validate()
         Preference.isLogin = false
         viewModel.fetchRSA { (result) in
-            let publicKey = result.data.publicKey
+            let publicKey = result.body.data?.publicKey
             let sha256 = String.random(length: 5).asSha256 // randomsha
             Preference.sha256 = sha256
             
