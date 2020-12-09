@@ -73,6 +73,9 @@ class RegisterViewController: BaseViewController {
         //        navigates(to: .OTP)
         //        validate()
         
+//        APIClient.uploadss(image: UIImage(named: "aeon.rohas")!) { (result) in
+//            print("Result.......", result)
+//        }
         
         
         

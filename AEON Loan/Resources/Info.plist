@@ -18,8 +18,18 @@
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>This app will use camera.</string>
+	<key>NSFaceIDUsageDescription</key>
+	<string>We use TouchID/ FaceID to unlock Aeon Loan</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Please allow access to save photo in your photo library</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>You can select photos from library.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -62,17 +72,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>NSCameraUsageDescription</key>
-	<string>This app will use camera.</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>You can select photos from library.</string>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>Please allow access to save photo in your photo library</string>
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
-	<key>NSFaceIDUsageDescription</key>
-	<string>We use TouchID/ FaceID to unlock Aeon Loan</string>
-	<key>LSApplicationCategoryType</key>
-	<string></string>
 </dict>
 </plist>

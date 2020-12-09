@@ -102,43 +102,26 @@ extension SideMenuViewController: UITableViewDataSource, UITableViewDelegate {
             //navigationController?.pushViewController(controller, animated: true)
             
             
-            let controller = LanguageListViewController.instantiate()
-            navigationController?.pushViewController(controller, animated: true)
+//            let controller = LanguageListViewController.instantiate()
+//            navigationController?.pushViewController(controller, animated: true)
             
             
 //            let controller = LanguageListViewController.instantiate()
 //            self.present(controller, animated: true, completion: nil)
-            
 
             
-            /*
-            let alert = showAlt(title: "Choose Language", message: "", style: .actionSheet)
-            let khAction = UIAlertAction(title: "KH   \(Preference.language == .km ? "✓" : "")  ", style: .default) {_ in
-                print("KH Selected...")
-                Preference.language = .km
-                Languages(lang: .km).change()
-                Bundle.setLanguage("km")
-                self.tableView.reloadData()
-                self.view.setNeedsLayout()
-                self.view.layoutIfNeeded()
+            let alert = showAlt(title: "Language".localized, message: "Select a Language".localized, style: .actionSheet)
+            let khAction = UIAlertAction(title: "ភាសាខ្មែរ", style: .default) {_ in
+                AppLanguage.set(language: .km)
+                self.navigates(to: .home(.fade))
             }
             
-            let enAction = UIAlertAction(title: "EN   \(Preference.language == .en ? "✓" : "") ", style: .default) { _ in
+            let enAction = UIAlertAction(title: "English", style: .default) { _ in
                 print("EN Selected...")
-                Preference.language = .en
-                Languages(lang: .en).change()
-                Bundle.setLanguage("en")
-
-                self.tableView.reloadData()
-
-                
-                self.view.setNeedsLayout()
-                self.view.layoutIfNeeded()
-                
-                
-                
+                AppLanguage.set(language: .en)
+                self.navigates(to: .home(.fade))
             }
-            
+            /*
             let cameraImage = UIImage(systemName: "tray")!
             let cameraImageFill = UIImage(systemName: "tray.fill")!
             
@@ -146,12 +129,11 @@ extension SideMenuViewController: UITableViewDataSource, UITableViewDelegate {
 //            enAction.setImage(image: cameraImageFill)
             khAction.setAlignment(mode: .justified)
             enAction.setAlignment(mode: .justified)
-            
-            
+            */
             
             alert.addAction(khAction)
             alert.addAction(enAction)
-            */
+            
         
         case 5:
             showALertWithOption(title: "Logout", message: "Are you sure you want to logout?", dismissButtonTitle: "Cancel", okButtonTitle: "Logout", style: .actionSheet, dismissActionStyle: .cancel, okActionStyle: .destructive) {

@@ -21,10 +21,12 @@
 "Change Phone Number" = "ប្តូលេខទូរស័ព្ទ";
 "Change Language" = "ប្តូរភាសារ";
 "Logout" = "ចាកចេញ";
-"Cancel" = "បញ្ឈប់";
+"Cancel" = "បោះបង់";
 
 "AEON Products" = "ផលិតផល និងសេវាកម្ម";
 "AEON Cards" = "អ៉ីអនកាត";
 "Loans" = "កម្ចីសាច់ប្រាក់";
 "Installments" = "សេវាកម្មបង់រំលោះ";
 "Digital Products" = "ផលិតផលឌីជីថល";
+"Language" = "ភាសា";
+"Select a Language" = "ជ្រើសរើសភាសា";

@@ -22,9 +22,12 @@
 "Change Phone Number" = "Change Phone Number";
 "Change Language" = "Change Language";
 "Logout" = "Logout";
+"Cancel" = "Cancel";
 
 "AEON Products" = "AEON Products";
 "AEON Cards" = "AEON Cards";
 "Loans" = "Loans";
 "Installments" = "Installments";
 "Digital Products" = "Digital Products";
+"Language" = "Language";
+"Select a Language" = "Select a Language";

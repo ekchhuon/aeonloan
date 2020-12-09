@@ -8,8 +8,71 @@
 import Foundation
 import Alamofire
 
+
+enum Router: URLConvertible {
+    
+//    func asURL() throws -> URL {
+//        <#code#>
+//    }
+    
+    func asURLRequest() throws -> URLRequest {
+        let url = try Constantss.server.asURL()
+        
+        var urlRequest = URLRequest(url: url.appendingPathComponent(path))
+        
+        // HTTP Method
+        urlRequest.httpMethod = method.rawValue
+    }
+    
+    case CreateUser([String: AnyObject])
+    case ReadUser(String)
+    case UpdateUser(String, [String: AnyObject])
+    case DestroyUser(String)
+
+    var method: Alamofire.HTTPMethod {
+        switch self {
+        case .CreateUser:
+            return .post
+        case .ReadUser:
+            return .get
+        case .UpdateUser:
+            return .put
+        case .DestroyUser:
+            return .delete
+        }
+    }
+
+    var path: String {
+        switch self {
+        case .CreateUser:
+            return "/users"
+        case .ReadUser(let username):
+            return "/users/\(username)"
+        case .UpdateUser(let username, _):
+            return "/users/\(username)"
+        case .DestroyUser(let username):
+            return "/users/\(username)"
+        }
+    }
+}
+
 class Upload {
-    func upload(image: UIImage,
+    
+    enum Uploadsss {
+        case profile, document
+        private var path: String {
+            switch self {
+            case .profile: return "profile"
+            case .document: return "nid_passport"
+            }
+        }
+        var url: URL? {
+            let url = try? Constantss.server + path
+            return url as URLConvertible
+        }
+    }
+    
+    func upload(route:Router, image: UIImage,
                 progressCompletion: @escaping (_ percent: Float) -> Void,
                 completion: @escaping (_ result: Bool) -> Void) {
         
@@ -30,7 +93,7 @@ class Upload {
                     multipartFormData.append(value.asData, withName: key)
                 }
             },
-            to: "http://192.168.169.34:8089/webservice/public/v1/upload/profile", usingThreshold: UInt64.init(), method: .post)
+            to: Constantss.server , usingThreshold: UInt64.init(), method: .post)
             
             .uploadProgress { progress in
                 progressCompletion(Float(progress.fractionCompleted))

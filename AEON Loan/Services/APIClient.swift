@@ -17,7 +17,7 @@ class APIClient {
         }
     }
     
-    func upload(image: UIImage,
+    private static func upload(route:APIRouter, image: UIImage,
                 progressCompletion: @escaping (_ percent: Float) -> Void,
                 completion: @escaping (_ result: Bool) -> Void) {
         guard let imageData = image.jpegData(compressionQuality: 0.5) else {
@@ -26,7 +26,7 @@ class APIClient {
         }
         
         let parameters = ["encode": String.random(length: 32).encrypt()]
-        let upload = AF.upload(
+        AF.upload(
             multipartFormData: { multipartFormData in
                 multipartFormData.append(imageData,
                                          withName: "file",
@@ -37,15 +37,12 @@ class APIClient {
                     multipartFormData.append(value.asData, withName: key)
                 }
             },
-            to: "http://192.168.169.34:8089/webservice/public/v1/upload/profile", usingThreshold: UInt64.init(), method: .post)
-            
-            upload
-            
+            to: route )
             .uploadProgress { progress in
                 progressCompletion(Float(progress.fractionCompleted))
             }
             .response { response in
-                debugPrint(response)
+                response.logs()
             }
     }
     
@@ -89,6 +86,16 @@ class APIClient {
     
     static func login(param: Parameters, completion:@escaping(Result<Register2, AFError>) -> Void ) {
         fetch(route: APIRouter.login(param), completion: completion)
+    }
+    
+    static func uploadss(image: UIImage, completion:@escaping(Result<Register2, AFError>) -> Void ) {
+    
+        upload(route: APIRouter.upload(image), image: image) { (progress) in
+            print("Progress.....upload")
+        } completion: { (result) in
+            print("Result.....result")
+        }
+
     }
 }
 
@@ -167,7 +174,7 @@ extension DateFormatter {
     }
 }
 
-struct ImageUpload{
+struct ImageUpload {
     let success: Bool
     let status: Int
 }

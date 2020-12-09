@@ -5,8 +5,8 @@
 //  Created by aeon on 9/4/20.
 //
 
-//import Foundation
-//import Alamofire
+import Foundation
+import Alamofire
 //
 //struct Constants {
 //    struct ProductionServer {
@@ -86,7 +86,6 @@ enum HTTPHeaderField: String {
 enum ContentType: String {
     case json
     case basic
-    case raw
     
     var value: String {
         switch self {
@@ -101,13 +100,15 @@ enum ContentType: String {
             print("Basic \(base64LoginString)")
             
             return "Basic \(base64LoginString)"
-        case .raw:
-            return "application/x-www-form-urlencoded"
         }
     }
 }
 
-
+enum RequestParams {
+    case body(_:Parameters)
+    case url(_:Parameters)
+    case multipart(_:UIImage)
+}
 
 //import Foundation
 //import Alamofire

@@ -4,7 +4,7 @@
 //
 //  Created by aeon on 9/4/20.
 //
-
+/*
 import Foundation
 import Alamofire
 
@@ -26,6 +26,6 @@ struct LoginResponse : Codable {
         case token = "token"
     }
 }
-
+*/
 
 

@@ -7,14 +7,6 @@
 
 import Alamofire
 
-//enum aa: URLRequestConvertible {
-//    func asURLRequest() throws -> URLRequest {
-//        <#code#>
-//    }
-//
-//
-//}
-
 enum APIRouter: URLRequestConvertible {
     case rsa(param: Parameters)
     case aes(param: Parameters)
@@ -22,6 +14,7 @@ enum APIRouter: URLRequestConvertible {
     case getOTP(param: Parameters)
     case verifyOTP(param: Parameters)
     case login(Parameters)
+    case upload(UIImage)
     //case login(email:String, password:String)
     case register(param: Param.Register)
     //case testLogin(email: String, password: String)
@@ -31,7 +24,7 @@ enum APIRouter: URLRequestConvertible {
     // MARK: - HTTPMethod
     private var method: HTTPMethod {
         switch self {
-        case .register, .rsa, .aes, .register2, .getOTP, .verifyOTP, .login:
+        case .register, .rsa, .aes, .register2, .getOTP, .verifyOTP, .login, .upload:
             return .post
         case .articles, .article:
             return .get
@@ -53,6 +46,8 @@ enum APIRouter: URLRequestConvertible {
             return "otp/verification"
         case .login:
             return "signin"
+        case .upload:
+            return "upload/profile"
         //        case .login:
         //            return "login"
         case .register:
@@ -67,24 +62,26 @@ enum APIRouter: URLRequestConvertible {
     }
     
     // MARK: - Parameters
-    private var parameters: Parameters? {
+    private var parameters: RequestParams? {
         switch self {
         case let .rsa(param):
-            return param
+            return .body(param)
         case let .aes(param):
-            return param
+            return .body(param)
         case let .register2(param):
-            return param
+            return .body(param)
         case let .getOTP(param):
-            return param
+            return .body(param)
         case let .verifyOTP(param):
-            return param
+            return .body(param)
         case let .login(param):
-            return param
+            return .url(param)
+        case let .upload(image):
+            return .multipart(image)
         //        case .login(let email, let password):
         //            return [Constants.APIParameterKey.email: email, Constants.APIParameterKey.password: password]
         case .register(let param):
-            return ["username": param.username, "phoneNumber":"012345678", "email": param.email, "password": param.password.bcrypted]
+            return .body(["username": param.username, "phoneNumber":"012345678", "email": param.email, "password": param.password.bcrypted])
         //        case .testLogin(let email, let password):
         //            return [Constants.APIParameterKey.email: email, Constants.APIParameterKey.password: password]
         case .articles, .article:
@@ -106,6 +103,8 @@ enum APIRouter: URLRequestConvertible {
         //        urlRequest.setValue(ContentType.json.value, forHTTPHeaderField: HTTPHeaderField.acceptType.rawValue)
         //        urlRequest.setValue(ContentType.json.value, forHTTPHeaderField: HTTPHeaderField.contentType.rawValue)
         
+        
+        /*
         if Preference.isLogin {
             var components = URLComponents()
             
@@ -133,11 +132,62 @@ enum APIRouter: URLRequestConvertible {
             urlRequest.setValue(ContentType.json.value, forHTTPHeaderField: HTTPHeaderField.contentType.rawValue)
         }
         
+        */
+        
+        
+        
+        // Headers
+        switch parameters {
+        case .url:
+//            urlRequest.setValue(ContentType.basic.value, forHTTPHeaderField: HTTPHeaderField.authentication.rawValue)
+            urlRequest.setValue(ContentType.json.value, forHTTPHeaderField: HTTPHeaderField.acceptType.rawValue)
+            urlRequest.setValue(ContentType.json.value, forHTTPHeaderField: HTTPHeaderField.contentType.rawValue)
+        case .body, .multipart:
+            urlRequest.setValue(ContentType.json.value, forHTTPHeaderField: HTTPHeaderField.acceptType.rawValue)
+            urlRequest.setValue(ContentType.json.value, forHTTPHeaderField: HTTPHeaderField.contentType.rawValue)
+        default : break
+        }
+        
+        
+        
         // Default timeout
         //urlRequest.timeoutInterval = 10
         
         // Parameters
         
+        switch parameters {
+        case let .body(params):
+            
+            urlRequest.httpBody = try JSONSerialization.data(withJSONObject: params, options: [])
+            
+            /*
+            if let parameters = parameters {
+                do {
+                    urlRequest.httpBody = try JSONSerialization.data(withJSONObject: param, options: [])
+                } catch {
+                    throw AFError.parameterEncodingFailed(reason: .jsonEncodingFailed(error: error))
+                }
+            }
+            */
+        case let .url(params):
+            
+            let queryParams = params.map { pair  in
+                return URLQueryItem(name: pair.key, value: "\(pair.value)")
+            }
+            var components = URLComponents(string:url.appendingPathComponent(path).absoluteString)
+            //components?.queryItems = queryParams
+            
+            components?.queryItems = [URLQueryItem(name: "grant_type", value: "password"), URLQueryItem(name: "username", value: "aeonrohas".encrypt()), URLQueryItem(name: "password", value: "2020@Loan#Aeon4User".encrypt()), URLQueryItem(name: "header", value: Preference.header)]
+            
+            urlRequest.httpBody = components?.query?.data(using: .utf8)
+            
+            //urlRequest.url = components?.url
+        case let .multipart(image):
+            print("image", image)
+        default:
+            print("This is multipart")
+        }
+        /*
         if !Preference.isLogin  {
             if let parameters = parameters {
                 do {
@@ -147,7 +197,7 @@ enum APIRouter: URLRequestConvertible {
                 }
             }
         }
-        
+        */
         return urlRequest
     }
 }
@@ -246,17 +296,6 @@ struct Register2: Codable {
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 // MARK: - Register
