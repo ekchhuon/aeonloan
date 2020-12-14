@@ -8,52 +8,61 @@
 import Foundation
 
 public class OTPViewModel {
-    let defaults = "Loading..."
-    let user: Box<User?> = Box(nil)
-    let username = Box("")
-    let password = Box("")
-    let loading = Box(false)
-    let header = Param.Header(transactionId: "", timestamp: "", encode: "", lan: "", channel: "", ipAddress: "", userID: "", appID: "", appVersion: "", deviceBrand: "", deviceModel: "", devicePlanform: "", deviceID: "", osVersion: "")
+//    let defaults = "Loading..."
+//    let user: Box<User?> = Box(nil)
+//    let username = Box("")
+//    let password = Box("")
+    
+    let status: Box<RequestStatus?> = Box(nil)
+    let message: Box<String?> = Box(nil)
+    let error: Box<APIError?> = Box(nil)
+    let response: Box<Response?> = Box(nil)
+    
+    let header = Header(transactionID: "", timestamp: "", lan: "", channel: "", appID: "", appVersion: "", deviceBrand: "", deviceModel: "", devicePlanform: "", osVersion: "")
     
     init() {
-        getOTP()
+         requestOTP()
     }
     
-    func getOTP() {
-        loading.value = true
-        let param = Param.MyRegister(header: header, body: "")
+    private func requestOTP() {
+        self.status.value = .started
+        let param = Param.Request(header: header, body: Param.Body(encode: ""))
         APIClient.getOTP(param: param.toJSON()) { (result) in
-            self.loading.value = false
+            self.status.value = .stopped
             switch result {
             case let .success(data):
-                print("OTP Response", data)
+                guard data.body.success else {
+                    self.message.value = data.body.message; return
+                }
+                self.response.value = data
             case let .failure(err):
-                print("OTP Response", err)
+                self.message.value = err.localizedDescription
             }
         }
     }
     
-    func verifyOTP(otp: String) {
-        loading.value = true
-        
+    func verifyOTP(otp: String, completion: @escaping (_ success: Bool) -> Void) {
+        status.value = .started
         let otp = Param.OTP(code: otp)
         let jsonEncoder = JSONEncoder()
         let jsonData = try! jsonEncoder.encode(otp)
         let json = String(data: jsonData, encoding: String.Encoding.utf8)?.replacingOccurrences(of: "\\", with: "")
         
-        let param = Param.MyRegister2(header: header, body: Param.Body(encode: "\(json!)".encrypt()))
+        let param = Param.Request(header: header, body: Param.Body(encode: "\(json!)".encrypt()))
         
         APIClient.verifyOTP(param: param.toJSON()) { (result) in
-            self.loading.value = false
+            self.status.value = .stopped
             switch result {
             case let .success(data):
-                print("Verifiy Response", data)
+                guard data.body.success else {
+                    self.message.value = data.body.message; return
+                }
+                completion(data.body.success)
             case let .failure(err):
-                print("Verifiy Response", err)
+                self.message.value = err.localizedDescription
             }
         }
     }
-    
 }
 
 struct OTP: Codable {

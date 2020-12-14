@@ -93,8 +93,8 @@ extension UIViewController {
         case .calculator:
             let controller = CalculatorViewController.instantiate()
             navigationController?.pushViewController(controller, animated: true)
-        case .OTP:
-            let controller = OTPViewController.instantiate()
+        case let .OTP(user):
+            let controller = OTPViewController.instantiate(user: user)
             navigationController?.pushViewController(controller, animated: true)
         default:
             debugPrint("Scene Not Found!")
@@ -105,7 +105,7 @@ extension UIViewController {
 // MARK: alert
 extension UIViewController {
     //simple alert with optional completion
-    func showAlert(title: String = "OK", message: String, buttonTitle: String = "OK", okAction: (() -> Void)?  = nil) {
+    func showAlert(title: String = "", message: String, buttonTitle: String = "OK".localized, okAction: (() -> Void)?  = nil) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: buttonTitle, style: .default, handler: { action in
             okAction?()
@@ -142,15 +142,9 @@ extension UIViewController {
 //                //NSAttributedString.Key.font : UIFont(name: "name", size: 17)
 //            ]
 //        )
-        
-        
-
 //        alert.setValue(messageText, forKey: "attributedMessage")
         
-        
         let dismiss = UIAlertAction(title: "Cancel".localized, style: .cancel, handler: nil)
-        
-        
         
         alert.addAction(dismiss)
         self.present(alert, animated: true, completion: nil)

@@ -14,6 +14,8 @@ extension SideMenuViewController {
 }
 
 class SideMenuViewController: UIViewController {
+    private var viewModel = SideMenuViewModel()
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var welcomeLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
@@ -21,6 +23,8 @@ class SideMenuViewController: UIViewController {
     
     @IBOutlet weak var profileImageView: UIImageView!
     private let items = ["About Us", "Contact Us", "Change Phone Number", "Change Phone Number", "Change Language", "Logout"]
+    private let icons = ["questionmark.circle", "phone", "phone.badge.plus", "phone.badge.plus", "globe", "arrow.backward.square" ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
@@ -30,6 +34,22 @@ class SideMenuViewController: UIViewController {
         self.tableView.dataSource = self
         self.tableView.tableFooterView = UIView(frame: .zero)
         self.profileImageView.setRounded()
+        bind()
+    }
+    
+    private func bind() {
+        viewModel.status.bind { [weak self] status in
+            guard let self = self else { return }
+            self.showIndicator(status == .started)
+        }
+        viewModel.message.bind { [weak self] msg in
+            guard let self = self, let msg = msg else { return }
+            self.showAlert(title: "".localized ,message: msg)
+        }
+        viewModel.error.bind { [weak self] (err) in
+            guard let self = self, let err = err else { return }
+            self.showAlert(title: "".localized, message: err.localized)
+        }
     }
     
     private func setupView() {
@@ -84,7 +104,8 @@ extension SideMenuViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SideMenuTableViewCell", for: indexPath) as! SideMenuTableViewCell
-        cell.setup(label: items[indexPath.row].localized)
+        cell.setup(label: items[indexPath.row], icon: icons[indexPath.row])
+        
         return cell
     }
     
@@ -136,11 +157,15 @@ extension SideMenuViewController: UITableViewDataSource, UITableViewDelegate {
             
         
         case 5:
-            showALertWithOption(title: "Logout", message: "Are you sure you want to logout?", dismissButtonTitle: "Cancel", okButtonTitle: "Logout", style: .actionSheet, dismissActionStyle: .cancel, okActionStyle: .destructive) {
-                print("Canceled")
-            } okAction: {
-                self.navigateToLogin()
+            let alert = showAlt(title: "Logout".localized, message: "Are you sure you want to logout?".localized, style: .actionSheet)
+            let okAction = UIAlertAction(title: "Logout".localized, style: .destructive) {_ in
+                
+                self.viewModel.logout { _ in
+                    self.navigates(to: .home(.fade))
+                }
             }
+            
+            alert.addAction(okAction)
 
         default:
             break

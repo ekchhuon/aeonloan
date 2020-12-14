@@ -7,17 +7,30 @@
 
 import Foundation
 import UIKit.UIImage
+import Alamofire
 
 public class LoginViewModel {
-    let defaults = "Loading..."
-    let user: Box<User?> = Box(nil)
-    let username = Box("")
-    let password = Box("")
-    let loading = Box(false)
-    let token = Box("")
-    let success = Box("")
+////    let defaults = "Loading..."
+////    let user: Box<User?> = Box(nil)
+////    let username = Box("")
+////    let password = Box("")
+//    let loading = Box(false)
+////    let token = Box("")
+////    let success = Box("")
+//    
+////    let fetching = Box(false)
+//    let error: Box<APIError?> = Box(nil)
+//    let message: Box<String?> = Box(nil)
+    
+    let status: Box<RequestStatus?> = Box(nil)
+    let message: Box<String?> = Box(nil)
     let error: Box<APIError?> = Box(nil)
-    let header = Param.Header(transactionId: "",timestamp: "", encode: "", lan: "", channel: "", ipAddress: "", userID: "", appID: "", appVersion: "", deviceBrand: "", deviceModel: "", devicePlanform: "", deviceID: "", osVersion: "")
+    let response: Box<Response?> = Box(nil)
+    
+    let headerLogin = Header(transactionID: "00111", timestamp: "12345", lan: "en", channel: "maybank", appID: "12345", appVersion: "1.0.1", deviceBrand: "iOS", deviceModel: "i8P", devicePlanform: "iOS", osVersion: "14.0")
+    
+
+    let header = Header(transactionID: "", timestamp: "", lan: "", channel: "", appID: "", appVersion: "", deviceBrand: "", deviceModel: "", devicePlanform: "", osVersion: "")
     
     init() {
         //        login(username: "", password: "")
@@ -51,53 +64,94 @@ public class LoginViewModel {
     }
     */
     
-    func fetchRSA(completion:@escaping(Register2) -> Void) {
-        
-        loading.value = true
-        let param = Param.MyRegister(header: header, body: "")
-        
-        print("param====>",param)
-        APIClient.getRSA(param: param.toJSON()) { (result) in
-                self.loading.value = false
-                
+    func login(username: String, password: String, completion:@escaping(Login) -> Void) {
+        requestAuth { [weak self] in
+            guard let self = self else {return}
+            let user = Param.LoginData(username: username, password: password, grant_type: "password", deviceId: "12345")
+            let param = Param.Request(header: self.header, body: Param.Body(encode: user.asString.encrypt()))
+            
+            
+            print("USER:", user)
+            print("PARAM:", param)
+            print("PARAM.toJSON:", param.toJSON())
+            
+            self.status.value = .started
+            APIClient.login(param: param.toJSON()) { (result) in
+                self.status.value = .stopped
                 switch result {
                 case let .success(data):
-                    print("Data....Register",data)
-                    self.success.value = "success: \(data)"
-//                    Preference.sha256 = data.data.publicKey
-                    print("public key", data)
-                    completion(data)
-                case let .failure(err):
-                    guard let code = err.responseCode else {
-                        debugPrint("Error", err.localizedDescription)
-                        self.error.value = APIError(code: 0, description: "", localized: err.localizedDescription)
-                        return
+                    print("Login Success", data)
+                    
+                    if let error = data.errorDescription {
+                        self.message.value = error
+                    } else {
+                        // success
+                        Preference.accessToken = data.accessToken
+                        Preference.refreshToken = data.refreshToken
+                        
+                        completion(data)
                     }
-                    self.error.value = APIError(code: code, description: code.description, localized: err.localizedDescription)
+                    
+                case let .failure(err):
+                    self.error.value = err.evaluate
                 }
-                
             }
             
-//        }
+        }
     }
     
-    func submitAES(encryption body: String, completion:@escaping() -> Void) {
-        loading.value = true
-        
-        let param = Param.MyRegister2(header: header, body: Param.Body(encode: body))
-        
-        APIClient.submitEncryption(param: param.toJSON()) { (result) in
-            self.loading.value = false
-            switch result {
-            case let .success(data):
-                print("AES Success==>:",data)
+    func requestAuth(completion:@escaping() -> Void) {
+        // 1. Fetch RSA
+        // 2. Fetch AES
+        // 3. Do stuff...
+        fetchRSA { [weak self] publicKey in
+            guard let self = self else { return }
+            let sha256 = String.random(length: 5).asSha256
+            guard let encrypted = RSA.encrypt(string: sha256, publicKey: publicKey) else {
+                debugPrint("Error: Unable to encrypt rsa"); return
+            }
+            
+            self.submitAES(encryption: encrypted) {
+                Preference.sha256 = sha256 // save
                 completion()
-                //self.register2()
-            case let .failure(err):
-                print("AES Errror==>:",err)
             }
         }
     }
+    func fetchRSA(completion:@escaping(String) -> Void) {
+        let param = Param.Request(header: header, body: Param.Body(encode: ""))
+        self.status.value = .started
+        APIClient.getRSA(param: param.toJSON()) { (result) in
+            self.status.value = .stopped
+            switch result {
+            case let .success(data):
+                guard data.body.success else {
+                    self.message.value = data.body.message; return
+                }
+                completion(data.body.data!.publicKey)
+            case let .failure(err):
+                self.error.value = err.evaluate
+            }
+        }
+    }
+    
+    func submitAES(encryption body: String, completion:@escaping() -> Void) {
+        let param = Param.Request(header: header, body: Param.Body(encode: body))
+        self.status.value = .started
+        APIClient.submitEncryption(param: param.toJSON()) { (result) in
+            self.status.value = .stopped
+            switch result {
+            case let .success(data):
+                guard data.body.success else {
+                    self.message.value = data.body.message; return
+                }
+                completion()
+            case let .failure(err):
+                self.error.value = err.evaluate
+            }
+        }
+    }
+    
+    /*
     
     func login(completion:@escaping() -> Void) {
         loading.value = true
@@ -111,30 +165,22 @@ public class LoginViewModel {
 
         Preference.header = "\(json!)"
         
-        let login = Param.LoginData(username: "aeonrohas".encrypt(), password: "2020@Loan#Aeon4User".encrypt(), grant_type: "password", header: "\(json!)")
+//        let login = Param.LoginData(username: "aeonrohas".encrypt(), password: "2020@Loan#Aeon4User".encrypt(), grant_type: "password", header: "\(json!)")
         
-        APIClient.login(param: login.toJSON()) { (result) in
-            self.loading.value = false
-            switch result {
-            case let .success(data):
-                print("Login Success", data)
-            case let .failure(err):
-                print("Login error", err)
-            }
-        }
+//        APIClient.login(param: login.toJSON()) { (result) in
+//            self.loading.value = false
+//            switch result {
+//            case let .success(data):
+//                print("Login Success", data)
+//            case let .failure(err):
+//                print("Login error", err)
+//            }
+//        }
     }
-    
-    func fetch(user: User) {
-        loading.value = true
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.loading.value = false
-            self.user.value = User(username: "Chhuon OK", password: "Password OK", profile: "")
-        }
-    }
+    */
 }
 
-struct User : Codable{
-    var username, password: String
-    let profile: String
-}
+
+
+
+

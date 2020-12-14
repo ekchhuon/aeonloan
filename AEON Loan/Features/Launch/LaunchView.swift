@@ -30,10 +30,8 @@ class LaunchView: UIViewController {
             self.navigates(to: .home(.fade))
         }
         
-        Preference.user = MyUser(firstName: "Chhuon", lastName: "Ek")
-        print("Before",Preference.user)
         
-        Preference.reset(forKey: .user)
+        Preference.clear(forKey: .user)
         print("After",Preference.user)
 
     }

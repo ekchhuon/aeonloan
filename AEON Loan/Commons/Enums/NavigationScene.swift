@@ -20,7 +20,7 @@ enum Scene {
     case loanResult(SubmitResult)
     case payment(PaymentScene)
     case calculator
-    case OTP
+    case OTP(with:User)
     //case scan
 }
 

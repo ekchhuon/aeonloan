@@ -13,14 +13,14 @@ class APIClient {
         return AF.request(route).validate().responseDecodable (decoder: decoder){ (response: DataResponse<M, AFError>) in
                             response.logs()
                             completion(response.result)
-            print("response result:", response.response?.statusCode)
         }
     }
     
-    private static func upload(route:APIRouter, image: UIImage,
+    private static func uploadMultipart<M:Decodable>(route:UploadAPIRouter, image: UIImage,
                 progressCompletion: @escaping (_ percent: Float) -> Void,
-                completion: @escaping (_ result: Bool) -> Void) {
-        guard let imageData = image.jpegData(compressionQuality: 0.5) else {
+                completion:@escaping (Result<M, AFError>)->Void) {
+        
+        guard let imageData = image.jpegData(compressionQuality: 1) else {
             print("Could not get JPEG representation of UIImage")
             return
         }
@@ -37,65 +37,53 @@ class APIClient {
                     multipartFormData.append(value.asData, withName: key)
                 }
             },
-            to: route )
+            to: route.url!  , usingThreshold: UInt64.init(), method: .post)
+            
             .uploadProgress { progress in
                 progressCompletion(Float(progress.fractionCompleted))
             }
-            .response { response in
+            
+            .responseDecodable { (response: DataResponse<M, AFError>) in
+                completion(response.result)
                 response.logs()
             }
     }
-    
-//    static func login(email: String, password: String, completion:@escaping (Result<User, AFError>)->Void) {
-//        fetch(route: APIRouter.login(email: email, password: password), completion: completion)
-//    }
-    
-    static func getArticles(completion:@escaping (Result<[Article], AFError>)->Void) {
-        let jsonDecoder = JSONDecoder()
-        jsonDecoder.dateDecodingStrategy = .formatted(.articleDateFormatter)
-        fetch(route: APIRouter.articles, decoder: jsonDecoder, completion: completion)
-    }
-    
-//    static func testLogin(email: String, password: String, completion:@escaping(Result<Login, AFError>)->Void) {
-//        fetch(route: APIRouter.testLogin(email: email, password: password), completion: completion)
-//    }
     
     static func register(with param: Param.Register, completion:@escaping(Result<Register, AFError>) -> Void) {
         fetch(route: APIRouter.register(param: param), completion: completion)
     }
     
-    static func getRSA(param: Parameters, completion:@escaping(Result<Register2, AFError>) -> Void) {
+    static func getRSA(param: Parameters, completion:@escaping(Result<Response, AFError>) -> Void) {
         fetch(route: APIRouter.rsa(param: param), completion: completion)
     }
     
-    static func submitEncryption(param: Parameters, completion:@escaping(Result<Register2, AFError>) -> Void) {
+    static func submitEncryption(param: Parameters, completion:@escaping(Result<Response, AFError>) -> Void) {
         fetch(route: APIRouter.aes(param: param), completion: completion)
     }
     
-    static func register2(param: Parameters, completion:@escaping(Result<Register2, AFError>) -> Void ) {
+    static func register2(param: Parameters, completion:@escaping(Result<Response, AFError>) -> Void ) {
         fetch(route: APIRouter.register2(param: param), completion: completion)
     }
     
-    static func getOTP(param: Parameters, completion:@escaping(Result<Register2, AFError>) -> Void ) {
+    static func getOTP(param: Parameters, completion:@escaping(Result<Response, AFError>) -> Void ) {
         fetch(route: APIRouter.getOTP(param: param), completion: completion)
     }
     
-    static func verifyOTP(param: Parameters, completion:@escaping(Result<Register2, AFError>) -> Void ) {
+    static func verifyOTP(param: Parameters, completion:@escaping(Result<Response, AFError>) -> Void ) {
         fetch(route: APIRouter.verifyOTP(param: param), completion: completion)
     }
     
-    static func login(param: Parameters, completion:@escaping(Result<Register2, AFError>) -> Void ) {
+    static func login(param: Parameters, completion:@escaping(Result<Login, AFError>) -> Void ) {
         fetch(route: APIRouter.login(param), completion: completion)
     }
     
-    static func uploadss(image: UIImage, completion:@escaping(Result<Register2, AFError>) -> Void ) {
+    static func upload(_ route:UploadAPIRouter, image: UIImage, progress: @escaping (_ percent: Float) -> Void,
+                              completion:@escaping(Result<Response, AFError>) -> Void)  {
+        uploadMultipart(route: route, image: image, progressCompletion: progress, completion: completion)
+    }
     
-        upload(route: APIRouter.upload(image), image: image) { (progress) in
-            print("Progress.....upload")
-        } completion: { (result) in
-            print("Result.....result")
-        }
-
+    static func logout(param: Parameters, completion:@escaping(Result<Response, AFError>) -> Void ) {
+        fetch(route: APIRouter.logout(param), completion: completion)
     }
 }
 
@@ -130,47 +118,6 @@ private extension URLRequest {
         output.append("[Body]: \(httpBody.flatMap { String(data: $0, encoding: .utf8) } ?? "nil")")
 
         return output
-    }
-}
-
-//struct User: Codable {
-//    let firstName: String
-//    let lastName: String
-//    let email: String
-//    let image: URL
-//}
-
-struct Article : Codable{
-    let id: Int
-    let title: String
-    let image: URL
-    let author : String
-    let categories: [Category]
-    let datePublished: Date
-    let body: String?
-    let publisher: String?
-    let url: URL?
-}
-
-struct Category: Codable {
-    let id: Int
-    let name: String
-    let parentID: Int?
-}
-
-extension Category {
-    enum CodingKeys: String, CodingKey {
-        case id
-        case name
-        case parentID = "parent_id"
-    }
-}
-
-extension DateFormatter {
-    static var articleDateFormatter: DateFormatter {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        return formatter
     }
 }
 

@@ -51,7 +51,7 @@ public class HomeViewModel {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.loading.value = false
-            self.user.value = User(username: "Chhuon OK", password: "Password OK", profile: "")
+            self.user.value = User()
         }
     }
 }

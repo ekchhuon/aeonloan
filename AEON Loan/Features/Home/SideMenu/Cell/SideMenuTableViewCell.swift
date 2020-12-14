@@ -9,6 +9,7 @@ import UIKit
 
 class SideMenuTableViewCell: UITableViewCell {
     @IBOutlet weak var itemLabel: UILabel!
+    @IBOutlet weak var itemIcon: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,8 +23,9 @@ class SideMenuTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setup(label text: String) {
-        self.itemLabel.text = ".\(text)"
+    func setup(label text: String, icon name: String) {
+        self.itemLabel.text = "\(text)".localized
+        self.itemIcon.image = UIImage(systemName: name)?.withRenderingMode(.alwaysOriginal).withColor(.white)
     }
     
 }

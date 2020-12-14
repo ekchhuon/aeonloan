@@ -7,6 +7,19 @@
 
 import Alamofire
 
+enum UploadAPIRouter {
+    case profile, document
+    private var path: String {
+        switch self {
+        case .profile: return "public/v1/upload/profile"
+        case .document: return "public/v1/upload/nid_passport"
+        }
+    }
+    var url: URL? {
+        return URL(string: Constantss.server + path)
+    }
+}
+
 enum APIRouter: URLRequestConvertible {
     case rsa(param: Parameters)
     case aes(param: Parameters)
@@ -14,6 +27,7 @@ enum APIRouter: URLRequestConvertible {
     case getOTP(param: Parameters)
     case verifyOTP(param: Parameters)
     case login(Parameters)
+    case logout(Parameters)
     case upload(UIImage)
     //case login(email:String, password:String)
     case register(param: Param.Register)
@@ -24,7 +38,7 @@ enum APIRouter: URLRequestConvertible {
     // MARK: - HTTPMethod
     private var method: HTTPMethod {
         switch self {
-        case .register, .rsa, .aes, .register2, .getOTP, .verifyOTP, .login, .upload:
+        case .register, .rsa, .aes, .register2, .getOTP, .verifyOTP, .login, .logout, .upload:
             return .post
         case .articles, .article:
             return .get
@@ -35,23 +49,25 @@ enum APIRouter: URLRequestConvertible {
     private var path: String {
         switch self {
         case .rsa:
-            return "rsa"
+            return "public/v1/rsa"
         case .aes:
-            return "aes"
+            return "public/v1/aes"
         case .register2:
-            return "user"
+            return "public/v1/user"
         case .getOTP:
-            return "otp"
+            return "public/v1/otp"
         case .verifyOTP:
-            return "otp/verification"
+            return "public/v1/otp/verification"
         case .login:
-            return "signin"
+            return "public/v1/signin"
+        case .logout:
+            return "private/v1/signout"
         case .upload:
-            return "upload/profile"
+            return "public/v1/upload/profile"
         //        case .login:
         //            return "login"
         case .register:
-            return "users"
+            return "public/v1/users"
         //        case .testLogin:
         //            return "login"
         case .articles:
@@ -60,6 +76,7 @@ enum APIRouter: URLRequestConvertible {
             return "article/\(id)"
         }
     }
+    
     
     // MARK: - Parameters
     private var parameters: RequestParams? {
@@ -76,6 +93,8 @@ enum APIRouter: URLRequestConvertible {
             return .body(param)
         case let .login(param):
             return .url(param)
+        case let .logout(param):
+            return .bearer(param)
         case let .upload(image):
             return .multipart(image)
         //        case .login(let email, let password):
@@ -137,14 +156,15 @@ enum APIRouter: URLRequestConvertible {
         
         
         // Headers
+        urlRequest.setValue(ContentType.json.value, forHTTPHeaderField: HTTPHeaderField.contentType.rawValue)
+        
         switch parameters {
         case .url:
-//            urlRequest.setValue(ContentType.basic.value, forHTTPHeaderField: HTTPHeaderField.authentication.rawValue)
-            urlRequest.setValue(ContentType.json.value, forHTTPHeaderField: HTTPHeaderField.acceptType.rawValue)
-            urlRequest.setValue(ContentType.json.value, forHTTPHeaderField: HTTPHeaderField.contentType.rawValue)
+            urlRequest.setValue(ContentType.basic.value, forHTTPHeaderField: HTTPHeaderField.authentication.rawValue)
         case .body, .multipart:
             urlRequest.setValue(ContentType.json.value, forHTTPHeaderField: HTTPHeaderField.acceptType.rawValue)
-            urlRequest.setValue(ContentType.json.value, forHTTPHeaderField: HTTPHeaderField.contentType.rawValue)
+        case .bearer:
+            urlRequest.setValue(ContentType.bearer.value, forHTTPHeaderField: HTTPHeaderField.authentication.rawValue)
         default : break
         }
         
@@ -156,7 +176,7 @@ enum APIRouter: URLRequestConvertible {
         // Parameters
         
         switch parameters {
-        case let .body(params):
+        case let .body(params), let .bearer(params):
             
             urlRequest.httpBody = try JSONSerialization.data(withJSONObject: params, options: [])
             
@@ -171,6 +191,8 @@ enum APIRouter: URLRequestConvertible {
             */
         case let .url(params):
             
+            urlRequest.httpBody = try JSONSerialization.data(withJSONObject: params, options: [])
+            /*
             let queryParams = params.map { pair  in
                 return URLQueryItem(name: pair.key, value: "\(pair.value)")
             }
@@ -182,6 +204,8 @@ enum APIRouter: URLRequestConvertible {
             urlRequest.httpBody = components?.query?.data(using: .utf8)
             
             //urlRequest.url = components?.url
+        
+        */
         case let .multipart(image):
             print("image", image)
         default:
@@ -202,122 +226,5 @@ enum APIRouter: URLRequestConvertible {
     }
 }
 
-struct Param {
-    struct Register: Codable {
-        let username: String
-        let phoneNumber: String
-        let email: String
-        let password: String
-        let idPhoto: String
-        let nidPassport: String
-    }
-    
-    // MARK: - Register
-    struct MyRegister: Codable {
-        let header: Header
-        let body: String
-    }
-    
-    // MARK: - Header
-    struct Header: Codable {
-        let transactionId ,timestamp, encode, lan, channel: String
-        let ipAddress, userID, appID, appVersion: String
-        let deviceBrand, deviceModel, devicePlanform, deviceID: String
-        let osVersion: String
-        
-        enum CodingKeys: String, CodingKey {
-            case transactionId,timestamp, encode, lan, channel, ipAddress
-            case userID = "userId"
-            case appID = "appId"
-            case appVersion, deviceBrand, deviceModel, devicePlanform
-            case deviceID = "deviceId"
-            case osVersion
-        }
-    }
-    
-    // MARK: - Register
-    struct MyRegister2: Codable {
-        let header: Header
-        let body: Body
-    }
-    
-    // MARK: - Body
-    struct Body: Codable {
-        let encode: String
-    }
-    
-    struct OTP: Codable {
-        let code: String
-    }
-    
-    struct LoginData: Codable {
-        let username, password, grant_type: String
-        let header: String
-    }
-}
 
-
-
-
-
-
-// MARK: - Register
-struct Register2: Codable {
-    let header: Header
-    let body: Body
-    // MARK: - Body
-    struct Body: Codable {
-        let success: Bool
-        let message: String
-        let code: Int
-        let data: DataClass?
-    }
-    
-    // MARK: - DataClass
-    struct DataClass: Codable {
-        let publicKey: String
-    }
-    
-    // MARK: - Header
-    struct Header: Codable {
-        let transactionID, timestamp, lan, channel: String
-        let ipAddress, userID, appID, appVersion: String
-        let deviceBrand, deviceModel, devicePlanform, deviceID: String
-        let osVersion: String
-
-        enum CodingKeys: String, CodingKey {
-            case transactionID = "transactionId"
-            case timestamp, lan, channel, ipAddress
-            case userID = "userId"
-            case appID = "appId"
-            case appVersion, deviceBrand, deviceModel, devicePlanform
-            case deviceID = "deviceId"
-            case osVersion
-        }
-    }
-}
-
-
-// MARK: - Register
-struct RegisterResponse: Codable {
-    let timestamp: Int
-    let success: Bool
-    let message: String
-    let code: Int
-    let data: DataClass
-}
-
-// MARK: - DataClass
-struct DataClass: Codable {
-    let publicKey: String
-}
-
-// MARK: - Register
-struct AESResponse: Codable {
-    let timestamp: Int
-    let success: Bool
-    let message: String
-    let code: Int
-    let data: String?
-}
 

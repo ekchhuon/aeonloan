@@ -8,13 +8,18 @@
 import UIKit
 
 extension OTPViewController {
-    static func instantiate() -> OTPViewController {
-        return OTPViewController()
+    static func instantiate(user: User) -> OTPViewController {
+        let controller = OTPViewController()
+        controller.user = user
+        return controller
     }
 }
 
 class OTPViewController: BaseViewController, UITextFieldDelegate {
     private let viewModel = OTPViewModel()
+    private let loginViewModel = LoginViewModel()
+    private var user = User()
+    
     @IBOutlet var textFields: [UITextField]!
     
     @IBOutlet weak var otpTextField: UITextField!
@@ -30,13 +35,38 @@ class OTPViewController: BaseViewController, UITextFieldDelegate {
             $0.addTarget(self, action: #selector(self.textFieldDidChange(textField:)), for: .editingChanged)
         }
         bind()
-        textFields[0].becomeFirstResponder()
+//        textFields[0].becomeFirstResponder()
+        
+        otpTextField.becomeFirstResponder()
+        
+        print("OTP USer=====>", user)
     }
     
-    func bind() {
-        viewModel.loading.bind { [weak self] (loading) in
+    private func bind() {
+        viewModel.status.bind { [weak self] status in
             guard let self = self else { return }
-            self.showIndicator(loading)
+            self.showIndicator(status == .started)
+        }
+        viewModel.message.bind { [weak self] msg in
+            guard let self = self, let msg = msg else { return }
+            self.showAlert(title: "Login".localized ,message: msg)
+        }
+        viewModel.error.bind { [weak self] (err) in
+            guard let self = self, let err = err else { return }
+            self.showAlert(title: "Login".localized, message: err.localized)
+        }
+        
+        loginViewModel.status.bind { [weak self] status in
+            guard let self = self else { return }
+            self.showIndicator(status == .started)
+        }
+        loginViewModel.message.bind { [weak self] msg in
+            guard let self = self, let msg = msg else { return }
+            self.showAlert(title: "Login".localized ,message: msg)
+        }
+        loginViewModel.error.bind { [weak self] (err) in
+            guard let self = self, let err = err else { return }
+            self.showAlert(title: "Login".localized, message: err.localized)
         }
     }
     
@@ -46,13 +76,19 @@ class OTPViewController: BaseViewController, UITextFieldDelegate {
     
     @objc func textFieldDidChange(textField: UITextField) {
         if otpTextField.text?.count == 6 {
-            viewModel.verifyOTP(otp: otpTextField.text ?? "")
+            
+
         }
     }
     
     @IBAction func submitButton(_ sender: Any) {
         if otpTextField.text?.count == 6 {
-            viewModel.verifyOTP(otp: otpTextField.text ?? "")
+            viewModel.verifyOTP(otp: otpTextField.text ?? "") { [weak self] _ in
+                guard let self = self else {return}
+                self.loginViewModel.login(username: self.user.username, password: self.user.password) { _ in
+                    self.navigates(to: .home(.push(subtype: .fromLeft)))
+                }
+            }
         }
     }
     

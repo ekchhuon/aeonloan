@@ -77,3 +77,9 @@ extension UIDevice {
         return mapToDevice(identifier: identifier)
     }()
 }
+
+extension UIDevice {
+    var vendorUUID: String {
+        return UIDevice.current.identifierForVendor?.uuidString ?? ""
+    }
+}

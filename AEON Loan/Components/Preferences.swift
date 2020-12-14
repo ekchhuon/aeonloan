@@ -45,8 +45,6 @@ struct Storage<T: Codable> {
 }
 
 struct Preference {
-    @Storage(key: .user, defaultValue: MyUser(firstName: "", lastName: ""))
-    static var user:MyUser
     
     @Storage(key: .language, defaultValue: .none)
     static var language: Language
@@ -68,13 +66,22 @@ struct Preference {
     @Storage(key: .header, defaultValue: "")
     static var header
     
-    static func resetAll() {
+    @Storage(key: .user, defaultValue: User())
+    static var user:User
+    
+    @Storage(key: .accessToken , defaultValue: "")
+    static var accessToken
+    
+    @Storage(key: .refreshToken , defaultValue: "")
+    static var refreshToken
+    
+    static func clearAll() {
         UserDefaults.Key.allCases.forEach {
             UserDefaults.standard.removeObject(forKey: $0.rawValue)
         }
     }
     
-    static func reset(forKey key: UserDefaults.Key) {
+    static func clear(forKey key: UserDefaults.Key) {
         UserDefaults.standard.removeObject(forKey: key.rawValue)
     }
     
@@ -92,17 +99,14 @@ extension UserDefaults {
         case language
         case hasSeenInstruction
         case enableAutoLogin
-        case user
         case sha256
         case loginUser
         case isLogin
         case header
+        case user
+        case accessToken
+        case refreshToken
     }
-}
-
-struct MyUser: Codable{
-    let firstName: String
-    let lastName: String
 }
 
 struct LoginUser: Codable {
