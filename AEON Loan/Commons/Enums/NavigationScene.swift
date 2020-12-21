@@ -30,6 +30,7 @@ extension Scene {
         // case takePhoto
         // case selfie
         case form
+        case location
         case result(Result)
         enum Result {
             case accepted

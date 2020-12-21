@@ -13,12 +13,14 @@ extension TimeInterval {
     static let minute: TimeInterval = second * 60
     static let hour: TimeInterval = minute * 60
     static let day: TimeInterval = hour * 24
+    static let year: TimeInterval = day * 365
 
     static func miliseconds(_ count: Int) -> TimeInterval { return TimeInterval(count) * milisecond }
     static func seconds(_ count: Int) -> TimeInterval { return TimeInterval(count) * second }
     static func minutes(_ count: Int) -> TimeInterval { return TimeInterval(count) * minute }
     static func hours(_ count: Int) -> TimeInterval { return TimeInterval(count) * hour }
     static func days(_ count: Int) -> TimeInterval { return TimeInterval(count) * day }
+    static func years(_ count: Int) -> TimeInterval { return TimeInterval(count) * year }
 
     var miliseconds: Int {
         return Int(self / TimeInterval.milisecond)
@@ -38,6 +40,10 @@ extension TimeInterval {
 
     var days: Int {
         return Int(self / TimeInterval.day)
+    }
+    
+    var years: Int {
+        return Int(self / TimeInterval.year)
     }
 }
 
@@ -60,5 +66,9 @@ extension Int {
 
     var days: TimeInterval {
         return TimeInterval.days(self)
+    }
+    
+    var years: TimeInterval {
+        return TimeInterval.years(self)
     }
 }

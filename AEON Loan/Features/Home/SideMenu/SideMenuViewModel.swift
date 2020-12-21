@@ -27,7 +27,7 @@ public class SideMenuViewModel {
             switch result {
             case let .success(data):
                 guard data.body.success else {
-                    self.message.value = data.body.message; return
+                    self.message.value = data.body.message + " [\(data.body.code)]"; return
                 }
                 
                 // erase data

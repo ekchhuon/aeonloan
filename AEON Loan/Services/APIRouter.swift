@@ -34,11 +34,21 @@ enum APIRouter: URLRequestConvertible {
     //case testLogin(email: String, password: String)
     case articles
     case article(id: Int)
+//    case province(Parameters)
+//    case district(Parameters)
+//    case commune(Parameters)
+//    case village(Parameters)
+    case location(ParamLocation)
+    case occupation(Parameters)
+    case housingType(Parameters)
+    case education(Parameters)
+    case maritialStatus(Parameters)
+    case gender(Parameters)
     
     // MARK: - HTTPMethod
     private var method: HTTPMethod {
         switch self {
-        case .register, .rsa, .aes, .register2, .getOTP, .verifyOTP, .login, .logout, .upload:
+        case .register, .rsa, .aes, .register2, .getOTP, .verifyOTP, .login, .logout, .upload, .location, .occupation, .housingType, .education, .maritialStatus, .gender:
             return .post
         case .articles, .article:
             return .get
@@ -48,32 +58,30 @@ enum APIRouter: URLRequestConvertible {
     // MARK: - Path
     private var path: String {
         switch self {
-        case .rsa:
-            return "public/v1/rsa"
-        case .aes:
-            return "public/v1/aes"
-        case .register2:
-            return "public/v1/user"
-        case .getOTP:
-            return "public/v1/otp"
-        case .verifyOTP:
-            return "public/v1/otp/verification"
-        case .login:
-            return "public/v1/signin"
-        case .logout:
-            return "private/v1/signout"
-        case .upload:
-            return "public/v1/upload/profile"
+        case .rsa: return "public/v1/rsa"
+        case .aes: return "public/v1/aes"
+        case .register2: return "public/v1/user"
+        case .getOTP: return "public/v1/otp"
+        case .verifyOTP: return "public/v1/otp/verification"
+        case .login: return "public/v1/signin"
+        case .logout: return "private/v1/signout"
+        case .upload: return "public/v1/upload/profile"
         //        case .login:
         //            return "login"
-        case .register:
-            return "public/v1/users"
+        case .register: return "public/v1/users"
         //        case .testLogin:
         //            return "login"
-        case .articles:
-            return "articles/all.json"
-        case .article(let id):
-            return "article/\(id)"
+        case .articles: return "articles/all.json"
+        case .article(let id): return "article/\(id)"
+//        case .province: return "public/v1/province"
+//        case .district: return "public/v1/commune"
+//        case .commune: return "public/v1/commune"
+//        case .village: return "public/v1/commune"
+        case .location(.province): return "public/v1/province"
+        case .location(.district): return "public/v1/district"
+        case .location(.commune): return "public/v1/commune"
+        case .location(.village): return "public/v1/village"
+        case .education, .housingType, .occupation, .maritialStatus, .gender: return "public/v1/variable"
         }
     }
     
@@ -81,20 +89,13 @@ enum APIRouter: URLRequestConvertible {
     // MARK: - Parameters
     private var parameters: RequestParams? {
         switch self {
-        case let .rsa(param):
-            return .body(param)
-        case let .aes(param):
-            return .body(param)
-        case let .register2(param):
-            return .body(param)
-        case let .getOTP(param):
-            return .body(param)
-        case let .verifyOTP(param):
-            return .body(param)
-        case let .login(param):
-            return .url(param)
-        case let .logout(param):
-            return .bearer(param)
+        case let .rsa(param): return .body(param)
+        case let .aes(param): return .body(param)
+        case let .register2(param): return .body(param)
+        case let .getOTP(param): return .body(param)
+        case let .verifyOTP(param): return .body(param)
+        case let .login(param): return .url(param)
+        case let .logout(param): return .bearer(param)
         case let .upload(image):
             return .multipart(image)
         //        case .login(let email, let password):
@@ -105,7 +106,12 @@ enum APIRouter: URLRequestConvertible {
         //            return [Constants.APIParameterKey.email: email, Constants.APIParameterKey.password: password]
         case .articles, .article:
             return nil
-            
+        case let .location(.province(param)): return .body(param)
+        case let .location(.district(param)): return .body(param)
+        case let .location(.commune(param)): return .body(param)
+        case let .location(.village(param)): return .body(param)
+        case let .occupation(param), let .gender(param), let .maritialStatus(param), let .education(param), let .housingType(param): return .body(param)
+        
         }
     }
     

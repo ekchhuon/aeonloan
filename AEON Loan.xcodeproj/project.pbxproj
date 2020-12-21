@@ -7,12 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1459BEA2FE0E3DB55210E7FB /* Pods_AEON_Loan_AEON_LoanUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09AD907EC9965EBDDDBFF8CA /* Pods_AEON_Loan_AEON_LoanUITests.framework */; };
+		20609BA7A58978AFA6318057 /* Pods_AEON_Loan_AEON_LoanUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F32C2A86A660C3006C8A7622 /* Pods_AEON_Loan_AEON_LoanUITests.framework */; };
 		3E05D583252B2C84003C5432 /* NSString + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E05D582252B2C84003C5432 /* NSString + Extension.swift */; };
 		3E05D5D7252C17B6003C5432 /* L10n.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E05D5D6252C17B6003C5432 /* L10n.swift */; };
 		3E05D5D8252C1A15003C5432 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E05D5DA252C1A15003C5432 /* LoginViewController.xib */; };
-		3E10C53D2536A6B0008518B4 /* KeychainConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E10C53C2536A6B0008518B4 /* KeychainConfiguration.swift */; };
-		3E10C53F2536A71A008518B4 /* KeychainPasswordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E10C53E2536A71A008518B4 /* KeychainPasswordItem.swift */; };
 		3E113F492501DC1C008132CB /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E113F482501DC1C008132CB /* Services.swift */; };
 		3E113F4B2501E316008132CB /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E113F4A2501E316008132CB /* Constants.swift */; };
 		3E113F4F2501E3C9008132CB /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E113F4E2501E3C9008132CB /* APIRouter.swift */; };
@@ -121,6 +119,10 @@
 		3E66C89D2570E0C700C5502E /* ProductListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E66C89B2570E0C700C5502E /* ProductListViewController.xib */; };
 		3E66C8A32570E0E600C5502E /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E66C8A12570E0E600C5502E /* ProductCell.swift */; };
 		3E66C8A42570E0E600C5502E /* ProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E66C8A22570E0E600C5502E /* ProductCell.xib */; };
+		3E68EF46258B8FF500A79DA7 /* Variable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E68EF45258B8FF500A79DA7 /* Variable.swift */; };
+		3E7367BB259085DD00E9A182 /* CheckCreditFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7367BA259085DD00E9A182 /* CheckCreditFormViewModel.swift */; };
+		3E7367CD2590ABE200E9A182 /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7367CB2590ABE200E9A182 /* LocationTableViewCell.swift */; };
+		3E7367CE2590ABE200E9A182 /* LocationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E7367CC2590ABE200E9A182 /* LocationTableViewCell.xib */; };
 		3E800261250B5C1100503267 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E800260250B5C1100503267 /* BaseViewController.swift */; };
 		3E800263250B75A000503267 /* UINavigationController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E800262250B75A000503267 /* UINavigationController + Extension.swift */; };
 		3E800267250B87F900503267 /* ApplyLoanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E800265250B87F900503267 /* ApplyLoanViewController.swift */; };
@@ -145,6 +147,9 @@
 		3E90785E256E6B7400253AEB /* SettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E90785C256E6B7400253AEB /* SettingViewController.xib */; };
 		3E907863256E6D2800253AEB /* SettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E907861256E6D2800253AEB /* SettingCell.swift */; };
 		3E907864256E6D2800253AEB /* SettingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E907862256E6D2800253AEB /* SettingCell.xib */; };
+		3E93B29825886272006AB2E9 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E93B29725886272006AB2E9 /* KeychainWrapper.swift */; };
+		3E93B2A52588708C006AB2E9 /* KeychainPasswordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E93B2A42588708C006AB2E9 /* KeychainPasswordItem.swift */; };
+		3E93B2AA258870E4006AB2E9 /* AuthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E93B2A9258870E4006AB2E9 /* AuthController.swift */; };
 		3E99882B255BB6EB00C6C95E /* DocumentValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E99882A255BB6EB00C6C95E /* DocumentValidator.swift */; };
 		3E99882D255BB7A800C6C95E /* Array + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E99882C255BB7A800C6C95E /* Array + Extension.swift */; };
 		3E998830255BBF0C00C6C95E /* DocumentType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E99882F255BBF0C00C6C95E /* DocumentType.swift */; };
@@ -167,6 +172,26 @@
 		3EB2161F256BBF8F00751DD6 /* NotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB2161D256BBF8F00751DD6 /* NotificationCell.swift */; };
 		3EB21620256BBF8F00751DD6 /* NotificationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EB2161E256BBF8F00751DD6 /* NotificationCell.xib */; };
 		3EB21622256BD67600751DD6 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB21621256BD67600751DD6 /* Preferences.swift */; };
+		3EB27F562588EE110039C00B /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB27F552588EE110039C00B /* Location.swift */; };
+		3EB27F642589B1520039C00B /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB27F622589B1520039C00B /* LocationViewController.swift */; };
+		3EB27F6E2589B16E0039C00B /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB27F6D2589B16E0039C00B /* LocationViewModel.swift */; };
+		3EB27FB12589C5F30039C00B /* LocationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB27FAF2589C5F30039C00B /* LocationListViewController.swift */; };
+		3EB27FB22589C5F30039C00B /* LocationListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EB27FB02589C5F30039C00B /* LocationListViewController.xib */; };
+		3EB27FBC2589C71B0039C00B /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB27FBA2589C71B0039C00B /* LocationCell.swift */; };
+		3EB27FBD2589C71B0039C00B /* LocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EB27FBB2589C71B0039C00B /* LocationCell.xib */; };
+		3EB27FDE258A00150039C00B /* LocationListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB27FDD258A00150039C00B /* LocationListViewModel.swift */; };
+		3EB27FE8258A10360039C00B /* SubLocationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB27FE6258A10360039C00B /* SubLocationListViewController.swift */; };
+		3EB27FE9258A10360039C00B /* SubLocationListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EB27FE7258A10360039C00B /* SubLocationListViewController.xib */; };
+		3EB27FFE258B122F0039C00B /* LocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EB28000258B122F0039C00B /* LocationViewController.xib */; };
+		3EB2800D258B19610039C00B /* CheckCreditFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB2800B258B19600039C00B /* CheckCreditFormViewController.swift */; };
+		3EB2800E258B19610039C00B /* CheckCreditFormViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EB2800C258B19600039C00B /* CheckCreditFormViewController.xib */; };
+		3EB28014258B19E90039C00B /* CheckCreditFormCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB28012258B19E90039C00B /* CheckCreditFormCell.swift */; };
+		3EB28015258B19E90039C00B /* CheckCreditFormCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EB28013258B19E90039C00B /* CheckCreditFormCell.xib */; };
+		3EB28038258B52500039C00B /* PickerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB28036258B52500039C00B /* PickerTableViewCell.swift */; };
+		3EB28039258B52500039C00B /* PickerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EB28037258B52500039C00B /* PickerTableViewCell.xib */; };
+		3EB28049258B52AA0039C00B /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB28047258B52AA0039C00B /* PickerViewController.swift */; };
+		3EB2804A258B52AA0039C00B /* PickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EB28048258B52AA0039C00B /* PickerViewController.xib */; };
+		3EB2804F258B590A0039C00B /* CheckCreditPickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB2804E258B590A0039C00B /* CheckCreditPickerViewModel.swift */; };
 		3EB505BF25513E6B0033E82A /* SideMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB505BD25513E6B0033E82A /* SideMenuTableViewCell.swift */; };
 		3EB505C025513E6B0033E82A /* SideMenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EB505BE25513E6B0033E82A /* SideMenuTableViewCell.xib */; };
 		3ED2C51E251AF8C0007B0B9A /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED2C51D251AF8C0007B0B9A /* UIViewController.swift */; };
@@ -188,8 +213,8 @@
 		3EF9199524F509AE00E77958 /* LaunchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF9199324F509AE00E77958 /* LaunchView.swift */; };
 		3EF9199824F509C300E77958 /* LanuchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF9199724F509C300E77958 /* LanuchViewModel.swift */; };
 		3EF9199A24F509DA00E77958 /* Launch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF9199924F509DA00E77958 /* Launch.swift */; };
-		77A69EE31F73CB70A03A6604 /* Pods_AEON_Loan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 726B7A21AF9A90A1993157BA /* Pods_AEON_Loan.framework */; };
-		90AFEBA2967EDB6325E8EB56 /* Pods_AEON_LoanTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53A9A28581E8230ED3C162C8 /* Pods_AEON_LoanTests.framework */; };
+		55A7EDFF1733EBFB03090B5C /* Pods_AEON_Loan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F15D39E281A582FFC7E4B2 /* Pods_AEON_Loan.framework */; };
+		B020773D3D67EDD78AFB908C /* Pods_AEON_LoanTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F444613F6E3FF90189CB2C2E /* Pods_AEON_LoanTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -210,13 +235,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		09AD907EC9965EBDDDBFF8CA /* Pods_AEON_Loan_AEON_LoanUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AEON_Loan_AEON_LoanUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		30565776BD8217784231863C /* Pods-AEON Loan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AEON Loan.debug.xcconfig"; path = "Target Support Files/Pods-AEON Loan/Pods-AEON Loan.debug.xcconfig"; sourceTree = "<group>"; };
+		10236F2760BC0987EB01B3DE /* Pods-AEON LoanTests.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AEON LoanTests.production.xcconfig"; path = "Target Support Files/Pods-AEON LoanTests/Pods-AEON LoanTests.production.xcconfig"; sourceTree = "<group>"; };
+		19F15D39E281A582FFC7E4B2 /* Pods_AEON_Loan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AEON_Loan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1CDE0123BEE6C7C0EF15EB3F /* Pods-AEON LoanTests.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AEON LoanTests.staging.xcconfig"; path = "Target Support Files/Pods-AEON LoanTests/Pods-AEON LoanTests.staging.xcconfig"; sourceTree = "<group>"; };
+		2321CDBE0DFAC476407A504E /* Pods-AEON Loan-AEON LoanUITests.development.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AEON Loan-AEON LoanUITests.development.xcconfig"; path = "Target Support Files/Pods-AEON Loan-AEON LoanUITests/Pods-AEON Loan-AEON LoanUITests.development.xcconfig"; sourceTree = "<group>"; };
+		38FFC1EC60B568C064DAB547 /* Pods-AEON Loan.development.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AEON Loan.development.xcconfig"; path = "Target Support Files/Pods-AEON Loan/Pods-AEON Loan.development.xcconfig"; sourceTree = "<group>"; };
 		3E05D582252B2C84003C5432 /* NSString + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSString + Extension.swift"; sourceTree = "<group>"; };
 		3E05D5D6252C17B6003C5432 /* L10n.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = L10n.swift; sourceTree = "<group>"; };
 		3E05D5D9252C1A15003C5432 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LoginViewController.xib; sourceTree = "<group>"; };
-		3E10C53C2536A6B0008518B4 /* KeychainConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainConfiguration.swift; sourceTree = "<group>"; };
-		3E10C53E2536A71A008518B4 /* KeychainPasswordItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainPasswordItem.swift; sourceTree = "<group>"; };
 		3E113F482501DC1C008132CB /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
 		3E113F4A2501E316008132CB /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		3E113F4E2501E3C9008132CB /* APIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
@@ -328,6 +354,10 @@
 		3E66C89B2570E0C700C5502E /* ProductListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductListViewController.xib; sourceTree = "<group>"; };
 		3E66C8A12570E0E600C5502E /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
 		3E66C8A22570E0E600C5502E /* ProductCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductCell.xib; sourceTree = "<group>"; };
+		3E68EF45258B8FF500A79DA7 /* Variable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Variable.swift; sourceTree = "<group>"; };
+		3E7367BA259085DD00E9A182 /* CheckCreditFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckCreditFormViewModel.swift; sourceTree = "<group>"; };
+		3E7367CB2590ABE200E9A182 /* LocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableViewCell.swift; sourceTree = "<group>"; };
+		3E7367CC2590ABE200E9A182 /* LocationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocationTableViewCell.xib; sourceTree = "<group>"; };
 		3E800260250B5C1100503267 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		3E800262250B75A000503267 /* UINavigationController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController + Extension.swift"; sourceTree = "<group>"; };
 		3E800265250B87F900503267 /* ApplyLoanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyLoanViewController.swift; sourceTree = "<group>"; };
@@ -357,6 +387,9 @@
 		3E90785C256E6B7400253AEB /* SettingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingViewController.xib; sourceTree = "<group>"; };
 		3E907861256E6D2800253AEB /* SettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingCell.swift; sourceTree = "<group>"; };
 		3E907862256E6D2800253AEB /* SettingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SettingCell.xib; sourceTree = "<group>"; };
+		3E93B29725886272006AB2E9 /* KeychainWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
+		3E93B2A42588708C006AB2E9 /* KeychainPasswordItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainPasswordItem.swift; sourceTree = "<group>"; };
+		3E93B2A9258870E4006AB2E9 /* AuthController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthController.swift; sourceTree = "<group>"; };
 		3E99882A255BB6EB00C6C95E /* DocumentValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentValidator.swift; sourceTree = "<group>"; };
 		3E99882C255BB7A800C6C95E /* Array + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array + Extension.swift"; sourceTree = "<group>"; };
 		3E99882F255BBF0C00C6C95E /* DocumentType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentType.swift; sourceTree = "<group>"; };
@@ -379,6 +412,30 @@
 		3EB2161D256BBF8F00751DD6 /* NotificationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCell.swift; sourceTree = "<group>"; };
 		3EB2161E256BBF8F00751DD6 /* NotificationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationCell.xib; sourceTree = "<group>"; };
 		3EB21621256BD67600751DD6 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
+		3EB27F552588EE110039C00B /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		3EB27F622589B1520039C00B /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
+		3EB27F6D2589B16E0039C00B /* LocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
+		3EB27F9F2589C22D0039C00B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LoginViewController.strings; sourceTree = "<group>"; };
+		3EB27FA12589C23B0039C00B /* km */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = km; path = km.lproj/LoginViewController.strings; sourceTree = "<group>"; };
+		3EB27FAF2589C5F30039C00B /* LocationListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationListViewController.swift; sourceTree = "<group>"; };
+		3EB27FB02589C5F30039C00B /* LocationListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocationListViewController.xib; sourceTree = "<group>"; };
+		3EB27FBA2589C71B0039C00B /* LocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
+		3EB27FBB2589C71B0039C00B /* LocationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocationCell.xib; sourceTree = "<group>"; };
+		3EB27FDD258A00150039C00B /* LocationListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationListViewModel.swift; sourceTree = "<group>"; };
+		3EB27FE6258A10360039C00B /* SubLocationListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubLocationListViewController.swift; sourceTree = "<group>"; };
+		3EB27FE7258A10360039C00B /* SubLocationListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubLocationListViewController.xib; sourceTree = "<group>"; };
+		3EB27FFF258B122F0039C00B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LocationViewController.xib; sourceTree = "<group>"; };
+		3EB28005258B12370039C00B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LocationViewController.strings; sourceTree = "<group>"; };
+		3EB28007258B12390039C00B /* km */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = km; path = km.lproj/LocationViewController.strings; sourceTree = "<group>"; };
+		3EB2800B258B19600039C00B /* CheckCreditFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckCreditFormViewController.swift; sourceTree = "<group>"; };
+		3EB2800C258B19600039C00B /* CheckCreditFormViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CheckCreditFormViewController.xib; sourceTree = "<group>"; };
+		3EB28012258B19E90039C00B /* CheckCreditFormCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckCreditFormCell.swift; sourceTree = "<group>"; };
+		3EB28013258B19E90039C00B /* CheckCreditFormCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CheckCreditFormCell.xib; sourceTree = "<group>"; };
+		3EB28036258B52500039C00B /* PickerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerTableViewCell.swift; sourceTree = "<group>"; };
+		3EB28037258B52500039C00B /* PickerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PickerTableViewCell.xib; sourceTree = "<group>"; };
+		3EB28047258B52AA0039C00B /* PickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
+		3EB28048258B52AA0039C00B /* PickerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PickerViewController.xib; sourceTree = "<group>"; };
+		3EB2804E258B590A0039C00B /* CheckCreditPickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckCreditPickerViewModel.swift; sourceTree = "<group>"; };
 		3EB505BD25513E6B0033E82A /* SideMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewCell.swift; sourceTree = "<group>"; };
 		3EB505BE25513E6B0033E82A /* SideMenuTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SideMenuTableViewCell.xib; sourceTree = "<group>"; };
 		3ED2C51D251AF8C0007B0B9A /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
@@ -406,22 +463,13 @@
 		3EF9199324F509AE00E77958 /* LaunchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchView.swift; sourceTree = "<group>"; };
 		3EF9199724F509C300E77958 /* LanuchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanuchViewModel.swift; sourceTree = "<group>"; };
 		3EF9199924F509DA00E77958 /* Launch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Launch.swift; sourceTree = "<group>"; };
-		477C11979333D9D132582074 /* Pods-AEON Loan-AEON LoanUITests.development.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AEON Loan-AEON LoanUITests.development.xcconfig"; path = "Target Support Files/Pods-AEON Loan-AEON LoanUITests/Pods-AEON Loan-AEON LoanUITests.development.xcconfig"; sourceTree = "<group>"; };
-		49086C34FF5FB7A744C85793 /* Pods-AEON Loan-AEON LoanUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AEON Loan-AEON LoanUITests.debug.xcconfig"; path = "Target Support Files/Pods-AEON Loan-AEON LoanUITests/Pods-AEON Loan-AEON LoanUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		53A9A28581E8230ED3C162C8 /* Pods_AEON_LoanTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AEON_LoanTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5F34EEAD29F08C525F8CE36F /* Pods-AEON LoanTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AEON LoanTests.debug.xcconfig"; path = "Target Support Files/Pods-AEON LoanTests/Pods-AEON LoanTests.debug.xcconfig"; sourceTree = "<group>"; };
-		726B7A21AF9A90A1993157BA /* Pods_AEON_Loan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AEON_Loan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		900F6C1D23D361FDB447525F /* Pods-AEON LoanTests.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AEON LoanTests.production.xcconfig"; path = "Target Support Files/Pods-AEON LoanTests/Pods-AEON LoanTests.production.xcconfig"; sourceTree = "<group>"; };
-		B829AA2DFC41867CB5E1DF48 /* Pods-AEON LoanTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AEON LoanTests.release.xcconfig"; path = "Target Support Files/Pods-AEON LoanTests/Pods-AEON LoanTests.release.xcconfig"; sourceTree = "<group>"; };
-		BB8925F858361D6F2DEBCC35 /* Pods-AEON Loan-AEON LoanUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AEON Loan-AEON LoanUITests.release.xcconfig"; path = "Target Support Files/Pods-AEON Loan-AEON LoanUITests/Pods-AEON Loan-AEON LoanUITests.release.xcconfig"; sourceTree = "<group>"; };
-		C263574E1ADBEE65F4CA77AA /* Pods-AEON Loan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AEON Loan.release.xcconfig"; path = "Target Support Files/Pods-AEON Loan/Pods-AEON Loan.release.xcconfig"; sourceTree = "<group>"; };
-		C9B4B63BE9BF23373CDE14FD /* Pods-AEON Loan-AEON LoanUITests.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AEON Loan-AEON LoanUITests.production.xcconfig"; path = "Target Support Files/Pods-AEON Loan-AEON LoanUITests/Pods-AEON Loan-AEON LoanUITests.production.xcconfig"; sourceTree = "<group>"; };
-		CCFA23179320A3BAED7CA609 /* Pods-AEON LoanTests.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AEON LoanTests.staging.xcconfig"; path = "Target Support Files/Pods-AEON LoanTests/Pods-AEON LoanTests.staging.xcconfig"; sourceTree = "<group>"; };
-		DFE4A5FDE529D39443EC264A /* Pods-AEON Loan.development.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AEON Loan.development.xcconfig"; path = "Target Support Files/Pods-AEON Loan/Pods-AEON Loan.development.xcconfig"; sourceTree = "<group>"; };
-		E2B92FD35FA7B057D72D3FCD /* Pods-AEON Loan.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AEON Loan.staging.xcconfig"; path = "Target Support Files/Pods-AEON Loan/Pods-AEON Loan.staging.xcconfig"; sourceTree = "<group>"; };
-		E742819EAE285ED6ABFF60CD /* Pods-AEON Loan-AEON LoanUITests.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AEON Loan-AEON LoanUITests.staging.xcconfig"; path = "Target Support Files/Pods-AEON Loan-AEON LoanUITests/Pods-AEON Loan-AEON LoanUITests.staging.xcconfig"; sourceTree = "<group>"; };
-		E946BC39551C95BE6278CCC9 /* Pods-AEON LoanTests.development.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AEON LoanTests.development.xcconfig"; path = "Target Support Files/Pods-AEON LoanTests/Pods-AEON LoanTests.development.xcconfig"; sourceTree = "<group>"; };
-		FA22C6DA58501C0829BFC31A /* Pods-AEON Loan.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AEON Loan.production.xcconfig"; path = "Target Support Files/Pods-AEON Loan/Pods-AEON Loan.production.xcconfig"; sourceTree = "<group>"; };
+		42A201EA3A75CEADA3A4EBCA /* Pods-AEON Loan-AEON LoanUITests.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AEON Loan-AEON LoanUITests.staging.xcconfig"; path = "Target Support Files/Pods-AEON Loan-AEON LoanUITests/Pods-AEON Loan-AEON LoanUITests.staging.xcconfig"; sourceTree = "<group>"; };
+		6F3CAD3B057AD7DEE71045D8 /* Pods-AEON Loan.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AEON Loan.production.xcconfig"; path = "Target Support Files/Pods-AEON Loan/Pods-AEON Loan.production.xcconfig"; sourceTree = "<group>"; };
+		A41A8504D53E1B5CB76172AB /* Pods-AEON Loan-AEON LoanUITests.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AEON Loan-AEON LoanUITests.production.xcconfig"; path = "Target Support Files/Pods-AEON Loan-AEON LoanUITests/Pods-AEON Loan-AEON LoanUITests.production.xcconfig"; sourceTree = "<group>"; };
+		B7D1FE04EF0F47B9A824138F /* Pods-AEON Loan.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AEON Loan.staging.xcconfig"; path = "Target Support Files/Pods-AEON Loan/Pods-AEON Loan.staging.xcconfig"; sourceTree = "<group>"; };
+		F32C2A86A660C3006C8A7622 /* Pods_AEON_Loan_AEON_LoanUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AEON_Loan_AEON_LoanUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F444613F6E3FF90189CB2C2E /* Pods_AEON_LoanTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AEON_LoanTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F77C83B77A7A37A6EDC62E5C /* Pods-AEON LoanTests.development.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AEON LoanTests.development.xcconfig"; path = "Target Support Files/Pods-AEON LoanTests/Pods-AEON LoanTests.development.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -429,7 +477,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				77A69EE31F73CB70A03A6604 /* Pods_AEON_Loan.framework in Frameworks */,
+				55A7EDFF1733EBFB03090B5C /* Pods_AEON_Loan.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,7 +485,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				90AFEBA2967EDB6325E8EB56 /* Pods_AEON_LoanTests.framework in Frameworks */,
+				B020773D3D67EDD78AFB908C /* Pods_AEON_LoanTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -445,50 +493,45 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1459BEA2FE0E3DB55210E7FB /* Pods_AEON_Loan_AEON_LoanUITests.framework in Frameworks */,
+				20609BA7A58978AFA6318057 /* Pods_AEON_Loan_AEON_LoanUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2A454B5A2AE4F8EF5135080C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				19F15D39E281A582FFC7E4B2 /* Pods_AEON_Loan.framework */,
+				F32C2A86A660C3006C8A7622 /* Pods_AEON_Loan_AEON_LoanUITests.framework */,
+				F444613F6E3FF90189CB2C2E /* Pods_AEON_LoanTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		2F51B9A961989983714E8C55 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				30565776BD8217784231863C /* Pods-AEON Loan.debug.xcconfig */,
-				C263574E1ADBEE65F4CA77AA /* Pods-AEON Loan.release.xcconfig */,
-				49086C34FF5FB7A744C85793 /* Pods-AEON Loan-AEON LoanUITests.debug.xcconfig */,
-				BB8925F858361D6F2DEBCC35 /* Pods-AEON Loan-AEON LoanUITests.release.xcconfig */,
-				5F34EEAD29F08C525F8CE36F /* Pods-AEON LoanTests.debug.xcconfig */,
-				B829AA2DFC41867CB5E1DF48 /* Pods-AEON LoanTests.release.xcconfig */,
-				DFE4A5FDE529D39443EC264A /* Pods-AEON Loan.development.xcconfig */,
-				E2B92FD35FA7B057D72D3FCD /* Pods-AEON Loan.staging.xcconfig */,
-				FA22C6DA58501C0829BFC31A /* Pods-AEON Loan.production.xcconfig */,
-				477C11979333D9D132582074 /* Pods-AEON Loan-AEON LoanUITests.development.xcconfig */,
-				E742819EAE285ED6ABFF60CD /* Pods-AEON Loan-AEON LoanUITests.staging.xcconfig */,
-				C9B4B63BE9BF23373CDE14FD /* Pods-AEON Loan-AEON LoanUITests.production.xcconfig */,
-				E946BC39551C95BE6278CCC9 /* Pods-AEON LoanTests.development.xcconfig */,
-				CCFA23179320A3BAED7CA609 /* Pods-AEON LoanTests.staging.xcconfig */,
-				900F6C1D23D361FDB447525F /* Pods-AEON LoanTests.production.xcconfig */,
+				38FFC1EC60B568C064DAB547 /* Pods-AEON Loan.development.xcconfig */,
+				B7D1FE04EF0F47B9A824138F /* Pods-AEON Loan.staging.xcconfig */,
+				6F3CAD3B057AD7DEE71045D8 /* Pods-AEON Loan.production.xcconfig */,
+				2321CDBE0DFAC476407A504E /* Pods-AEON Loan-AEON LoanUITests.development.xcconfig */,
+				42A201EA3A75CEADA3A4EBCA /* Pods-AEON Loan-AEON LoanUITests.staging.xcconfig */,
+				A41A8504D53E1B5CB76172AB /* Pods-AEON Loan-AEON LoanUITests.production.xcconfig */,
+				F77C83B77A7A37A6EDC62E5C /* Pods-AEON LoanTests.development.xcconfig */,
+				1CDE0123BEE6C7C0EF15EB3F /* Pods-AEON LoanTests.staging.xcconfig */,
+				10236F2760BC0987EB01B3DE /* Pods-AEON LoanTests.production.xcconfig */,
 			);
 			path = Pods;
-			sourceTree = "<group>";
-		};
-		32E1C1CEBEC5B3F59724CC1A /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				726B7A21AF9A90A1993157BA /* Pods_AEON_Loan.framework */,
-				09AD907EC9965EBDDDBFF8CA /* Pods_AEON_Loan_AEON_LoanUITests.framework */,
-				53A9A28581E8230ED3C162C8 /* Pods_AEON_LoanTests.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		3E10C53B2536A68D008518B4 /* KeyChain */ = {
 			isa = PBXGroup;
 			children = (
-				3E10C53C2536A6B0008518B4 /* KeychainConfiguration.swift */,
-				3E10C53E2536A71A008518B4 /* KeychainPasswordItem.swift */,
+				3E93B29725886272006AB2E9 /* KeychainWrapper.swift */,
+				3E93B2A42588708C006AB2E9 /* KeychainPasswordItem.swift */,
+				3E93B2A9258870E4006AB2E9 /* AuthController.swift */,
 			);
 			path = KeyChain;
 			sourceTree = "<group>";
@@ -793,6 +836,7 @@
 		3E56EEA325186B120083CC49 /* Form */ = {
 			isa = PBXGroup;
 			children = (
+				3EB2801C258B19F20039C00B /* Form */,
 				3E56EE9F25186B070083CC49 /* ApplicantInfoViewController.swift */,
 				3E56EEA425186B3A0083CC49 /* ApplicantInfoViewModel.swift */,
 				3E56EEA025186B070083CC49 /* ApplicantInfoViewController.xib */,
@@ -835,6 +879,7 @@
 			children = (
 				3E56EE95251846BE0083CC49 /* DetectImage */,
 				3E56EEA325186B120083CC49 /* Form */,
+				3EB27F692589B1590039C00B /* Location */,
 				3E62A2E32519A6230072CAB3 /* Rejected */,
 				3E62A2EC2519CEB40072CAB3 /* Accepted */,
 				3E1F918B25751B2100ACC476 /* CheckCreditHistoryViewController.swift */,
@@ -860,6 +905,8 @@
 				3EAA547B25876192001A330F /* Login.swift */,
 				3EA334482584B549003965CC /* Header.swift */,
 				3EA334522584B7C2003965CC /* Response.swift */,
+				3EB27F552588EE110039C00B /* Location.swift */,
+				3E68EF45258B8FF500A79DA7 /* Variable.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -899,6 +946,24 @@
 			children = (
 				3E66C8A12570E0E600C5502E /* ProductCell.swift */,
 				3E66C8A22570E0E600C5502E /* ProductCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		3E7367D22590ABEF00E9A182 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				3E7367CB2590ABE200E9A182 /* LocationTableViewCell.swift */,
+				3E7367CC2590ABE200E9A182 /* LocationTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		3E7367D62590AC0100E9A182 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				3EB28012258B19E90039C00B /* CheckCreditFormCell.swift */,
+				3EB28013258B19E90039C00B /* CheckCreditFormCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1045,6 +1110,88 @@
 			path = Localization;
 			sourceTree = "<group>";
 		};
+		3EB27F692589B1590039C00B /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				3EB27F622589B1520039C00B /* LocationViewController.swift */,
+				3E7367D22590ABEF00E9A182 /* Cell */,
+				3EB27F6D2589B16E0039C00B /* LocationViewModel.swift */,
+				3EB28000258B122F0039C00B /* LocationViewController.xib */,
+				3EB27FB62589C5FC0039C00B /* LocationList */,
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
+		3EB27FB62589C5FC0039C00B /* LocationList */ = {
+			isa = PBXGroup;
+			children = (
+				3EB27FE2258A0FC10039C00B /* List1 */,
+				3EB27FED258A10C20039C00B /* List2 */,
+				3EB27FC12589C7200039C00B /* LocationCell */,
+			);
+			path = LocationList;
+			sourceTree = "<group>";
+		};
+		3EB27FC12589C7200039C00B /* LocationCell */ = {
+			isa = PBXGroup;
+			children = (
+				3EB27FBA2589C71B0039C00B /* LocationCell.swift */,
+				3EB27FBB2589C71B0039C00B /* LocationCell.xib */,
+			);
+			path = LocationCell;
+			sourceTree = "<group>";
+		};
+		3EB27FE2258A0FC10039C00B /* List1 */ = {
+			isa = PBXGroup;
+			children = (
+				3EB27FAF2589C5F30039C00B /* LocationListViewController.swift */,
+				3EB27FDD258A00150039C00B /* LocationListViewModel.swift */,
+				3EB27FB02589C5F30039C00B /* LocationListViewController.xib */,
+			);
+			path = List1;
+			sourceTree = "<group>";
+		};
+		3EB27FED258A10C20039C00B /* List2 */ = {
+			isa = PBXGroup;
+			children = (
+				3EB27FE6258A10360039C00B /* SubLocationListViewController.swift */,
+				3EB27FE7258A10360039C00B /* SubLocationListViewController.xib */,
+			);
+			path = List2;
+			sourceTree = "<group>";
+		};
+		3EB2801C258B19F20039C00B /* Form */ = {
+			isa = PBXGroup;
+			children = (
+				3EB28027258B52070039C00B /* Picker */,
+				3EB2800C258B19600039C00B /* CheckCreditFormViewController.xib */,
+				3EB2800B258B19600039C00B /* CheckCreditFormViewController.swift */,
+				3E7367BA259085DD00E9A182 /* CheckCreditFormViewModel.swift */,
+				3E7367D62590AC0100E9A182 /* Cell */,
+			);
+			path = Form;
+			sourceTree = "<group>";
+		};
+		3EB28027258B52070039C00B /* Picker */ = {
+			isa = PBXGroup;
+			children = (
+				3EB2803D258B525F0039C00B /* Cell */,
+				3EB28047258B52AA0039C00B /* PickerViewController.swift */,
+				3EB2804E258B590A0039C00B /* CheckCreditPickerViewModel.swift */,
+				3EB28048258B52AA0039C00B /* PickerViewController.xib */,
+			);
+			path = Picker;
+			sourceTree = "<group>";
+		};
+		3EB2803D258B525F0039C00B /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				3EB28036258B52500039C00B /* PickerTableViewCell.swift */,
+				3EB28037258B52500039C00B /* PickerTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		3EB505C125513E770033E82A /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1090,7 +1237,7 @@
 				3EF9197524F5008300E77958 /* AEON LoanUITests */,
 				3EF9195224F5008200E77958 /* Products */,
 				2F51B9A961989983714E8C55 /* Pods */,
-				32E1C1CEBEC5B3F59724CC1A /* Frameworks */,
+				2A454B5A2AE4F8EF5135080C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1197,11 +1344,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3EF9197B24F5008300E77958 /* Build configuration list for PBXNativeTarget "AEON Loan" */;
 			buildPhases = (
-				C3CD9656B6BB398841627AC5 /* [CP] Check Pods Manifest.lock */,
+				A253316137D47479C0772B14 /* [CP] Check Pods Manifest.lock */,
 				3EF9194D24F5008200E77958 /* Sources */,
 				3EF9194E24F5008200E77958 /* Frameworks */,
 				3EF9194F24F5008200E77958 /* Resources */,
-				C949427A270285688D406EE9 /* [CP] Embed Pods Frameworks */,
+				79F96B673C047B7572D9CB0C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1216,7 +1363,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3EF9197E24F5008300E77958 /* Build configuration list for PBXNativeTarget "AEON LoanTests" */;
 			buildPhases = (
-				86E1BC872AE2E8E057C0D85D /* [CP] Check Pods Manifest.lock */,
+				3F1398240462BCE32D29F142 /* [CP] Check Pods Manifest.lock */,
 				3EF9196324F5008300E77958 /* Sources */,
 				3EF9196424F5008300E77958 /* Frameworks */,
 				3EF9196524F5008300E77958 /* Resources */,
@@ -1235,11 +1382,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3EF9198124F5008300E77958 /* Build configuration list for PBXNativeTarget "AEON LoanUITests" */;
 			buildPhases = (
-				7153792CB627BB2A27902B26 /* [CP] Check Pods Manifest.lock */,
+				E872BACC433D6227F2B0F074 /* [CP] Check Pods Manifest.lock */,
 				3EF9196E24F5008300E77958 /* Sources */,
 				3EF9196F24F5008300E77958 /* Frameworks */,
 				3EF9197024F5008300E77958 /* Resources */,
-				A044996B533250ABEDD0131F /* [CP] Embed Pods Frameworks */,
+				46A8F6D25DA4BED0603C87CE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1302,8 +1449,12 @@
 				3E3CAB8F2510A61100EAF826 /* LocationTableViewCell.xib in Resources */,
 				3E14F111253EDE780066F0AB /* SecondSegmentViewController.xib in Resources */,
 				3E907864256E6D2800253AEB /* SettingCell.xib in Resources */,
+				3EB27FFE258B122F0039C00B /* LocationViewController.xib in Resources */,
+				3EB27FBD2589C71B0039C00B /* LocationCell.xib in Resources */,
+				3EB27FE9258A10360039C00B /* SubLocationListViewController.xib in Resources */,
 				3E05D5D8252C1A15003C5432 /* LoginViewController.xib in Resources */,
 				3EA5778C25662F8C00312E5F /* WKViewController.xib in Resources */,
+				3EB28039258B52500039C00B /* PickerTableViewCell.xib in Resources */,
 				3E56EE94251846B90083CC49 /* TakePhotoViewController.xib in Resources */,
 				3E4A4CA3255CF65A003FB345 /* SelfieInstructionViewController.xib in Resources */,
 				3E56EEA225186B070083CC49 /* ApplicantInfoViewController.xib in Resources */,
@@ -1313,6 +1464,7 @@
 				3E3CAB8B2510A4A000EAF826 /* PaymentLocationViewController.xib in Resources */,
 				3E62A2E22519A61A0072CAB3 /* CreditRejectedViewController.xib in Resources */,
 				3E66C89D2570E0C700C5502E /* ProductListViewController.xib in Resources */,
+				3EB28015258B19E90039C00B /* CheckCreditFormCell.xib in Resources */,
 				3E90785E256E6B7400253AEB /* SettingViewController.xib in Resources */,
 				3EF9196124F5008200E77958 /* LaunchScreen.storyboard in Resources */,
 				3E907850256E628700253AEB /* LanguageListViewController.xib in Resources */,
@@ -1332,8 +1484,11 @@
 				3E62A2E92519BA8B0072CAB3 /* CreditAcceptedViewController.xib in Resources */,
 				3EF9195C24F5008200E77958 /* Main.storyboard in Resources */,
 				3EB21620256BBF8F00751DD6 /* NotificationCell.xib in Resources */,
+				3E7367CE2590ABE200E9A182 /* LocationTableViewCell.xib in Resources */,
 				3E14F10D253EDE610066F0AB /* FirstSegmentViewController.xib in Resources */,
 				3E907854256E637700253AEB /* LanguageListCell.xib in Resources */,
+				3EB27FB22589C5F30039C00B /* LocationListViewController.xib in Resources */,
+				3EB2800E258B19610039C00B /* CheckCreditFormViewController.xib in Resources */,
 				3ED2C522251B3420007B0B9A /* PhotoViewController.xib in Resources */,
 				3E80026F2510681100503267 /* LoanSubmissionResultViewController.xib in Resources */,
 				3E48162D252741E10010966A /* OTPViewController.xib in Resources */,
@@ -1346,6 +1501,7 @@
 				3E2F400E25109B1200C8875B /* PaymentOptionViewController.xib in Resources */,
 				3E834E5225087F2E00D9E700 /* SliderCollectionViewCell.xib in Resources */,
 				3E834E5C2508FCAC00D9E700 /* NotificationViewController.xib in Resources */,
+				3EB2804A258B52AA0039C00B /* PickerViewController.xib in Resources */,
 				3E1F918E25751B2100ACC476 /* CheckCreditHistoryViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1367,29 +1523,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		7153792CB627BB2A27902B26 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-AEON Loan-AEON LoanUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		86E1BC872AE2E8E057C0D85D /* [CP] Check Pods Manifest.lock */ = {
+		3F1398240462BCE32D29F142 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1411,7 +1545,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A044996B533250ABEDD0131F /* [CP] Embed Pods Frameworks */ = {
+		46A8F6D25DA4BED0603C87CE /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1428,7 +1562,24 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AEON Loan-AEON LoanUITests/Pods-AEON Loan-AEON LoanUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C3CD9656B6BB398841627AC5 /* [CP] Check Pods Manifest.lock */ = {
+		79F96B673C047B7572D9CB0C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AEON Loan/Pods-AEON Loan-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AEON Loan/Pods-AEON Loan-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AEON Loan/Pods-AEON Loan-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A253316137D47479C0772B14 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1450,21 +1601,26 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C949427A270285688D406EE9 /* [CP] Embed Pods Frameworks */ = {
+		E872BACC433D6227F2B0F074 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-AEON Loan/Pods-AEON Loan-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Embed Pods Frameworks";
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-AEON Loan/Pods-AEON Loan-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AEON Loan-AEON LoanUITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AEON Loan/Pods-AEON Loan-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1481,14 +1637,18 @@
 				3E23674824F617C3003FD6D4 /* Date+DayAndTime.swift in Sources */,
 				3EF9199A24F509DA00E77958 /* Launch.swift in Sources */,
 				3E62A2EB2519BAA10072CAB3 /* CreditAcceptedViewModel.swift in Sources */,
+				3EB28038258B52500039C00B /* PickerTableViewCell.swift in Sources */,
+				3EB27F642589B1520039C00B /* LocationViewController.swift in Sources */,
 				3E5641DF250727A300716D8B /* UIEdgeInsets+Extension.swift in Sources */,
 				3EAA54812587681D001A330F /* SideMenuViewModel.swift in Sources */,
 				3EF3427A25258ED4003AA712 /* UITextField + Extensions.swift in Sources */,
 				3E998834255BD94F00C6C95E /* Checkmark.swift in Sources */,
 				3E6397D224F763DC00C5BB86 /* ActivityIndicatorOverlay.swift in Sources */,
 				3E800261250B5C1100503267 /* BaseViewController.swift in Sources */,
+				3EB27FE8258A10360039C00B /* SubLocationListViewController.swift in Sources */,
 				3E23675724F6217D003FD6D4 /* LoginViewController.swift in Sources */,
 				3E47FFCD252C860200A73E61 /* ModelRepresentable.swift in Sources */,
+				3EB27F562588EE110039C00B /* Location.swift in Sources */,
 				3E907863256E6D2800253AEB /* SettingCell.swift in Sources */,
 				3E5641C82506396C00716D8B /* UIButton.swift in Sources */,
 				3E62A2F32519DB2A0072CAB3 /* UITableVIew + Extension.swift in Sources */,
@@ -1499,9 +1659,11 @@
 				3E23675A24F62193003FD6D4 /* LoginViewModel.swift in Sources */,
 				3EF9195524F5008200E77958 /* AppDelegate.swift in Sources */,
 				3E47FFD4252C86C900A73E61 /* Testable.swift in Sources */,
+				3E93B2A52588708C006AB2E9 /* KeychainPasswordItem.swift in Sources */,
 				3E23675424F61DCA003FD6D4 /* LocationGeocoder.swift in Sources */,
 				3E62A2E82519BA8B0072CAB3 /* CreditAcceptedViewController.swift in Sources */,
 				3EA334442583780D003965CC /* APIError.swift in Sources */,
+				3EB27FDE258A00150039C00B /* LocationListViewModel.swift in Sources */,
 				3E47FFD2252C86A400A73E61 /* Register.swift in Sources */,
 				3EF9199524F509AE00E77958 /* LaunchView.swift in Sources */,
 				3E62A2E12519A61A0072CAB3 /* CreditRejectedViewController.swift in Sources */,
@@ -1509,6 +1671,7 @@
 				3EF9198D24F5022400E77958 /* HomeViewModel.swift in Sources */,
 				3E834E5B2508FCAC00D9E700 /* NotificationViewController.swift in Sources */,
 				3E23674C24F6184C003FD6D4 /* UIDevice + Extension.swift in Sources */,
+				3EB27FBC2589C71B0039C00B /* LocationCell.swift in Sources */,
 				3E23675C24F63FF6003FD6D4 /* UIWindow+RootController.swift in Sources */,
 				3E3CAB992510C62B00EAF826 /* PaymentConditionViewModel.swift in Sources */,
 				3E3CABA82510D56500EAF826 /* PaymentDetailViewController.swift in Sources */,
@@ -1517,6 +1680,7 @@
 				3E1F91872571187A00ACC476 /* IBDesignable.swift in Sources */,
 				3EA334582584B8DC003965CC /* Request.swift in Sources */,
 				3E4816292526EA110010966A /* RegisterViewModel.swift in Sources */,
+				3EB28049258B52AA0039C00B /* PickerViewController.swift in Sources */,
 				3E197BA12546E52100F106B2 /* Double + Extension.swift in Sources */,
 				3E23676724F64E99003FD6D4 /* LanuchViewController.swift in Sources */,
 				3E834E602509016400D9E700 /* SideMenuViewController.swift in Sources */,
@@ -1535,6 +1699,8 @@
 				3E5641E92507B21100716D8B /* RegisterViewController.swift in Sources */,
 				3ED3A2D7257DE2B9006639DA /* Upload.swift in Sources */,
 				3E56EE9A251864800083CC49 /* SelfieViewController.swift in Sources */,
+				3E7367BB259085DD00E9A182 /* CheckCreditFormViewModel.swift in Sources */,
+				3EB2800D258B19610039C00B /* CheckCreditFormViewController.swift in Sources */,
 				3E48162F252741F90010966A /* OTPViewModel.swift in Sources */,
 				3E14F101253ECEE70066F0AB /* CalculatorViewModel.swift in Sources */,
 				3EF9195724F5008200E77958 /* SceneDelegate.swift in Sources */,
@@ -1542,10 +1708,11 @@
 				3E800263250B75A000503267 /* UINavigationController + Extension.swift in Sources */,
 				3EA334492584B549003965CC /* Header.swift in Sources */,
 				3EAA547425872C3F001A330F /* RequestStatus.swift in Sources */,
+				3EB2804F258B590A0039C00B /* CheckCreditPickerViewModel.swift in Sources */,
 				3ED2C521251B3420007B0B9A /* PhotoViewController.swift in Sources */,
 				3E66C8852570D50E00C5502E /* LanguageBundle.swift in Sources */,
+				3EB28014258B19E90039C00B /* CheckCreditFormCell.swift in Sources */,
 				3E5641C325061A1300716D8B /* SelectLanguageViewController.swift in Sources */,
-				3E10C53F2536A71A008518B4 /* KeychainPasswordItem.swift in Sources */,
 				3E56EEA525186B3A0083CC49 /* ApplicantInfoViewModel.swift in Sources */,
 				3ED6A17B2541971C005E7DD7 /* Encryption.swift in Sources */,
 				3E66C8A32570E0E600C5502E /* ProductCell.swift in Sources */,
@@ -1554,6 +1721,7 @@
 				3EF3427D2525E14C003AA712 /* Keychain.swift in Sources */,
 				3E99882B255BB6EB00C6C95E /* DocumentValidator.swift in Sources */,
 				3EA334532584B7C2003965CC /* Response.swift in Sources */,
+				3EB27FB12589C5F30039C00B /* LocationListViewController.swift in Sources */,
 				3E834E562508EE5E00D9E700 /* SliderDetailViewController.swift in Sources */,
 				3E47FFD0252C866200A73E61 /* ViewModelRepresentable.swift in Sources */,
 				3EA3344E2584B591003965CC /* User.swift in Sources */,
@@ -1573,22 +1741,25 @@
 				3E23674A24F617ED003FD6D4 /* TimeInterval.swift in Sources */,
 				3E5641DA2506504900716D8B /* HomeViewController.swift in Sources */,
 				3E5641E62507941900716D8B /* CollectionViewDataSource.swift in Sources */,
+				3E93B2AA258870E4006AB2E9 /* AuthController.swift in Sources */,
+				3E7367CD2590ABE200E9A182 /* LocationTableViewCell.swift in Sources */,
 				3E90784F256E628700253AEB /* LanguageListViewController.swift in Sources */,
 				3E2F400D25109B1200C8875B /* PaymentOptionViewController.swift in Sources */,
 				3E998830255BBF0C00C6C95E /* DocumentType.swift in Sources */,
 				3E113F492501DC1C008132CB /* Services.swift in Sources */,
 				3E05D583252B2C84003C5432 /* NSString + Extension.swift in Sources */,
+				3E93B29825886272006AB2E9 /* KeychainWrapper.swift in Sources */,
 				3E48162C252741E10010966A /* OTPViewController.swift in Sources */,
 				3E05D5D7252C17B6003C5432 /* L10n.swift in Sources */,
 				3E56EE9E251864CA0083CC49 /* SelfieViewModel.swift in Sources */,
 				3E50C756252EB4800051D809 /* BCrypt.swift in Sources */,
 				3E56EE97251846E10083CC49 /* TakePhotoViewModel.swift in Sources */,
-				3E10C53D2536A6B0008518B4 /* KeychainConfiguration.swift in Sources */,
 				3E1F918D25751B2100ACC476 /* CheckCreditHistoryViewController.swift in Sources */,
 				3E1F91812570ED5400ACC476 /* ProductCollectionViewCell.swift in Sources */,
 				3E99882D255BB7A800C6C95E /* Array + Extension.swift in Sources */,
 				3E3CABA52510D26000EAF826 /* PaymentScheduleViewModel.swift in Sources */,
 				3E3CAB952510C5B000EAF826 /* PaymentConditionViewController.swift in Sources */,
+				3E68EF46258B8FF500A79DA7 /* Variable.swift in Sources */,
 				3E80026E2510681100503267 /* LoanSubmissionResultViewController.swift in Sources */,
 				3E23675E24F64056003FD6D4 /* CATransition+Options.swift in Sources */,
 				3E56EEA125186B070083CC49 /* ApplicantInfoViewController.swift in Sources */,
@@ -1604,6 +1775,7 @@
 				3E14F104253ECF0C0066F0AB /* CalculatorViewController.swift in Sources */,
 				3E2AFBC725246A640090A17D /* ScanViewController.swift in Sources */,
 				3EA5778B25662F8C00312E5F /* WKViewController.swift in Sources */,
+				3EB27F6E2589B16E0039C00B /* LocationViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1643,6 +1815,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				3E05D5D9252C1A15003C5432 /* Base */,
+				3EB27F9F2589C22D0039C00B /* en */,
+				3EB27FA12589C23B0039C00B /* km */,
 			);
 			name = LoginViewController.xib;
 			sourceTree = "<group>";
@@ -1674,6 +1848,16 @@
 				3E90784B256E561D00253AEB /* km */,
 			);
 			name = SideMenuViewController.xib;
+			sourceTree = "<group>";
+		};
+		3EB28000258B122F0039C00B /* LocationViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3EB27FFF258B122F0039C00B /* Base */,
+				3EB28005258B12370039C00B /* en */,
+				3EB28007258B12390039C00B /* km */,
+			);
+			name = LocationViewController.xib;
 			sourceTree = "<group>";
 		};
 		3EF9195A24F5008200E77958 /* Main.storyboard */ = {
@@ -1763,7 +1947,7 @@
 		};
 		3EB04851252DAA4300A395E2 /* Staging */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E2B92FD35FA7B057D72D3FCD /* Pods-AEON Loan.staging.xcconfig */;
+			baseConfigurationReference = B7D1FE04EF0F47B9A824138F /* Pods-AEON Loan.staging.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1777,6 +1961,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.aeon.AEON-Loan";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1784,7 +1969,7 @@
 		};
 		3EB04852252DAA4300A395E2 /* Staging */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CCFA23179320A3BAED7CA609 /* Pods-AEON LoanTests.staging.xcconfig */;
+			baseConfigurationReference = 1CDE0123BEE6C7C0EF15EB3F /* Pods-AEON LoanTests.staging.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1806,7 +1991,7 @@
 		};
 		3EB04853252DAA4300A395E2 /* Staging */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E742819EAE285ED6ABFF60CD /* Pods-AEON Loan-AEON LoanUITests.staging.xcconfig */;
+			baseConfigurationReference = 42A201EA3A75CEADA3A4EBCA /* Pods-AEON Loan-AEON LoanUITests.staging.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1947,7 +2132,7 @@
 		};
 		3EF9197C24F5008300E77958 /* Development */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DFE4A5FDE529D39443EC264A /* Pods-AEON Loan.development.xcconfig */;
+			baseConfigurationReference = 38FFC1EC60B568C064DAB547 /* Pods-AEON Loan.development.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1961,6 +2146,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.aeon.AEON-Loan";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1968,12 +2154,13 @@
 		};
 		3EF9197D24F5008300E77958 /* Production */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FA22C6DA58501C0829BFC31A /* Pods-AEON Loan.production.xcconfig */;
+			baseConfigurationReference = 6F3CAD3B057AD7DEE71045D8 /* Pods-AEON Loan.production.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FTF953N9JJ;
+				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = "AEON Loan/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1982,6 +2169,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.aeon.aeonrohas;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1989,7 +2177,7 @@
 		};
 		3EF9197F24F5008300E77958 /* Development */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E946BC39551C95BE6278CCC9 /* Pods-AEON LoanTests.development.xcconfig */;
+			baseConfigurationReference = F77C83B77A7A37A6EDC62E5C /* Pods-AEON LoanTests.development.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -2011,7 +2199,7 @@
 		};
 		3EF9198024F5008300E77958 /* Production */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 900F6C1D23D361FDB447525F /* Pods-AEON LoanTests.production.xcconfig */;
+			baseConfigurationReference = 10236F2760BC0987EB01B3DE /* Pods-AEON LoanTests.production.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -2033,7 +2221,7 @@
 		};
 		3EF9198224F5008300E77958 /* Development */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 477C11979333D9D132582074 /* Pods-AEON Loan-AEON LoanUITests.development.xcconfig */;
+			baseConfigurationReference = 2321CDBE0DFAC476407A504E /* Pods-AEON Loan-AEON LoanUITests.development.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -2053,7 +2241,7 @@
 		};
 		3EF9198324F5008300E77958 /* Production */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C9B4B63BE9BF23373CDE14FD /* Pods-AEON Loan-AEON LoanUITests.production.xcconfig */;
+			baseConfigurationReference = A41A8504D53E1B5CB76172AB /* Pods-AEON Loan-AEON LoanUITests.production.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

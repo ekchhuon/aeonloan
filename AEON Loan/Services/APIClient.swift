@@ -125,3 +125,41 @@ struct ImageUpload {
     let success: Bool
     let status: Int
 }
+
+// Location
+enum ParamLocation {
+    case province(Parameters), district(Parameters), commune(Parameters), village(Parameters)
+}
+extension APIClient {
+    static func getLocation(for location: ParamLocation, completion:@escaping(Result<Location, AFError>) -> Void ) {
+        switch location {
+        case let .province(param):
+            fetch(route: APIRouter.location(.province(param)), completion: completion)
+        case let .district(param):
+            fetch(route: APIRouter.location(.district(param)), completion: completion)
+        case let .commune(param):
+            fetch(route: APIRouter.location(.commune(param)), completion: completion)
+        case let .village(param):
+            fetch(route: APIRouter.location(.village(param)), completion: completion)
+        }
+        
+    }
+}
+
+extension APIClient {
+    static func fetchVariable(_ variable: VariableType,  param: Parameters, completion:@escaping(Result<Variable, AFError>) -> Void ) {
+        switch variable {
+        case .occupation:
+            fetch(route: APIRouter.occupation(param), completion: completion)
+        case .maritalStatus:
+            fetch(route: APIRouter.maritialStatus(param), completion: completion)
+        case .education:
+            fetch(route: APIRouter.education(param), completion: completion)
+        case .gender:
+            fetch(route: APIRouter.gender(param), completion: completion)
+        case .houseType:
+            fetch(route: APIRouter.housingType(param), completion: completion)
+        }
+    }
+}
+

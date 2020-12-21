@@ -27,6 +27,14 @@ enum Language: Int, Codable {
         }
     }
     
+    var code: Int{
+        switch self {
+        case .km: return 1
+        case .en: return 2
+        default: return 0
+        }
+    }
+    
     var index: Int {
         switch self {
         case .en: return 0

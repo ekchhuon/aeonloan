@@ -142,6 +142,8 @@ extension HomeViewController: UICollectionViewDelegate {
                 controller.modalPresentationStyle = .popover
                 navigationController?.pushViewController(controller, animated: true)
                 */
+            
+            
             case 1:
                 navigates(to: .applyLoan)
             case 2:

@@ -31,17 +31,25 @@ class LoginViewController: BaseViewController {
         setupView()
         bind()
         setup(title: "Login")
-        // startTouchID()
+         startTouchID()
+        
+        print("IS SIGN IN",AuthController.isSignedIn)
     }
     
     func startTouchID() {
-      touchMe.authenticateUser() { [weak self] (status, message) in
-        if let message = message {
-            self?.showAlert(message: message)
-        } else {
-            self?.navigates(to: .home(.push(subtype: .fromLeft)))
+        touchMe.tryBiometricAuthentications { (success, message, errCode)  in
+            guard let message = message else {
+                self.navigates(to: .home(.push(subtype: .fromLeft)))
+                return
+            }
+
+            guard let code = errCode else { return }
+            switch code {
+            case .authenticationFailed, .biometryNotEnrolled:
+                self.showAlert(message: message)
+            default: break
+            }
         }
-      }
     }
     
     private func bind() {
@@ -62,7 +70,16 @@ class LoginViewController: BaseViewController {
     
     @IBAction func loginTapped(_ sender: Any) {
         viewModel.login(username: "dara", password: "123456") { _ in
-            self.navigates(to: .home(.push(subtype: .fromLeft)))
+            let user = User(username: "dara")
+            do {
+              try AuthController.signIn(user, password: "123456")
+            } catch {
+              print("Error signing in: \(error.localizedDescription)")
+            }
+            
+            if AuthController.isSignedIn {
+                self.navigates(to: .home(.push(subtype: .fromLeft)))
+            }
         }
         
 //        //validate()
@@ -98,7 +115,6 @@ class LoginViewController: BaseViewController {
         eyeballButton.setImage(eyeball, for: .normal)
         passwordTextField.isSecureTextEntry = hidden
     }
-    
     
     @IBOutlet weak var forgotPassword: UILabel!
     

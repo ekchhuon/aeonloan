@@ -14,9 +14,6 @@ class LaunchView: UIViewController {
     
     @IBOutlet weak var label: UILabel!
     
-    
-    
-    
     override func viewDidLoad() {
         
         DispatchQueue.main.asyncAfter(deadline: .now()) {
@@ -31,8 +28,8 @@ class LaunchView: UIViewController {
         }
         
         
-        Preference.clear(forKey: .user)
-        print("After",Preference.user)
+//        Preference.clear(forKey: .user)
+//        print("After",Preference.user)
 
     }
     

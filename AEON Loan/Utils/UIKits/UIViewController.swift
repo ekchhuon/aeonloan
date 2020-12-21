@@ -28,6 +28,9 @@ extension UIViewController {
         case .checkCredit(.form):
             let controller = ApplicantInfoViewController.instantiate()
             navigationController?.pushViewController(controller, animated: true)
+        case .checkCredit(.location):
+            let controller = LocationViewController.instantiate()
+            navigationController?.pushViewController(controller, animated: true)
         case .checkCredit(.result(.accepted)):
             let controller = CreditAcceptedViewController.instantiate()
             navigationController?.pushViewController(controller, animated: true)
@@ -129,7 +132,7 @@ extension UIViewController {
     }
     
     @discardableResult
-    func showAlt(title: String, message: String, style: UIAlertController.Style) -> UIAlertController {
+    func showAlt(title: String, message: String, dismiss dismissTitle: String = "OK".localized , style: UIAlertController.Style) -> UIAlertController {
         let alert = UIAlertController(title: title, message: message, preferredStyle: style)
         
 //        let paragraphStyle = NSMutableParagraphStyle()
@@ -144,7 +147,7 @@ extension UIViewController {
 //        )
 //        alert.setValue(messageText, forKey: "attributedMessage")
         
-        let dismiss = UIAlertAction(title: "Cancel".localized, style: .cancel, handler: nil)
+        let dismiss = UIAlertAction(title: dismissTitle.localized, style: .cancel, handler: nil)
         
         alert.addAction(dismiss)
         self.present(alert, animated: true, completion: nil)

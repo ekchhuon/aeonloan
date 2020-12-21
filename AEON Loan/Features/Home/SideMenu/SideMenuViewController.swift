@@ -22,8 +22,8 @@ class SideMenuViewController: UIViewController {
     @IBOutlet weak var userIDLabel: UILabel!
     
     @IBOutlet weak var profileImageView: UIImageView!
-    private let items = ["About Us", "Contact Us", "Change Phone Number", "Change Phone Number", "Change Language", "Logout"]
-    private let icons = ["questionmark.circle", "phone", "phone.badge.plus", "phone.badge.plus", "globe", "arrow.backward.square" ]
+    private var items = ["About Us", "Contact Us", "Change Phone Number", "Change Phone Number", "Change Language"]
+    private var icons = ["questionmark.circle", "phone", "phone.badge.plus", "phone.badge.plus", "globe"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +34,10 @@ class SideMenuViewController: UIViewController {
         self.tableView.dataSource = self
         self.tableView.tableFooterView = UIView(frame: .zero)
         self.profileImageView.setRounded()
+        
+        items.append(AuthController.isSignedIn ? "Logout":"Sign In")
+        icons.append(AuthController.isSignedIn ? "arrow.backward.square": "arrow.forward.square")
+        
         bind()
     }
     
@@ -131,7 +135,7 @@ extension SideMenuViewController: UITableViewDataSource, UITableViewDelegate {
 //            self.present(controller, animated: true, completion: nil)
 
             
-            let alert = showAlt(title: "Language".localized, message: "Select a Language".localized, style: .actionSheet)
+            let alert = showAlt(title: "Language".localized, message: "Select a Language".localized, dismiss: "Cancel", style: .actionSheet)
             let khAction = UIAlertAction(title: "ភាសាខ្មែរ", style: .default) {_ in
                 AppLanguage.set(language: .km)
                 self.navigates(to: .home(.fade))
@@ -157,16 +161,18 @@ extension SideMenuViewController: UITableViewDataSource, UITableViewDelegate {
             
         
         case 5:
-            let alert = showAlt(title: "Logout".localized, message: "Are you sure you want to logout?".localized, style: .actionSheet)
+            guard AuthController.isSignedIn else {
+                navigates(to: .login)
+                return
+            }
+            let alert = showAlt(title: "Logout".localized, message: "Are you sure you want to logout?".localized, dismiss: "Cancel", style: .actionSheet)
             let okAction = UIAlertAction(title: "Logout".localized, style: .destructive) {_ in
-                
                 self.viewModel.logout { _ in
+                    try? AuthController.signOut()
                     self.navigates(to: .home(.fade))
                 }
             }
-            
             alert.addAction(okAction)
-
         default:
             break
         }

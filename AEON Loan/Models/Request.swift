@@ -23,6 +23,45 @@ struct Param {
         let body: String
     }
     
+    struct Province: Codable {
+        let header: Header
+        let body: String
+    }
+    
+    struct District: Codable {
+        let header: Header
+        let body: Body
+        struct Body: Codable {
+            let provinceCode: String
+        }
+    }
+    
+    struct Commune: Codable {
+        let header: Header
+        let body: Body
+        struct Body: Codable {
+            let districtCode: String
+        }
+    }
+    
+    struct Village: Codable {
+        let header: Header
+        let body: Body
+        struct Body: Codable {
+            let communeCode: String
+        }
+    }
+    
+    struct Variable: Codable {
+        let header: Header
+        let body: Body
+        struct Body: Codable {
+            let id: String
+        }
+    }
+    
+    
+    
 //    // MARK: - Header
 //    struct Header: Codable {
 //        let transactionId ,timestamp, lan, channel: String

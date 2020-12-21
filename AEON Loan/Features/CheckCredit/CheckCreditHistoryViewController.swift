@@ -35,7 +35,12 @@ class CheckCreditHistoryViewController: UIViewController {
     }
     
     @IBAction func createNew(_ sender: Any) {
-        navigates(to: .checkCredit(.form))
+        //navigates(to: .checkCredit(.form))//
+        
+        let controller = CheckCreditFormViewController.instantiate(item: "")
+        navigationController?.pushViewController(controller, animated: true)
+        
+        
     }
     
 
@@ -51,3 +56,5 @@ class CheckCreditHistoryViewController: UIViewController {
     */
 
 }
+
+

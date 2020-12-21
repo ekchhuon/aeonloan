@@ -151,8 +151,9 @@ class ApplicantInfoViewController: BaseViewController {
     
     // MARK: Outlet Action
     @IBAction func submitButtonTapped(_ sender: Any) {
-        navigates(to: .checkCredit(.result(.accepted)))
+        //navigates(to: .checkCredit(.result(.accepted)))
         // navigates(to: .checkCredit(.result(.rejected)))
+        navigates(to: .checkCredit(.location))
     }
 }
 

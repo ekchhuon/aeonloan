@@ -1,0 +1,18 @@
+
+/* Class = "UILabel"; text = "Commune"; ObjectID = "RDl-SY-oV6"; */
+"RDl-SY-oV6.text" = "Commune";
+
+/* Class = "UILabel"; text = "Village"; ObjectID = "a2x-de-YzC"; */
+"a2x-de-YzC.text" = "Village";
+
+/* Class = "UILabel"; text = "District"; ObjectID = "bQy-wR-WTa"; */
+"bQy-wR-WTa.text" = "District";
+
+/* Class = "UILabel"; text = "Please choose your current location"; ObjectID = "c73-Ig-dRT"; */
+"c73-Ig-dRT.text" = "Please choose your current location";
+
+/* Class = "UIButton"; normalTitle = "Login"; ObjectID = "czj-Wx-toq"; */
+"czj-Wx-toq.normalTitle" = "Login";
+
+/* Class = "UILabel"; text = "Province"; ObjectID = "rJ3-hU-7j3"; */
+"rJ3-hU-7j3.text" = "Province";

@@ -18,3 +18,10 @@ struct User : Codable{
         self.nidPassport = nidPassport
     }
 }
+
+struct CurrentUser: Codable {
+  
+  let name: String
+  let email: String
+  
+}

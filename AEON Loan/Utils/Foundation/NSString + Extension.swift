@@ -12,5 +12,43 @@ extension String {
         return NSLocalizedString(self, comment: "")
     }
 }
+/*
+// MARK - Keychain
+extension String {
+    func getStoredPassword() -> String {
+      let kcw = KeychainWrapper()
+      if let password = try? kcw.getGenericPasswordFor(
+        account: "RWQuickNote",
+        service: "unlockPassword") {
+        return password
+      }
 
+      return ""
+    }
 
+    func updateStoredPassword(_ password: String) {
+      let kcw = KeychainWrapper()
+      do {
+        try kcw.storeGenericPasswordFor(
+          account: "RWQuickNote",
+          service: "unlockPassword",
+          password: password)
+      } catch let error as KeychainWrapperError {
+        print("Exception setting password: \(error.message ?? "no message")")
+      } catch {
+        print("An error occurred setting the password.")
+      }
+    }
+
+    func validatePassword(_ password: String) -> Bool {
+      let currentPassword = getStoredPassword()
+      return password == currentPassword
+    }
+
+    func changePassword(currentPassword: String, newPassword: String) -> Bool {
+      guard validatePassword(currentPassword) == true else { return false }
+      updateStoredPassword(newPassword)
+      return true
+    }
+}
+*/
