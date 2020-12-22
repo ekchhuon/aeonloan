@@ -50,7 +50,6 @@ enum TextFieldData: Int, CaseIterable {
     case educationTextField
     case workingPeriodTextField
     case housingTypeTextField
-    case aeonLoanRepaymentTextField
     case otherLoanRepaymentTextField
     
     var placeholder: String {
@@ -65,7 +64,6 @@ enum TextFieldData: Int, CaseIterable {
         case .educationTextField: return "Education".localized
         case .workingPeriodTextField: return "Working Period".localized
         case .housingTypeTextField: return "Housing Type".localized
-        case .aeonLoanRepaymentTextField: return "Aeon Repayment".localized
         case .otherLoanRepaymentTextField: return "Other Loan Repayment".localized
         }
     }
@@ -82,9 +80,7 @@ enum TextFieldData: Int, CaseIterable {
         case .educationTextField: return "graduationcap"
         case .workingPeriodTextField: return"calendar"
         case .housingTypeTextField: return "house"
-        case .aeonLoanRepaymentTextField: return "dollarsign.circle"
         case .otherLoanRepaymentTextField: return "dollarsign.circle"
-        default: return ""
         }
     }
     

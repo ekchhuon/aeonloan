@@ -212,8 +212,6 @@
 		3EF9199824F509C300E77958 /* LanuchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF9199724F509C300E77958 /* LanuchViewModel.swift */; };
 		3EF9199A24F509DA00E77958 /* Launch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EF9199924F509DA00E77958 /* Launch.swift */; };
 		55A7EDFF1733EBFB03090B5C /* Pods_AEON_Loan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F15D39E281A582FFC7E4B2 /* Pods_AEON_Loan.framework */; };
-		7D9BDA732591653500C5EC98 /* LocationListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D9BDA712591653500C5EC98 /* LocationListTableViewCell.swift */; };
-		7D9BDA742591653500C5EC98 /* LocationListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D9BDA722591653500C5EC98 /* LocationListTableViewCell.xib */; };
 		B020773D3D67EDD78AFB908C /* Pods_AEON_LoanTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F444613F6E3FF90189CB2C2E /* Pods_AEON_LoanTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -463,8 +461,6 @@
 		3EF9199924F509DA00E77958 /* Launch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Launch.swift; sourceTree = "<group>"; };
 		42A201EA3A75CEADA3A4EBCA /* Pods-AEON Loan-AEON LoanUITests.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AEON Loan-AEON LoanUITests.staging.xcconfig"; path = "Target Support Files/Pods-AEON Loan-AEON LoanUITests/Pods-AEON Loan-AEON LoanUITests.staging.xcconfig"; sourceTree = "<group>"; };
 		6F3CAD3B057AD7DEE71045D8 /* Pods-AEON Loan.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AEON Loan.production.xcconfig"; path = "Target Support Files/Pods-AEON Loan/Pods-AEON Loan.production.xcconfig"; sourceTree = "<group>"; };
-		7D9BDA712591653500C5EC98 /* LocationListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationListTableViewCell.swift; sourceTree = "<group>"; };
-		7D9BDA722591653500C5EC98 /* LocationListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocationListTableViewCell.xib; sourceTree = "<group>"; };
 		A41A8504D53E1B5CB76172AB /* Pods-AEON Loan-AEON LoanUITests.production.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AEON Loan-AEON LoanUITests.production.xcconfig"; path = "Target Support Files/Pods-AEON Loan-AEON LoanUITests/Pods-AEON Loan-AEON LoanUITests.production.xcconfig"; sourceTree = "<group>"; };
 		B7D1FE04EF0F47B9A824138F /* Pods-AEON Loan.staging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AEON Loan.staging.xcconfig"; path = "Target Support Files/Pods-AEON Loan/Pods-AEON Loan.staging.xcconfig"; sourceTree = "<group>"; };
 		F32C2A86A660C3006C8A7622 /* Pods_AEON_Loan_AEON_LoanUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AEON_Loan_AEON_LoanUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -950,13 +946,6 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		3E7367D22590ABEF00E9A182 /* Cell */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Cell;
-			sourceTree = "<group>";
-		};
 		3E7367D62590AC0100E9A182 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -1112,9 +1101,6 @@
 			isa = PBXGroup;
 			children = (
 				3EB27F622589B1520039C00B /* LocationViewController.swift */,
-				7D9BDA712591653500C5EC98 /* LocationListTableViewCell.swift */,
-				7D9BDA722591653500C5EC98 /* LocationListTableViewCell.xib */,
-				3E7367D22590ABEF00E9A182 /* Cell */,
 				3EB27F6D2589B16E0039C00B /* LocationViewModel.swift */,
 				3EB28000258B122F0039C00B /* LocationViewController.xib */,
 				3EB27FB62589C5FC0039C00B /* LocationList */,
@@ -1494,7 +1480,6 @@
 				3E907845256E561500253AEB /* SideMenuViewController.xib in Resources */,
 				3E66C8A42570E0E600C5502E /* ProductCell.xib in Resources */,
 				3E3CAB962510C5B000EAF826 /* PaymentConditionViewController.xib in Resources */,
-				7D9BDA742591653500C5EC98 /* LocationListTableViewCell.xib in Resources */,
 				3E90783E256E37A700253AEB /* HomeViewController.xib in Resources */,
 				3E1F91822570ED5400ACC476 /* ProductCollectionViewCell.xib in Resources */,
 				3E3CAB9D2510CE8F00EAF826 /* PaymentScheduleViewController.xib in Resources */,
@@ -1726,7 +1711,6 @@
 				3E47FFD0252C866200A73E61 /* ViewModelRepresentable.swift in Sources */,
 				3EA3344E2584B591003965CC /* User.swift in Sources */,
 				3EB04856252DB27600A395E2 /* BuildConfig.swift in Sources */,
-				7D9BDA732591653500C5EC98 /* LocationListTableViewCell.swift in Sources */,
 				3E14F110253EDE780066F0AB /* SecondSegmentViewController.swift in Sources */,
 				3E23676224F6437D003FD6D4 /* NavigationBar.swift in Sources */,
 				3E2AFBC425232AA00090A17D /* UIImageView + Extenstion.swift in Sources */,

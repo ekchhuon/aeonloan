@@ -29,10 +29,12 @@ import UIKit
 //}
 
 extension LocationListViewController {
-    static func instantiate(code: String, for type: LocationType) -> LocationListViewController {
+    static func instantiate(code: String, for type: LocationType, pickedItem: String? ) -> LocationListViewController {
         let controller = LocationListViewController()
         controller.locationCode = code
         controller.locationType = type
+        controller.pickedItem = pickedItem
+        
         return controller
     }
 }
@@ -46,6 +48,8 @@ class LocationListViewController: BaseViewController {
     
     private var locationCode: String?
     private var locationType: LocationType?
+    private var pickedItem: String?
+    
     private var selectedLocation: Location.Data?
     private var locations: [Location.Data]?
     
@@ -59,6 +63,9 @@ class LocationListViewController: BaseViewController {
         tableView.dataSource = self
         viewModel.fetchLocaiton(for: .province, with: "")
         locationTitleLable.text = locationType?.value
+        
+        submitButton.rounds(radius: 10)
+        submitButton.backgroundColor = .brandPurple
     }
     
     private func bind() {
@@ -68,11 +75,11 @@ class LocationListViewController: BaseViewController {
         }
         viewModel.message.bind { [weak self] msg in
             guard let self = self, let msg = msg else { return }
-            self.showAlert(title: "Login".localized ,message: msg)
+            self.showAlert(title: "".localized ,message: msg)
         }
         viewModel.error.bind { [weak self] (err) in
             guard let self = self, let err = err else { return }
-            self.showAlert(title: "Login".localized, message: err.localized)
+            self.showAlert(title: "".localized, message: err.localized)
         }
         
         viewModel.response.bind { [weak self] data in
@@ -116,6 +123,11 @@ extension LocationListViewController: UITableViewDataSource, UITableViewDelegate
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LocationCell", for: indexPath) as! LocationCell
         cell.textLabel?.text = locations?[indexPath.row].name
+
+        if cell.textLabel?.text == pickedItem {
+            self.tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
+        }
+        
         return cell
     }
     

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,7 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CheckCreditFormViewController" customModule="AEON_Loan" customModuleProvider="target">
             <connections>
                 <outlet property="deneButton" destination="hgf-Rz-kvz" id="a50-02-FCW"/>
-                <outlet property="tableView" destination="rVo-Vy-qrq" id="Qld-Kk-shw"/>
+                <outlet property="tableView" destination="POa-Eq-U6U" id="cOL-qd-3m0"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -30,10 +30,10 @@
                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <state key="normal" title="Next"/>
                     <connections>
-                        <action selector="tapped:" destination="-1" eventType="touchUpInside" id="MBK-Q0-T4d"/>
+                        <action selector="nextButtonTapped:" destination="-1" eventType="touchUpInside" id="MBK-Q0-T4d"/>
                     </connections>
                 </button>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="rVo-Vy-qrq">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="POa-Eq-U6U">
                     <rect key="frame" x="0.0" y="44" width="414" height="748"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
@@ -41,13 +41,13 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="rVo-Vy-qrq" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="4uJ-HZ-Aou"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="hgf-Rz-kvz" secondAttribute="bottom" constant="20" id="5Wq-b2-vAV"/>
+                <constraint firstItem="POa-Eq-U6U" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="5yv-ly-eT9"/>
                 <constraint firstItem="hgf-Rz-kvz" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="18" id="7y9-mv-X3X"/>
-                <constraint firstItem="hgf-Rz-kvz" firstAttribute="top" secondItem="rVo-Vy-qrq" secondAttribute="bottom" id="IfZ-CQ-8gR"/>
+                <constraint firstItem="hgf-Rz-kvz" firstAttribute="top" secondItem="POa-Eq-U6U" secondAttribute="bottom" id="9hY-2z-v5R"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="POa-Eq-U6U" secondAttribute="trailing" id="RK8-o1-sY3"/>
+                <constraint firstItem="POa-Eq-U6U" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="RZe-qN-0f6"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="hgf-Rz-kvz" secondAttribute="trailing" constant="18" id="fCu-tK-B71"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="rVo-Vy-qrq" secondAttribute="trailing" id="ghU-4b-Rwm"/>
-                <constraint firstItem="rVo-Vy-qrq" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="lKR-o9-clk"/>
             </constraints>
             <point key="canvasLocation" x="139" y="87"/>
         </view>

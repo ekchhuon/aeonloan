@@ -36,18 +36,15 @@ class CheckCreditFormViewController: BaseViewController, UITextFieldDelegate, Wr
         self.tableView.tableFooterView = UIView(frame: .zero)
         self.workingPeriodPickerView.delegate = self
         setupDatePicker()
-
         setupKeyboard(.numberPad, for: .incomeTextField)
-        setupKeyboard(.numberPad, for: .aeonLoanRepaymentTextField)
         setupKeyboard(.numberPad, for: .otherLoanRepaymentTextField)
+        deneButton.rounds(radius: 10)
+        deneButton.backgroundColor = .brandPurple
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 18, bottom: 0, right: 18)
         
         let workingPeriodCell = getCell(for: .workingPeriodTextField)
         workingPeriodCell.textField.inputView = workingPeriodPickerView
-        
-        deneButton.rounds(radius: 10)
-        deneButton.backgroundColor = .brandPurple
-        
-        //viewModel.filter()
+
     }
     
     func writeBack(value: Any?) {
@@ -90,6 +87,12 @@ class CheckCreditFormViewController: BaseViewController, UITextFieldDelegate, Wr
 
 // MARK: - Table Delegate & Datasource
 extension CheckCreditFormViewController: UITableViewDataSource, UITableViewDelegate {
+    // get tableview cell
+    private func getCell(for field: TextFieldData) -> CheckCreditFormCell {
+        
+        return tableView.cellForRow(at: IndexPath(row: field.rawValue, section: 0)) as! CheckCreditFormCell
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return TextFieldData.allCases.count
     }
@@ -112,10 +115,6 @@ extension CheckCreditFormViewController: UITableViewDataSource, UITableViewDeleg
         case .occupationTextField, .housingTypeTextField, .educationTextField, .maritalStatusTextField, .genderTextField :
             cell.textField.isUserInteractionEnabled = false
             cell.accessoryType = .disclosureIndicator
-        case .aeonLoanRepaymentTextField:
-            infoButton.addTarget(self, action: #selector(aeonRepaymentQuestionMarkTapped), for: .touchUpInside)
-            cell.accessoryView = infoButton
-        
         case .otherLoanRepaymentTextField:
             infoButton.addTarget(self, action: #selector(otherLoanQuestionMarkTapped), for: .touchUpInside)
             cell.accessoryView = infoButton
@@ -157,14 +156,6 @@ extension CheckCreditFormViewController: UITableViewDataSource, UITableViewDeleg
         
     }
     
-    @objc func aeonRepaymentQuestionMarkTapped() {
-        let alert = showAlt(title: "Aeon Repayment".localized, message: "Lorem ipsum dolor sit amet".localized, style: .alert)
-        let okAction = UIAlertAction(title: "Calculate", style: .default) {_ in
-            self.navigates(to: .calculator)
-        }
-        alert.addAction(okAction)
-    }
-    
     @objc func otherLoanQuestionMarkTapped() {
         showAlt(title: "Other Loan Repayment".localized, message: "Lorem ipsum dolor sit amet".localized, style: .alert)
     }
@@ -174,7 +165,7 @@ extension CheckCreditFormViewController: UITableViewDataSource, UITableViewDeleg
     }
     
     // MARK: Outlet Action
-    @IBAction func tapped(_ sender: Any) {
+    @IBAction func nextButtonTapped(_ sender: Any) {
         navigates(to: .checkCredit(.location))
     }
     
@@ -221,9 +212,6 @@ extension CheckCreditFormViewController {
 
         case TextFieldData.housingTypeTextField.rawValue:
             credit.housingType = textField.text ?? ""
-            
-        case TextFieldData.aeonLoanRepaymentTextField.rawValue:
-            credit.aeonLoanRepayment = textField.text ?? ""
             
         case TextFieldData.otherLoanRepaymentTextField.rawValue:
             credit.otherLoanRepayment = textField.text ?? ""
@@ -278,12 +266,6 @@ extension CheckCreditFormViewController: UIPickerViewDelegate, UIPickerViewDataS
         self.pickerView(picker, didSelectRow: 0, inComponent: 0)
     }
     
-    // get tableview cell
-    private func getCell(for field: TextFieldData) -> CheckCreditFormCell {
-        
-        return tableView.cellForRow(at: IndexPath(row: field.rawValue, section: 0)) as! CheckCreditFormCell
-    }
-    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -293,7 +275,7 @@ extension CheckCreditFormViewController: UIPickerViewDelegate, UIPickerViewDataS
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return livings[row]
+        return workings[row]
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {

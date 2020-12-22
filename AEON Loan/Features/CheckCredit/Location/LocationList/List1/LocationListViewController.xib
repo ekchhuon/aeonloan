@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -13,7 +13,7 @@
             <connections>
                 <outlet property="locationTitleLable" destination="6ku-fh-FdP" id="Vkh-ht-XLM"/>
                 <outlet property="searchBar" destination="ZLG-fA-ynH" id="aPN-gO-hGy"/>
-                <outlet property="submitButton" destination="0at-oD-RKU" id="Ael-5L-XhF"/>
+                <outlet property="submitButton" destination="UT3-vq-ivf" id="nAu-FH-xZB"/>
                 <outlet property="tableView" destination="lrE-uP-Ddp" id="4Bc-Ki-qBt"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -24,22 +24,9 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lrE-uP-Ddp">
-                    <rect key="frame" x="18" y="151" width="378" height="631"/>
+                    <rect key="frame" x="18" y="151" width="378" height="641"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0at-oD-RKU">
-                    <rect key="frame" x="18" y="792" width="378" height="50"/>
-                    <color key="backgroundColor" red="0.4549019608" green="0.3803921569" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="50" id="vTm-14-UCb"/>
-                    </constraints>
-                    <state key="normal" title="Button">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </state>
-                    <connections>
-                        <action selector="submitButtonTapped:" destination="-1" eventType="touchUpInside" id="Irj-N7-iY9"/>
-                    </connections>
-                </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7pY-3P-Dot">
                     <rect key="frame" x="0.0" y="44" width="414" height="107"/>
                     <subviews>
@@ -79,20 +66,33 @@
                         <constraint firstItem="6ku-fh-FdP" firstAttribute="top" secondItem="7pY-3P-Dot" secondAttribute="top" constant="15" id="qvd-NC-5uo"/>
                     </constraints>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UT3-vq-ivf">
+                    <rect key="frame" x="18" y="792" width="378" height="50"/>
+                    <color key="backgroundColor" systemColor="systemPurpleColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="IbU-yh-cqH"/>
+                    </constraints>
+                    <state key="normal" title="Button">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="submitButtonTapped:" destination="-1" eventType="touchUpInside" id="R0b-8J-OzF"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="7pY-3P-Dot" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="1DA-zx-qL0"/>
+                <constraint firstItem="UT3-vq-ivf" firstAttribute="top" secondItem="lrE-uP-Ddp" secondAttribute="bottom" id="3sP-Ul-pfB"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="lrE-uP-Ddp" secondAttribute="trailing" constant="18" id="50e-75-7P4"/>
-                <constraint firstItem="0at-oD-RKU" firstAttribute="top" secondItem="lrE-uP-Ddp" secondAttribute="bottom" constant="10" id="56p-gE-e0a"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="UT3-vq-ivf" secondAttribute="trailing" constant="18" id="FIm-zF-plu"/>
                 <constraint firstItem="lrE-uP-Ddp" firstAttribute="top" secondItem="7pY-3P-Dot" secondAttribute="bottom" id="Gmv-hX-JKn"/>
                 <constraint firstItem="lrE-uP-Ddp" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="18" id="UUO-ET-tzE"/>
                 <constraint firstItem="7pY-3P-Dot" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="bYd-5X-h1L"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="0at-oD-RKU" secondAttribute="bottom" constant="20" id="e1L-FR-bOY"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="0at-oD-RKU" secondAttribute="trailing" constant="18" id="ibb-L1-4G4"/>
+                <constraint firstItem="UT3-vq-ivf" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="18" id="juk-8A-Bj7"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="7pY-3P-Dot" secondAttribute="trailing" id="qsH-si-Tjm"/>
-                <constraint firstItem="0at-oD-RKU" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="18" id="wRl-oo-xln"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="UT3-vq-ivf" secondAttribute="bottom" constant="20" id="udg-To-dWI"/>
             </constraints>
             <point key="canvasLocation" x="137.68115942028987" y="103.79464285714285"/>
         </view>
@@ -103,6 +103,9 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemPurpleColor">
+            <color red="0.68627450980392157" green="0.32156862745098042" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
