@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -15,6 +15,7 @@
                 <outlet property="districtTextField" destination="eh4-Oj-gAl" id="fqa-J2-KIJ"/>
                 <outlet property="provinceTextField" destination="ccs-sf-QSu" id="QnW-8f-elh"/>
                 <outlet property="submitButton" destination="czj-Wx-toq" id="IQ6-R1-6Yc"/>
+                <outlet property="tableView" destination="ubf-ao-ROb" id="fwZ-SL-WP4"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="villageTextField" destination="if6-4y-xc0" id="5bC-qv-fVW"/>
             </connections>
@@ -35,6 +36,7 @@
                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
                     <connections>
+                        <action selector="ButtonTapped:" destination="-1" eventType="touchUpInside" id="B58-pt-5dq"/>
                         <action selector="submitButtonTapped:" destination="-1" eventType="touchUpInside" id="EVv-MK-mbf"/>
                     </connections>
                 </button>
@@ -82,7 +84,7 @@
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ZBJ-ut-EAH">
-                                            <rect key="frame" x="365.5" y="15.5" width="12.5" height="19"/>
+                                            <rect key="frame" x="365.5" y="17" width="12.5" height="16.5"/>
                                             <color key="tintColor" systemColor="systemGray2Color"/>
                                         </imageView>
                                     </subviews>
@@ -280,15 +282,23 @@
                         </view>
                     </subviews>
                 </stackView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ubf-ao-ROb">
+                    <rect key="frame" x="20" y="359.5" width="374" height="417.5"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ubf-ao-ROb" secondAttribute="trailing" constant="20" id="3Q1-ON-8gV"/>
                 <constraint firstItem="Ym9-tu-DOH" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="9H4-mJ-9K0"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="czj-Wx-toq" secondAttribute="trailing" constant="18" id="BQn-Ey-GdN"/>
+                <constraint firstItem="ubf-ao-ROb" firstAttribute="top" secondItem="Ym9-tu-DOH" secondAttribute="bottom" constant="50" id="KmA-vi-auy"/>
                 <constraint firstItem="czj-Wx-toq" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="18" id="d4d-71-MlE"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="czj-Wx-toq" secondAttribute="bottom" constant="15" id="f8e-PL-woL"/>
+                <constraint firstItem="czj-Wx-toq" firstAttribute="top" secondItem="ubf-ao-ROb" secondAttribute="bottom" constant="20" id="fgf-YS-bMe"/>
                 <constraint firstItem="Ym9-tu-DOH" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="18" id="hpL-Kt-HIo"/>
+                <constraint firstItem="ubf-ao-ROb" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="oEa-Bl-de0"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Ym9-tu-DOH" secondAttribute="trailing" constant="18" id="qF1-NR-ha8"/>
             </constraints>
             <point key="canvasLocation" x="137.68115942028987" y="83.705357142857139"/>

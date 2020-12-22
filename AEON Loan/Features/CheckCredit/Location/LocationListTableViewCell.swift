@@ -1,14 +1,15 @@
 //
-//  LocationTableViewCell.swift
+//  LocationListTableViewCell.swift
 //  AEON Loan
 //
-//  Created by aeon on 12/21/20.
+//  Created by ekchhuon on 12/22/20.
 //
 
 import UIKit
 
-class LocationTableViewCell: UITableViewCell {
-
+class LocationListTableViewCell: UITableViewCell {
+    @IBOutlet weak var textField: UITextField!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -21,3 +22,4 @@ class LocationTableViewCell: UITableViewCell {
     }
     
 }
+

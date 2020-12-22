@@ -8,7 +8,7 @@
 import Foundation
 
 #if PRODUCTION
-extension Constantss {
+extension Constant {
     // PROD:
     static let environment = "PRODUCTION"
 //    static let server = URL(string: "https://api.v2.sharelookapp.com/v1/")!
@@ -23,7 +23,7 @@ extension Constantss {
 }
 
 #elseif STAGING
-extension Constantss {
+extension Constant {
     // UAT:
     static let environment = "STAGING"
     //static let server = "http://192.168.169.13:8182/webservice/"
@@ -34,7 +34,7 @@ extension Constantss {
 }
 
 #elseif DEVELOPMENT
-extension Constantss {
+extension Constant {
     // Dev:
     static let environment = "DEVELOPMENT"
     //static let server = "http://192.168.169.13:8182/webservice/"

@@ -17,9 +17,10 @@ extension LocationViewController {
     }
 }
 
-class LocationViewController: BaseViewController, WriteValueBackDelegate {
+class LocationViewController: BaseViewController, UITextFieldDelegate, WriteValueBackDelegate {
     private let viewModel = LocationViewModel()
     
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var provinceTextField: UITextField!
     @IBOutlet weak var districtTextField: UITextField!
     @IBOutlet weak var communeTextField: UITextField!
@@ -34,13 +35,16 @@ class LocationViewController: BaseViewController, WriteValueBackDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tableView.register(UINib(nibName: "LocationTableViewCell", bundle: nil), forCellReuseIdentifier: "LocationTableViewCell")
+        self.tableView.register(UINib(nibName: "LocationListTableViewCell", bundle: nil), forCellReuseIdentifier: "LocationListTableViewCell")
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
         
+        tableView.isHidden = true
+        
+        //cell.textField.text = "Hellloooo"
+        
         viewModel.locationCode.bind { code in
-            
             self.provinceTextField.text = code
         }
     }
@@ -101,6 +105,8 @@ class LocationViewController: BaseViewController, WriteValueBackDelegate {
         controller.writeBackDelegate = self
         navigationController?.pushViewController(controller, animated: true)
     }
+    @IBAction func ButtonTapped(_ sender: Any) {
+    }
     
     @IBAction func villageButtonTapped(_ sender: Any) {
         print("Communecode", commune?.code)
@@ -113,9 +119,28 @@ class LocationViewController: BaseViewController, WriteValueBackDelegate {
         navigationController?.pushViewController(controller, animated: true)
     }
     
-    @IBAction func submitButtonTapped(_ sender: Any) {
+    private func getCell(for field: TextFieldData) -> CheckCreditFormCell {
+        return tableView.cellForRow(at: IndexPath(row: field.rawValue, section: 0)) as! CheckCreditFormCell
     }
     
+    @IBAction func submitButtonTapped(_ sender: Any) {
+        getCell(for: .nameTextField).textField.text = "Helloo"
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.addTarget(self, action: #selector(valueChanged), for: .allEvents)
+    }
+    
+    @objc func valueChanged(_ textField: UITextField){
+        
+        switch textField.tag {
+        case TextFieldData.nameTextField.rawValue:
+            print(textField.text)
+
+        default:
+            break
+        }
+    }
 }
 
 enum LocationType {
@@ -131,3 +156,22 @@ enum LocationType {
 }
 
 
+extension LocationViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "LocationListTableViewCell", for: indexPath) as! LocationListTableViewCell
+        let fieldDatas = TextFieldData.allCases[indexPath.row]
+        cell.textField.delegate = self
+        cell.textField.placeholder = fieldDatas.placeholder
+        cell.textField.tag = indexPath.row
+        cell.imageView?.image = fieldDatas.icon?.withColor(.lightGray)
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }
+}

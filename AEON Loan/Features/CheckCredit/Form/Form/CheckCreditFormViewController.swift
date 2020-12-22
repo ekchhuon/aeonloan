@@ -18,6 +18,8 @@ extension CheckCreditFormViewController {
 class CheckCreditFormViewController: BaseViewController, UITextFieldDelegate, WriteValueBackDelegate {
     private let viewModel = CheckCreditFormViewModel()
     @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var deneButton: UIButton!
     private let datePicker = UIDatePicker()
     private let workingPeriodPickerView = UIPickerView()
     let workings = ["1-6M", "6-12M", "12-24M", "24-60M"]
@@ -34,6 +36,7 @@ class CheckCreditFormViewController: BaseViewController, UITextFieldDelegate, Wr
         self.tableView.tableFooterView = UIView(frame: .zero)
         self.workingPeriodPickerView.delegate = self
         setupDatePicker()
+
         setupKeyboard(.numberPad, for: .incomeTextField)
         setupKeyboard(.numberPad, for: .aeonLoanRepaymentTextField)
         setupKeyboard(.numberPad, for: .otherLoanRepaymentTextField)
@@ -41,7 +44,10 @@ class CheckCreditFormViewController: BaseViewController, UITextFieldDelegate, Wr
         let workingPeriodCell = getCell(for: .workingPeriodTextField)
         workingPeriodCell.textField.inputView = workingPeriodPickerView
         
-        viewModel.filter()
+        deneButton.rounds(radius: 10)
+        deneButton.backgroundColor = .brandPurple
+        
+        //viewModel.filter()
     }
     
     func writeBack(value: Any?) {
@@ -274,6 +280,7 @@ extension CheckCreditFormViewController: UIPickerViewDelegate, UIPickerViewDataS
     
     // get tableview cell
     private func getCell(for field: TextFieldData) -> CheckCreditFormCell {
+        
         return tableView.cellForRow(at: IndexPath(row: field.rawValue, section: 0)) as! CheckCreditFormCell
     }
     
@@ -290,6 +297,8 @@ extension CheckCreditFormViewController: UIPickerViewDelegate, UIPickerViewDataS
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        getCell(for: .workingPeriodTextField).textField.text = workings[row]
+        credit.workingPeriod = workings[row]
     }
 }
 

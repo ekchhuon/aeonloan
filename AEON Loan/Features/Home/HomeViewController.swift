@@ -131,8 +131,8 @@ extension HomeViewController: UICollectionViewDelegate {
             switch indexPath.row {
             case 0:
                 
-                let controller = CheckCreditHistoryViewController.instantiate()
-                navigationController?.pushViewController(controller, animated: true)
+                //let controller = CheckCreditHistoryViewController.instantiate()
+                //navigationController?.pushViewController(controller, animated: true)
                 
                 //navigates(to: .checkCredit(.takePhoto))
                 //navigates(to: .checkCredit(.form))
@@ -143,6 +143,8 @@ extension HomeViewController: UICollectionViewDelegate {
                 navigationController?.pushViewController(controller, animated: true)
                 */
             
+                let controller = CheckCreditFormViewController.instantiate(item: "")
+                navigationController?.pushViewController(controller, animated: true)
             
             case 1:
                 navigates(to: .applyLoan)

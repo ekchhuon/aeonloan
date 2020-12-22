@@ -16,7 +16,7 @@ enum UploadAPIRouter {
         }
     }
     var url: URL? {
-        return URL(string: Constantss.server + path)
+        return URL(string: Constant.server + path)
     }
 }
 
@@ -117,7 +117,7 @@ enum APIRouter: URLRequestConvertible {
     
     // MARK: - URLRequestConvertible
     func asURLRequest() throws -> URLRequest {
-        let url = try Constantss.server.asURL()
+        let url = try Constant.server.asURL()
         
         var urlRequest = URLRequest(url: url.appendingPathComponent(path))
         

@@ -68,7 +68,7 @@ class Upload {
             }
         }
         var url: URL? {
-            let url = Constantss.server + path
+            let url = Constant.server + path
             return URL(string: url)
         }
     }

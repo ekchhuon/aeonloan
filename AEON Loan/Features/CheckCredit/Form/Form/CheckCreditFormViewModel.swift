@@ -16,7 +16,7 @@ public class CheckCreditFormViewModel {
     var tableDatas: Box<[CheckCreditFieldData]?> = Box(nil)
     init() {
         generateData()
-        filter()
+        //filter()
     }
     
     func generateData() {
@@ -29,13 +29,13 @@ public class CheckCreditFormViewModel {
         tableDatas.value = datas
     }
     
-    func filter() {
-        var data = [TextFieldData.provinceTextField, TextFieldData.districtTextField]
-        
-        let filtered = TextFieldData.allCases.filter { $0 != .provinceTextField }
-        
-        print("Data1", filtered)
-    }
+//    func filter() {
+//        var data = [TextFieldData.provinceTextField, TextFieldData.districtTextField]
+//
+//        let filtered = TextFieldData.allCases.filter { $0 != .provinceTextField }
+//
+//        print("Data1", filtered)
+//    }
     
 }
 
@@ -52,8 +52,6 @@ enum TextFieldData: Int, CaseIterable {
     case housingTypeTextField
     case aeonLoanRepaymentTextField
     case otherLoanRepaymentTextField
-    case provinceTextField
-    case districtTextField
     
     var placeholder: String {
         switch self {
@@ -69,8 +67,6 @@ enum TextFieldData: Int, CaseIterable {
         case .housingTypeTextField: return "Housing Type".localized
         case .aeonLoanRepaymentTextField: return "Aeon Repayment".localized
         case .otherLoanRepaymentTextField: return "Other Loan Repayment".localized
-        case .provinceTextField: return "Province"
-        case .districtTextField: return "District"
         }
     }
     
