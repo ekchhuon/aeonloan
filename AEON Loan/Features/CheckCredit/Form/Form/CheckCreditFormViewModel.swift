@@ -29,13 +29,13 @@ public class CheckCreditFormViewModel {
         tableDatas.value = datas
     }
     
-//    func filter() {
-//        var data = [TextFieldData.provinceTextField, TextFieldData.districtTextField]
-//
-//        let filtered = TextFieldData.allCases.filter { $0 != .provinceTextField }
-//
-//        print("Data1", filtered)
-//    }
+    //    func filter() {
+    //        var data = [TextFieldData.provinceTextField, TextFieldData.districtTextField]
+    //
+    //        let filtered = TextFieldData.allCases.filter { $0 != .provinceTextField }
+    //
+    //        print("Data1", filtered)
+    //    }
     
 }
 
@@ -93,28 +93,88 @@ enum TextFieldData: Int, CaseIterable {
         }
     }
 }
+/*
+ struct CheckCredit {
+ var name, nidpassport, dob, gender, maritalStatus,  occupation, income, education, livingPeriod, workingPeriod, housingType, aeonLoanRepayment, otherLoanRepayment, province, district, commune, village: String
+ 
+ init(name: String = "", nidpassport: String = "", dob: String = "", gender: String = "", maritalStatus: String = "",  occupation: String = "" , income: String = "",education: String = "", livingPeriod: String = "", workingPeriod: String = "", housingType: String = "", aeonLoanRepayment: String = "", otherLoanRepayment: String = "", province:String = "", commune: String = "", district: String = "", village: String = "") {
+ self.name = name
+ self.nidpassport = nidpassport
+ self.dob = dob
+ self.gender = gender
+ self.maritalStatus = maritalStatus
+ self.occupation = occupation
+ self.income = income
+ self.education = education
+ self.livingPeriod = livingPeriod
+ self.workingPeriod = workingPeriod
+ self.housingType = housingType
+ self.aeonLoanRepayment = aeonLoanRepayment
+ self.otherLoanRepayment = otherLoanRepayment
+ self.province = province
+ self.district = district
+ self.commune = commune
+ self.village = village
+ }
+ }
+ */
+/*
+ {
+ "name": "", // Username
+ "id": "", // Nid or Passport
+ "dob": "2020/1/12", // Date of birth
+ "age": "46", // Age
+ "genderId": "58",
+ "gender": "MALE",
+ "maritalStatusId": "56",
+ "maritalStatus": "Married",
+ "provinceCode": "",
+ "districtCode": "",
+ "communeCode": "",
+ "villageCode": "",
+ "livingPeriod": "62",
+ "occupationId": "41",
+ "occupation": "PC > 50 STAFF",
+ "income": "350",
+ "educationId": "28",
+ "education": "PRIMARY SCHOOL",
+ "workingPeriod": "32",
+ "repaymentRadio": "31",
+ "housingTypeId": "24",
+ "housingType": "OWNER",
+ "loanRepaymentOther": "0"
+ }
+ */
 
-struct CheckCredit {
-    var name, nidpassport, dob, gender, maritalStatus,  occupation, income, education, livingPeriod, workingPeriod, housingType, aeonLoanRepayment, otherLoanRepayment, province, district, commune, village: String
+
+struct Applicant {
+    var name, id, dob, age, genderId, gender, maritalStatusId, maritalStatus,
+        provinceCode, districtCode, communeCode, villageCode, livingPeriod, occupationId, occupation, income, educationId, education, workingPeriod, repaymentRadio, housingTypeId, housingType, loanRepaymentOther: String
     
-    init(name: String = "", nidpassport: String = "", dob: String = "", gender: String = "", maritalStatus: String = "",  occupation: String = "" , income: String = "",education: String = "", livingPeriod: String = "", workingPeriod: String = "", housingType: String = "", aeonLoanRepayment: String = "", otherLoanRepayment: String = "", province:String = "", commune: String = "", district: String = "", village: String = "") {
+    init(name: String = "", id: String = "", dob: String = "", age: String = "" , genderId: String = "", gender: String = "", maritalStatusId: String = "", maritalStatus: String = "", provinceCode: String = "", districtCode: String = "", communeCode: String = "", villageCode: String = "", livingPeriod: String = "", occupationId: String = "", occupation: String = "", income: String = "", educationId: String = "", education: String = "", workingPeriod: String = "", repaymentRadio: String = "", housingTypeId: String = "", housingType: String = "", loanRepaymentOther: String = "0") {
         self.name = name
-        self.nidpassport = nidpassport
+        self.id = id
         self.dob = dob
+        self.age = age
+        self.genderId = genderId
         self.gender = gender
+        self.maritalStatusId = maritalStatusId
         self.maritalStatus = maritalStatus
+        self.occupationId = occupationId
         self.occupation = occupation
         self.income = income
+        self.educationId = educationId
         self.education = education
-        self.livingPeriod = livingPeriod
         self.workingPeriod = workingPeriod
+        self.repaymentRadio = repaymentRadio
+        self.housingTypeId = housingTypeId
         self.housingType = housingType
-        self.aeonLoanRepayment = aeonLoanRepayment
-        self.otherLoanRepayment = otherLoanRepayment
-        self.province = province
-        self.district = district
-        self.commune = commune
-        self.village = village
+        self.loanRepaymentOther = loanRepaymentOther
+        self.provinceCode = provinceCode
+        self.districtCode = districtCode
+        self.communeCode = communeCode
+        self.villageCode = villageCode
+        self.livingPeriod = livingPeriod
     }
 }
 

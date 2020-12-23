@@ -94,7 +94,7 @@ class LocationViewController: BaseViewController, UITextFieldDelegate, WriteValu
     }
     
     @IBAction func provinceButtonTapped(_ sender: Any) {
-        let controller = LocationListViewController.instantiate(code: "", for: .province, pickedItem: province?.name)
+        let controller = LocationPicker1ViewController.instantiate(code: "", for: .province, pickedItem: province?.name)
         controller.writeBackDelegate = self
         self.present(controller, animated: true, completion: nil)
     }
@@ -104,7 +104,7 @@ class LocationViewController: BaseViewController, UITextFieldDelegate, WriteValu
         guard let code = province?.code else {
             debugPrint("No location code"); return
         }
-        let controller = SubLocationListViewController.instantiate(code: code, for: .district, pickedItem: district?.name)        
+        let controller = LocationPicker2ViewController.instantiate(code: code, for: .district, pickedItem: district?.name)        
         controller.writeBackDelegate = self
         navigationController?.pushViewController(controller, animated: true)
     }
@@ -113,7 +113,7 @@ class LocationViewController: BaseViewController, UITextFieldDelegate, WriteValu
         guard let code = district?.code else {
             debugPrint("No location code"); return
         }
-        let controller = SubLocationListViewController.instantiate(code: code, for: .commune, pickedItem: commune?.name)
+        let controller = LocationPicker2ViewController.instantiate(code: code, for: .commune, pickedItem: commune?.name)
         controller.writeBackDelegate = self
         navigationController?.pushViewController(controller, animated: true)
     }
@@ -126,7 +126,7 @@ class LocationViewController: BaseViewController, UITextFieldDelegate, WriteValu
         guard let code = commune?.code else {
             debugPrint("No location code"); return
         }
-        let controller = SubLocationListViewController.instantiate(code: code, for: .village, pickedItem: village?.name)
+        let controller = LocationPicker2ViewController.instantiate(code: code, for: .village, pickedItem: village?.name)
         controller.writeBackDelegate = self
         navigationController?.pushViewController(controller, animated: true)
     }

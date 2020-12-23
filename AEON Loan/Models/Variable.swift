@@ -23,8 +23,8 @@ struct Variable: Codable {
     
     // MARK: - Data
     struct Data: Codable {
-        let id, titleEn: String
-        let titleKh: String?
+        let id : String
+        let titleEn, titleKh: String?
     }
     
     struct Pagination: Codable {

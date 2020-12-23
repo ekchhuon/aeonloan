@@ -1,5 +1,5 @@
 //
-//  SubLocationListViewController.swift
+//  LocationListViewController.swift
 //  AEON Loan
 //
 //  Created by aeon on 12/16/20.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-//class SubLocationListViewController: UIViewController {
+//class LocationListViewController: UIViewController {
 //
 //    override func viewDidLoad() {
 //        super.viewDidLoad()
@@ -28,22 +28,23 @@ import UIKit
 //
 //}
 
-
-
-extension SubLocationListViewController {
-    static func instantiate(code: String, for type: LocationType, pickedItem: String?) -> SubLocationListViewController {
-        let controller = SubLocationListViewController()
+extension LocationPicker1ViewController {
+    static func instantiate(code: String, for type: LocationType, pickedItem: String? ) -> LocationPicker1ViewController {
+        let controller = LocationPicker1ViewController()
         controller.locationCode = code
         controller.locationType = type
         controller.pickedItem = pickedItem
+        
         return controller
     }
 }
 
-class SubLocationListViewController: BaseViewController {
+class LocationPicker1ViewController: BaseViewController {
     private let viewModel = LocationListViewModel()
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var submitButton: UIButton!
+    @IBOutlet weak var locationTitleLable: UILabel!
     
     private var locationCode: String?
     private var locationType: LocationType?
@@ -56,20 +57,15 @@ class SubLocationListViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.register(UINib(nibName: "LocationCell", bundle: nil), forCellReuseIdentifier: "LocationCell")
+        setupSearchBar()
+        bind()
         tableView.delegate = self
         tableView.dataSource = self
-        bind()
-        fetch()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        if self.isMovingFromParent {
-            if let delegate = self.writeBackDelegate {
-                let data = (self.selectedLocation, self.locationType )
-                delegate.writeBack(value: data)
-            }
-        }
+        viewModel.fetchLocaiton(for: .province, with: "")
+        locationTitleLable.text = locationType?.value
+        
+        submitButton.rounds(radius: 10)
+        submitButton.backgroundColor = .brandPurple
     }
     
     private func bind() {
@@ -93,38 +89,41 @@ class SubLocationListViewController: BaseViewController {
         }
     }
     
-    private func fetch() {
-        guard let code = locationCode, let type = locationType else {
-            debugPrint("Unable to fetch location")
-            return
-        }
-        switch type {
-        case .province: viewModel.fetchLocaiton(for: .province, with: code)
-        case .district: viewModel.fetchLocaiton(for: .district, with: code)
-        case .commune: viewModel.fetchLocaiton(for: .commune, with: code)
-        case .village: viewModel.fetchLocaiton(for: .village, with: code)
+    fileprivate func setupSearchBar() {
+        searchBar.showsCancelButton = true
+        searchBar.delegate = self
+        searchBar.setImage(UIImage(systemName: "mic"), for: .bookmark, state: .normal)
+        
+        let micImage = UIImage(systemName: "mic.fill")
+        searchBar.setImage(micImage, for: .bookmark, state: .normal)
+        searchBar.showsBookmarkButton = true
+        
+        if let cancelButton : UIButton = searchBar.value(forKey: "cancelButton") as? UIButton{
+            cancelButton.isEnabled = true
         }
     }
 
     @IBAction func submitButtonTapped(_ sender: Any) {
         self.dismiss(animated: true) {
             if let delegate = self.writeBackDelegate {
-                delegate.writeBack(value: self.selectedLocation ?? nil)
+                let data = (self.selectedLocation, self.locationType )
+                delegate.writeBack(value: data)
+                
+                print(" writeback data",data)
             }
         }
     }
 }
 
-extension SubLocationListViewController: UITableViewDataSource, UITableViewDelegate {
+extension LocationPicker1ViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return locations?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LocationCell", for: indexPath) as! LocationCell
-//        cell.textLabel?.text = locations[indexPath.row]
         cell.textLabel?.text = locations?[indexPath.row].name
-        
+
         if cell.textLabel?.text == pickedItem {
             self.tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
         }
@@ -133,27 +132,11 @@ extension SubLocationListViewController: UITableViewDataSource, UITableViewDeleg
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("selected index", indexPath.row)
         self.selectedLocation = locations?[indexPath.row]
-    }
-    
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let vw = UIView()
-//        vw.backgroundColor = UIColor.red
-//
-//        return vw
-//    }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return locationType?.value
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50
     }
 }
 
-extension SubLocationListViewController: UISearchBarDelegate {
+extension LocationPicker1ViewController: UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         self.dismiss(animated: true, completion: nil)
     }

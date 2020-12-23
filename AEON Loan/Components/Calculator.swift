@@ -11,6 +11,7 @@ class Calculator {
     enum ServiceType {
         case repayment(CalculationType)
         case loanLimit(CalculationType)
+        case ratio
     }
 
     enum CalculationType {
@@ -34,6 +35,8 @@ class Calculator {
             return loanLimitFlatRate()
         case .loanLimit(.effectiveRate):
             return loandLimitEffectiveRate()
+        case .ratio:
+            return calculateRatio()
         }
     }
     
@@ -44,7 +47,9 @@ class Calculator {
 
 extension Calculator {
     //MARK: - Formular
-    
+    private func calculateRatio() -> Double {
+        return (income + otherLoan)/income
+    }
     private func repaymentFlatRate() -> Double {
         return amount * (((rate.percent * term) + 1)/term)
     }

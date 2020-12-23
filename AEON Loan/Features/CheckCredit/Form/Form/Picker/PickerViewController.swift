@@ -44,11 +44,11 @@ class PickerViewController: BaseViewController {
         }
         viewModel.message.bind { [weak self] msg in
             guard let self = self, let msg = msg else { return }
-            self.showAlert(title:"Login".localized ,message: msg)
+            self.showAlert(title:"".localized ,message: msg)
         }
         viewModel.error.bind { [weak self] (err) in
             guard let self = self, let err = err else { return }
-            self.showAlert(title: "Login".localized, message: err.localized)
+            self.showAlert(title: "".localized, message: err.localized)
         }
         
         viewModel.response.bind { [weak self] data in

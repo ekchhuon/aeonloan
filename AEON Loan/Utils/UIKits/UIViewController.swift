@@ -25,9 +25,8 @@ extension UIViewController {
 //        case .checkCredit(.selfie):
 //            let controller = SelfieViewController.instantiate()
 //            navigationController?.pushViewController(controller, animated: true)
-        case .checkCredit(.form):
-            let controller = ApplicantInfoViewController.instantiate()
-            navigationController?.pushViewController(controller, animated: true)
+        case .checkCredit(.form): break
+
         case .checkCredit(.location):
             let controller = LocationViewController.instantiate()
             navigationController?.pushViewController(controller, animated: true)

@@ -26,7 +26,8 @@ class CheckCreditFormViewController: BaseViewController, UITextFieldDelegate, Wr
     let livings = ["1-6M", "6-12M", "12-24M", "24-60M"]
     
     var item = ""
-    var credit = CheckCredit()
+    var applicant = Applicant()
+    let calculator = Calculator()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.register(UINib(nibName: "CheckCreditFormCell", bundle: nil), forCellReuseIdentifier: "CheckCreditFormCell")
@@ -44,7 +45,7 @@ class CheckCreditFormViewController: BaseViewController, UITextFieldDelegate, Wr
         
         let workingPeriodCell = getCell(for: .workingPeriodTextField)
         workingPeriodCell.textField.inputView = workingPeriodPickerView
-
+        
     }
     
     func writeBack(value: Any?) {
@@ -52,30 +53,35 @@ class CheckCreditFormViewController: BaseViewController, UITextFieldDelegate, Wr
             switch variable {
             case .occupation:
                 let row = TextFieldData.occupationTextField.rawValue
-                updateTextFieldForRow(at: row , value: value)
-                credit.occupation = value.titleEn
+                updateTextFieldForRow(at: row , with: value)
+                applicant.occupation = value.titleEn ?? value.titleKh ?? ""
+                applicant.occupationId = value.id
             case .maritalStatus:
                 let row = TextFieldData.maritalStatusTextField.rawValue
-                updateTextFieldForRow(at: row , value: value)
-                credit.maritalStatus = value.titleEn
+                updateTextFieldForRow(at: row , with: value)
+                applicant.maritalStatus = value.titleEn ?? value.titleKh ?? ""
+                applicant.maritalStatusId = value.id
             case .gender:
                 let row = TextFieldData.genderTextField.rawValue
-                updateTextFieldForRow(at: row , value: value)
-                credit.gender = value.titleEn
+                updateTextFieldForRow(at: row , with: value)
+                applicant.gender = value.titleEn ?? value.titleKh ?? ""
+                applicant.genderId = value.id
             case .education:
                 let row = TextFieldData.educationTextField.rawValue
-                updateTextFieldForRow(at: row , value: value)
-                credit.education = value.titleEn
+                updateTextFieldForRow(at: row , with: value)
+                applicant.education = value.titleEn ?? value.titleKh ?? ""
+                applicant.educationId = value.id
             case .houseType:
                 let row = TextFieldData.housingTypeTextField.rawValue
-                updateTextFieldForRow(at: row , value: value)
-                credit.housingType = value.titleEn
+                updateTextFieldForRow(at: row , with: value)
+                applicant.housingType = value.titleEn ?? value.titleKh ?? ""
+                applicant.housingTypeId = value.id
             }
         }
     }
     
     // assign writeback value to textfield
-    private func updateTextFieldForRow(at row: Int, value: Variable.Data) {
+    private func updateTextFieldForRow(at row: Int, with value: Variable.Data) {
         let cell = tableView.cellForRow(at: IndexPath(row: row, section: 0)) as! CheckCreditFormCell
         cell.textField.text = value.titleEn // Preference.language == .en ? value.titleEn : value.titleKh
     }
@@ -131,23 +137,23 @@ extension CheckCreditFormViewController: UITableViewDataSource, UITableViewDeleg
         
         switch TextFieldData.allCases[indexPath.row] {
         case .occupationTextField:
-            let controller = PickerViewController.instantiate(.occupation, credit.occupation)
+            let controller = PickerViewController.instantiate(.occupation, applicant.occupation)
             navigationController?.pushViewController(controller, animated: true)
             controller.writeBackDelegate = self
         case .educationTextField:
-            let controller = PickerViewController.instantiate(.education, credit.education)
+            let controller = PickerViewController.instantiate(.education, applicant.education)
             navigationController?.pushViewController(controller, animated: true)
             controller.writeBackDelegate = self
         case .maritalStatusTextField:
-            let controller = PickerViewController.instantiate(.maritalStatus, credit.maritalStatus)
+            let controller = PickerViewController.instantiate(.maritalStatus, applicant.maritalStatus)
             navigationController?.pushViewController(controller, animated: true)
             controller.writeBackDelegate = self
         case .genderTextField:
-            let controller = PickerViewController.instantiate(.gender, credit.gender)
+            let controller = PickerViewController.instantiate(.gender, applicant.gender)
             navigationController?.pushViewController(controller, animated: true)
             controller.writeBackDelegate = self
         case .housingTypeTextField:
-            let controller = PickerViewController.instantiate(.houseType, credit.housingType)
+            let controller = PickerViewController.instantiate(.houseType, applicant.housingType)
             navigationController?.pushViewController(controller, animated: true)
             controller.writeBackDelegate = self
         default:
@@ -166,7 +172,51 @@ extension CheckCreditFormViewController: UITableViewDataSource, UITableViewDeleg
     
     // MARK: Outlet Action
     @IBAction func nextButtonTapped(_ sender: Any) {
-        navigates(to: .checkCredit(.location))
+        
+        
+        
+        
+        
+        //navigates(to: .checkCredit(.location))
+        applicant.age = "\(applicant.dob.asAge)"
+        calculator.income = applicant.income.asDouble
+        calculator.otherLoan = applicant.loanRepaymentOther.asDouble
+        applicant.repaymentRadio = "\(calculator.calculate(.ratio))"
+        
+        print("dsafafas===>", applicant)
+        
+        validate()
+        
+    }
+    
+    // convenience
+    private func getFieldName(for field: TextFieldData) -> String {
+        return field.placeholder
+    }
+    
+    
+    private func validate() {
+        do {
+            _ = try getCell(for: .nameTextField).textField.validatedText(type: .other(message: TextFieldData.nameTextField.placeholder ))
+            _ = try getCell(for: .nidPassportTextField).textField.validatedText(type: .other(message: TextFieldData.nidPassportTextField.placeholder ))
+            _ = try getCell(for: .dobTextField).textField.validatedText(type: .other(message: TextFieldData.dobTextField.placeholder))
+            _ = try getCell(for: .genderTextField).textField.validatedText(type: .other(message: TextFieldData.genderTextField.placeholder))
+            _ = try getCell(for: .maritalStatusTextField).textField.validatedText(type: .other(message: TextFieldData.maritalStatusTextField.placeholder))
+            _ = try getCell(for: .occupationTextField).textField.validatedText(type: .other(message: TextFieldData.occupationTextField.placeholder))
+            _ = try getCell(for: .incomeTextField).textField.validatedText(type: .other(message: TextFieldData.incomeTextField.placeholder))
+            _ = try getCell(for: .educationTextField).textField.validatedText(type: .other(message: TextFieldData.educationTextField.placeholder))
+            _ = try getCell(for: .workingPeriodTextField).textField.validatedText(type: .other(message: TextFieldData.workingPeriodTextField.placeholder))
+            _ = try getCell(for: .housingTypeTextField).textField.validatedText(type: .other(message: TextFieldData.housingTypeTextField.placeholder))
+            
+            
+//            let username = try usernameTextField.validatedText(type:  .phone)
+//            let password = try passwordTextField.validatedText(type: .other(message: "Required"))
+//            let data = LoginDataTest(username: username, password: password)
+//
+            navigates(to: .checkCredit(.location))
+        } catch (let error) {            
+            showAlt(title: "\((error as! ValidationError).message) is required", message: "", style: .alert)
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -183,38 +233,38 @@ extension CheckCreditFormViewController {
     @objc func valueChanged(_ textField: UITextField){
         switch textField.tag {
         case TextFieldData.nameTextField.rawValue:
-            credit.name = textField.text ?? ""
+            applicant.name = textField.text ?? ""
             
         case TextFieldData.nidPassportTextField.rawValue:
-            credit.nidpassport = textField.text ?? ""
+            applicant.id = textField.text ?? ""
             
         case TextFieldData.dobTextField.rawValue:
-            credit.dob = textField.text ?? ""
+            applicant.dob = textField.text ?? ""
             
-        case TextFieldData.genderTextField.rawValue:
-            credit.gender = textField.text ?? ""
-            
-        case TextFieldData.maritalStatusTextField.rawValue:
-            credit.maritalStatus = textField.text ?? ""
-            
-        case TextFieldData.occupationTextField.rawValue:
-            credit.occupation = textField.text ?? ""
-            
+        //        case TextFieldData.genderTextField.rawValue:
+        //            credit.gender = textField.text ?? ""
+        
+        //        case TextFieldData.maritalStatusTextField.rawValue:
+        //            credit.maritalStatus = textField.text ?? ""
+        
+        //        case TextFieldData.occupationTextField.rawValue:
+        //            credit.occupation = textField.text ?? ""
+        
         case TextFieldData.incomeTextField.rawValue:
-            credit.income = textField.text ?? ""
+            applicant.income = textField.text ?? ""
             
-        case TextFieldData.educationTextField.rawValue:
-            credit.education = textField.text ?? ""
-            
+        //        case TextFieldData.educationTextField.rawValue:
+        //            credit.education = textField.text ?? ""
+        
         case TextFieldData.workingPeriodTextField.rawValue:
             selectFirstRow(textField, workingPeriodPickerView) // picker
-            credit.workingPeriod = textField.text ?? ""
-
-        case TextFieldData.housingTypeTextField.rawValue:
-            credit.housingType = textField.text ?? ""
+            applicant.workingPeriod = textField.text ?? ""
             
+        //        case TextFieldData.housingTypeTextField.rawValue:
+        //            credit.housingType = textField.text ?? ""
+        
         case TextFieldData.otherLoanRepaymentTextField.rawValue:
-            credit.otherLoanRepayment = textField.text ?? ""
+            applicant.loanRepaymentOther = textField.text ?? ""
         default:
             break
         }
@@ -247,7 +297,7 @@ extension CheckCreditFormViewController {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd/MM/yyyy"
         cell.textField.text = formatter.string(from: datePicker.date)
-        credit.dob = formatter.string(from: datePicker.date)
+        applicant.dob = formatter.string(from: datePicker.date)
         self.view.endEditing(true)
     }
     
@@ -280,10 +330,8 @@ extension CheckCreditFormViewController: UIPickerViewDelegate, UIPickerViewDataS
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         getCell(for: .workingPeriodTextField).textField.text = workings[row]
-        credit.workingPeriod = workings[row]
+        applicant.workingPeriod = workings[row]
     }
 }
-
-
 
 

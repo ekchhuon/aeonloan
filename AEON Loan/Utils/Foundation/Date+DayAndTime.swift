@@ -53,12 +53,6 @@ extension Date {
 }
 
 extension Date {
-    func formatDate() -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "dd MMM yyyy, HH:mm"
-        return formatter.string(from: `self`)
-    }
-    
     func currentTimeMillis() -> Int64 {
         return Int64(self.timeIntervalSince1970 * 1000)
     }

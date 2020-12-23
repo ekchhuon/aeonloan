@@ -99,9 +99,6 @@
 		3E56EE9A251864800083CC49 /* SelfieViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E56EE98251864800083CC49 /* SelfieViewController.swift */; };
 		3E56EE9B251864800083CC49 /* SelfieViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E56EE99251864800083CC49 /* SelfieViewController.xib */; };
 		3E56EE9E251864CA0083CC49 /* SelfieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E56EE9D251864CA0083CC49 /* SelfieViewModel.swift */; };
-		3E56EEA125186B070083CC49 /* ApplicantInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E56EE9F25186B070083CC49 /* ApplicantInfoViewController.swift */; };
-		3E56EEA225186B070083CC49 /* ApplicantInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E56EEA025186B070083CC49 /* ApplicantInfoViewController.xib */; };
-		3E56EEA525186B3A0083CC49 /* ApplicantInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E56EEA425186B3A0083CC49 /* ApplicantInfoViewModel.swift */; };
 		3E5A049B2553E45B0017064F /* Resnet50.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 3E5A049A2553E45B0017064F /* Resnet50.mlmodel */; };
 		3E62A2E12519A61A0072CAB3 /* CreditRejectedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E62A2DF2519A61A0072CAB3 /* CreditRejectedViewController.swift */; };
 		3E62A2E22519A61A0072CAB3 /* CreditRejectedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E62A2E02519A61A0072CAB3 /* CreditRejectedViewController.xib */; };
@@ -173,13 +170,13 @@
 		3EB27F562588EE110039C00B /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB27F552588EE110039C00B /* Location.swift */; };
 		3EB27F642589B1520039C00B /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB27F622589B1520039C00B /* LocationViewController.swift */; };
 		3EB27F6E2589B16E0039C00B /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB27F6D2589B16E0039C00B /* LocationViewModel.swift */; };
-		3EB27FB12589C5F30039C00B /* LocationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB27FAF2589C5F30039C00B /* LocationListViewController.swift */; };
-		3EB27FB22589C5F30039C00B /* LocationListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EB27FB02589C5F30039C00B /* LocationListViewController.xib */; };
+		3EB27FB12589C5F30039C00B /* LocationPicker1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB27FAF2589C5F30039C00B /* LocationPicker1ViewController.swift */; };
+		3EB27FB22589C5F30039C00B /* LocationPicker1ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EB27FB02589C5F30039C00B /* LocationPicker1ViewController.xib */; };
 		3EB27FBC2589C71B0039C00B /* LocationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB27FBA2589C71B0039C00B /* LocationCell.swift */; };
 		3EB27FBD2589C71B0039C00B /* LocationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EB27FBB2589C71B0039C00B /* LocationCell.xib */; };
 		3EB27FDE258A00150039C00B /* LocationListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB27FDD258A00150039C00B /* LocationListViewModel.swift */; };
-		3EB27FE8258A10360039C00B /* SubLocationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB27FE6258A10360039C00B /* SubLocationListViewController.swift */; };
-		3EB27FE9258A10360039C00B /* SubLocationListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EB27FE7258A10360039C00B /* SubLocationListViewController.xib */; };
+		3EB27FE8258A10360039C00B /* LocationPicker2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB27FE6258A10360039C00B /* LocationPicker2ViewController.swift */; };
+		3EB27FE9258A10360039C00B /* LocationPicker2ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EB27FE7258A10360039C00B /* LocationPicker2ViewController.xib */; };
 		3EB27FFE258B122F0039C00B /* LocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EB28000258B122F0039C00B /* LocationViewController.xib */; };
 		3EB2800D258B19610039C00B /* CheckCreditFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EB2800B258B19600039C00B /* CheckCreditFormViewController.swift */; };
 		3EB2800E258B19610039C00B /* CheckCreditFormViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EB2800C258B19600039C00B /* CheckCreditFormViewController.xib */; };
@@ -332,9 +329,6 @@
 		3E56EE98251864800083CC49 /* SelfieViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfieViewController.swift; sourceTree = "<group>"; };
 		3E56EE99251864800083CC49 /* SelfieViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelfieViewController.xib; sourceTree = "<group>"; };
 		3E56EE9D251864CA0083CC49 /* SelfieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfieViewModel.swift; sourceTree = "<group>"; };
-		3E56EE9F25186B070083CC49 /* ApplicantInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicantInfoViewController.swift; sourceTree = "<group>"; };
-		3E56EEA025186B070083CC49 /* ApplicantInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ApplicantInfoViewController.xib; sourceTree = "<group>"; };
-		3E56EEA425186B3A0083CC49 /* ApplicantInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicantInfoViewModel.swift; sourceTree = "<group>"; };
 		3E5A049A2553E45B0017064F /* Resnet50.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = Resnet50.mlmodel; sourceTree = "<group>"; };
 		3E62A2DF2519A61A0072CAB3 /* CreditRejectedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditRejectedViewController.swift; sourceTree = "<group>"; };
 		3E62A2E02519A61A0072CAB3 /* CreditRejectedViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreditRejectedViewController.xib; sourceTree = "<group>"; };
@@ -413,13 +407,13 @@
 		3EB27F6D2589B16E0039C00B /* LocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
 		3EB27F9F2589C22D0039C00B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LoginViewController.strings; sourceTree = "<group>"; };
 		3EB27FA12589C23B0039C00B /* km */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = km; path = km.lproj/LoginViewController.strings; sourceTree = "<group>"; };
-		3EB27FAF2589C5F30039C00B /* LocationListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationListViewController.swift; sourceTree = "<group>"; };
-		3EB27FB02589C5F30039C00B /* LocationListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocationListViewController.xib; sourceTree = "<group>"; };
+		3EB27FAF2589C5F30039C00B /* LocationPicker1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPicker1ViewController.swift; sourceTree = "<group>"; };
+		3EB27FB02589C5F30039C00B /* LocationPicker1ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocationPicker1ViewController.xib; sourceTree = "<group>"; };
 		3EB27FBA2589C71B0039C00B /* LocationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCell.swift; sourceTree = "<group>"; };
 		3EB27FBB2589C71B0039C00B /* LocationCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocationCell.xib; sourceTree = "<group>"; };
 		3EB27FDD258A00150039C00B /* LocationListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationListViewModel.swift; sourceTree = "<group>"; };
-		3EB27FE6258A10360039C00B /* SubLocationListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubLocationListViewController.swift; sourceTree = "<group>"; };
-		3EB27FE7258A10360039C00B /* SubLocationListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubLocationListViewController.xib; sourceTree = "<group>"; };
+		3EB27FE6258A10360039C00B /* LocationPicker2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPicker2ViewController.swift; sourceTree = "<group>"; };
+		3EB27FE7258A10360039C00B /* LocationPicker2ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocationPicker2ViewController.xib; sourceTree = "<group>"; };
 		3EB27FFF258B122F0039C00B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LocationViewController.xib; sourceTree = "<group>"; };
 		3EB28005258B12370039C00B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LocationViewController.strings; sourceTree = "<group>"; };
 		3EB28007258B12390039C00B /* km */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = km; path = km.lproj/LocationViewController.strings; sourceTree = "<group>"; };
@@ -833,9 +827,6 @@
 			isa = PBXGroup;
 			children = (
 				3EB2801C258B19F20039C00B /* Form */,
-				3E56EE9F25186B070083CC49 /* ApplicantInfoViewController.swift */,
-				3E56EEA425186B3A0083CC49 /* ApplicantInfoViewModel.swift */,
-				3E56EEA025186B070083CC49 /* ApplicantInfoViewController.xib */,
 			);
 			path = Form;
 			sourceTree = "<group>";
@@ -1103,19 +1094,19 @@
 				3EB27F622589B1520039C00B /* LocationViewController.swift */,
 				3EB27F6D2589B16E0039C00B /* LocationViewModel.swift */,
 				3EB28000258B122F0039C00B /* LocationViewController.xib */,
-				3EB27FB62589C5FC0039C00B /* LocationList */,
+				3EB27FB62589C5FC0039C00B /* Picker */,
 			);
 			path = Location;
 			sourceTree = "<group>";
 		};
-		3EB27FB62589C5FC0039C00B /* LocationList */ = {
+		3EB27FB62589C5FC0039C00B /* Picker */ = {
 			isa = PBXGroup;
 			children = (
-				3EB27FE2258A0FC10039C00B /* List1 */,
-				3EB27FED258A10C20039C00B /* List2 */,
+				3EB27FE2258A0FC10039C00B /* Picker1 */,
+				3EB27FED258A10C20039C00B /* Picker2 */,
 				3EB27FC12589C7200039C00B /* LocationCell */,
 			);
-			path = LocationList;
+			path = Picker;
 			sourceTree = "<group>";
 		};
 		3EB27FC12589C7200039C00B /* LocationCell */ = {
@@ -1127,33 +1118,33 @@
 			path = LocationCell;
 			sourceTree = "<group>";
 		};
-		3EB27FE2258A0FC10039C00B /* List1 */ = {
+		3EB27FE2258A0FC10039C00B /* Picker1 */ = {
 			isa = PBXGroup;
 			children = (
-				3EB27FAF2589C5F30039C00B /* LocationListViewController.swift */,
+				3EB27FAF2589C5F30039C00B /* LocationPicker1ViewController.swift */,
 				3EB27FDD258A00150039C00B /* LocationListViewModel.swift */,
-				3EB27FB02589C5F30039C00B /* LocationListViewController.xib */,
+				3EB27FB02589C5F30039C00B /* LocationPicker1ViewController.xib */,
 			);
-			path = List1;
+			path = Picker1;
 			sourceTree = "<group>";
 		};
-		3EB27FED258A10C20039C00B /* List2 */ = {
+		3EB27FED258A10C20039C00B /* Picker2 */ = {
 			isa = PBXGroup;
 			children = (
-				3EB27FE6258A10360039C00B /* SubLocationListViewController.swift */,
-				3EB27FE7258A10360039C00B /* SubLocationListViewController.xib */,
+				3EB27FE6258A10360039C00B /* LocationPicker2ViewController.swift */,
+				3EB27FE7258A10360039C00B /* LocationPicker2ViewController.xib */,
 			);
-			path = List2;
+			path = Picker2;
 			sourceTree = "<group>";
 		};
 		3EB2801C258B19F20039C00B /* Form */ = {
 			isa = PBXGroup;
 			children = (
-				3EB28027258B52070039C00B /* Picker */,
 				3EB2800C258B19600039C00B /* CheckCreditFormViewController.xib */,
 				3EB2800B258B19600039C00B /* CheckCreditFormViewController.swift */,
 				3E7367BA259085DD00E9A182 /* CheckCreditFormViewModel.swift */,
 				3E7367D62590AC0100E9A182 /* Cell */,
+				3EB28027258B52070039C00B /* Picker */,
 			);
 			path = Form;
 			sourceTree = "<group>";
@@ -1437,13 +1428,12 @@
 				3E907864256E6D2800253AEB /* SettingCell.xib in Resources */,
 				3EB27FFE258B122F0039C00B /* LocationViewController.xib in Resources */,
 				3EB27FBD2589C71B0039C00B /* LocationCell.xib in Resources */,
-				3EB27FE9258A10360039C00B /* SubLocationListViewController.xib in Resources */,
+				3EB27FE9258A10360039C00B /* LocationPicker2ViewController.xib in Resources */,
 				3E05D5D8252C1A15003C5432 /* LoginViewController.xib in Resources */,
 				3EA5778C25662F8C00312E5F /* WKViewController.xib in Resources */,
 				3EB28039258B52500039C00B /* PickerTableViewCell.xib in Resources */,
 				3E56EE94251846B90083CC49 /* TakePhotoViewController.xib in Resources */,
 				3E4A4CA3255CF65A003FB345 /* SelfieInstructionViewController.xib in Resources */,
-				3E56EEA225186B070083CC49 /* ApplicantInfoViewController.xib in Resources */,
 				3E5641EA2507B21100716D8B /* RegisterViewController.xib in Resources */,
 				3E23676824F64E99003FD6D4 /* LanuchViewController.xib in Resources */,
 				3E800268250B87F900503267 /* ApplyLoanViewController.xib in Resources */,
@@ -1472,7 +1462,7 @@
 				3EB21620256BBF8F00751DD6 /* NotificationCell.xib in Resources */,
 				3E14F10D253EDE610066F0AB /* FirstSegmentViewController.xib in Resources */,
 				3E907854256E637700253AEB /* LanguageListCell.xib in Resources */,
-				3EB27FB22589C5F30039C00B /* LocationListViewController.xib in Resources */,
+				3EB27FB22589C5F30039C00B /* LocationPicker1ViewController.xib in Resources */,
 				3EB2800E258B19610039C00B /* CheckCreditFormViewController.xib in Resources */,
 				3ED2C522251B3420007B0B9A /* PhotoViewController.xib in Resources */,
 				3E80026F2510681100503267 /* LoanSubmissionResultViewController.xib in Resources */,
@@ -1630,7 +1620,7 @@
 				3E998834255BD94F00C6C95E /* Checkmark.swift in Sources */,
 				3E6397D224F763DC00C5BB86 /* ActivityIndicatorOverlay.swift in Sources */,
 				3E800261250B5C1100503267 /* BaseViewController.swift in Sources */,
-				3EB27FE8258A10360039C00B /* SubLocationListViewController.swift in Sources */,
+				3EB27FE8258A10360039C00B /* LocationPicker2ViewController.swift in Sources */,
 				3E23675724F6217D003FD6D4 /* LoginViewController.swift in Sources */,
 				3E47FFCD252C860200A73E61 /* ModelRepresentable.swift in Sources */,
 				3EB27F562588EE110039C00B /* Location.swift in Sources */,
@@ -1698,7 +1688,6 @@
 				3E66C8852570D50E00C5502E /* LanguageBundle.swift in Sources */,
 				3EB28014258B19E90039C00B /* CheckCreditFormCell.swift in Sources */,
 				3E5641C325061A1300716D8B /* SelectLanguageViewController.swift in Sources */,
-				3E56EEA525186B3A0083CC49 /* ApplicantInfoViewModel.swift in Sources */,
 				3ED6A17B2541971C005E7DD7 /* Encryption.swift in Sources */,
 				3E66C8A32570E0E600C5502E /* ProductCell.swift in Sources */,
 				3E23674F24F61CA1003FD6D4 /* Box.swift in Sources */,
@@ -1706,7 +1695,7 @@
 				3EF3427D2525E14C003AA712 /* Keychain.swift in Sources */,
 				3E99882B255BB6EB00C6C95E /* DocumentValidator.swift in Sources */,
 				3EA334532584B7C2003965CC /* Response.swift in Sources */,
-				3EB27FB12589C5F30039C00B /* LocationListViewController.swift in Sources */,
+				3EB27FB12589C5F30039C00B /* LocationPicker1ViewController.swift in Sources */,
 				3E834E562508EE5E00D9E700 /* SliderDetailViewController.swift in Sources */,
 				3E47FFD0252C866200A73E61 /* ViewModelRepresentable.swift in Sources */,
 				3EA3344E2584B591003965CC /* User.swift in Sources */,
@@ -1746,7 +1735,6 @@
 				3E68EF46258B8FF500A79DA7 /* Variable.swift in Sources */,
 				3E80026E2510681100503267 /* LoanSubmissionResultViewController.swift in Sources */,
 				3E23675E24F64056003FD6D4 /* CATransition+Options.swift in Sources */,
-				3E56EEA125186B070083CC49 /* ApplicantInfoViewController.swift in Sources */,
 				3E800267250B87F900503267 /* ApplyLoanViewController.swift in Sources */,
 				3E3CAB922510AD7E00EAF826 /* PaymentLocationViewModel.swift in Sources */,
 				3E907853256E637700253AEB /* LanguageListCell.swift in Sources */,
