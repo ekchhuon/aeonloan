@@ -49,3 +49,22 @@ extension String {
         return Data(self.utf8).base64EncodedString()
     }
 }
+
+extension Encodable {
+    func toJSON() -> [String:Any] {
+        let codableData = try? JSONEncoder().encode(self)
+        if let param = try? JSONSerialization.jsonObject(with: codableData ?? Data(), options: []) as? [String: Any] {
+            return param
+        }
+        
+        return [:]
+    }
+}
+
+
+extension Encodable {
+    var asString: String {
+        let jsonData = try! JSONEncoder().encode(self)
+        return String(data: jsonData, encoding: String.Encoding.utf8)?.replacingOccurrences(of: "\\", with: "") ?? ""
+    }
+}

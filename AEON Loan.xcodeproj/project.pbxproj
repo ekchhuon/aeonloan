@@ -78,7 +78,6 @@
 		3E48162F252741F90010966A /* OTPViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E48162E252741F90010966A /* OTPViewModel.swift */; };
 		3E4A4CA2255CF65A003FB345 /* SelfieInstructionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4A4CA0255CF65A003FB345 /* SelfieInstructionViewController.swift */; };
 		3E4A4CA3255CF65A003FB345 /* SelfieInstructionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E4A4CA1255CF65A003FB345 /* SelfieInstructionViewController.xib */; };
-		3E50C756252EB4800051D809 /* BCrypt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E50C755252EB4800051D809 /* BCrypt.swift */; };
 		3E50C759253007C90051D809 /* HttpStatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E50C758253007C90051D809 /* HttpStatusCode.swift */; };
 		3E5641C325061A1300716D8B /* SelectLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E5641C125061A1300716D8B /* SelectLanguageViewController.swift */; };
 		3E5641C425061A1300716D8B /* SelectLanguageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E5641C225061A1300716D8B /* SelectLanguageViewController.xib */; };
@@ -308,7 +307,6 @@
 		3E48162E252741F90010966A /* OTPViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPViewModel.swift; sourceTree = "<group>"; };
 		3E4A4CA0255CF65A003FB345 /* SelfieInstructionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelfieInstructionViewController.swift; sourceTree = "<group>"; };
 		3E4A4CA1255CF65A003FB345 /* SelfieInstructionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelfieInstructionViewController.xib; sourceTree = "<group>"; };
-		3E50C755252EB4800051D809 /* BCrypt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BCrypt.swift; sourceTree = "<group>"; };
 		3E50C758253007C90051D809 /* HttpStatusCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpStatusCode.swift; sourceTree = "<group>"; };
 		3E5641C125061A1300716D8B /* SelectLanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectLanguageViewController.swift; sourceTree = "<group>"; };
 		3E5641C225061A1300716D8B /* SelectLanguageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectLanguageViewController.xib; sourceTree = "<group>"; };
@@ -589,7 +587,6 @@
 				3E6397D124F763DC00C5BB86 /* ActivityIndicatorOverlay.swift */,
 				3E998833255BD94F00C6C95E /* Checkmark.swift */,
 				3E2AFBC925258E640090A17D /* Validator.swift */,
-				3E50C755252EB4800051D809 /* BCrypt.swift */,
 				3E66C8842570D50E00C5502E /* LanguageBundle.swift */,
 				3ED6A17A2541971C005E7DD7 /* Encryption.swift */,
 				3E197BA22546EA4100F106B2 /* Calculator.swift */,
@@ -1725,7 +1722,6 @@
 				3E48162C252741E10010966A /* OTPViewController.swift in Sources */,
 				3E05D5D7252C17B6003C5432 /* L10n.swift in Sources */,
 				3E56EE9E251864CA0083CC49 /* SelfieViewModel.swift in Sources */,
-				3E50C756252EB4800051D809 /* BCrypt.swift in Sources */,
 				3E56EE97251846E10083CC49 /* TakePhotoViewModel.swift in Sources */,
 				3E1F918D25751B2100ACC476 /* CheckCreditHistoryViewController.swift in Sources */,
 				3E1F91812570ED5400ACC476 /* ProductCollectionViewCell.swift in Sources */,

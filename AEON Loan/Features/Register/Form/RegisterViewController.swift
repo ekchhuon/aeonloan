@@ -6,18 +6,19 @@
 //
 
 import UIKit
-import SwiftyRSA
-import CryptoKit
 
 extension RegisterViewController {
-    static func instantiate() -> RegisterViewController {
-        return RegisterViewController()
+    static func instantiate(with data: UserAsset) -> RegisterViewController {
+        let controller = RegisterViewController()
+        controller.asset = data
+        return controller
     }
 }
 
 class RegisterViewController: BaseViewController {
     private let viewModel = RegisterViewModel()
     private let loginViewModel = LoginViewModel()
+    private var asset = UserAsset()
     
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var phoneTextField: UITextField!
@@ -33,6 +34,9 @@ class RegisterViewController: BaseViewController {
         super.viewDidLoad()
         setupView()
         bind()
+        
+        print("User Asset", asset)
+        usernameTextField.text = asset.holderName
     }
     
     private func bind() {
@@ -65,57 +69,63 @@ class RegisterViewController: BaseViewController {
     }
     
     @IBAction func registerButtonTapped(_ sender: Any) {
-        
         //        let documents = [UploadAPIRouter.profile: "banner.aeon.installment", UploadAPIRouter.profile: "aeon.rohas"]
         //
         //        for (k,v) in documents {
         //
         //        }
         
-        self.loginViewModel.requestAuth {
-            print("1...requestAuth")
-            self.viewModel.register { user in
-                print("2...register")
-                self.viewModel.upload(.profile, image: UIImage(named: "banner.aeon.installment")!) { progress in
-                    
-                    print("uploading profile...", progress)
-//                    let indicator = self.showIndicator(true)
-//                    indicator.mode = .annularDeterminate
-//                    indicator.progress = progress
-                    
-                } completion: { _ in
-                    print("3...upload profile")
-                    self.viewModel.upload(.document, image: UIImage(named: "banner.aeon.installment")!) { progress in
-                        print("uploading docs...", progress)
-                    } completion: { _ in
-                        print("4...upload docs.")
-                        self.navigates(to: .OTP(with: user))
-                    }
-
-                    
-                }
-
-            }
+        guard let selfieImage = self.asset.selfieImage,
+              let scannedImage = self.asset.documentImage else {
+            debugPrint("Image not found!")
+            return
         }
-        /*
-        self.loginViewModel.requestAuth {
-            print("1...requestAuth")
-            self.viewModel.register { user in
-                print("2...register")
-                self.viewModel.upload(.profile ,image: UIImage(named: "banner.aeon.installment")!) { (progress) in
-                    
-                } completion: { (result) in
-                    print("3...upload profile")
-                    self.viewModel.upload(.document ,image: UIImage(named: "aeon.rohas")!) { (progress) in
+        
+        validate { user in
+            self.loginViewModel.requestAuth {
+                print("1...requestAuth")
+                self.viewModel.register(user: user) { user in
+                    print("2...register")
+
+                    self.viewModel.upload(.profile, image: selfieImage) { progress in
                         
-                    } completion: { (result) in
-                        print("4...upload document")
-                        self.navigates(to: .OTP(with: user))
+                        print("uploading profile...", progress)
+                        //                    let indicator = self.showIndicator(true)
+                        //                    indicator.mode = .annularDeterminate
+                        //                    indicator.progress = progress
+                        
+                    } completion: { _ in
+                        print("3...upload profile")
+                        self.viewModel.upload(.document, image: scannedImage) { progress in
+                            print("uploading docs...", progress)
+                        } completion: { _ in
+                            print("4...upload docs.")
+                            self.navigates(to: .OTP(with: user))
+                        }
                     }
                 }
             }
         }
-        */
+        
+        /*
+         self.loginViewModel.requestAuth {
+         print("1...requestAuth")
+         self.viewModel.register { user in
+         print("2...register")
+         self.viewModel.upload(.profile ,image: UIImage(named: "banner.aeon.installment")!) { (progress) in
+         
+         } completion: { (result) in
+         print("3...upload profile")
+         self.viewModel.upload(.document ,image: UIImage(named: "aeon.rohas")!) { (progress) in
+         
+         } completion: { (result) in
+         print("4...upload document")
+         self.navigates(to: .OTP(with: user))
+         }
+         }
+         }
+         }
+         */
         
         /*
          
@@ -227,7 +237,7 @@ class RegisterViewController: BaseViewController {
         textFields.forEach { $0?.autocorrectionType = .no}
     }
     
-    func validate() {
+    func validate(completion: @escaping (_ data: User) -> Void) {
         do {
             let username = try usernameTextField.validatedText(type: .username)
             let phone = try phoneTextField.validatedText(type: .phone)
@@ -240,67 +250,18 @@ class RegisterViewController: BaseViewController {
                 return
             }
             
-            //let data = Param.Register(username: username, phoneNumber: phone, email: email, password: password)
-            //fetch(with: data)
+            let user = User(username: username, phoneNumber: phone, email: email, password: password, idPhoto: "", nidPassport: "")
+            completion(user)
         } catch (let error) {
             showAlert(message: (error as! ValidationError).message)
         }
     }
     
     func fetch(with param: Param.Register) {
-        //viewModel.register(with: param)
         
-        //        viewModel.login(username: usernameTextField.text ?? "", password: passwordTextField.text ?? "")
-        //        showAlert(title: "Success", message: "Hello World", buttonTitle: "Try again")
     }
 }
 
 
-
-//extension String {
-//
-//    func sha256() -> String{
-//        if let stringData = self.data(using: String.Encoding.utf8) {
-//            return hexStringFromData(input: digest(input: stringData as NSData))
-//        }
-//        return ""
-//    }
-//
-//    private func digest(input : NSData) -> NSData {
-//        let digestLength = Int(CC_SHA256_DIGEST_LENGTH)
-//        var hash = [UInt8](repeating: 0, count: digestLength)
-//        CC_SHA256(input.bytes, UInt32(input.length), &hash)
-//        return NSData(bytes: hash, length: digestLength)
-//    }
-//
-//    private  func hexStringFromData(input: NSData) -> String {
-//        var bytes = [UInt8](repeating: 0, count: input.length)
-//        input.getBytes(&bytes, length: input.length)
-//
-//        var hexString = ""
-//        for byte in bytes {
-//            hexString += String(format:"%02x", UInt8(byte))
-//        }
-//
-//        return hexString
-//    }
-//
-//}
-
-extension String {
-    var asSha256: String {
-        //        let sha = SHA256.hash(data: self.asData )
-        
-        //        let digest = SHA256.hash(data: self.asData).
-        let hash = SHA256.hash(data: self.asData)
-        return hash.map { String(format: "%02hhx", $0) }.joined()
-        
-    }
-    
-    static func random(length: Int = 5) -> String {
-        let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-        return String((0..<length).map{ _ in letters.randomElement()! })
-    }
-}
 
 

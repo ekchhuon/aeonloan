@@ -9,24 +9,26 @@ import Foundation
 import UIKit.UIImage
 
 public class RegisterViewModel {
-
+    private let header = Header()
     let status: Box<RequestStatus?> = Box(nil)
     let message: Box<String?> = Box(nil)
     let error: Box<APIError?> = Box(nil)
     let response: Box<Response?> = Box(nil)
     
-    let header = Header(transactionID: "", timestamp: "", lan: "", channel: "", appID: "", appVersion: "", deviceBrand: "", deviceModel: "", devicePlanform: "", osVersion: "")
-    
     init() {
     }
     
-    func register(completion: @escaping (_ user: User) -> Void) {
+    func register(user: User, completion: @escaping (_ user: User) -> Void) {
+        var user = user
+        user.idPhoto = String.random(length: 32)
         status.value = .started
-        let user = Param.Register(username: "chhuon3", phoneNumber: "95403087", email: "abc@gmail.com", password: "1234", idPhoto: String.random(length: 32), nidPassport: "12")
+        let encoded = user.asString.encrypt()
+        let body = Param.Body(encode: encoded)
+        
+        
+//        let user = Param.Register(username: "chhuon3", phoneNumber: "95403087", email: "abc@gmail.com", password: "1234", idPhoto: String.random(length: 32), nidPassport: "12")
              
-        
-        let param = Param.Request(header: header, body: Param.Body(encode: user.asString.encrypt()))
-        
+        let param = Param.Request(header: header, body: body)
         APIClient.register2(param: param.toJSON()) { (result) in
             self.status.value = .stopped
 
@@ -42,9 +44,6 @@ public class RegisterViewModel {
                 self.error.value = err.evaluate
             }
         }
-        
-        
-        
     }
     
     func upload(_ route:UploadAPIRouter, image: UIImage, progress: @escaping (_ percent: Float) -> Void,
@@ -63,43 +62,6 @@ public class RegisterViewModel {
             }
         }
     }
-    
-//    func register(with param: Param.Register) {
-//        loading.value = true
-//        APIClient.register(with: param) { (result) in
-//            self.loading.value = false
-//
-//            switch result {
-//            case let .success(data):
-//                print("Data....Register",data)
-//                self.success.value = "success: \(data)"
-//            case let .failure(err):
-//                guard let code = err.responseCode else {
-//                    debugPrint("Error", err.localizedDescription)
-//                    self.error.value = APIError(code: 0, description: "", localized: err.localizedDescription)
-//                    return
-//                }
-//                self.error.value = APIError(code: code, description: code.description, localized: err.localizedDescription)
-//            }
-//        }
-//    }
-}
-
-extension Encodable {
-    func toJSON() -> [String:Any] {
-        let codableData = try? JSONEncoder().encode(self)
-        if let param = try? JSONSerialization.jsonObject(with: codableData ?? Data(), options: []) as? [String: Any] {
-            return param
-        }
-        
-        return [:]
-    }
 }
 
 
-extension Encodable {
-    var asString: String {
-        let jsonData = try! JSONEncoder().encode(self)
-        return String(data: jsonData, encoding: String.Encoding.utf8)?.replacingOccurrences(of: "\\", with: "") ?? ""
-    }
-}

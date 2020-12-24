@@ -27,8 +27,8 @@ extension UIViewController {
 //            navigationController?.pushViewController(controller, animated: true)
         case .checkCredit(.form): break
 
-        case .checkCredit(.location):
-            let controller = LocationViewController.instantiate()
+        case let .checkCredit(.location(aplicant)):
+            let controller = LocationViewController.instantiate(data: aplicant)
             navigationController?.pushViewController(controller, animated: true)
         case .checkCredit(.result(.accepted)):
             let controller = CreditAcceptedViewController.instantiate()
@@ -55,10 +55,10 @@ extension UIViewController {
         case .register(.scanID):
             let controller = ScanViewController.instantiate()
             navigationController?.pushViewController(controller, animated: true)
-        case .register(.selfie):
-            let controller = SelfieViewController.instantiate()
+        case let .register(.selfie(data)):
+            let controller = SelfieViewController.instantiate(with: data)
             navigationController?.pushViewController(controller, animated: true)
-        case .register(.form):
+        case let .register(.form(data)):
             /*
             let register = RegisterViewController.instantiate()
              // navigationController?.pushViewController(register, animated: true)
@@ -66,7 +66,7 @@ extension UIViewController {
             self.view.window?.setRootViewController(register, options: .init(type: .push(subtype: .fromRight)))
             */
             
-            let controller = RegisterViewController.instantiate()
+            let controller = RegisterViewController.instantiate(with: data)
             navigationController?.pushViewController(controller, animated: true)
         case .notification:
             let notification = NotificationViewController.instantiate()

@@ -149,6 +149,10 @@ extension APIClient {
 extension APIClient {
     static func fetchVariable(_ variable: VariableType,  param: Parameters, completion:@escaping(Result<Variable, AFError>) -> Void ) {
         switch variable {
+        case .workingPeriod:
+            fetch(route: APIRouter.workingPeriod(param), completion: completion)
+        case .livingPeriod:
+            fetch(route: APIRouter.livingPeriod(param), completion: completion)
         case .occupation:
             fetch(route: APIRouter.occupation(param), completion: completion)
         case .maritalStatus:
@@ -160,6 +164,10 @@ extension APIClient {
         case .houseType:
             fetch(route: APIRouter.housingType(param), completion: completion)
         }
+    }
+    
+    static func checkCredit(param: Parameters, completion:@escaping(Result<Login, AFError>) -> Void ) {
+        fetch(route: APIRouter.checkCredit(param), completion: completion)
     }
 }
 

@@ -7,8 +7,6 @@
 
 import Foundation
 import RNCryptor
-import CryptoSwift
-import SwiftyRSA
 
 extension String {
     func encrypt() -> String {

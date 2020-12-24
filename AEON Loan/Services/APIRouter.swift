@@ -39,16 +39,19 @@ enum APIRouter: URLRequestConvertible {
 //    case commune(Parameters)
 //    case village(Parameters)
     case location(ParamLocation)
+    case workingPeriod(Parameters)
+    case livingPeriod(Parameters)
     case occupation(Parameters)
     case housingType(Parameters)
     case education(Parameters)
     case maritialStatus(Parameters)
     case gender(Parameters)
+    case checkCredit(Parameters)
     
     // MARK: - HTTPMethod
     private var method: HTTPMethod {
         switch self {
-        case .register, .rsa, .aes, .register2, .getOTP, .verifyOTP, .login, .logout, .upload, .location, .occupation, .housingType, .education, .maritialStatus, .gender:
+        case .register, .rsa, .aes, .register2, .getOTP, .verifyOTP, .login, .logout, .upload, .location, .occupation, .housingType, .education, .maritialStatus, .gender, .checkCredit, .workingPeriod, .livingPeriod:
             return .post
         case .articles, .article:
             return .get
@@ -81,7 +84,8 @@ enum APIRouter: URLRequestConvertible {
         case .location(.district): return "public/v1/district"
         case .location(.commune): return "public/v1/commune"
         case .location(.village): return "public/v1/village"
-        case .education, .housingType, .occupation, .maritialStatus, .gender: return "public/v1/variable"
+        case .education, .housingType, .occupation, .maritialStatus, .gender, .workingPeriod, .livingPeriod: return "public/v1/variable"
+        case .checkCredit: return "private/v1/check_credit"
         }
     }
     
@@ -101,7 +105,7 @@ enum APIRouter: URLRequestConvertible {
         //        case .login(let email, let password):
         //            return [Constants.APIParameterKey.email: email, Constants.APIParameterKey.password: password]
         case .register(let param):
-            return .body(["username": param.username, "phoneNumber":"012345678", "email": param.email, "password": param.password.bcrypted])
+            return .body(["username": param.username, "phoneNumber":"012345678", "email": param.email, "password": param.password])
         //        case .testLogin(let email, let password):
         //            return [Constants.APIParameterKey.email: email, Constants.APIParameterKey.password: password]
         case .articles, .article:
@@ -110,8 +114,8 @@ enum APIRouter: URLRequestConvertible {
         case let .location(.district(param)): return .body(param)
         case let .location(.commune(param)): return .body(param)
         case let .location(.village(param)): return .body(param)
-        case let .occupation(param), let .gender(param), let .maritialStatus(param), let .education(param), let .housingType(param): return .body(param)
-        
+        case let .occupation(param), let .gender(param), let .maritialStatus(param), let .education(param), let .housingType(param), let .workingPeriod(param), let .livingPeriod(param): return .body(param)
+        case let .checkCredit(param): return .body(param)
         }
     }
     

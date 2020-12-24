@@ -7,7 +7,7 @@
 
 import Foundation
 struct User : Codable{
-    let username, phoneNumber, email, password, idPhoto, nidPassport: String
+    var username, phoneNumber, email, password, idPhoto, nidPassport: String
     
     init(username: String = "", phoneNumber: String = "", email: String = "", password: String = "", idPhoto: String = "", nidPassport: String = "") {
         self.username = username

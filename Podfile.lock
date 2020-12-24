@@ -1,8 +1,6 @@
 PODS:
   - ActivityIndicatorView (0.0.6)
   - Alamofire (5.2.2)
-  - BCryptSwift (1.1)
-  - CryptoSwift (1.3.7)
   - IQKeyboardManagerSwift (6.5.6)
   - MaterialActivityIndicator (0.0.6)
   - MBProgressHUD (1.2.0)
@@ -18,15 +16,10 @@ PODS:
   - SVProgressHUD (2.2.5)
   - SwiftGen (6.3.0)
   - SwiftLint (0.40.0)
-  - SwiftyRSA (1.6.0):
-    - SwiftyRSA/ObjC (= 1.6.0)
-  - SwiftyRSA/ObjC (1.6.0)
 
 DEPENDENCIES:
   - ActivityIndicatorView
   - Alamofire (~> 5.2)
-  - BCryptSwift
-  - CryptoSwift (~> 1.3.7)
   - IQKeyboardManagerSwift
   - MaterialActivityIndicator
   - MBProgressHUD (~> 1.2.0)
@@ -37,14 +30,11 @@ DEPENDENCIES:
   - SVProgressHUD
   - SwiftGen
   - SwiftLint
-  - SwiftyRSA
 
 SPEC REPOS:
   trunk:
     - ActivityIndicatorView
     - Alamofire
-    - BCryptSwift
-    - CryptoSwift
     - IQKeyboardManagerSwift
     - MaterialActivityIndicator
     - MBProgressHUD
@@ -55,13 +45,10 @@ SPEC REPOS:
     - SVProgressHUD
     - SwiftGen
     - SwiftLint
-    - SwiftyRSA
 
 SPEC CHECKSUMS:
   ActivityIndicatorView: f7c08841e302c86d16c29b7c9554fce2a2bd9183
   Alamofire: 814429acc853c6c54ff123fc3d2ef66803823ce0
-  BCryptSwift: f69992ea5685f6714260842c2770688043b89ab2
-  CryptoSwift: b6faad405e69964740422daf121918b5b1870f2b
   IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
   MaterialActivityIndicator: 5061a52fadf7d22533734f2d34806311331bc424
   MBProgressHUD: 3ee5efcc380f6a79a7cc9b363dd669c5e1ae7406
@@ -72,8 +59,7 @@ SPEC CHECKSUMS:
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftGen: 3d5024a47ea79e408cded20763d7a17d18a4548c
   SwiftLint: 4154893c73a4c52d6240195507eb7a3e3c64087e
-  SwiftyRSA: 3b9c9179744217951facc6a3e9ae8d8c97061ffa
 
-PODFILE CHECKSUM: 626c0d7d1be853c55c263219f55e524d9f3bdb35
+PODFILE CHECKSUM: 6e17002b357387eea6d55c4b866ade23e17b0dc6
 
 COCOAPODS: 1.9.3

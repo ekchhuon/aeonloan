@@ -147,7 +147,7 @@ enum TextFieldData: Int, CaseIterable {
  */
 
 
-struct Applicant {
+struct Applicant: Codable {
     var name, id, dob, age, genderId, gender, maritalStatusId, maritalStatus,
         provinceCode, districtCode, communeCode, villageCode, livingPeriod, occupationId, occupation, income, educationId, education, workingPeriod, repaymentRadio, housingTypeId, housingType, loanRepaymentOther: String
     

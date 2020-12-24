@@ -106,7 +106,8 @@ class LoginViewController: BaseViewController {
     }
     
     @IBAction func registerButtonTapped(_ sender: Any) {
-        navigates(to: .register(.form))
+        //navigates(to: .register(.form))
+        navigates(to: .register(.scanID))
     }
     
     @IBAction func eyeButtonTapped(_ sender: Any) {

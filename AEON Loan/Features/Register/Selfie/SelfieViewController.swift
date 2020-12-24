@@ -10,13 +10,17 @@ import AVFoundation
 import Vision
 
 extension SelfieViewController {
-    static func instantiate() -> SelfieViewController {
-        return SelfieViewController()
+    static func instantiate(with data: UserAsset) -> SelfieViewController {
+        let controller = SelfieViewController()
+        controller.asset = data
+        return controller
     }
 }
 
 class SelfieViewController: BaseViewController, AVCapturePhotoCaptureDelegate {
     private let viewModel = SelfieViewModel()
+    private var asset = UserAsset()
+    
     @IBOutlet weak var previewView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var indicatorView: UIActivityIndicatorView!
@@ -25,7 +29,6 @@ class SelfieViewController: BaseViewController, AVCapturePhotoCaptureDelegate {
     @IBOutlet weak var captureButton: UIButton!
     @IBOutlet weak var retakeButton: UIButton!
     @IBOutlet weak var continueButton: UIButton!
-    
     
     var activityCompenentViews: [UIView]!
     var captureSession: AVCaptureSession!
@@ -126,7 +129,8 @@ class SelfieViewController: BaseViewController, AVCapturePhotoCaptureDelegate {
     
     @IBAction func continueButtonTapped(_ sender: Any) {
         capturedImageView.removeFromSuperview()
-        navigates(to: .register(.form))
+        asset.selfieImage = capturedImageView.image
+        navigates(to: .register(.form(asset)))
     }
 }
 
@@ -206,7 +210,6 @@ extension SelfieViewController {
 
 // MARK: - Face Recognition
 extension SelfieViewController  {
-    
     fileprivate func launchDetection(image: UIImage) {
         loading(started: true)
         titleLabel.text = "Verifying..."

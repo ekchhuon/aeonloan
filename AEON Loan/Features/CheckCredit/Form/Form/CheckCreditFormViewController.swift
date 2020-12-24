@@ -17,13 +17,13 @@ extension CheckCreditFormViewController {
 
 class CheckCreditFormViewController: BaseViewController, UITextFieldDelegate, WriteValueBackDelegate {
     private let viewModel = CheckCreditFormViewModel()
+    private let pickerViewModel = CheckCreditPickerViewModel()
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var deneButton: UIButton!
     private let datePicker = UIDatePicker()
     private let workingPeriodPickerView = UIPickerView()
-    let workings = ["1-6M", "6-12M", "12-24M", "24-60M"]
-    let livings = ["1-6M", "6-12M", "12-24M", "24-60M"]
+    var workings: [Variable.Data]?
     
     var item = ""
     var applicant = Applicant()
@@ -36,7 +36,7 @@ class CheckCreditFormViewController: BaseViewController, UITextFieldDelegate, Wr
         self.tableView.separatorInset = .zero
         self.tableView.tableFooterView = UIView(frame: .zero)
         self.workingPeriodPickerView.delegate = self
-        setupDatePicker()
+
         setupKeyboard(.numberPad, for: .incomeTextField)
         setupKeyboard(.numberPad, for: .otherLoanRepaymentTextField)
         deneButton.rounds(radius: 10)
@@ -45,6 +45,31 @@ class CheckCreditFormViewController: BaseViewController, UITextFieldDelegate, Wr
         
         let workingPeriodCell = getCell(for: .workingPeriodTextField)
         workingPeriodCell.textField.inputView = workingPeriodPickerView
+        
+        setupDatePicker()
+        bind()
+        pickerViewModel.fetchVariable(with: .workingPeriod)
+    }
+    
+    private func bind() {
+        pickerViewModel.status.bind { [weak self] status in
+            guard let self = self else { return }
+            self.showIndicator(status == .started)
+        }
+        pickerViewModel.message.bind { [weak self] msg in
+            guard let self = self, let msg = msg else { return }
+            self.showAlert(title: "".localized ,message: msg)
+        }
+        pickerViewModel.error.bind { [weak self] (err) in
+            guard let self = self, let err = err else { return }
+            self.showAlert(title: "".localized, message: err.localized)
+        }
+        
+        pickerViewModel.response.bind { [weak self] data in
+            guard let self = self else { return }
+            self.workings = data
+            self.workingPeriodPickerView.reloadAllComponents()
+        }
         
     }
     
@@ -76,6 +101,7 @@ class CheckCreditFormViewController: BaseViewController, UITextFieldDelegate, Wr
                 updateTextFieldForRow(at: row , with: value)
                 applicant.housingType = value.titleEn ?? value.titleKh ?? ""
                 applicant.housingTypeId = value.id
+            default: break
             }
         }
     }
@@ -185,7 +211,9 @@ extension CheckCreditFormViewController: UITableViewDataSource, UITableViewDeleg
         
         print("dsafafas===>", applicant)
         
-        validate()
+        validate {
+            self.navigates(to: .checkCredit(.location(self.applicant)))
+        }
         
     }
     
@@ -195,27 +223,22 @@ extension CheckCreditFormViewController: UITableViewDataSource, UITableViewDeleg
     }
     
     
-    private func validate() {
+    private func validate(completion: @escaping () -> Void) {
         do {
-            _ = try getCell(for: .nameTextField).textField.validatedText(type: .other(message: TextFieldData.nameTextField.placeholder ))
-            _ = try getCell(for: .nidPassportTextField).textField.validatedText(type: .other(message: TextFieldData.nidPassportTextField.placeholder ))
-            _ = try getCell(for: .dobTextField).textField.validatedText(type: .other(message: TextFieldData.dobTextField.placeholder))
-            _ = try getCell(for: .genderTextField).textField.validatedText(type: .other(message: TextFieldData.genderTextField.placeholder))
-            _ = try getCell(for: .maritalStatusTextField).textField.validatedText(type: .other(message: TextFieldData.maritalStatusTextField.placeholder))
-            _ = try getCell(for: .occupationTextField).textField.validatedText(type: .other(message: TextFieldData.occupationTextField.placeholder))
-            _ = try getCell(for: .incomeTextField).textField.validatedText(type: .other(message: TextFieldData.incomeTextField.placeholder))
-            _ = try getCell(for: .educationTextField).textField.validatedText(type: .other(message: TextFieldData.educationTextField.placeholder))
-            _ = try getCell(for: .workingPeriodTextField).textField.validatedText(type: .other(message: TextFieldData.workingPeriodTextField.placeholder))
-            _ = try getCell(for: .housingTypeTextField).textField.validatedText(type: .other(message: TextFieldData.housingTypeTextField.placeholder))
-            
-            
-//            let username = try usernameTextField.validatedText(type:  .phone)
-//            let password = try passwordTextField.validatedText(type: .other(message: "Required"))
-//            let data = LoginDataTest(username: username, password: password)
-//
-            navigates(to: .checkCredit(.location))
-        } catch (let error) {            
-            showAlt(title: "\((error as! ValidationError).message) is required", message: "", style: .alert)
+            _ = try getCell(for: .nameTextField).textField.validatedText(type: .requiredField(field: TextFieldData.nameTextField.placeholder))
+            _ = try getCell(for: .nidPassportTextField).textField.validatedText(type: .requiredField(field: TextFieldData.nidPassportTextField.placeholder))
+            _ = try getCell(for: .dobTextField).textField.validatedText(type: .requiredField(field: TextFieldData.dobTextField.placeholder))
+            _ = try getCell(for: .genderTextField).textField.validatedText(type: .requiredField(field: TextFieldData.genderTextField.placeholder))
+            _ = try getCell(for: .maritalStatusTextField).textField.validatedText(type: .requiredField(field: TextFieldData.maritalStatusTextField.placeholder))
+            _ = try getCell(for: .occupationTextField).textField.validatedText(type: .requiredField(field: TextFieldData.occupationTextField.placeholder))
+            _ = try getCell(for: .incomeTextField).textField.validatedText(type: .requiredField(field: TextFieldData.incomeTextField.placeholder))
+            _ = try getCell(for: .educationTextField).textField.validatedText(type: .requiredField(field: TextFieldData.educationTextField.placeholder))
+            _ = try getCell(for: .workingPeriodTextField).textField.validatedText(type: .requiredField(field: TextFieldData.workingPeriodTextField.placeholder))
+            _ = try getCell(for: .housingTypeTextField).textField.validatedText(type: .requiredField(field: TextFieldData.housingTypeTextField.placeholder))
+
+            completion()
+        } catch (let error) {
+            showAlt(title: (error as! ValidationError).message, message: "", style: .alert)
         }
     }
     
@@ -321,16 +344,17 @@ extension CheckCreditFormViewController: UIPickerViewDelegate, UIPickerViewDataS
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return workings.count
+        return workings?.count ?? 0
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return workings[row]
+        let title = Preference.language == .km ? workings?[row].titleKh : workings?[row].titleEn
+        return title
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        getCell(for: .workingPeriodTextField).textField.text = workings[row]
-        applicant.workingPeriod = workings[row]
+        getCell(for: .workingPeriodTextField).textField.text = workings?[row].titleEn
+        applicant.workingPeriod = workings?[row].titleEn ?? workings?[row].titleKh ?? ""
     }
 }
 

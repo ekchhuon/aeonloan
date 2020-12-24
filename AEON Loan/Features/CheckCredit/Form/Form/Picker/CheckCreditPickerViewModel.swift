@@ -40,9 +40,11 @@ public class CheckCreditPickerViewModel {
 }
 
 enum VariableType {
-    case occupation, houseType, education, maritalStatus, gender
+    case workingPeriod, livingPeriod, occupation, houseType, education, maritalStatus, gender
     var code: String {
         switch self {
+        case .workingPeriod: return "3"
+        case .livingPeriod: return "4"
         case .occupation: return "5"
         case .houseType: return "6"
         case .education: return "7"
@@ -53,6 +55,8 @@ enum VariableType {
     
     var value: String {
         switch self {
+        case .workingPeriod: return "Working Period".localized
+        case .livingPeriod: return "Living Period".localized
         case .occupation: return "Occupation".localized
         case .houseType: return "Housing Type".localized
         case .education: return "Education".localized

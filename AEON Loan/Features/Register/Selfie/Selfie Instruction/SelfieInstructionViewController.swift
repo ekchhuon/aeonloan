@@ -8,13 +8,15 @@
 import UIKit
 
 extension SelfieInstructionViewController {
-    static func instantiate() -> SelfieInstructionViewController {
-        return SelfieInstructionViewController()
+    static func instantiate(with data: UserAsset) -> SelfieInstructionViewController {
+        let controller = SelfieInstructionViewController()
+        controller.asset = data
+        return controller
     }
 }
 
 class SelfieInstructionViewController: UIViewController {
-
+    private var asset = UserAsset()
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,6 +27,6 @@ class SelfieInstructionViewController: UIViewController {
 
     
     @IBAction func cameraButtonTapped(_ sender: Any) {
-        navigates(to: .register(.selfie))
+        navigates(to: .register(.selfie(asset)))
     }
 }

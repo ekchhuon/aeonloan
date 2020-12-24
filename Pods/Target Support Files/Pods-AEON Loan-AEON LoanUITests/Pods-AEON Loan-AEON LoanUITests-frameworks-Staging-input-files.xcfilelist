@@ -1,8 +1,6 @@
 ${PODS_ROOT}/Target Support Files/Pods-AEON Loan-AEON LoanUITests/Pods-AEON Loan-AEON LoanUITests-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/ActivityIndicatorView/ActivityIndicatorView.framework
 ${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
-${BUILT_PRODUCTS_DIR}/BCryptSwift/BCryptSwift.framework
-${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework
 ${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework
 ${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework
 ${BUILT_PRODUCTS_DIR}/MaterialActivityIndicator/MaterialActivityIndicator.framework
@@ -11,4 +9,3 @@ ${BUILT_PRODUCTS_DIR}/RNCryptor/RNCryptor.framework
 ${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework
 ${BUILT_PRODUCTS_DIR}/SideMenu/SideMenu.framework
 ${BUILT_PRODUCTS_DIR}/SkeletonView/SkeletonView.framework
-${BUILT_PRODUCTS_DIR}/SwiftyRSA/SwiftyRSA.framework

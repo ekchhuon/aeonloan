@@ -30,7 +30,7 @@ extension Scene {
         // case takePhoto
         // case selfie
         case form
-        case location
+        case location(Applicant)
         case result(Result)
         enum Result {
             case accepted
@@ -48,8 +48,8 @@ extension Scene {
     
     enum RegistrationScene {
         case scanID
-        case selfie
-        case form
+        case selfie(_ data: UserAsset)
+        case form(_ data: UserAsset)
     }
     
     enum Loan {

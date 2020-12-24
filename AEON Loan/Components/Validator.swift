@@ -49,11 +49,11 @@ enum VaildatorFactory {
 struct PhoneValidator: ValidatorConvertible {
     func validated(_ value: String, _ field: UITextField) throws -> String {
         guard value != "" else {
-            field.buz()
+            field.TextFieldBuzz()
             throw ValidationError("Phone Number is Required")
         }
         guard value.isPhone else {
-            field.buz()
+            field.TextFieldBuzz()
             throw ValidationError("Invalid phone number")
         }
         return value
@@ -70,7 +70,7 @@ struct OtherFieldValidator: ValidatorConvertible {
     
     func validated(_ value: String, _ field: UITextField) throws -> String {
         guard !value.isEmpty else {
-            field.buz()
+            field.TextFieldBuzz()
             throw ValidationError(message)
         }
         return value
@@ -112,7 +112,11 @@ struct RequiredFieldValidator: ValidatorConvertible {
     
     func validated(_ value: String, _ field: UITextField) throws -> String {
         guard !value.isEmpty else {
-            throw ValidationError("Required field " + fieldName)
+            field.buzz()
+            let kmMsg = "សូមបំពេញ " + fieldName
+            let enMsg = fieldName + " is required"
+            let message = Preference.language == .km ? kmMsg:enMsg
+            throw ValidationError(message)
         }
         return value
     }
@@ -141,21 +145,21 @@ struct UserNameValidator: ValidatorConvertible {
 struct PasswordValidator: ValidatorConvertible {
     func validated(_ value: String, _ field: UITextField) throws -> String {
         guard value != "" else {
-            field.buz()
+            field.TextFieldBuzz()
             throw ValidationError("Password is Required")
         }
         guard value.count >= 6 else {
-            field.buz()
+            field.TextFieldBuzz()
             throw ValidationError("Password must have at least 6 characters")
         }
         
         do {
             if try NSRegularExpression(pattern: "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{6,}$",  options: .caseInsensitive).firstMatch(in: value, options: [], range: NSRange(location: 0, length: value.count)) == nil {
-                field.buz()
+                field.TextFieldBuzz()
                 throw ValidationError("Password must be more than 6 characters, with at least one character and one numeric character")
             }
         } catch {
-            field.buz()
+            field.TextFieldBuzz()
             throw ValidationError("Password must be more than 6 characters, with at least one character and one numeric character")
         }
         return value
@@ -177,7 +181,7 @@ struct EmailValidator: ValidatorConvertible {
 
 
 extension UITextField {
-    func buz(){
+    func TextFieldBuzz(){
         self.becomeFirstResponder()
         self.buzz()
     }

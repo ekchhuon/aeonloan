@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import CryptoSwift
 
 final class AuthController {
   

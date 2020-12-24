@@ -9,7 +9,6 @@ target 'AEON Loan' do
   pod 'SwiftLint'
   pod 'IQKeyboardManagerSwift'
   pod 'SideMenu'
-  pod 'BCryptSwift'
   pod 'PhoneNumberKit', '~> 3.3'
   pod 'RNCryptor', '~> 5.0'
   pod 'MBProgressHUD', '~> 1.2.0'
@@ -17,8 +16,6 @@ target 'AEON Loan' do
   pod 'MaterialActivityIndicator'
   pod 'SkeletonView'
   pod 'SVProgressHUD'
-  pod 'CryptoSwift', '~> 1.3.7'
-  pod 'SwiftyRSA'
   # Pods for AEON Loan
 
   target 'AEON LoanTests' do

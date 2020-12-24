@@ -25,12 +25,14 @@ class ScanViewController: UIViewController {
     @IBOutlet weak var continueButton: UIButton!
     
     
-    var recognizedText = ""
+//    var recognizedText = ""
     var recognizedTexts = [String]()
     var textRecognitionRequest = VNRecognizeTextRequest()
     let validator = DocumentValidator()
     var moved: Bool = false
     //var docsIdentifierViews: [UIView]!
+    var asset = UserAsset()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,17 +49,25 @@ class ScanViewController: UIViewController {
     }
     
     private func validate(_ recognizedTexts: [String]) {
-        
         validator.recognizedTexts = recognizedTexts
-        let result = validator.validate()
+        let document = validator.validate()
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             self.loading(started: false)
-            self.recognitionLabel.text = "\(result.description)"
-            self.checkmarkImageView.isHidden = (result == .unknown)
+            self.recognitionLabel.text = "\(document.description)"
+            self.checkmarkImageView.isHidden = (document == .unknown)
             //disableContinueButton(disabled: result == .unknown)
         }
         
-        // print("result", recognizedTexts.getIdNumber(for: result))
+        print("result", recognizedTexts.getIdNumber(from: document))
+        print("result", recognizedTexts.getHolderName(from: document))
+        
+        guard let documentID = recognizedTexts.getIdNumber(from: document) else {
+            showAlt(title: "Please try again!", message: "Loream ipsum dolor sit amert", style: .alert); return
+        }
+        
+        asset.documentID = documentID
+        asset.holderName = recognizedTexts.getHolderName(from: document)
+        asset.documentType = document
     }
     
     fileprivate func disableContinueButton(disabled: Bool) {
@@ -69,16 +79,17 @@ class ScanViewController: UIViewController {
         textRecognitionRequest = VNRecognizeTextRequest(completionHandler: { (request, error) in
             if let results = request.results, !results.isEmpty {
                 if let requestResults = request.results as? [VNRecognizedTextObservation] {
-                    self.recognizedText = ""
+                    //self.recognizedText = ""
                     self.recognizedTexts = []
                     for observation in requestResults {
                         guard let candidiate = observation.topCandidates(1).first else { return }
-                        self.recognizedText += candidiate.string
-                        self.recognizedText += "\n"
+//                        self.recognizedText += candidiate.string
+//                        self.recognizedText += "\n"
                         self.recognizedTexts.append(candidiate.string)
                     }
                     
                     //self.textView.text = "1.=====\(requestResults) \n\n2. \(self.recognizedText) \n\n3.\(self.recognizedTexts)"
+                    print("Document: ", self.recognizedTexts)
                     self.validate(self.recognizedTexts)
                 }
             } else {
@@ -108,6 +119,7 @@ class ScanViewController: UIViewController {
         loading(started: true)
         
         scannedImage.image = image
+        asset.documentImage = image
         let handler = VNImageRequestHandler(cgImage: image.cgImage!, options: [:])
         do {
             try handler.perform([textRecognitionRequest])
@@ -128,9 +140,8 @@ class ScanViewController: UIViewController {
     }
     
     @IBAction func nextButtonTapped(_ sender: Any) {
-        let controller = SelfieInstructionViewController.instantiate()
+        let controller = SelfieInstructionViewController.instantiate(with: asset)
         navigationController?.pushViewController(controller, animated: true)
-        
     }
     
     @IBAction func scanButtonTapped(_ sender: Any) {
@@ -166,3 +177,19 @@ extension Array where Element == String {
 //    }
 }
 
+
+struct UserAsset {
+    var documentID: String
+    var holderName: String
+    var documentType: DocumentType
+    var documentImage: UIImage?
+    var selfieImage: UIImage?
+    
+    init(documentID: String = "", holderName: String = "", documentType: DocumentType = .unknown , documentImage: UIImage? = nil, selfieImage: UIImage? = nil) {
+        self.documentID = documentID
+        self.holderName = holderName
+        self.documentType = documentType
+        self.documentImage = documentImage
+        self.selfieImage = selfieImage
+    }
+}

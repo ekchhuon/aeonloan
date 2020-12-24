@@ -44,13 +44,39 @@ extension Array where Element == String {
         let filtered = self.filter {
             return  $0.range(of: regex, options: .regularExpression) != nil
         }
+        
+        guard filtered.count > 0 else {
+            debugPrint("ID not found!")
+            return nil
+        }
+        
         return filtered[0]
     }
     
     // extract id
-    func getIdNumber(for document: DocumentType) -> String {
-        return getItem(using: document.regex) ?? ""
+    func getIdNumber(from document: DocumentType) -> String? {
+        return getItem(using: document.regex)
     }
+    
+    func getHolderName(from document: DocumentType) -> String {
+        switch document {
+        case .nId(.khmer):
+            let lowercase = self[2].filter { $0.isLowercase }
+            let hasLowercase = (lowercase.count > 0)            
+            guard !hasLowercase else { return ""}
+            return self[2]
+        default: return ""
+        }
+    }
+    
+    func doStringContainsNumber( _string : String) -> Bool{
+
+            let numberRegEx  = "^[A-Z]$"
+            let testCase = NSPredicate(format:"SELF MATCHES %@", numberRegEx)
+        let containsNumber = testCase.evaluate(with: _string)
+
+            return containsNumber
+            }
     
     func hasId(_ type: DocumentType) -> Bool {
         return (getItem(using: type.regex) != nil)

@@ -12,14 +12,17 @@ protocol WriteValueBackDelegate {
 }
 
 extension LocationViewController {
-    static func instantiate() -> LocationViewController {
-        return LocationViewController()
+    static func instantiate(data: Applicant) -> LocationViewController {
+        let controller = LocationViewController()
+        controller.applicant = data
+        return controller
     }
 }
 
 class LocationViewController: BaseViewController, UITextFieldDelegate, WriteValueBackDelegate {
-    
     private let viewModel = LocationViewModel()
+    private let creditPickerViewModel = CheckCreditPickerViewModel()
+    private var applicant = Applicant()
     
     @IBOutlet weak var provinceTextField: UITextField!
     @IBOutlet weak var districtTextField: UITextField!
@@ -30,7 +33,7 @@ class LocationViewController: BaseViewController, UITextFieldDelegate, WriteValu
     
     @IBOutlet var locationLabels: [UILabel]!
     
-    let livings = ["1-6M", "6-12M", "12-24M", "24-60M"]
+    var livings: [Variable.Data]?
     let pickerView = UIPickerView()
     var province: Location.Data?
     var district: Location.Data?
@@ -50,6 +53,41 @@ class LocationViewController: BaseViewController, UITextFieldDelegate, WriteValu
         submitButton.rounds(radius: 10)
         submitButton.backgroundColor = .brandPurple
         updateLocationLabel()
+        bind()
+    }
+    
+    private func bind() {
+        viewModel.status.bind { [weak self] status in
+            guard let self = self else { return }
+            self.showIndicator(status == .started)
+        }
+        viewModel.message.bind { [weak self] msg in
+            guard let self = self, let msg = msg else { return }
+            self.showAlert(title: "".localized ,message: msg)
+        }
+        viewModel.error.bind { [weak self] (err) in
+            guard let self = self, let err = err else { return }
+            self.showAlert(title: "".localized, message: err.localized)
+        }
+        
+        // living period request handler
+        creditPickerViewModel.status.bind { [weak self] status in
+            guard let self = self else { return }
+            self.showIndicator(status == .started)
+        }
+        creditPickerViewModel.message.bind { [weak self] msg in
+            guard let self = self, let msg = msg else { return }
+            self.showAlert(title: "".localized ,message: msg)
+        }
+        creditPickerViewModel.error.bind { [weak self] (err) in
+            guard let self = self, let err = err else { return }
+            self.showAlert(title: "".localized, message: err.localized)
+        }
+        creditPickerViewModel.response.bind { [weak self] data in
+            guard let self = self else { return }
+            self.livings = data
+            self.pickerView.reloadAllComponents()
+        }
     }
     
     func writeBack(value: Any?) {
@@ -100,7 +138,6 @@ class LocationViewController: BaseViewController, UITextFieldDelegate, WriteValu
     }
     
     @IBAction func districtButtonTapped(_ sender: Any) {
-        print(province?.code)
         guard let code = province?.code else {
             debugPrint("No location code"); return
         }
@@ -121,8 +158,6 @@ class LocationViewController: BaseViewController, UITextFieldDelegate, WriteValu
     }
     
     @IBAction func villageButtonTapped(_ sender: Any) {
-        print("Communecode", commune?.code)
-        
         guard let code = commune?.code else {
             debugPrint("No location code"); return
         }
@@ -132,23 +167,34 @@ class LocationViewController: BaseViewController, UITextFieldDelegate, WriteValu
     }
     
     @IBAction func submitButtonTapped(_ sender: Any) {
-        
-    }
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        textField.addTarget(self, action: #selector(valueChanged), for: .allEvents)
-    }
-    
-    @objc func valueChanged(_ textField: UITextField){
-        
-        switch textField.tag {
-        case TextFieldData.nameTextField.rawValue:
-            print(textField.text)
-
-        default:
-            break
+        validate { [self] applicant in
+            viewModel.submit(data: applicant)
         }
     }
+    
+    private func validate(completion: @escaping (_ data: Applicant) -> Void) {
+        do {
+            _ = try provinceTextField.validatedText(type: .requiredField(field: LocationType.province.value))
+            _ = try districtTextField.validatedText(type: .requiredField(field: LocationType.district.value))
+            _ = try communeTextField.validatedText(type: .requiredField(field: LocationType.commune.value))
+            _ = try villageTextField.validatedText(type: .requiredField(field: LocationType.village.value))
+            let livingPeriod = try livingPeriodTextField.validatedText(type: .other(message: "Living Period".localized))
+            
+            applicant.provinceCode = province?.code ?? ""
+            applicant.districtCode = district?.code ?? ""
+            applicant.communeCode = commune?.code ?? ""
+            applicant.villageCode = village?.code ?? ""
+            applicant.livingPeriod = livingPeriod
+            
+            completion(applicant)
+            //navigates(to: .checkCredit(.location(applicant)))
+        } catch (let error) {
+            let error = (error as! ValidationError).message
+            showAlt(title: error , message: "", style: .alert)
+        }
+    }
+    
+    
 }
 
 enum LocationType {
@@ -185,16 +231,17 @@ extension LocationViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return livings.count
+        return livings?.count ?? 0
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return livings[row]
+        let title = Preference.language == .km ? livings?[row].titleKh : livings?[row].titleEn
+        return title
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        livingPeriodTextField.text = livings[row]
-        selectedLivingPeriod = livings[row]
+        livingPeriodTextField.text = livings?[row].titleKh ?? livings?[row].titleEn ?? ""
+        selectedLivingPeriod = Preference.language == .km ? livings?[row].titleKh : livings?[row].titleEn
     }
 
 }

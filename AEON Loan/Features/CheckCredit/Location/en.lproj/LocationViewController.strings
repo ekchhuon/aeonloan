@@ -12,7 +12,7 @@
 "c73-Ig-dRT.text" = "Please choose your current location";
 
 /* Class = "UIButton"; normalTitle = "Login"; ObjectID = "czj-Wx-toq"; */
-"czj-Wx-toq.normalTitle" = "Login";
+"czj-Wx-toq.normalTitle" = "Submit";
 
 /* Class = "UILabel"; text = "Province"; ObjectID = "rJ3-hU-7j3"; */
 "rJ3-hU-7j3.text" = "Province";

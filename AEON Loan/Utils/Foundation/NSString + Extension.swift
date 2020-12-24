@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CryptoKit
 
 extension String {
     var localized: String {
@@ -29,6 +30,16 @@ extension String {
         let calendar: NSCalendar! = NSCalendar(calendarIdentifier: .gregorian)
         let components = calendar.components(.year, from: birthday, to: Date(), options: [])
         return components.year!
+    }
+    
+    var asSha256: String {
+        let hash = SHA256.hash(data: self.asData)
+        return hash.map { String(format: "%02hhx", $0) }.joined()
+    }
+    
+    static func random(length: Int = 5) -> String {
+        let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        return String((0..<length).map{ _ in letters.randomElement()! })
     }
 }
 
