@@ -20,6 +20,7 @@ class RegisterViewController: BaseViewController {
     private let loginViewModel = LoginViewModel()
     private var asset = UserAsset()
     
+    @IBOutlet weak var fullNameTextField: UITextField!
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var phoneTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
@@ -28,7 +29,9 @@ class RegisterViewController: BaseViewController {
     @IBOutlet weak var registerButton: UIButton!
     @IBOutlet var eyeballButtons: [UIButton]!
     
+    @IBOutlet weak var usernameCheckingLabel: UILabel!
     var secured: Bool = true
+    var RSARequested = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +39,13 @@ class RegisterViewController: BaseViewController {
         bind()
         
         print("User Asset", asset)
-        usernameTextField.text = asset.holderName
+        fullNameTextField.text = asset.holderName
+        usernameCheckingLabel.text = ""
+        usernameTextField.delegate = self
+        
+        self.loginViewModel.requestAuth {
+            print("sha256 Value", AuthController.sha256)
+        }
     }
     
     private func bind() {
@@ -68,6 +77,11 @@ class RegisterViewController: BaseViewController {
         
     }
     
+    fileprivate func checkUsername(available: Bool) {
+        usernameCheckingLabel.text = available ? "✓ available".localized : "already in used".localized
+        usernameCheckingLabel.textColor = available ? .systemGreen : .red
+    }
+    
     @IBAction func registerButtonTapped(_ sender: Any) {
         //        let documents = [UploadAPIRouter.profile: "banner.aeon.installment", UploadAPIRouter.profile: "aeon.rohas"]
         //
@@ -82,26 +96,26 @@ class RegisterViewController: BaseViewController {
         }
         
         validate { user in
-            self.loginViewModel.requestAuth {
-                print("1...requestAuth")
-                self.viewModel.register(user: user) { user in
-                    print("2...register")
-
-                    self.viewModel.upload(.profile, image: selfieImage) { progress in
-                        
-                        print("uploading profile...", progress)
-                        //                    let indicator = self.showIndicator(true)
-                        //                    indicator.mode = .annularDeterminate
-                        //                    indicator.progress = progress
-                        
-                    } completion: { _ in
-                        print("3...upload profile")
-                        self.viewModel.upload(.document, image: scannedImage) { progress in
-                            print("uploading docs...", progress)
-                        } completion: { _ in
-                            print("4...upload docs.")
-                            self.navigates(to: .OTP(with: user))
-                        }
+            print("user...",user)
+            
+            Preference.user.nidPassport = self.asset.documentID
+            Preference.user.fullname = user.fullname
+            // upload profile
+            self.viewModel.upload(.profile, image: selfieImage) { progress in
+                print("uploading profile...", progress)
+                //                    let indicator = self.showIndicator(true)
+                //                    indicator.mode = .annularDeterminate
+                //                    indicator.progress = progress
+                
+            } completion: { _ in
+                // upload docs
+                self.viewModel.upload(.document, image: scannedImage) { progress in
+                    print("uploading docs...", progress)
+                } completion: { _ in
+                    // register
+                    self.viewModel.register(user: user) { user in
+                        // next screen
+                        self.navigates(to: .OTP(with: user))
                     }
                 }
             }
@@ -223,13 +237,13 @@ class RegisterViewController: BaseViewController {
     }
     
     func setupTextField() {
-        let textFields = [usernameTextField, phoneTextField, emailTextField, passwordTextField, confirmPasswordTextField]
-        let placeholders = ["Username", "Phone Number", "Email Adress", "Password", "Confirm Password"]
+        let textFields = [fullNameTextField, usernameTextField, phoneTextField, emailTextField, passwordTextField, confirmPasswordTextField]
+        //        let placeholders = ["Username", "Phone Number", "Email Adress", "Password", "Confirm Password"]
         let eyeball = UIImage(systemName: "eye.slash")?.withTintColor(.brandGray, renderingMode: .alwaysOriginal)
         
-        for (index, field) in textFields.enumerated() {
-            field?.placeholder = NSLocalizedString(placeholders[index], comment: "")
-        }
+        //        for (index, field) in textFields.enumerated() {
+        //            field?.placeholder = NSLocalizedString(placeholders[index], comment: "")
+        //        }
         
         passwordTextField.isSecureTextEntry = true
         confirmPasswordTextField.isSecureTextEntry = true
@@ -239,18 +253,22 @@ class RegisterViewController: BaseViewController {
     
     func validate(completion: @escaping (_ data: User) -> Void) {
         do {
-            let username = try usernameTextField.validatedText(type: .username)
+            let fullname = try fullNameTextField.validatedText(type: .username)
+            let username = try usernameTextField.validatedText(type: .requiredField(field: "Username"))
             let phone = try phoneTextField.validatedText(type: .phone)
             let email = try emailTextField.validatedText(type: .email)
-            let password = try passwordTextField.validatedText(type: .password)
-            let confirm = try confirmPasswordTextField.validatedText(type: .password)
+            let password = try passwordTextField.validatedText(type: .requiredField(field: "Password"))
+            let confirm = try confirmPasswordTextField.validatedText(type: .requiredField(field: "Password"))
             
             guard password == confirm else {
                 showAlert(message: "Password Mismatched")
                 return
             }
             
-            let user = User(username: username, phoneNumber: phone, email: email, password: password, idPhoto: "", nidPassport: "")
+            
+            
+            
+            let user = User(fullname: fullname, username: username, phoneNumber: phone, email: email, password: password, idPhoto: "", nidPassport: "")
             completion(user)
         } catch (let error) {
             showAlert(message: (error as! ValidationError).message)
@@ -259,6 +277,25 @@ class RegisterViewController: BaseViewController {
     
     func fetch(with param: Param.Register) {
         
+    }
+}
+
+extension RegisterViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.addTarget(self, action: #selector(valueChanged), for: .touchUpInside)
+    }
+    
+    // Get value from textfield
+    @objc func valueChanged(_ textField: UITextField){
+        print("username", textField.text)
+        guard textField.text != "" else {
+            usernameCheckingLabel.text = ""; return
+        }
+        
+        self.viewModel.checkUsername(username: textField.text ?? "") { (available) in
+            print("available", available)
+            self.checkUsername(available: available)
+        }
     }
 }
 

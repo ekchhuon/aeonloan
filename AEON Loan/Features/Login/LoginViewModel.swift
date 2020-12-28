@@ -70,7 +70,6 @@ public class LoginViewModel {
             let user = Param.LoginData(username: username, password: password, grant_type: "password", deviceId: "12345")
             let param = Param.Request(header: self.header, body: Param.Body(encode: user.asString.encrypt()))
             
-            
             print("USER:", user)
             print("PARAM:", param)
             print("PARAM.toJSON:", param.toJSON())
@@ -89,6 +88,16 @@ public class LoginViewModel {
                         Preference.accessToken = data.accessToken
                         Preference.refreshToken = data.refreshToken
                         
+                        // save user to keychain
+                        do {
+                            try AuthController.signIn(User(username: username), password: password)
+                        } catch {
+                          print("Error signing in: \(error.localizedDescription)")
+                        }
+                        
+                        guard AuthController.isSignedIn else {
+                            debugPrint("issue saving user to keychain"); return
+                        }
                         completion(data)
                     }
                     
@@ -112,7 +121,12 @@ public class LoginViewModel {
             }
             
             self.submitAES(encryption: encrypted) {
-                Preference.sha256 = sha256 // save
+                do {
+                    try AuthController.saveSHA(sha256)
+                } catch {
+                  print("Error signing in: \(error.localizedDescription)")
+                }
+                
                 completion()
             }
         }

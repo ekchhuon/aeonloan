@@ -95,4 +95,8 @@ struct Param {
     struct LoginData: Codable {
         let username, password, grant_type, deviceId: String
     }
+    
+    struct Username: Codable {
+        let userName: String
+    }
 }

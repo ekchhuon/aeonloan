@@ -20,26 +20,17 @@ class OTPViewController: BaseViewController, UITextFieldDelegate {
     private let loginViewModel = LoginViewModel()
     private var user = User()
     
-    @IBOutlet var textFields: [UITextField]!
-    
     @IBOutlet weak var otpTextField: UITextField!
-    
+    @IBOutlet weak var verifyButton: UIButton!
+    @IBOutlet weak var phoneNumberLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
+        phoneNumberLabel.text = "Enter OTP code sent to your number \n \(user.phoneNumber)"
         otpTextField.textContentType = .oneTimeCode
-        textFields.forEach {
-            $0.setBorder(5, border: .white, width: 1)
-            $0.delegate = self
-            $0.textContentType = .oneTimeCode
-            $0.keyboardType = .numberPad
-            $0.addTarget(self, action: #selector(self.textFieldDidChange(textField:)), for: .editingChanged)
-        }
-        bind()
-//        textFields[0].becomeFirstResponder()
-        
+        otpTextField.delegate = self
+        verifyButton.rounds(radius: 10)
         otpTextField.becomeFirstResponder()
-        
-        print("OTP USer=====>", user)
+        bind()
     }
     
     private func bind() {
@@ -49,11 +40,11 @@ class OTPViewController: BaseViewController, UITextFieldDelegate {
         }
         viewModel.message.bind { [weak self] msg in
             guard let self = self, let msg = msg else { return }
-            self.showAlert(title: "Login".localized ,message: msg)
+            self.showAlert(title: "OTP Verification".localized ,message: msg)
         }
         viewModel.error.bind { [weak self] (err) in
             guard let self = self, let err = err else { return }
-            self.showAlert(title: "Login".localized, message: err.localized)
+            self.showAlert(title: "OTP Verification".localized, message: err.localized)
         }
         
         loginViewModel.status.bind { [weak self] status in
@@ -74,66 +65,29 @@ class OTPViewController: BaseViewController, UITextFieldDelegate {
         showAlert(message: "Valid \(value)")
     }
     
-    @objc func textFieldDidChange(textField: UITextField) {
-        if otpTextField.text?.count == 6 {
-            
-
+    func validate(completion: @escaping (_ valid: String) -> Void) {
+        do {
+            let otpCode = try otpTextField.validatedText(type: .otp)
+            completion(otpCode)
+        } catch (let error) {
+            print((error as! ValidationError).message)
+            showAlert(message: "\((error as! ValidationError).message)")
         }
     }
     
-    @IBAction func submitButton(_ sender: Any) {
-        if otpTextField.text?.count == 6 {
-            viewModel.verifyOTP(otp: otpTextField.text ?? "") { [weak self] _ in
+    @IBAction func resendButtonTapped(_ sender: Any) {
+        viewModel.requestOTP()
+    }
+    
+    
+    @IBAction func verifyButtonTapped(_ sender: Any) {
+        validate { otp in
+            self.viewModel.verifyOTP(otp: otp) { [weak self] _ in
                 guard let self = self else {return}
-                self.loginViewModel.login(username: self.user.username, password: self.user.password) { _ in
+                self.loginViewModel.login(username: self.user.fullname, password: self.user.password) { _ in
                     self.navigates(to: .home(.push(subtype: .fromLeft)))
                 }
             }
         }
     }
-    
-    
-    /*
-    @objc func textFieldDidChange(textField: UITextField){
-        let text = textField.text
-        let first = textFields[0], second = textFields[1], third = textFields[2], fourth = textFields[3]
-
-        if  text?.count == 1 {
-            switch textField{
-            case first:
-                second.becomeFirstResponder()
-            case second:
-                third.becomeFirstResponder()
-            case third:
-                fourth.becomeFirstResponder()
-            case fourth:
-                fourth.resignFirstResponder()
-            default:
-                break
-            }
-        }
-        
-        if text?.count == 0 {
-            switch textField{
-            case first:
-                first.becomeFirstResponder()
-            case second:
-                first.becomeFirstResponder()
-            case third:
-                second.becomeFirstResponder()
-            case fourth:
-                third.becomeFirstResponder()
-            default:
-                break
-            }
-        } else{}
-        
-        let values = [first.text!, second.text!, third.text!, fourth.text! ].filter { $0 != "" }
-        if values.count == 4 {
-            let value = values.joined(separator: "")
-            validOTP(value: value)
-        }
-        
-    }
-    */
 }

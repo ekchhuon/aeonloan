@@ -82,6 +82,10 @@ class APIClient {
         uploadMultipart(route: route, image: image, progressCompletion: progress, completion: completion)
     }
     
+    static func checkUsername(param: Parameters, completion:@escaping(Result<Response, AFError>) -> Void ) {
+        fetch(route: APIRouter.checkUsername(param), completion: completion)
+    }
+    
     static func logout(param: Parameters, completion:@escaping(Result<Response, AFError>) -> Void ) {
         fetch(route: APIRouter.logout(param), completion: completion)
     }
@@ -168,6 +172,30 @@ extension APIClient {
     
     static func checkCredit(param: Parameters, completion:@escaping(Result<Login, AFError>) -> Void ) {
         fetch(route: APIRouter.checkCredit(param), completion: completion)
+    }
+    //...
+    static func checkCreditStatus(param: Parameters, completion:@escaping(Result<Login, AFError>) -> Void ) {
+        fetch(route: APIRouter.checkCreditStatus(param), completion: completion)
+    }
+    
+    static func slideShow(param: Parameters, completion:@escaping(Result<Login, AFError>) -> Void ) {
+        fetch(route: APIRouter.slideShow(param), completion: completion)
+    }
+    
+    static func paymendSchedule(param: Parameters, completion:@escaping(Result<Login, AFError>) -> Void ) {
+        fetch(route: APIRouter.paymentSchedule(param), completion: completion)
+    }
+    
+    static func paymentScheduleDetail(param: Parameters, completion:@escaping(Result<Login, AFError>) -> Void ) {
+        fetch(route: APIRouter.paymentScheduleDetail(param), completion: completion)
+    }
+    
+    static func applyLoan(param: Parameters, completion:@escaping(Result<Login, AFError>) -> Void ) {
+        fetch(route: APIRouter.loan(param), completion: completion)
+    }
+    
+    static func getNotification(param: Parameters, completion:@escaping(Result<Login, AFError>) -> Void ) {
+        fetch(route: APIRouter.loan(param), completion: completion)
     }
 }
 

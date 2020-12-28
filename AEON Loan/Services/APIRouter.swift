@@ -28,6 +28,7 @@ enum APIRouter: URLRequestConvertible {
     case verifyOTP(param: Parameters)
     case login(Parameters)
     case logout(Parameters)
+    case checkUsername(Parameters)
     case upload(UIImage)
     //case login(email:String, password:String)
     case register(param: Param.Register)
@@ -47,15 +48,24 @@ enum APIRouter: URLRequestConvertible {
     case maritialStatus(Parameters)
     case gender(Parameters)
     case checkCredit(Parameters)
+    case checkCreditStatus(Parameters)
+    case slideShow(Parameters)
+    case paymentSchedule(Parameters)
+    case paymentScheduleDetail(Parameters)
+    case loan(Parameters)
+    case notification(Parameters)
     
     // MARK: - HTTPMethod
     private var method: HTTPMethod {
+        /*
         switch self {
-        case .register, .rsa, .aes, .register2, .getOTP, .verifyOTP, .login, .logout, .upload, .location, .occupation, .housingType, .education, .maritialStatus, .gender, .checkCredit, .workingPeriod, .livingPeriod:
+        case .register, .rsa, .aes, .register2, .getOTP, .verifyOTP, .login, .logout, .checkUsername,.upload, .location, .occupation, .housingType, .education, .maritialStatus, .gender, .checkCredit, .workingPeriod, .livingPeriod, .checkCreditStatus, .slideShow, .paymentSchedule, .paymentScheduleDetail, .loan, .notification:
             return .post
         case .articles, .article:
             return .get
         }
+        */
+        return .post
     }
     
     // MARK: - Path
@@ -68,26 +78,33 @@ enum APIRouter: URLRequestConvertible {
         case .verifyOTP: return "public/v1/otp/verification"
         case .login: return "public/v1/signin"
         case .logout: return "private/v1/signout"
+        case .checkUsername: return "public/v1/user/available"
         case .upload: return "public/v1/upload/profile"
-        //        case .login:
-        //            return "login"
         case .register: return "public/v1/users"
-        //        case .testLogin:
-        //            return "login"
         case .articles: return "articles/all.json"
         case .article(let id): return "article/\(id)"
-//        case .province: return "public/v1/province"
-//        case .district: return "public/v1/commune"
-//        case .commune: return "public/v1/commune"
-//        case .village: return "public/v1/commune"
         case .location(.province): return "public/v1/province"
         case .location(.district): return "public/v1/district"
         case .location(.commune): return "public/v1/commune"
         case .location(.village): return "public/v1/village"
         case .education, .housingType, .occupation, .maritialStatus, .gender, .workingPeriod, .livingPeriod: return "public/v1/variable"
         case .checkCredit: return "private/v1/check_credit"
+        case .checkCreditStatus: return "private/v1/check_credit/status"
+        case .slideShow: return "public/v1/slide_image"
+        case .paymentSchedule: return "private/v1/payment_schedule/list"
+        case .paymentScheduleDetail: return "/private/v1/payment_schedule/101-00283722-4"
+        case .loan: return ""
+        case .notification: return ""
         }
     }
+    
+//    var version: String {
+//        return "v1"
+//    }
+//    
+//    var access: String {
+//        return "private"
+//    }
     
     
     // MARK: - Parameters
@@ -100,22 +117,22 @@ enum APIRouter: URLRequestConvertible {
         case let .verifyOTP(param): return .body(param)
         case let .login(param): return .url(param)
         case let .logout(param): return .bearer(param)
-        case let .upload(image):
-            return .multipart(image)
-        //        case .login(let email, let password):
-        //            return [Constants.APIParameterKey.email: email, Constants.APIParameterKey.password: password]
-        case .register(let param):
-            return .body(["username": param.username, "phoneNumber":"012345678", "email": param.email, "password": param.password])
-        //        case .testLogin(let email, let password):
-        //            return [Constants.APIParameterKey.email: email, Constants.APIParameterKey.password: password]
-        case .articles, .article:
-            return nil
+        case let .checkUsername(param): return .body(param)
+        case let .upload(image): return .multipart(image)
+        case .register(let param): return nil
+        case .articles, .article: return nil
         case let .location(.province(param)): return .body(param)
         case let .location(.district(param)): return .body(param)
         case let .location(.commune(param)): return .body(param)
         case let .location(.village(param)): return .body(param)
         case let .occupation(param), let .gender(param), let .maritialStatus(param), let .education(param), let .housingType(param), let .workingPeriod(param), let .livingPeriod(param): return .body(param)
         case let .checkCredit(param): return .body(param)
+        case let .checkCreditStatus(param): return .body(param)
+        case let .slideShow(param): return .body(param)
+        case let .paymentSchedule(param): return .body(param)
+        case let .paymentScheduleDetail(param): return .body(param)
+        case let .loan(param): return .body(param)
+        case let .notification(param): return .body(param)
         }
     }
     

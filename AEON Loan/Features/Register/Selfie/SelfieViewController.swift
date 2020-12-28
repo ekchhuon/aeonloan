@@ -39,13 +39,10 @@ class SelfieViewController: BaseViewController, AVCapturePhotoCaptureDelegate {
     var capturedImageView: UIImageView = {
         let imgView = UIImageView()
         imgView.translatesAutoresizingMaskIntoConstraints = false
-        imgView.image = UIImage(systemName: "checkmark")?.withTintColor(.white, renderingMode:.alwaysOriginal)
         imgView.contentMode = .scaleAspectFit
-        
         return imgView
     }()
     
-    //
     lazy var faceDetectionRequest: VNDetectFaceRectanglesRequest = {
         let faceLandmarksRequest = VNDetectFaceRectanglesRequest(completionHandler: { [weak self] request, error in
             self?.handleDetection(request: request, errror: error)
@@ -59,11 +56,18 @@ class SelfieViewController: BaseViewController, AVCapturePhotoCaptureDelegate {
         checkmarkImageVIew.isHidden = true
         subtitleLabel.isHidden = true
         updateActionButton(selfie: false)
+        
+        print("Data", asset)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         setupCameraSession(with: .front)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.titleLabel.text = "Face Selfie".localized
+        checkmarkImageVIew.isHidden = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -78,9 +82,8 @@ class SelfieViewController: BaseViewController, AVCapturePhotoCaptureDelegate {
             self.checkmarkImageVIew.isHidden = !isValid
             self.subtitleLabel.isHidden = isValid
             self.updateActionButton(selfie: isValid)
-            //            self.updateCaptureButton(selfie: isValid)
             if isValid {
-                self.titleLabel.text = "Awesome"
+                self.titleLabel.text = "Awesome".localized
                 self.checkmarkImageVIew.isHidden = false
             } else {
                 self.titleLabel.text = "Please try again!"
@@ -111,7 +114,6 @@ class SelfieViewController: BaseViewController, AVCapturePhotoCaptureDelegate {
         continueButton.alpha = isValid ? 1:0.5
     }
     
-    
     @IBAction func captureButtonTapped(_ sender: Any) {
         guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
             print("Camera is not avaiable")
@@ -121,7 +123,7 @@ class SelfieViewController: BaseViewController, AVCapturePhotoCaptureDelegate {
         isCaptured = !isCaptured
     }
     
-    @IBAction func retakeLibrary(_ sender: Any) {
+    @IBAction func retakeButtonTapped(_ sender: Any) {
         capturedImageView.removeFromSuperview()
         updateActionButton(selfie: false)
         isCaptured = !isCaptured
@@ -251,6 +253,8 @@ extension UIImage {
         case .right : return .right // 0th row on right,  0th column at top    - 90 deg CW
         case .rightMirrored : return .rightMirrored // 0th row on right,  0th column on bottom
         case .left : return .left // 0th row on left,   0th column at bottom - 90 deg CCW
+        @unknown default:
+            fatalError()
         }
     }
 }

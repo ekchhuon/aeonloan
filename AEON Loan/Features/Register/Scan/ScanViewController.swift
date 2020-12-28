@@ -16,31 +16,34 @@ extension ScanViewController {
 }
 
 class ScanViewController: UIViewController {
+    @IBOutlet weak var failDescriptionLabel: UILabel!
+    @IBOutlet weak var photoLibraryButton: UIButton!
     @IBOutlet weak var scannedImage: UIImageView!
     @IBOutlet weak var recognitionLabel: UILabel!
     @IBOutlet weak var checkmarkImageView: UIImageView!
-    
     @IBOutlet weak var indicatorView: UIActivityIndicatorView!
     @IBOutlet var instructionView: [UIView]!
     @IBOutlet weak var continueButton: UIButton!
     
-    
-//    var recognizedText = ""
     var recognizedTexts = [String]()
     var textRecognitionRequest = VNRecognizeTextRequest()
     let validator = DocumentValidator()
     var moved: Bool = false
-    //var docsIdentifierViews: [UIView]!
     var asset = UserAsset()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         recognizeRequest()
         checkmarkImageView.isHidden = true
         [recognitionLabel, checkmarkImageView].forEach { $0.isHidden = true }
-        disableContinueButton(disabled: false)
         loading(started: false)
+        continueButton.isHidden = true // unused
+        photoLibraryButton.isHidden = true // unused
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        failDescriptionLabel.isHidden = true
+        failDescriptionLabel.text = "Please align your camera. Get out direct light or reflection. Make sure your ID/Passport is valid. No scratches"
     }
     
     fileprivate func loading(started: Bool) {
@@ -51,29 +54,45 @@ class ScanViewController: UIViewController {
     private func validate(_ recognizedTexts: [String]) {
         validator.recognizedTexts = recognizedTexts
         let document = validator.validate()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [self] in
             self.loading(started: false)
-            self.recognitionLabel.text = "\(document.description)"
+            guard document != .unknown else {
+                self.recognitionLabel.text = "Failed!"; return
+                    self.failDescriptionLabel.isHidden = false
+            }
+            
+            guard let documentID = recognizedTexts.getIdNumber(from: document) else {
+                self.recognitionLabel.text = "Failed!"
+                self.failDescriptionLabel.isHidden = false
+                
+                let alert = showAlt(title: "Please try again!", message: "Lorem ipsum dolor sit amet", actionTitle: "Cancel", style: .alert)
+                
+                let rescan = UIAlertAction(title: "Rescan", style: .default) {_ in
+                    openScanner()
+                }
+                alert.addAction(rescan)
+                return
+            }
+            
+            
+            self.recognitionLabel.text = document.description
             self.checkmarkImageView.isHidden = (document == .unknown)
-            //disableContinueButton(disabled: result == .unknown)
+            
+            self.asset.documentID = documentID
+            self.asset.holderName = recognizedTexts.getHolderName(from: document)
+            self.asset.documentType = document
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                let controller = SelfieInstructionViewController.instantiate(with: asset)
+                navigationController?.pushViewController(controller, animated: true)
+            }
         }
-        
-        print("result", recognizedTexts.getIdNumber(from: document))
-        print("result", recognizedTexts.getHolderName(from: document))
-        
-        guard let documentID = recognizedTexts.getIdNumber(from: document) else {
-            showAlt(title: "Please try again!", message: "Loream ipsum dolor sit amert", style: .alert); return
-        }
-        
-        asset.documentID = documentID
-        asset.holderName = recognizedTexts.getHolderName(from: document)
-        asset.documentType = document
     }
     
-    fileprivate func disableContinueButton(disabled: Bool) {
-            continueButton.isUserInteractionEnabled = !disabled
-            continueButton.alpha = disabled ? 0.5 : 1
-    }
+//    fileprivate func disableContinueButton(_ disabled: Bool) {
+//        continueButton.isUserInteractionEnabled = !disabled
+//        continueButton.alpha = disabled ? 0.5 : 1
+//    }
     
     func recognizeRequest() {
         textRecognitionRequest = VNRecognizeTextRequest(completionHandler: { (request, error) in
@@ -83,8 +102,8 @@ class ScanViewController: UIViewController {
                     self.recognizedTexts = []
                     for observation in requestResults {
                         guard let candidiate = observation.topCandidates(1).first else { return }
-//                        self.recognizedText += candidiate.string
-//                        self.recognizedText += "\n"
+                        //                        self.recognizedText += candidiate.string
+                        //                        self.recognizedText += "\n"
                         self.recognizedTexts.append(candidiate.string)
                     }
                     
@@ -170,11 +189,11 @@ extension ScanViewController: VNDocumentCameraViewControllerDelegate {
 }
 
 extension Array where Element == String {
-//    func getIDInfo() -> [String] {
-//        let id = self.findDigit(of: 9)[0]
-//        let name = self[2]
-//        return [id, name]
-//    }
+    //    func getIDInfo() -> [String] {
+    //        let id = self.findDigit(of: 9)[0]
+    //        let name = self[2]
+    //        return [id, name]
+    //    }
 }
 
 

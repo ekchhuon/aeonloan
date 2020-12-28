@@ -29,6 +29,7 @@ enum ValidatorType {
     case projectIdentifier
     case requiredField(field: String)
     case age
+    case otp
 }
 
 enum VaildatorFactory {
@@ -42,6 +43,7 @@ enum VaildatorFactory {
         case .projectIdentifier: return ProjectIdentifierValidator()
         case .requiredField(let fieldName): return RequiredFieldValidator(fieldName)
         case .age: return AgeValidator()
+        case .otp: return OTPValidator()
         }
     }
 }
@@ -55,6 +57,20 @@ struct PhoneValidator: ValidatorConvertible {
         guard value.isPhone else {
             field.TextFieldBuzz()
             throw ValidationError("Invalid phone number")
+        }
+        return value
+    }
+}
+
+struct OTPValidator: ValidatorConvertible {
+    func validated(_ value: String, _ field: UITextField) throws -> String {
+        guard value != "" else {
+            field.TextFieldBuzz()
+            throw ValidationError("OTP Verification is Required".localized)
+        }
+        guard value.count == 6 && value.isDigit else {
+            field.TextFieldBuzz()
+            throw ValidationError("Invalid OTP Code")
         }
         return value
     }
@@ -132,7 +148,7 @@ struct UserNameValidator: ValidatorConvertible {
         }
         
         do {
-            if try NSRegularExpression(pattern: "^[a-z]{1,18}$",  options: .caseInsensitive).firstMatch(in: value, options: [], range: NSRange(location: 0, length: value.count)) == nil {
+            if try NSRegularExpression(pattern: "^[a-z  ]{1,18}$",  options: .caseInsensitive).firstMatch(in: value, options: [], range: NSRange(location: 0, length: value.count)) == nil {
                 throw ValidationError("Invalid username, username should not contain whitespaces, numbers or special characters")
             }
         } catch {
@@ -154,7 +170,10 @@ struct PasswordValidator: ValidatorConvertible {
         }
         
         do {
-            if try NSRegularExpression(pattern: "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{6,}$",  options: .caseInsensitive).firstMatch(in: value, options: [], range: NSRange(location: 0, length: value.count)) == nil {
+//            let pwdRegex = "^(.*){6,18}$"
+            let pwdRegex = "!\"#$%&'()*+,-/:;<=>?[\\]^_`{|}~"
+//            let pweRegex2 = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{6,}$"
+            if try NSRegularExpression(pattern: pwdRegex,  options: .caseInsensitive).firstMatch(in: value, options: [], range: NSRange(location: 0, length: value.count)) == nil {
                 field.TextFieldBuzz()
                 throw ValidationError("Password must be more than 6 characters, with at least one character and one numeric character")
             }

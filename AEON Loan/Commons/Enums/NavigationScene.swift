@@ -29,8 +29,8 @@ extension Scene {
     enum CheckCreditScene {
         // case takePhoto
         // case selfie
-        case form
-        case location(Applicant)
+        case form(ApplyLoan?)
+        case location(Applicant, ApplyLoan?)
         case result(Result)
         enum Result {
             case accepted

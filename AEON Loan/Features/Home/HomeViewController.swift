@@ -44,10 +44,26 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
         
         setupView()
         bindSliderData()
+        bind()
         
         //self.showIndicator(true, style: .whiteBackground)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
             //self.showIndicator(false)
+        }
+    }
+    
+    private func bind() {
+        viewModel.status.bind { [weak self] status in
+            guard let self = self else { return }
+            self.showIndicator(status == .started)
+        }
+        viewModel.message.bind { [weak self] msg in
+            guard let self = self, let msg = msg else { return }
+            self.showAlert(title: "Login".localized ,message: msg)
+        }
+        viewModel.error.bind { [weak self] (err) in
+            guard let self = self, let err = err else { return }
+            self.showAlert(title: "Login".localized, message: err.localized)
         }
     }
     
@@ -143,7 +159,7 @@ extension HomeViewController: UICollectionViewDelegate {
                 navigationController?.pushViewController(controller, animated: true)
                 */
             
-                let controller = CheckCreditFormViewController.instantiate(item: "")
+                let controller = CheckCreditFormViewController.instantiate(item: "", loan: nil)
                 navigationController?.pushViewController(controller, animated: true)
             
             case 1:

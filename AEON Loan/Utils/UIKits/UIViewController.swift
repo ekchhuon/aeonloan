@@ -25,10 +25,11 @@ extension UIViewController {
 //        case .checkCredit(.selfie):
 //            let controller = SelfieViewController.instantiate()
 //            navigationController?.pushViewController(controller, animated: true)
-        case .checkCredit(.form): break
-
-        case let .checkCredit(.location(aplicant)):
-            let controller = LocationViewController.instantiate(data: aplicant)
+        case let .checkCredit(.form(loan)):
+            let controller = CheckCreditFormViewController.instantiate(item: "", loan: loan)
+            navigationController?.pushViewController(controller, animated: true)
+        case let .checkCredit(.location(aplicant, loan)):
+            let controller = LocationViewController.instantiate(data: aplicant, loan: loan)
             navigationController?.pushViewController(controller, animated: true)
         case .checkCredit(.result(.accepted)):
             let controller = CreditAcceptedViewController.instantiate()
@@ -131,7 +132,7 @@ extension UIViewController {
     }
     
     @discardableResult
-    func showAlt(title: String, message: String, dismiss dismissTitle: String = "OK".localized , style: UIAlertController.Style) -> UIAlertController {
+    func showAlt(title: String, message: String, actionTitle: String = "OK".localized, style: UIAlertController.Style, actionStyle: UIAlertAction.Style = .default, action: (() -> Void)?  = nil) -> UIAlertController {
         let alert = UIAlertController(title: title, message: message, preferredStyle: style)
         
 //        let paragraphStyle = NSMutableParagraphStyle()
@@ -146,9 +147,13 @@ extension UIViewController {
 //        )
 //        alert.setValue(messageText, forKey: "attributedMessage")
         
-        let dismiss = UIAlertAction(title: dismissTitle.localized, style: .cancel, handler: nil)
+//        let dismiss = UIAlertAction(title: dismissTitle.localized, style: .cancel, handler: nil)
         
-        alert.addAction(dismiss)
+        let defaultAction = UIAlertAction(title: actionTitle.localized, style: actionStyle) { _ in
+            action?()
+        }
+        
+        alert.addAction(defaultAction)
         self.present(alert, animated: true, completion: nil)
         return alert
     }

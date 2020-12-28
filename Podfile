@@ -15,7 +15,7 @@ target 'AEON Loan' do
   pod 'ActivityIndicatorView'
   pod 'MaterialActivityIndicator'
   pod 'SkeletonView'
-  pod 'SVProgressHUD'
+  
   # Pods for AEON Loan
 
   target 'AEON LoanTests' do

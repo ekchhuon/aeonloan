@@ -8,9 +8,10 @@
 import UIKit
 
 extension CheckCreditFormViewController {
-    static func instantiate(item: String) -> CheckCreditFormViewController {
+    static func instantiate(item: String, loan: ApplyLoan?) -> CheckCreditFormViewController {
         let controller = CheckCreditFormViewController()
         controller.item = item
+        controller.loan = loan
         return controller
     }
 }
@@ -27,6 +28,7 @@ class CheckCreditFormViewController: BaseViewController, UITextFieldDelegate, Wr
     
     var item = ""
     var applicant = Applicant()
+    var loan: ApplyLoan?
     let calculator = Calculator()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +46,11 @@ class CheckCreditFormViewController: BaseViewController, UITextFieldDelegate, Wr
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 18, bottom: 0, right: 18)
         
         let workingPeriodCell = getCell(for: .workingPeriodTextField)
+        let usernameCell = getCell(for: .nameTextField)
+        let nidPassportCell = getCell(for: .nidPassportTextField)
         workingPeriodCell.textField.inputView = workingPeriodPickerView
+        usernameCell.textField.text = Preference.user.fullname
+        nidPassportCell.textField.text = Preference.user.nidPassport
         
         setupDatePicker()
         bind()
@@ -66,6 +72,9 @@ class CheckCreditFormViewController: BaseViewController, UITextFieldDelegate, Wr
         }
         
         pickerViewModel.response.bind { [weak self] data in
+            
+            print("Data....", data)
+            
             guard let self = self else { return }
             self.workings = data
             self.workingPeriodPickerView.reloadAllComponents()
@@ -208,13 +217,10 @@ extension CheckCreditFormViewController: UITableViewDataSource, UITableViewDeleg
         calculator.income = applicant.income.asDouble
         calculator.otherLoan = applicant.loanRepaymentOther.asDouble
         applicant.repaymentRadio = "\(calculator.calculate(.ratio))"
-        
         print("dsafafas===>", applicant)
-        
         validate {
-            self.navigates(to: .checkCredit(.location(self.applicant)))
+            self.navigates(to: .checkCredit(.location(self.applicant, self.loan)))
         }
-        
     }
     
     // convenience
@@ -349,12 +355,12 @@ extension CheckCreditFormViewController: UIPickerViewDelegate, UIPickerViewDataS
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         let title = Preference.language == .km ? workings?[row].titleKh : workings?[row].titleEn
-        return title
+        return workings?[row].titleEn
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         getCell(for: .workingPeriodTextField).textField.text = workings?[row].titleEn
-        applicant.workingPeriod = workings?[row].titleEn ?? workings?[row].titleKh ?? ""
+        applicant.workingPeriod = workings?[row].titleEn ?? "Aaaaaa"  // workings?[row].titleEn ?? workings?[row].titleKh ?? ""
     }
 }
 

@@ -12,9 +12,10 @@ protocol WriteValueBackDelegate {
 }
 
 extension LocationViewController {
-    static func instantiate(data: Applicant) -> LocationViewController {
+    static func instantiate(data: Applicant, loan: ApplyLoan?) -> LocationViewController {
         let controller = LocationViewController()
         controller.applicant = data
+        controller.loan = loan
         return controller
     }
 }
@@ -22,7 +23,9 @@ extension LocationViewController {
 class LocationViewController: BaseViewController, UITextFieldDelegate, WriteValueBackDelegate {
     private let viewModel = LocationViewModel()
     private let creditPickerViewModel = CheckCreditPickerViewModel()
+    private let loanViewModel = ApplyLoanViewModel()
     private var applicant = Applicant()
+    private var loan: ApplyLoan?
     
     @IBOutlet weak var provinceTextField: UITextField!
     @IBOutlet weak var districtTextField: UITextField!
@@ -54,6 +57,7 @@ class LocationViewController: BaseViewController, UITextFieldDelegate, WriteValu
         submitButton.backgroundColor = .brandPurple
         updateLocationLabel()
         bind()
+        creditPickerViewModel.fetchVariable(with: .livingPeriod)
     }
     
     private func bind() {
@@ -70,7 +74,7 @@ class LocationViewController: BaseViewController, UITextFieldDelegate, WriteValu
             self.showAlert(title: "".localized, message: err.localized)
         }
         
-        // living period request handler
+        // check credit
         creditPickerViewModel.status.bind { [weak self] status in
             guard let self = self else { return }
             self.showIndicator(status == .started)
@@ -88,6 +92,25 @@ class LocationViewController: BaseViewController, UITextFieldDelegate, WriteValu
             self.livings = data
             self.pickerView.reloadAllComponents()
         }
+        
+        // loan
+        loanViewModel.status.bind { [weak self] status in
+            guard let self = self else { return }
+            self.showIndicator(status == .started)
+        }
+        loanViewModel.message.bind { [weak self] msg in
+            guard let self = self, let msg = msg else { return }
+            self.showAlert(title: "".localized ,message: msg)
+        }
+        loanViewModel.error.bind { [weak self] (err) in
+            guard let self = self, let err = err else { return }
+            self.showAlert(title: "".localized, message: err.localized)
+        }
+        loanViewModel.response.bind { [weak self] data in
+            guard let self = self else { return }
+
+        }
+        
     }
     
     func writeBack(value: Any?) {
@@ -120,7 +143,6 @@ class LocationViewController: BaseViewController, UITextFieldDelegate, WriteValu
         districtTextField.text = district?.name
         communeTextField.text = commune?.name
         villageTextField.text = village?.name
-        
         updateLocationLabel()
     }
     
@@ -167,8 +189,11 @@ class LocationViewController: BaseViewController, UITextFieldDelegate, WriteValu
     }
     
     @IBAction func submitButtonTapped(_ sender: Any) {
+        print(loan, applicant)
         validate { [self] applicant in
             viewModel.submit(data: applicant)
+            guard let loan = loan else { return }
+            loanViewModel.submit(data: loan)// mock
         }
     }
     

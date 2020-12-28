@@ -69,6 +69,7 @@ class LoginViewController: BaseViewController {
     
     
     @IBAction func loginTapped(_ sender: Any) {
+/*
         viewModel.login(username: "dara", password: "123456") { _ in
             let user = User(username: "dara")
             do {
@@ -79,6 +80,12 @@ class LoginViewController: BaseViewController {
             
             if AuthController.isSignedIn {
                 self.navigates(to: .home(.push(subtype: .fromLeft)))
+            }
+        }
+*/
+        validate { user in
+            self.viewModel.login(username: user.fullname, password: user.password) { _ in
+                    self.navigates(to: .home(.push(subtype: .fromLeft)))
             }
         }
         
@@ -135,12 +142,15 @@ class LoginViewController: BaseViewController {
         eyeballButton.setImage(UIImage(systemName: "eye.slash")?.withTintColor(.brandGray, renderingMode: .alwaysOriginal), for: .normal)
     }
     
-    func validate() {
+    func validate(completion: @escaping (_ data: User) -> Void) {
         do {
-            let username = try usernameTextField.validatedText(type:  .phone)
-            let password = try passwordTextField.validatedText(type: .other(message: "Required"))
-            let data = LoginDataTest(username: username, password: password)
-            fetch(data)
+            let username = try usernameTextField.validatedText(type:  .requiredField(field: "Username/Phone Number".localized))
+//            let password = try passwordTextField.validatedText(type: .other(message: "Required"))
+            let password = try passwordTextField.validatedText(type: .password)
+//            let data = LoginDataTest(username: username, password: password)
+//            fetch(data)
+            let user = User(username: username, password: password)
+            completion(user)
         } catch (let error) {
             print((error as! ValidationError).message)
             showAlert(message: "\((error as! ValidationError).message)")

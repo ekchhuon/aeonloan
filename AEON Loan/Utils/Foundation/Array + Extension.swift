@@ -61,22 +61,16 @@ extension Array where Element == String {
     func getHolderName(from document: DocumentType) -> String {
         switch document {
         case .nId(.khmer):
-            let lowercase = self[2].filter { $0.isLowercase }
-            let hasLowercase = (lowercase.count > 0)            
-            guard !hasLowercase else { return ""}
-            return self[2]
+            // name in card is capital
+            // return only capital lettr
+            let name = self[2]
+            let hasLowercase = name.filter { $0.isLowercase }.count > 0
+            let hasDigit = name.filter{ $0.isNumber }.count > 0
+            guard !hasLowercase && !hasDigit else { return ""}
+            return name
         default: return ""
         }
     }
-    
-    func doStringContainsNumber( _string : String) -> Bool{
-
-            let numberRegEx  = "^[A-Z]$"
-            let testCase = NSPredicate(format:"SELF MATCHES %@", numberRegEx)
-        let containsNumber = testCase.evaluate(with: _string)
-
-            return containsNumber
-            }
     
     func hasId(_ type: DocumentType) -> Bool {
         return (getItem(using: type.regex) != nil)

@@ -24,7 +24,7 @@ public class OTPViewModel {
          requestOTP()
     }
     
-    private func requestOTP() {
+    func requestOTP() {
         self.status.value = .started
         let param = Param.Request(header: header, body: Param.Body(encode: ""))
         APIClient.getOTP(param: param.toJSON()) { (result) in

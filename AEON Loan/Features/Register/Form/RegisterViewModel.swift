@@ -22,9 +22,8 @@ public class RegisterViewModel {
         var user = user
         user.idPhoto = String.random(length: 32)
         status.value = .started
-        let encoded = user.asString.encrypt()
-        let body = Param.Body(encode: encoded)
-        
+        let encrypted = user.asString.encrypt()
+        let body = Param.Body(encode: encrypted)
         
 //        let user = Param.Register(username: "chhuon3", phoneNumber: "95403087", email: "abc@gmail.com", password: "1234", idPhoto: String.random(length: 32), nidPassport: "12")
              
@@ -37,8 +36,8 @@ public class RegisterViewModel {
                 guard data.body.success else {
                     self.message.value = data.body.message; return
                 }
-                
-                let user = User(username: user.username, phoneNumber: user.phoneNumber, email: user.email, password: user.password, idPhoto: user.idPhoto, nidPassport: user.nidPassport)
+                let user = User(username: user.fullname, phoneNumber: user.phoneNumber, email: user.email, password: user.password, idPhoto: user.idPhoto, nidPassport: user.nidPassport)
+
                 completion(user)
             case let .failure(err):
                 self.error.value = err.evaluate
@@ -62,6 +61,30 @@ public class RegisterViewModel {
             }
         }
     }
+    
+    func checkUsername(username: String, completion: @escaping (_ available: Bool) -> Void)  {
+        //status.value = .started
+        
+        let username = Param.Username(userName: username)
+        let encrypted = username.asString.encrypt()
+        let body = Param.Body(encode: encrypted)
+        let param = Param.Request(header: header, body: body)
+        
+        APIClient.checkUsername(param: param.toJSON()) { (result) in
+            //self.status.value = .stopped
+            print("Result", result)
+            switch result {
+            case let .success(data):                
+                guard data.body.success else {
+                    guard data.body.code != 406 else {
+                        completion(false); return
+                    }
+                    self.message.value = data.body.message; return
+                }
+            completion(true)
+            case let .failure(err):
+                self.error.value = err.evaluate
+            }
+        }
+    }
 }
-
-

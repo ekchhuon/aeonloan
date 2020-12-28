@@ -135,7 +135,9 @@ extension SideMenuViewController: UITableViewDataSource, UITableViewDelegate {
 //            self.present(controller, animated: true, completion: nil)
 
             
-            let alert = showAlt(title: "Language".localized, message: "Select a Language".localized, dismiss: "Cancel", style: .actionSheet)
+            let alert = showAlt(title: "Language".localized, message: "Select a Language".localized, actionTitle: "Cancel", style: .actionSheet, actionStyle: .cancel) {
+                self.dismiss(animated: true, completion: nil)
+            }
             let khAction = UIAlertAction(title: "ភាសាខ្មែរ", style: .default) {_ in
                 AppLanguage.set(language: .km)
                 self.navigates(to: .home(.fade))
@@ -165,7 +167,7 @@ extension SideMenuViewController: UITableViewDataSource, UITableViewDelegate {
                 navigates(to: .login)
                 return
             }
-            let alert = showAlt(title: "Logout".localized, message: "Are you sure you want to logout?".localized, dismiss: "Cancel", style: .actionSheet)
+            let alert = showAlt(title: "Logout".localized, message: "Are you sure you want to logout?".localized, actionTitle: "Cancel", style: .actionSheet)
             let okAction = UIAlertAction(title: "Logout".localized, style: .destructive) {_ in
                 self.viewModel.logout { _ in
                     try? AuthController.signOut()

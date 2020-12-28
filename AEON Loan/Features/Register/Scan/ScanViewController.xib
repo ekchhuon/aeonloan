@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17147" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17120"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -13,7 +13,9 @@
             <connections>
                 <outlet property="checkmarkImageView" destination="ol4-C5-WYg" id="Rf5-6w-oXR"/>
                 <outlet property="continueButton" destination="6Vw-fV-kNX" id="fgv-W5-lQu"/>
+                <outlet property="failDescriptionLabel" destination="aKS-k0-4HF" id="c3G-fh-lBN"/>
                 <outlet property="indicatorView" destination="Y81-n8-qfD" id="Vha-y3-dWF"/>
+                <outlet property="photoLibraryButton" destination="FHe-kX-aCL" id="xnP-Kn-R6C"/>
                 <outlet property="recognitionLabel" destination="uJL-pV-TQ4" id="pJv-mh-D1q"/>
                 <outlet property="scannedImage" destination="jdd-qG-Ra8" id="UDx-xU-cXx"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -89,7 +91,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Ph5-Sj-ez6">
-                    <rect key="frame" x="161.5" y="565.5" width="91.5" height="20"/>
+                    <rect key="frame" x="161.5" y="555.5" width="91.5" height="20"/>
                     <subviews>
                         <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="Y81-n8-qfD">
                             <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
@@ -111,6 +113,12 @@
                         </imageView>
                     </subviews>
                 </stackView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aKS-k0-4HF">
+                    <rect key="frame" x="18" y="585.5" width="378" height="14.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" red="0.4549019608" green="0.3803921569" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
@@ -119,13 +127,16 @@
                 <constraint firstItem="FHe-kX-aCL" firstAttribute="centerY" secondItem="Poj-m6-Sti" secondAttribute="centerY" id="9Xf-3q-b2v"/>
                 <constraint firstItem="3tG-u7-BOF" firstAttribute="top" secondItem="b5F-z3-sUE" secondAttribute="bottom" constant="40" id="Mn6-1z-VG5"/>
                 <constraint firstItem="KhU-dZ-PNh" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="NSf-5e-NKg"/>
+                <constraint firstItem="aKS-k0-4HF" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="18" id="NSl-F9-Mdl"/>
                 <constraint firstItem="3tG-u7-BOF" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="QVT-P5-f9r"/>
                 <constraint firstItem="FHe-kX-aCL" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="RGv-sI-2EE"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="aKS-k0-4HF" secondAttribute="trailing" constant="18" id="XL4-L5-bQI"/>
+                <constraint firstItem="aKS-k0-4HF" firstAttribute="top" secondItem="Ph5-Sj-ez6" secondAttribute="bottom" constant="10" id="XM1-Si-aFu"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Poj-m6-Sti" secondAttribute="bottom" constant="20" id="Xoh-Nx-Fb6"/>
                 <constraint firstItem="Poj-m6-Sti" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="er5-Ra-mrb"/>
                 <constraint firstItem="b5F-z3-sUE" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="iiD-kA-qtG"/>
                 <constraint firstItem="jdd-qG-Ra8" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" multiplier="0.8" id="kqV-Fi-ISR"/>
-                <constraint firstItem="Ph5-Sj-ez6" firstAttribute="top" secondItem="jdd-qG-Ra8" secondAttribute="bottom" constant="20" id="qOV-kD-His"/>
+                <constraint firstItem="Ph5-Sj-ez6" firstAttribute="top" secondItem="jdd-qG-Ra8" secondAttribute="bottom" constant="10" id="qOV-kD-His"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="jdd-qG-Ra8" secondAttribute="trailing" constant="20" id="rBW-Ig-PqG"/>
                 <constraint firstItem="b5F-z3-sUE" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="40" id="u66-sW-ho1"/>
                 <constraint firstItem="6Vw-fV-kNX" firstAttribute="centerY" secondItem="Poj-m6-Sti" secondAttribute="centerY" id="vcX-LW-2ro"/>
