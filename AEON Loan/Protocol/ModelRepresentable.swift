@@ -7,9 +7,18 @@
 
 import Foundation
 
-protocol ModelRepresentable: Codable {
-    var timestamp: Int32 { get set }
-    var success: Bool { get set}
-    var message: String { get set }
-    var code: Int { get set }
-}
+//protocol ModelRepresentable: Codable {
+//    var header: Header? { get set }
+//    var body: Body { get set}
+//    var message: String { get set }
+//    var code: Int { get set }
+//}
+//
+//
+//// MARK: - Body
+//struct Body: Codable {
+//    let success: Bool
+//    let message: String 
+//    let code: Int
+//    let data: Data?
+//}

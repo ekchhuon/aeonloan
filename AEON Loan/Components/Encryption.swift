@@ -11,8 +11,11 @@ import RNCryptor
 extension String {
     func encrypt() -> String {
         //let key = Preference.sha256 // "e9a9483dec41aebc5ae7da7257d195d8" //key: shar // data: json
+        
+        guard AuthController.sha256 != "" else {
+            debugPrint("Encryption key invalid"); return ""
+        }
         let key = AuthController.sha256
-        print("AuthController.sha256",key)
         let encrypted = RNCryptor.encrypt(data: self.asData, withPassword: key)
         return encrypted.base64Encoded
     }
@@ -27,7 +30,6 @@ extension String {
             return ""
         }
     }
-    
 }
 
 //extension String {

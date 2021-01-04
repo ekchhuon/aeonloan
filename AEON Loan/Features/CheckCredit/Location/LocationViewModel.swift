@@ -10,7 +10,7 @@ public class LocationViewModel {
     let status: Box<RequestStatus?> = Box(nil)
     let message: Box<String?> = Box(nil)
     let error: Box<APIError?> = Box(nil)
-    let response: Box<Response?> = Box(nil)
+    let response: Box<CheckCredit?> = Box(nil)
     let locationCode = Box("")
     
     init() {
@@ -18,9 +18,8 @@ public class LocationViewModel {
     }
     
     func submit(data: Applicant) {
-        var data = data
-        data.workingPeriod = "5"
-        data.livingPeriod = "5"
+        //data.workingPeriod = "5"
+        //data.livingPeriod = "5"
         let endcoded = data.asString.encrypt()
         print(data, endcoded)
         let header = Header()
@@ -33,11 +32,11 @@ public class LocationViewModel {
                 switch result {
                 case let .success(data):
                     print(data)
-//                    guard data.body.success else {
-//                        self.message.value = data.body.message + " [\(data.body.code)]"
-//                        return
-//                    }
-//                    self.response.value = data.body.data
+                    guard data.body.success else {
+                        self.message.value = data.body.message + " [\(data.body.code)]"
+                        return
+                    }
+                    self.response.value = data
                 case let .failure(err):
                 self.error.value = err.evaluate
                 }

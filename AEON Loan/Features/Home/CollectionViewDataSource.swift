@@ -14,7 +14,6 @@ class EmployeeTableViewDataSource<CELL : UITableViewCell,T> : NSObject, UITableV
     private var items : [T]!
     var configureCell : (CELL, T) -> () = {_,_ in }
     
-    
     init(cellIdentifier : String, items : [T], configureCell : @escaping (CELL, T) -> ()) {
         self.cellIdentifier = cellIdentifier
         self.items =  items
@@ -35,14 +34,11 @@ class EmployeeTableViewDataSource<CELL : UITableViewCell,T> : NSObject, UITableV
     }
 }
 
-
 class CollectionViewDataSource<CELL : UICollectionViewCell,T> : NSObject, UICollectionViewDataSource {
-    
     
     private var cellIdentifier : String!
     private var items : [T]!
     var configureCell : (CELL, T) -> () = {_,_ in }
-    
     
     init(cellIdentifier : String, items : [T], configureCell : @escaping (CELL, T) -> ()) {
         self.cellIdentifier = cellIdentifier
@@ -61,5 +57,4 @@ class CollectionViewDataSource<CELL : UICollectionViewCell,T> : NSObject, UIColl
        self.configureCell(cell, item)
        return cell
     }
-
 }

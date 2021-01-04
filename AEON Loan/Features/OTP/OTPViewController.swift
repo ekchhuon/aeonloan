@@ -15,7 +15,7 @@ extension OTPViewController {
     }
 }
 
-class OTPViewController: BaseViewController, UITextFieldDelegate {
+class OTPViewController: BaseViewController {
     private let viewModel = OTPViewModel()
     private let loginViewModel = LoginViewModel()
     private var user = User()
@@ -49,7 +49,8 @@ class OTPViewController: BaseViewController, UITextFieldDelegate {
         
         loginViewModel.status.bind { [weak self] status in
             guard let self = self else { return }
-            self.showIndicator(status == .started)
+            let indicator = self.showIndicator(status == .started)
+            indicator.label.text = "Almost there"
         }
         loginViewModel.message.bind { [weak self] msg in
             guard let self = self, let msg = msg else { return }
@@ -79,15 +80,23 @@ class OTPViewController: BaseViewController, UITextFieldDelegate {
         viewModel.requestOTP()
     }
     
-    
     @IBAction func verifyButtonTapped(_ sender: Any) {
         validate { otp in
             self.viewModel.verifyOTP(otp: otp) { [weak self] _ in
                 guard let self = self else {return}
-                self.loginViewModel.login(username: self.user.fullname, password: self.user.password) { _ in
+                self.loginViewModel.login(username: self.user.username, password: self.user.password) { _ in
+                    print("sha256 Value", AuthController.sha256)
                     self.navigates(to: .home(.push(subtype: .fromLeft)))
                 }
             }
         }
+    }
+}
+
+extension OTPViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        verifyButtonTapped(self)
+        resignFirstResponder()
+        return true
     }
 }

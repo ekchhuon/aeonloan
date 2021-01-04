@@ -20,6 +20,7 @@ class RegisterViewController: BaseViewController {
     private let loginViewModel = LoginViewModel()
     private var asset = UserAsset()
     
+    @IBOutlet weak var indicatorView: UIActivityIndicatorView!
     @IBOutlet weak var fullNameTextField: UITextField!
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var phoneTextField: UITextField!
@@ -42,7 +43,7 @@ class RegisterViewController: BaseViewController {
         fullNameTextField.text = asset.holderName
         usernameCheckingLabel.text = ""
         usernameTextField.delegate = self
-        
+        loading(false)
         self.loginViewModel.requestAuth {
             print("sha256 Value", AuthController.sha256)
         }
@@ -99,7 +100,7 @@ class RegisterViewController: BaseViewController {
             print("user...",user)
             
             Preference.user.nidPassport = self.asset.documentID
-            Preference.user.fullname = user.fullname
+            Preference.user.fullName = user.fullName
             // upload profile
             self.viewModel.upload(.profile, image: selfieImage) { progress in
                 print("uploading profile...", progress)
@@ -231,7 +232,7 @@ class RegisterViewController: BaseViewController {
     }
     
     private func setupView(){
-        setup(title: NSLocalizedString("Register", comment: ""))
+        setTitle("Register".localized)
         setupTextField()
         registerButton.rounds(radius: 10, background: .brandPurple, border: .brandPurple, width: 1)
     }
@@ -253,10 +254,15 @@ class RegisterViewController: BaseViewController {
     
     func validate(completion: @escaping (_ data: User) -> Void) {
         do {
-            let fullname = try fullNameTextField.validatedText(type: .username)
-            let username = try usernameTextField.validatedText(type: .requiredField(field: "Username"))
+            let fullname = try fullNameTextField.validatedText(type: .requiredField(field: "Full Name"))
+            let username = try usernameTextField.validatedText(type: .uniqueUsername)
             let phone = try phoneTextField.validatedText(type: .phone)
-            let email = try emailTextField.validatedText(type: .email)
+            
+            var email = ""
+            if emailTextField.text != "" {
+                email = try emailTextField.validatedText(type: .email)
+            }
+            
             let password = try passwordTextField.validatedText(type: .requiredField(field: "Password"))
             let confirm = try confirmPasswordTextField.validatedText(type: .requiredField(field: "Password"))
             
@@ -265,10 +271,7 @@ class RegisterViewController: BaseViewController {
                 return
             }
             
-            
-            
-            
-            let user = User(fullname: fullname, username: username, phoneNumber: phone, email: email, password: password, idPhoto: "", nidPassport: "")
+            let user = User(fullName: fullname, username: username, phoneNumber: phone, email: email, password: password, idPhoto: "", nidPassport: "")
             completion(user)
         } catch (let error) {
             showAlert(message: (error as! ValidationError).message)
@@ -282,20 +285,46 @@ class RegisterViewController: BaseViewController {
 
 extension RegisterViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        textField.addTarget(self, action: #selector(valueChanged), for: .touchUpInside)
+        textField.addTarget(self, action: #selector(valueChanged), for: .allEvents)
     }
     
     // Get value from textfield
     @objc func valueChanged(_ textField: UITextField){
         print("username", textField.text)
-        guard textField.text != "" else {
+        guard let username = textField.text, username != "" else {
             usernameCheckingLabel.text = ""; return
         }
         
-        self.viewModel.checkUsername(username: textField.text ?? "") { (available) in
-            print("available", available)
-            self.checkUsername(available: available)
+//        self.viewModel.checkUsername(username: textField.text ?? "") { (available) in
+//            print("available", available)
+//            self.checkUsername(available: available)
+//        }
+        
+        do {
+            let _ = try usernameTextField.validatedText(type: .uniqueUsername)
+            
+            self.viewModel.checkUsername(username: username) { (loading) in
+                self.usernameCheckingLabel.text = "checking...".localized
+                self.usernameCheckingLabel.textColor = .systemRed
+            } completion: { (available) in
+                self.indicatorView.isHidden = true
+                self.checkUsername(available: available)
+            }
+            
+        } catch (_) {
+            self.usernameCheckingLabel.buzz()
+            self.usernameCheckingLabel.text = "invalid!".localized
+            self.usernameCheckingLabel.textColor = .systemRed
         }
+        
+        
+
+    }
+    
+    
+    fileprivate func loading(_ loading: Bool) {
+        indicatorView.isHidden = !loading
+        loading ? self.indicatorView.startAnimating() : self.indicatorView.stopAnimating()
     }
 }
 

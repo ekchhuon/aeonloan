@@ -14,7 +14,7 @@ final class AuthController {
     static var isSignedIn: Bool {
         let currentUser = Preference.user
         do {
-            let password = try KeychainPasswordItem(service: serviceName, account: currentUser.fullname).readPassword()
+            let password = try KeychainPasswordItem(service: serviceName, account: currentUser.fullName).readPassword()
             return password.count > 0
         } catch {
             return false
@@ -37,7 +37,7 @@ final class AuthController {
     }
     
     class func signIn(_ user: User, password: String) throws {
-        try KeychainPasswordItem(service: serviceName, account: user.fullname).savePassword(user.password.encrypt())
+        try KeychainPasswordItem(service: serviceName, account: user.fullName).savePassword(user.password.encrypt())
         Preference.user = user
     }
     

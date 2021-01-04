@@ -22,14 +22,8 @@ class CreditAcceptedTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setup(data: Credit) {
+    func setup(data: CheckCredit.ProductOffer) {
         self.product.text = data.product
-        self.amount.text = ": $\(data.amount)"
+        self.amount.text = ": \("USD".localized)\(data.fa)"
     }
-    
-}
-
-struct Credit {
-    var product: String
-    var amount: String
 }

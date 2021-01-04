@@ -19,7 +19,7 @@ class PaymentConditionViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setup(title: NSLocalizedString("Payment Condition", comment: ""))
+        setTitle("Payment Condition".localized)
         
         viewModel.condition.bind { [weak self] (condition) in
             guard let self = self else { return }

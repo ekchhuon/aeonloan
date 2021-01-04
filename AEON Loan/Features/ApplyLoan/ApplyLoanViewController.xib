@@ -118,13 +118,23 @@
                                         <constraint firstAttribute="bottom" secondItem="BLV-Fo-HVj" secondAttribute="bottom" id="hEu-xz-ynu"/>
                                     </constraints>
                                 </stackView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ggg-dT-9aE">
+                                    <rect key="frame" x="0.0" y="0.0" width="378" height="49.5"/>
+                                    <connections>
+                                        <action selector="productTypeButtonTapped:" destination="-1" eventType="touchUpInside" id="qtr-sC-of7"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
+                                <constraint firstItem="Ggg-dT-9aE" firstAttribute="top" secondItem="ty5-SO-v6B" secondAttribute="top" id="5VQ-TA-TLV"/>
                                 <constraint firstItem="2Oa-ZG-tZm" firstAttribute="top" secondItem="ty5-SO-v6B" secondAttribute="top" id="7vb-i1-6TH"/>
+                                <constraint firstItem="FBh-0M-NeS" firstAttribute="top" secondItem="Ggg-dT-9aE" secondAttribute="bottom" id="8EB-Tg-EG1"/>
                                 <constraint firstAttribute="bottom" secondItem="2Oa-ZG-tZm" secondAttribute="bottom" id="Euh-Bl-d13"/>
                                 <constraint firstAttribute="height" constant="50" id="SBB-i6-phd"/>
                                 <constraint firstItem="FBh-0M-NeS" firstAttribute="leading" secondItem="ty5-SO-v6B" secondAttribute="leading" id="dmD-l9-QGw"/>
+                                <constraint firstItem="Ggg-dT-9aE" firstAttribute="leading" secondItem="ty5-SO-v6B" secondAttribute="leading" id="gM6-cu-xg0"/>
+                                <constraint firstAttribute="trailing" secondItem="Ggg-dT-9aE" secondAttribute="trailing" id="jeR-0z-7mI"/>
                                 <constraint firstAttribute="bottom" secondItem="FBh-0M-NeS" secondAttribute="bottom" id="mPh-qd-Qhx"/>
                                 <constraint firstAttribute="trailing" secondItem="FBh-0M-NeS" secondAttribute="trailing" id="oXQ-qp-rUG"/>
                                 <constraint firstAttribute="trailing" secondItem="2Oa-ZG-tZm" secondAttribute="trailing" id="plq-ua-E7p"/>
@@ -154,7 +164,7 @@
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Amount" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PJ9-ZI-j3T">
                                             <rect key="frame" x="35" y="0.0" width="343" height="50"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                            <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
+                                            <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                         </textField>
                                     </subviews>
                                     <constraints>

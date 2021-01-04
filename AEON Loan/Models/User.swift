@@ -7,10 +7,10 @@
 
 import Foundation
 struct User : Codable{
-    var fullname, username, phoneNumber, email, password, idPhoto, nidPassport: String
+    var fullName, username, phoneNumber, email, password, idPhoto, nidPassport: String
     
-    init(fullname: String = "", username: String = "", phoneNumber: String = "", email: String = "", password: String = "", idPhoto: String = "", nidPassport: String = "") {
-        self.fullname = fullname
+    init(fullName: String = "", username: String = "", phoneNumber: String = "", email: String = "", password: String = "", idPhoto: String = "", nidPassport: String = "") {
+        self.fullName = fullName
         self.username = username
         self.phoneNumber = phoneNumber
         self.email = email
@@ -20,9 +20,12 @@ struct User : Codable{
     }
 }
 
-struct CurrentUser: Codable {
-  
-  let name: String
-  let email: String
-  
-}
+//import RealmSwift
+//class Usera: NSObject {
+//    
+//}
+
+//struct CurrentUser: Codable {
+//  let name: String
+//  let email: String
+//}

@@ -42,7 +42,8 @@ class LocationViewController: BaseViewController, UITextFieldDelegate, WriteValu
     var district: Location.Data?
     var commune: Location.Data?
     var village: Location.Data?
-    var selectedLivingPeriod: String!
+//    var selectedLivingPeriod: String!
+    var selected: Variable.Data?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,9 +51,9 @@ class LocationViewController: BaseViewController, UITextFieldDelegate, WriteValu
         pickerView.delegate = self
         pickerView.dataSource = self
         livingPeriodTextField.delegate = self
-        viewModel.locationCode.bind { code in
-            self.provinceTextField.text = code
-        }
+//        viewModel.locationCode.bind { code in
+//            self.provinceTextField.text = code
+//        }
         submitButton.rounds(radius: 10)
         submitButton.backgroundColor = .brandPurple
         updateLocationLabel()
@@ -67,12 +68,31 @@ class LocationViewController: BaseViewController, UITextFieldDelegate, WriteValu
         }
         viewModel.message.bind { [weak self] msg in
             guard let self = self, let msg = msg else { return }
-            self.showAlert(title: "".localized ,message: msg)
+            guard msg.contains("REJECTED") else {
+                self.showAlert(title: "".localized ,message: msg)
+                return
+            }
+            
+//            self.navigates(to: .checkCredit(.result(.rejected)))
+            
+            self.navigates(to: .checkCredit(.results(nil)))
         }
         viewModel.error.bind { [weak self] (err) in
             guard let self = self, let err = err else { return }
             self.showAlert(title: "".localized, message: err.localized)
         }
+        
+        viewModel.response.bind { [weak self] data in
+            guard let self = self, let data = data else {
+               debugPrint("Error") ;return
+            }
+            
+            self.navigates(to: .checkCredit(.results(data)))
+
+//            let controller = CreditAcceptedViewController.instantiate(data: data)
+//            self.navigationController?.pushViewController(controller, animated: true)
+        }
+        
         
         // check credit
         creditPickerViewModel.status.bind { [weak self] status in
@@ -106,11 +126,6 @@ class LocationViewController: BaseViewController, UITextFieldDelegate, WriteValu
             guard let self = self, let err = err else { return }
             self.showAlert(title: "".localized, message: err.localized)
         }
-        loanViewModel.response.bind { [weak self] data in
-            guard let self = self else { return }
-
-        }
-        
     }
     
     func writeBack(value: Any?) {
@@ -189,7 +204,8 @@ class LocationViewController: BaseViewController, UITextFieldDelegate, WriteValu
     }
     
     @IBAction func submitButtonTapped(_ sender: Any) {
-        print(loan, applicant)
+        print(loan, applicant, selected)
+        
         validate { [self] applicant in
             viewModel.submit(data: applicant)
             guard let loan = loan else { return }
@@ -210,6 +226,7 @@ class LocationViewController: BaseViewController, UITextFieldDelegate, WriteValu
             applicant.communeCode = commune?.code ?? ""
             applicant.villageCode = village?.code ?? ""
             applicant.livingPeriod = livingPeriod
+            applicant.livingPeriodId = selected?.id ?? ""
             
             completion(applicant)
             //navigates(to: .checkCredit(.location(applicant)))
@@ -266,7 +283,7 @@ extension LocationViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         livingPeriodTextField.text = livings?[row].titleKh ?? livings?[row].titleEn ?? ""
-        selectedLivingPeriod = Preference.language == .km ? livings?[row].titleKh : livings?[row].titleEn
+//        selectedLivingPeriod = Preference.language == .km ? livings?[row].titleKh : livings?[row].titleEn
+        selected = livings?[row]
     }
-
 }

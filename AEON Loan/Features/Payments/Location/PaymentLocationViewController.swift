@@ -20,7 +20,7 @@ class PaymentLocationViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setup(title: NSLocalizedString("Payment Location", comment: ""))
+        self.setTitle("Payment Location".localized)
         self.tableView.register(UINib(nibName: "LocationTableViewCell", bundle: nil), forCellReuseIdentifier: "LocationTableViewCell")
         self.tableView.separatorColor = .lightGray
         self.tableView.delegate = self

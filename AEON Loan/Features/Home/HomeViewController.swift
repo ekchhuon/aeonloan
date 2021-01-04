@@ -31,12 +31,12 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
     var longPressed: Bool = false
     var defaultInterval: TimeInterval = 3
     
-    var imageArray = [UIImage?]()
+//    var imageArray = [UIImage?]()
+    var imageURLs = [URL?]()
     var menus: [Menu] = [Menu]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         viewModel.menus.bind { [weak self] menus in
             guard let self = self else {return}
             self.menus = menus
@@ -65,15 +65,26 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
             guard let self = self, let err = err else { return }
             self.showAlert(title: "Login".localized, message: err.localized)
         }
+        
+        viewModel.imageURLs.bind { [weak self] (urls) in
+            guard let self = self else { return }
+            self.imageURLs = urls
+            
+            self.sliderCollectionView.reloadData()
+            self.setupPageControl()
+            
+            print("Result Slideshow", urls)
+//            self.viewModel.fetchSlideShow(data: <#T##Applicant#>)
+        }
     }
     
     func bindSliderData() {
-        siderViewModel.images.bind { [weak self] images in
-            guard let images = images, let self = self else { return }
-            self.imageArray = images
-            self.sliderCollectionView.reloadData()
-            self.setupPageControl()
-        }
+//        siderViewModel.images.bind { [weak self] images in
+//            guard let images = images, let self = self else { return }
+//            self.imageArray = images
+//            self.sliderCollectionView.reloadData()
+//            self.setupPageControl()
+//        }
         
         siderViewModel.loading.bind { [weak self] loading in
             guard let self = self else {return}
@@ -97,7 +108,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
 extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == sliderCollectionView {
-            return imageArray.count
+            return imageURLs.count
         }else {
             return menus.count
         }
@@ -106,7 +117,10 @@ extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == sliderCollectionView {
             let slider : SliderCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "SliderCollectionViewCell", for: indexPath) as! SliderCollectionViewCell
-            slider.sliderImage.image = imageArray[indexPath.row]
+            
+            guard let url = imageURLs[indexPath.row] else {
+                print("url not found");return slider}
+            slider.sliderImage.load(url: url) //.image = //imageArray[indexPath.row]
             return slider
         } else {
             let cell : HomeCollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCollectionViewCell", for: indexPath) as! HomeCollectionViewCell
@@ -308,7 +322,7 @@ extension HomeViewController{
     }
     
     private func setupPageControl() {
-        pageControl.numberOfPages = imageArray.count
+        pageControl.numberOfPages = imageURLs.count
         pageControl.currentPage = 0
         pageControl.currentPageIndicatorTintColor = .brandYellow
         startTimer()
@@ -354,7 +368,7 @@ extension HomeViewController {
     @objc
     private func changeSlideShow() {
         guard longPressed == false else { return }
-        if counter < imageArray.count {
+        if counter < imageURLs.count {
             let index = IndexPath.init(item: counter, section: 0)
             self.sliderCollectionView.scrollToItem(at: index, at: .centeredHorizontally, animated: true)
             pageControl.currentPage = counter

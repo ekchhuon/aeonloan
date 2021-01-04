@@ -30,6 +30,7 @@ enum ValidatorType {
     case requiredField(field: String)
     case age
     case otp
+    case uniqueUsername
 }
 
 enum VaildatorFactory {
@@ -44,6 +45,7 @@ enum VaildatorFactory {
         case .requiredField(let fieldName): return RequiredFieldValidator(fieldName)
         case .age: return AgeValidator()
         case .otp: return OTPValidator()
+        case .uniqueUsername: return UnigueUserNameValidator()
         }
     }
 }
@@ -158,6 +160,26 @@ struct UserNameValidator: ValidatorConvertible {
     }
 }
 
+struct UnigueUserNameValidator: ValidatorConvertible {
+    func validated(_ value: String, _ field: UITextField) throws -> String {
+        guard value.count >= 1 else {
+            throw ValidationError("Username must contain more than three characters" )
+        }
+        guard value.count < 18 else {
+            throw ValidationError("Username shoudn't conain more than 18 characters" )
+        }
+        
+        do {
+            if try NSRegularExpression(pattern: "^[0-9A-Za-z  ]{1,18}$",  options: .caseInsensitive).firstMatch(in: value, options: [], range: NSRange(location: 0, length: value.count)) == nil {
+                throw ValidationError("Invalid username, username should not contain whitespaces, numbers or special characters")
+            }
+        } catch {
+            throw ValidationError("Invalid username, username should not contain whitespaces,  or special characters")
+        }
+        return value
+    }
+}
+
 struct PasswordValidator: ValidatorConvertible {
     func validated(_ value: String, _ field: UITextField) throws -> String {
         guard value != "" else {
@@ -170,8 +192,8 @@ struct PasswordValidator: ValidatorConvertible {
         }
         
         do {
-//            let pwdRegex = "^(.*){6,18}$"
-            let pwdRegex = "!\"#$%&'()*+,-/:;<=>?[\\]^_`{|}~"
+            let pwdRegex = "^(.*){6,18}$"
+//            let pwdRegex = "!\"#$%&'()*+,-/:;<=>?[\\]^_`{|}~"
 //            let pweRegex2 = "^(?=.*[A-Za-z])(?=.*\\d)[A-Za-z\\d]{6,}$"
             if try NSRegularExpression(pattern: pwdRegex,  options: .caseInsensitive).firstMatch(in: value, options: [], range: NSRange(location: 0, length: value.count)) == nil {
                 field.TextFieldBuzz()

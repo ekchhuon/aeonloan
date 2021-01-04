@@ -149,9 +149,9 @@ enum TextFieldData: Int, CaseIterable {
 
 struct Applicant: Codable {
     var name, id, dob, age, genderId, gender, maritalStatusId, maritalStatus,
-        provinceCode, districtCode, communeCode, villageCode, livingPeriod, occupationId, occupation, income, educationId, education, workingPeriod, repaymentRadio, housingTypeId, housingType, loanRepaymentOther: String
+        provinceCode, districtCode, communeCode, villageCode, livingPeriod, livingPeriodId, occupationId, occupation, income, educationId, education, workingPeriod, workingPeriodId, repaymentRadio, housingTypeId, housingType, loanRepayment: String
     
-    init(name: String = "", id: String = "", dob: String = "", age: String = "" , genderId: String = "", gender: String = "", maritalStatusId: String = "", maritalStatus: String = "", provinceCode: String = "", districtCode: String = "", communeCode: String = "", villageCode: String = "", livingPeriod: String = "", occupationId: String = "", occupation: String = "", income: String = "", educationId: String = "", education: String = "", workingPeriod: String = "", repaymentRadio: String = "", housingTypeId: String = "", housingType: String = "", loanRepaymentOther: String = "0") {
+    init(name: String = "", id: String = "", dob: String = "", age: String = "" , genderId: String = "", gender: String = "", maritalStatusId: String = "", maritalStatus: String = "", provinceCode: String = "", districtCode: String = "", communeCode: String = "", villageCode: String = "", livingPeriod: String = "", livingPeriodId: String = "",occupationId: String = "", occupation: String = "", income: String = "", educationId: String = "", education: String = "", workingPeriod: String = "", workingPeriodId: String = "", repaymentRadio: String = "", housingTypeId: String = "", housingType: String = "", loanRepayment: String = "0") {
         self.name = name
         self.id = id
         self.dob = dob
@@ -166,15 +166,17 @@ struct Applicant: Codable {
         self.educationId = educationId
         self.education = education
         self.workingPeriod = workingPeriod
+        self.workingPeriodId = workingPeriodId
         self.repaymentRadio = repaymentRadio
         self.housingTypeId = housingTypeId
         self.housingType = housingType
-        self.loanRepaymentOther = loanRepaymentOther
+        self.loanRepayment = loanRepayment
         self.provinceCode = provinceCode
         self.districtCode = districtCode
         self.communeCode = communeCode
         self.villageCode = villageCode
         self.livingPeriod = livingPeriod
+        self.livingPeriodId = livingPeriodId
     }
 }
 

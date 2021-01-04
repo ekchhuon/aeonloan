@@ -13,9 +13,11 @@ class BaseViewController: UIViewController {
         super.viewDidLoad()
         self.navigationController?.setupAppearance()
         // self.navigationController?.navigationBar.topItem?.title = " "
+//        let backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+//        navigationItem.backBarButtonItem = backBarButtonItem
     }
     
-    func setup(title: String = "") {
+    func setTitle(_ title: String = "") {
         self.navigationItem.title = title
         
         // self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "sdfsadsdf", style: .plain, target: nil, action: nil)
@@ -102,3 +104,7 @@ class BaseViewController: UIViewController {
 
 
 
+enum Title {
+    case checkCredit, installment, aeonProducts, promotion, paymentSchedule, calculator, location, contact, notification
+         case login, register
+}

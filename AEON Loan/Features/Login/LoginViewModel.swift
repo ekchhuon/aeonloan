@@ -67,8 +67,14 @@ public class LoginViewModel {
     func login(username: String, password: String, completion:@escaping(Login) -> Void) {
         requestAuth { [weak self] in
             guard let self = self else {return}
+            
+            print("user===>", username, password)
+            
             let user = Param.LoginData(username: username, password: password, grant_type: "password", deviceId: "12345")
-            let param = Param.Request(header: self.header, body: Param.Body(encode: user.asString.encrypt()))
+            
+            print("username, password", user)
+            
+            let param = Param.Request(header: self.headerLogin, body: Param.Body(encode: user.asString.encrypt()))
             
             print("USER:", user)
             print("PARAM:", param)

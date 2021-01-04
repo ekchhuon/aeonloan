@@ -20,7 +20,7 @@ class APIClient {
                 progressCompletion: @escaping (_ percent: Float) -> Void,
                 completion:@escaping (Result<M, AFError>)->Void) {
         
-        guard let imageData = image.jpegData(compressionQuality: 1) else {
+        guard let imageData = image.jpegData(compressionQuality: 0.50) else {
             print("Could not get JPEG representation of UIImage")
             return
         }
@@ -170,15 +170,15 @@ extension APIClient {
         }
     }
     
-    static func checkCredit(param: Parameters, completion:@escaping(Result<Login, AFError>) -> Void ) {
+    static func checkCredit(param: Parameters, completion:@escaping(Result<CheckCredit, AFError>) -> Void ) {
         fetch(route: APIRouter.checkCredit(param), completion: completion)
     }
     //...
-    static func checkCreditStatus(param: Parameters, completion:@escaping(Result<Login, AFError>) -> Void ) {
+    static func checkCreditStatus(param: Parameters, completion:@escaping(Result<CheckCredit, AFError>) -> Void ) {
         fetch(route: APIRouter.checkCreditStatus(param), completion: completion)
     }
     
-    static func slideShow(param: Parameters, completion:@escaping(Result<Login, AFError>) -> Void ) {
+    static func slideShow(param: Parameters, completion:@escaping(Result<SlideShow, AFError>) -> Void ) {
         fetch(route: APIRouter.slideShow(param), completion: completion)
     }
     

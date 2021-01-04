@@ -18,8 +18,7 @@ public class LocationListViewModel {
     }
     
     func fetchLocaiton(for type: LocationType, with code: String) {
-        let langCode = Preference.language == .en ? "01":"02"
-        let header = Header(lan: langCode)
+        let header = Header()
         let pro = Param.Province(header: header, body: code)
         let dist = Param.District(header: header, body: Param.District.Body(provinceCode: code))
         let com = Param.Commune(header: header, body: Param.Commune.Body(districtCode: code))
@@ -51,7 +50,7 @@ public class LocationListViewModel {
     }
     
     func getProvince() {
-        let header = Header(lan: Preference.language == .en ? "01":"02")
+        let header = Header()
         let pro = Param.Province(header: header, body: "")
 //        let dist = Param.District(header: header, body: Param.District.Body(provinceCode: "24"))
 //        let com = Param.Commune(header: header, body: Param.Commune.Body(districtCode: "0104"))

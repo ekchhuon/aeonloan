@@ -92,8 +92,8 @@ enum APIRouter: URLRequestConvertible {
         case .checkCreditStatus: return "private/v1/check_credit/status"
         case .slideShow: return "public/v1/slide_image"
         case .paymentSchedule: return "private/v1/payment_schedule/list"
-        case .paymentScheduleDetail: return "/private/v1/payment_schedule/101-00283722-4"
-        case .loan: return ""
+        case .paymentScheduleDetail: return "private/v1/payment_schedule/101-00283722-4"
+        case .loan: return "private/v1/loan"
         case .notification: return ""
         }
     }
@@ -126,12 +126,12 @@ enum APIRouter: URLRequestConvertible {
         case let .location(.commune(param)): return .body(param)
         case let .location(.village(param)): return .body(param)
         case let .occupation(param), let .gender(param), let .maritialStatus(param), let .education(param), let .housingType(param), let .workingPeriod(param), let .livingPeriod(param): return .body(param)
-        case let .checkCredit(param): return .body(param)
-        case let .checkCreditStatus(param): return .body(param)
+        case let .checkCredit(param): return .bearer(param)
+        case let .checkCreditStatus(param): return .bearer(param)
         case let .slideShow(param): return .body(param)
         case let .paymentSchedule(param): return .body(param)
         case let .paymentScheduleDetail(param): return .body(param)
-        case let .loan(param): return .body(param)
+        case let .loan(param): return .bearer(param)
         case let .notification(param): return .body(param)
         }
     }

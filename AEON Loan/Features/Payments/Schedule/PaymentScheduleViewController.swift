@@ -22,13 +22,28 @@ class PaymentScheduleViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setup(title: NSLocalizedString("Payment Schedule", comment: ""))
+        self.setTitle("Payment Schedule".localized)
         self.tableView.register(UINib(nibName: "ScheduleTableViewCell", bundle: nil), forCellReuseIdentifier: "ScheduleTableViewCell")
         self.tableView.delegate = self
         self.tableView.dataSource = self
         setupView()
-        
+        bind()
         print("tableView.rowHeight",tableView.rowHeight)
+    }
+    
+    private func bind() {
+        viewModel.status.bind { [weak self] status in
+            guard let self = self else { return }
+            self.showIndicator(status == .started)
+        }
+        viewModel.message.bind { [weak self] msg in
+            guard let self = self, let msg = msg else { return }
+            self.showAlert(title: "Login".localized ,message: msg)
+        }
+        viewModel.error.bind { [weak self] (err) in
+            guard let self = self, let err = err else { return }
+            self.showAlert(title: "Login".localized, message: err.localized)
+        }
     }
     
     private func setupView() {

@@ -16,7 +16,7 @@ extension String {
     // string to date
     func formatDate() -> Date {
         let dateFormater = DateFormatter()
-        dateFormater.dateFormat = "dd/MM/yyyy"
+        dateFormater.dateFormat = "yyyy/MM/dd"
         guard let formatted =  dateFormater.date(from: self) else {
             debugPrint("Unable to format date")
             return Date()

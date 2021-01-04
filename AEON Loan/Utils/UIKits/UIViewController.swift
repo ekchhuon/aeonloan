@@ -31,12 +31,11 @@ extension UIViewController {
         case let .checkCredit(.location(aplicant, loan)):
             let controller = LocationViewController.instantiate(data: aplicant, loan: loan)
             navigationController?.pushViewController(controller, animated: true)
-        case .checkCredit(.result(.accepted)):
-            let controller = CreditAcceptedViewController.instantiate()
+        case let .checkCredit(.result(.accepted)): break
+        case let .checkCredit(.results(data)):
+            let controller = CheckCreditResultViewController.instantiate(data: data)
             navigationController?.pushViewController(controller, animated: true)
-        case .checkCredit(.result(.rejected)):
-            let controller = CreditRejectedViewController.instantiate()
-            navigationController?.pushViewController(controller, animated: true)
+        case .checkCredit(.result(.rejected)): break
         case let .home(transition):
             let home = HomeViewController.instantiate()
             let controller = NavigationController.main(with: home)

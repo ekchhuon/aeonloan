@@ -25,6 +25,8 @@ public class RegisterViewModel {
         let encrypted = user.asString.encrypt()
         let body = Param.Body(encode: encrypted)
         
+        print("User====>", user)
+        
 //        let user = Param.Register(username: "chhuon3", phoneNumber: "95403087", email: "abc@gmail.com", password: "1234", idPhoto: String.random(length: 32), nidPassport: "12")
              
         let param = Param.Request(header: header, body: body)
@@ -36,7 +38,7 @@ public class RegisterViewModel {
                 guard data.body.success else {
                     self.message.value = data.body.message; return
                 }
-                let user = User(username: user.fullname, phoneNumber: user.phoneNumber, email: user.email, password: user.password, idPhoto: user.idPhoto, nidPassport: user.nidPassport)
+                let user = User(fullName: user.fullName, username: user.username, phoneNumber: user.phoneNumber, email: user.email, password: user.password, idPhoto: user.idPhoto, nidPassport: user.nidPassport)
 
                 completion(user)
             case let .failure(err):
@@ -62,9 +64,10 @@ public class RegisterViewModel {
         }
     }
     
-    func checkUsername(username: String, completion: @escaping (_ available: Bool) -> Void)  {
+    func checkUsername(username: String, loading: @escaping (_ loading: Bool) -> Void, completion: @escaping (_ available: Bool) -> Void)  {
         //status.value = .started
         
+        loading(true)
         let username = Param.Username(userName: username)
         let encrypted = username.asString.encrypt()
         let body = Param.Body(encode: encrypted)
@@ -81,6 +84,7 @@ public class RegisterViewModel {
                     }
                     self.message.value = data.body.message; return
                 }
+            loading(false)
             completion(true)
             case let .failure(err):
                 self.error.value = err.evaluate

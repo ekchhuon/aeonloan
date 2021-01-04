@@ -46,8 +46,8 @@
             filePath = "AEON Loan/Features/Register/Form/RegisterViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "136"
-            endingLineNumber = "136"
+            startingLineNumber = "137"
+            endingLineNumber = "137"
             landmarkName = "registerButtonTapped(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -62,8 +62,8 @@
             filePath = "AEON Loan/Features/Register/Form/RegisterViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "130"
-            endingLineNumber = "130"
+            startingLineNumber = "131"
+            endingLineNumber = "131"
             landmarkName = "registerButtonTapped(_:)"
             landmarkType = "7">
             <Locations>
@@ -110,8 +110,8 @@
             filePath = "AEON Loan/Features/Login/LoginViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "72"
-            endingLineNumber = "72"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
             landmarkName = "login(username:password:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -126,8 +126,8 @@
             filePath = "AEON Loan/Features/Register/Form/RegisterViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
             landmarkName = "registerButtonTapped(_:)"
             landmarkType = "7">
             <Locations>
@@ -167,22 +167,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "F9DE064A-063D-4A74-9232-2D2CF9783F9B"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AEON Loan/Features/Register/Form/RegisterViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "269"
-            endingLineNumber = "269"
-            landmarkName = "validate(completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "CE839697-CB0D-4D42-9315-1BF6352FF3C4"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -190,8 +174,8 @@
             filePath = "AEON Loan/Features/CheckCredit/Form/Form/CheckCreditFormViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
             landmarkName = "bind()"
             landmarkType = "7">
          </BreakpointContent>
@@ -199,49 +183,33 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "C2FE4228-835D-4B1E-B47E-EE364E3D7E95"
-            shouldBeEnabled = "Yes"
+            uuid = "6AF032A0-A06C-4273-825D-8A25CEECD635"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "AEON Loan/Features/OTP/OTPViewController.swift"
+            filePath = "AEON Loan/Features/Login/LoginViewModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "23"
-            endingLineNumber = "23"
-            landmarkName = "OTPViewController"
-            landmarkType = "3">
-            <Locations>
-               <Location
-                  uuid = "C2FE4228-835D-4B1E-B47E-EE364E3D7E95 - 1239358233e02e5"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "function signature specialization &lt;Arg[0] = Owned To Guaranteed, Arg[1] = Owned To Guaranteed&gt; of AEON_Loan.OTPViewController.init(nibName: Swift.Optional&lt;Swift.String&gt;, bundle: Swift.Optional&lt;__C.NSBundle&gt;) -&gt; AEON_Loan.OTPViewController"
-                  moduleName = "AEON Loan"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/aeon/Documents/development/AEON%20Loan/AEON%20Loan/Features/OTP/OTPViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "23"
-                  endingLineNumber = "23"
-                  offsetFromSymbolStart = "176">
-               </Location>
-               <Location
-                  uuid = "C2FE4228-835D-4B1E-B47E-EE364E3D7E95 - a23a1f381c49f95c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "function signature specialization &lt;Arg[0] = Owned To Guaranteed&gt; of AEON_Loan.OTPViewController.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;AEON_Loan.OTPViewController&gt;"
-                  moduleName = "AEON Loan"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/aeon/Documents/development/AEON%20Loan/AEON%20Loan/Features/OTP/OTPViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "23"
-                  endingLineNumber = "23"
-                  offsetFromSymbolStart = "164">
-               </Location>
-            </Locations>
+            startingLineNumber = "75"
+            endingLineNumber = "75"
+            landmarkName = "login(username:password:completion:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8FB53C80-4E4E-4B1F-B05A-665CF0DF7332"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AEON Loan/Features/Register/Form/RegisterViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "315"
+            endingLineNumber = "315"
+            landmarkName = "valueChanged(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

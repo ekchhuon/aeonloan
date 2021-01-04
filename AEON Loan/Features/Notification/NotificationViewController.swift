@@ -19,7 +19,7 @@ class NotificationViewController: BaseViewController {
     var shouldAnimate = true
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setup(title: "Notifications".localized)
+        self.setTitle("Notifications".localized)
         self.tableView.register(UINib(nibName: "NotificationCell", bundle: nil), forCellReuseIdentifier: "NotificationCell")
         tableView.rowHeight = 50
         tableView.estimatedRowHeight = 60

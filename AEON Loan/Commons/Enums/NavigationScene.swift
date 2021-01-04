@@ -32,6 +32,7 @@ extension Scene {
         case form(ApplyLoan?)
         case location(Applicant, ApplyLoan?)
         case result(Result)
+        case results(CheckCredit?)
         enum Result {
             case accepted
             case rejected

@@ -18,8 +18,7 @@ public class CheckCreditPickerViewModel {
     }
     
     func fetchVariable(with variable: VariableType) {
-        let langCode = Preference.language == .en ? "01":"02"
-        let header = Header(lan: langCode)
+        let header = Header()
         let param = Param.Variable(header: header, body: Param.Variable.Body(id: variable.code))
         status.value = .started
         APIClient.fetchVariable(variable, param: param.toJSON()) { [weak self] (result) in

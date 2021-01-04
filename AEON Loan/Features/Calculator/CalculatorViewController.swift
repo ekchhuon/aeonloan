@@ -81,7 +81,7 @@ class CalculatorViewController: BaseViewController, UITextFieldDelegate {
         select(segment: segment)
         select(currency: currency)
         select(housing: housing)
-        setup(title: "Loan Calculation".localized)
+        setTitle("Loan Calculation".localized)
     }
     
     fileprivate func setupView() {

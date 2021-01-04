@@ -22,7 +22,7 @@ class ProductListViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setup(title: "AEON Products".localized)
+        setTitle("AEON Products".localized)
         setupTableView()
         tableView.alwaysBounceVertical = false
     }

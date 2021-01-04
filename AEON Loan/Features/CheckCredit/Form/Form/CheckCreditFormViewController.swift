@@ -32,6 +32,7 @@ class CheckCreditFormViewController: BaseViewController, UITextFieldDelegate, Wr
     let calculator = Calculator()
     override func viewDidLoad() {
         super.viewDidLoad()
+        setTitle("Check Credit")
         self.tableView.register(UINib(nibName: "CheckCreditFormCell", bundle: nil), forCellReuseIdentifier: "CheckCreditFormCell")
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -49,9 +50,9 @@ class CheckCreditFormViewController: BaseViewController, UITextFieldDelegate, Wr
         let usernameCell = getCell(for: .nameTextField)
         let nidPassportCell = getCell(for: .nidPassportTextField)
         workingPeriodCell.textField.inputView = workingPeriodPickerView
-        usernameCell.textField.text = Preference.user.fullname
+        usernameCell.textField.text = Preference.user.fullName
         nidPassportCell.textField.text = Preference.user.nidPassport
-        
+
         setupDatePicker()
         bind()
         pickerViewModel.fetchVariable(with: .workingPeriod)
@@ -202,7 +203,7 @@ extension CheckCreditFormViewController: UITableViewDataSource, UITableViewDeleg
     }
     
     @objc func dobQuestionMarkTapped() {
-        showAlt(title: "Date of Birth".localized, message: "Lorem ipsum dolor sit amet 18 years".localized, style: .alert)
+        showAlt(title: "Date of Birth".localized, message: "Applicant age must be at least \(Date() - 21.years) years old".localized, style: .alert)
     }
     
     // MARK: Outlet Action
@@ -215,7 +216,7 @@ extension CheckCreditFormViewController: UITableViewDataSource, UITableViewDeleg
         //navigates(to: .checkCredit(.location))
         applicant.age = "\(applicant.dob.asAge)"
         calculator.income = applicant.income.asDouble
-        calculator.otherLoan = applicant.loanRepaymentOther.asDouble
+        calculator.otherLoan = applicant.loanRepayment.asDouble
         applicant.repaymentRadio = "\(calculator.calculate(.ratio))"
         print("dsafafas===>", applicant)
         validate {
@@ -293,7 +294,7 @@ extension CheckCreditFormViewController {
         //            credit.housingType = textField.text ?? ""
         
         case TextFieldData.otherLoanRepaymentTextField.rawValue:
-            applicant.loanRepaymentOther = textField.text ?? ""
+            applicant.loanRepayment = textField.text ?? ""
         default:
             break
         }
@@ -305,7 +306,7 @@ extension CheckCreditFormViewController {
         //Formate Date
         datePicker.datePickerMode = .date
         datePicker.preferredDatePickerStyle = .wheels
-        datePicker.maximumDate = Date() - 18.years
+        datePicker.maximumDate = Date() - 21.years
         
         //ToolBar
         let toolbar = UIToolbar();
@@ -324,7 +325,7 @@ extension CheckCreditFormViewController {
     @objc func doneDatePicker(){
         let cell = tableView.cellForRow(at: IndexPath(row: TextFieldData.dobTextField.rawValue, section: 0)) as! CheckCreditFormCell
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd/MM/yyyy"
+        formatter.dateFormat = "yyyy/MM/dd"
         cell.textField.text = formatter.string(from: datePicker.date)
         applicant.dob = formatter.string(from: datePicker.date)
         self.view.endEditing(true)
@@ -360,7 +361,8 @@ extension CheckCreditFormViewController: UIPickerViewDelegate, UIPickerViewDataS
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         getCell(for: .workingPeriodTextField).textField.text = workings?[row].titleEn
-        applicant.workingPeriod = workings?[row].titleEn ?? "Aaaaaa"  // workings?[row].titleEn ?? workings?[row].titleKh ?? ""
+        applicant.workingPeriod = workings?[row].titleEn ?? "Null"  // workings?[row].titleEn ?? workings?[row].titleKh ?? ""
+        applicant.workingPeriodId = workings?[row].id ?? ""
     }
 }
 

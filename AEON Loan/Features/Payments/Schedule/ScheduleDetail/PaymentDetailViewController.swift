@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import PDFKit
 
 extension PaymentDetailViewController {
     static func instantiate(item: String) -> PaymentDetailViewController {
@@ -17,12 +18,23 @@ extension PaymentDetailViewController {
 
 class PaymentDetailViewController: BaseViewController {
     private let viewModel = PaymentDetailViewModel()
+    @IBOutlet weak var pdfView: PDFView!
     @IBOutlet weak var agreementNumber: UILabel!
     var agreement = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        setup(title: NSLocalizedString("Payment Details", comment: ""))
-        self.agreementNumber.text = agreement
+        setTitle("Payment Details".localized)
+//        self.agreementNumber.text = agreement
+        
+        if let path = Bundle.main.path(forResource: "sample", ofType: "pdf") {
+            if let pdfDocument = PDFDocument(url: URL(fileURLWithPath: path)) {
+                pdfView.displayMode = .singlePageContinuous
+                pdfView.autoScales = true
+                pdfView.displayDirection = .vertical
+                pdfView.document = pdfDocument
+            }
+        }
     }
     
 }

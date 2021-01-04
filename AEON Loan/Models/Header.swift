@@ -12,10 +12,10 @@ struct Header: Codable {
     let appID, appVersion, deviceBrand, deviceModel: String
     let devicePlanform, osVersion: String
     
-    init(transactionID: String = "", timestamp: String = "", lan: String = "", channel: String = "", appID: String = "", appVersion: String = "", deviceBrand: String = "", deviceModel: String = "", devicePlanform: String = "", osVersion:String = "") {
+    init(transactionID: String = "", timestamp: String = "", lan: String = Preference.language == .en ? "01":"02", channel: String = "", appID: String = "", appVersion: String = "", deviceBrand: String = "", deviceModel: String = "", devicePlanform: String = "", osVersion:String = "") {
         self.transactionID = transactionID
         self.timestamp = timestamp
-        self.lan = lan
+        self.lan = Preference.language == .en ? "01":"02"
         self.channel = channel
         self.appID = appID
         self.appVersion = appVersion

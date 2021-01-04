@@ -13,6 +13,8 @@ public class HomeViewModel {
     let message: Box<String?> = Box(nil)
     let error: Box<APIError?> = Box(nil)
     let response: Box<Response?> = Box(nil)
+    let imageURLs: Box<[URL?]> = Box([URL]()) // slideshow
+    let images: Box<[UIImage]?> = Box(nil)
     
     let defaults = "Loading..."
     let user: Box<User?> = Box(nil)
@@ -23,6 +25,7 @@ public class HomeViewModel {
 
     init() {
         setupMenu()
+        fetchSlideShow()
     }
     
     func setupMenu() {
@@ -51,15 +54,42 @@ public class HomeViewModel {
     }
     */
     
-    func fetch(data: Applicant) {
-        var data = data
-        data.workingPeriod = "5"
-        data.livingPeriod = "5"
-        let endcoded = data.asString.encrypt()
-        print(data, endcoded)
+    private func createImageURL(with imageIds: [String]?) {
+        guard let imageIds = imageIds else {
+            print("ImageID Not Found"); return
+        }
+        var urls = [URL]()
+        let path = Constant.server + "public/v1/slide_image/"
+        imageIds.forEach { id in
+            guard let url = URL(string: path + id) else {
+                print("Unable to convert string to URL"); return
+            }
+            urls.append(url)
+        }
+        self.imageURLs.value = urls
+    }
+    
+//    private func createImage(with imageIds: [String]?) {
+//        guard let imageIds = imageIds else {
+//            print("ImageID Not Found"); return
+//        }
+//        var urls = [URL]()
+//        var images = [UIImage]()
+//        let path = Constant.server + "public/v1/slide_image/"
+//        imageIds.forEach { id in
+//            guard let url = URL(string: path + id) else {
+//                print("Unable to convert string to URL"); return
+//            }
+//            let aaa = UIImageView().load(url: url)
+//        }
+//        self.imageURLs.value = urls
+//    }
+    
+    func fetchSlideShow() {
         let header = Header()
-        let body = Param.Body(encode: endcoded)
+        let body = Param.Body(encode: "")
         let param = Param.Request(header: header, body: body)
+        
         status.value = .started
         APIClient.slideShow(param: param.toJSON()) { [weak self] (result) in
             guard let self = self else {return}
@@ -67,6 +97,11 @@ public class HomeViewModel {
             switch result {
             case let .success(data):
                 print(data)
+                guard data.body.success else {
+                    self.message.value = data.body.message + " [\(data.body.code)]"
+                    return
+                }
+                self.createImageURL(with: data.body.data)
             case let .failure(err):
                 self.error.value = err.evaluate
             }
@@ -109,3 +144,4 @@ struct Menu {
     var icon: UIImage
     var title: String
 }
+

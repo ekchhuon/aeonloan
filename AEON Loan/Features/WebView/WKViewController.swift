@@ -21,10 +21,15 @@ class WKViewController: BaseViewController, WKUIDelegate, WKNavigationDelegate {
     var request: WKRequest!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setup(title: request.title)
+        self.setTitle(request.title)
         let backButton = UIBarButtonItem(image: UIImage(systemName: "chevron.backward"), style: .plain, target: self, action: #selector(back(sender:)))
         self.navigationItem.leftBarButtonItem = backButton
         webView.navigationDelegate = self
+        
+        /*
+        let source = "https://drive.google.com/file/d/1Jf5QlvHu6Ht2TVyMeS5ojMYk1JLIr92a/view?usp=sharing"
+        let url: URL! = URL(string: source)
+        */
         let request = URLRequest(url: self.request.url)
         webView.load(request)
     }
@@ -68,6 +73,7 @@ enum WKRequest {
     case promotion
     case product(AeonProduct)
     case aboutUs
+    //case pdf(_ source: URL)
     var lang: String {
         return Preference.language == .en ? "" : "/kh"
     }
@@ -79,6 +85,7 @@ enum WKRequest {
         case .promotion: return "Promotion".localized
         case let .product(pro): return pro.title
         case .aboutUs: return "About Us".localized
+            
         }
     }
     

@@ -66,8 +66,7 @@ class PickerViewController: BaseViewController {
                 delegate.writeBack(value: data)
             }
         }
-    }
-    
+    } 
 }
 
 extension PickerViewController: UITableViewDataSource, UITableViewDelegate {
@@ -82,13 +81,12 @@ extension PickerViewController: UITableViewDataSource, UITableViewDelegate {
         if cell.textLabel?.text == pickedItem {
             self.tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
         }
-        
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedVariable = variables?[indexPath.row]
-        
+        _ = navigationController?.popViewController(animated: true)
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {

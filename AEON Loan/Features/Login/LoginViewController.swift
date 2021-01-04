@@ -30,7 +30,7 @@ class LoginViewController: BaseViewController {
         forgotPassword.text = NSLocalizedString("Forgot Password or passowrd?", comment: "")
         setupView()
         bind()
-        setup(title: "Login")
+        setTitle("Login")
          startTouchID()
         
         print("IS SIGN IN",AuthController.isSignedIn)
@@ -84,7 +84,7 @@ class LoginViewController: BaseViewController {
         }
 */
         validate { user in
-            self.viewModel.login(username: user.fullname, password: user.password) { _ in
+            self.viewModel.login(username: user.username, password: user.password) { _ in
                     self.navigates(to: .home(.push(subtype: .fromLeft)))
             }
         }
@@ -128,7 +128,7 @@ class LoginViewController: BaseViewController {
     
     
     private func setupView(){
-        setup(title: "Login".localized)
+        setTitle("Login".localized)
         setupTextField()
         
         loginButton.rounds(radius: 10, background: .brandPurple, border: .brandPurple, width: 1)
@@ -150,6 +150,9 @@ class LoginViewController: BaseViewController {
 //            let data = LoginDataTest(username: username, password: password)
 //            fetch(data)
             let user = User(username: username, password: password)
+            
+            print("Users........", user)
+            
             completion(user)
         } catch (let error) {
             print((error as! ValidationError).message)

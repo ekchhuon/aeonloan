@@ -14,6 +14,7 @@
                 <outlet property="confirmPasswordTextField" destination="9pi-1g-O9t" id="8yQ-Yq-Hre"/>
                 <outlet property="emailTextField" destination="Wsf-W1-xP6" id="YLH-k8-wZR"/>
                 <outlet property="fullNameTextField" destination="qW4-VW-Ylu" id="1Aq-TH-UYv"/>
+                <outlet property="indicatorView" destination="jmA-63-Esz" id="Q2g-dK-86M"/>
                 <outlet property="passwordTextField" destination="D6I-SC-7Yd" id="KRV-Z6-qhC"/>
                 <outlet property="phoneTextField" destination="Gxq-LP-4GY" id="ugH-Oi-s0Y"/>
                 <outlet property="registerButton" destination="WUM-jo-jAN" id="zhf-VK-Znz"/>
@@ -66,13 +67,16 @@
                             <rect key="frame" x="0.0" y="53" width="378" height="50"/>
                             <subviews>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="17M-kK-m0s">
-                                    <rect key="frame" x="0.0" y="0.0" width="318.5" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="280.5" height="50"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="50" id="i1p-6H-tCS"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
+                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="jmA-63-Esz">
+                                    <rect key="frame" x="298.5" y="0.0" width="20" height="50"/>
+                                </activityIndicatorView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5XE-mC-Kfl">
                                     <rect key="frame" x="336.5" y="0.0" width="41.5" height="50"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -100,7 +104,7 @@
                                         <constraint firstAttribute="height" constant="50" id="Vdp-Ch-wdS"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits"/>
+                                    <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                 </textField>
                             </subviews>
                         </stackView>

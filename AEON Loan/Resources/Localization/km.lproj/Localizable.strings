@@ -35,3 +35,9 @@
 "District" = "ស្រុក/ក្រុង";
 "Commune" = "ឃុំ/សង្កាត់";
 "Village" = "ភូមិ";
+
+//check credit
+"We apology!" = "សូមអភ័យទោស!";
+"You are not meet our criteria to apply loan. Please try again later." = "លោកអ្នកមិនទាន់គ្រប់លក្ខខណ្ឌតម្រូវ​ ដើម្បីទទួលបានកម្ចីនៅឡើយទេ។ សូមព្យាយាមម្តងទៀតនៅពេលក្រោយ។";
+"Congratulation!" = "អបអរសាទរ!";
+"You have got pre-approval with below finance amount:" = "លោកអ្នកទទួលបាននូវការយល់ព្រមទុកជាមុននូវទំហំកម្ចីដូចខាងក្រោម៖";
