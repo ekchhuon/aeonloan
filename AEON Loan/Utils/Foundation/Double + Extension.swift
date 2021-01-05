@@ -15,11 +15,12 @@ extension Double{
     var percent: Double {
         return self/100.0
     }
+
     
     /// rounding of 3 decimal place (ex. 5.123)
     func format(for currency: Currency) -> String  {
         let formatter = NumberFormatter()
-        formatter.maximumFractionDigits = currency == .khr ? 0:2
+        formatter.maximumFractionDigits = 0 //currency == .khr ? 0:2
         formatter.roundingMode = .down
         formatter.numberStyle = .currency
         formatter.currencySymbol = ""
@@ -30,6 +31,8 @@ extension Double{
         }
         return formated
     }
+    
+    
 }
 
 extension Locale {

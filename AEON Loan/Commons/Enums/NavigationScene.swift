@@ -17,7 +17,7 @@ enum Scene {
     case slider(IndexPath, String)
     case checkCredit(CheckCreditScene)
     case applyLoan
-    case loanResult(SubmitResult)
+    case loanSuccess
     case payment(PaymentScene)
     case calculator
     case OTP(with:User)

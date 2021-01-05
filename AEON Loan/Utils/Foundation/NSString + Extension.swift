@@ -41,6 +41,21 @@ extension String {
         let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
         return String((0..<length).map{ _ in letters.randomElement()! })
     }
+    
+    var asCurrency: String  {
+        let formatter = NumberFormatter()
+        formatter.maximumFractionDigits = 0
+        formatter.roundingMode = .down
+        formatter.numberStyle = .currency
+        formatter.currencySymbol = ""
+        formatter.locale = .us
+        guard let integer = Int(self),
+              let formated = formatter.string(from: NSNumber(value:integer)) else {
+            debugPrint("Unable to format number")
+            return ""
+        }
+        return formated
+    }
 }
 
 /*

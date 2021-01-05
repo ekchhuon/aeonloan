@@ -11,7 +11,8 @@ public class ApplyLoanViewModel {
     let status: Box<RequestStatus?> = Box(nil)
     let message: Box<String?> = Box(nil)
     let error: Box<APIError?> = Box(nil)
-    let response: Box<CheckCredit?> = Box(nil)
+    let response: Box<Loan?> = Box(nil)
+    var products: Box<[CheckCredit.ProductOffer]?> = Box(nil)
     
     init() {
         fetchCheckCreditStatus()
@@ -29,7 +30,11 @@ public class ApplyLoanViewModel {
             self.status.value = .stopped
             switch result {
             case let .success(data):
-                print(data)
+                guard data.body.success else {
+                    self.message.value = data.body.message + " [\(data.body.code)]"
+                    return
+                }
+                self.response.value = data
             case let .failure(err):
                 self.error.value = err.evaluate
             }
@@ -51,7 +56,8 @@ public class ApplyLoanViewModel {
                     self.message.value = data.body.message + " [\(data.body.code)]"
                     return
                 }
-                self.response.value = data
+                //self.response.value = data
+                self.products.value = data.body.data?.productOffer
             case let .failure(err):
                 self.error.value = err.evaluate
             }

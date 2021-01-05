@@ -13,21 +13,21 @@ public class CheckCreditFormViewModel {
     let message: Box<String?> = Box(nil)
     let error: Box<APIError?> = Box(nil)
     let response: Box<Response?> = Box(nil)
-    var tableDatas: Box<[CheckCreditFieldData]?> = Box(nil)
+//    var tableDatas: Box<[CheckCreditFieldData]?> = Box(nil)
     init() {
-        generateData()
+//        generateData()
         //filter()
     }
     
-    func generateData() {
-        var datas = [CheckCreditFieldData]()
-        let placeholders = ["1","2", "3", "4", "5", "6","7", "8", "9", "10", "11","12", "13", "14", "15", "16", "17", "18", "19", "20"]
-        for (_,v) in placeholders.enumerated() {
-            datas.append(CheckCreditFieldData(placeholder: v, icon: UIImage(systemName: "calendar") ?? UIImage()))
-        }
+//    func generateData() {
+//        var datas = [CheckCreditFieldData]()
+//        let placeholders = ["1","2", "3", "4", "5", "6","7", "8", "9", "10", "11","12", "13", "14", "15", "16", "17", "18", "19", "20"]
+//        for (_,v) in placeholders.enumerated() {
+//            datas.append(CheckCreditFieldData(placeholder: v, icon: UIImage(systemName: "calendar") ?? UIImage()))
+//        }
         
-        tableDatas.value = datas
-    }
+//        tableDatas.value = datas
+//    }
     
     //    func filter() {
     //        var data = [TextFieldData.provinceTextField, TextFieldData.districtTextField]

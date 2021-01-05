@@ -17,6 +17,7 @@ extension HomeViewController {
 class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
     private let viewModel = HomeViewModel()
     private let siderViewModel = SliderViewModel()
+    private let loanViewModel = ApplyLoanViewModel()
     
     @IBOutlet weak var gridCollectionView: UICollectionView!
     @IBOutlet weak var sliderCollectionView: UICollectionView!
@@ -31,9 +32,10 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
     var longPressed: Bool = false
     var defaultInterval: TimeInterval = 3
     
-//    var imageArray = [UIImage?]()
+//  var imageArray = [UIImage?]()
     var imageURLs = [URL?]()
     var menus: [Menu] = [Menu]()
+    var products: [CheckCredit.ProductOffer]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +46,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
         
         setupView()
         bindSliderData()
+        bindCheckCreditStatus()
         bind()
         
         //self.showIndicator(true, style: .whiteBackground)
@@ -59,11 +62,11 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
         }
         viewModel.message.bind { [weak self] msg in
             guard let self = self, let msg = msg else { return }
-            self.showAlert(title: "Login".localized ,message: msg)
+            self.showAlert(title: "".localized ,message: msg)
         }
         viewModel.error.bind { [weak self] (err) in
             guard let self = self, let err = err else { return }
-            self.showAlert(title: "Login".localized, message: err.localized)
+            self.showAlert(title: "".localized, message: err.localized)
         }
         
         viewModel.imageURLs.bind { [weak self] (urls) in
@@ -91,6 +94,35 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
             self.sliderCollectionView.showIndicator(loading, style: .whiteBackground)
         }
     }
+    
+    private func bindCheckCreditStatus() {
+        loanViewModel.status.bind { [weak self] status in
+            guard let self = self else { return }
+            self.showIndicator(status == .started)
+        }
+        loanViewModel.message.bind { [weak self] msg in
+            guard let self = self, let msg = msg else { return }
+            
+            print("Message:", msg)
+//            guard msg.contains("No data found"), msg.contains("Session invalid") else {
+//                self.showAlert(title: "".localized ,message: msg)
+//                return
+//            }
+            
+            // no data found = credit not yet checked
+        }
+        
+        loanViewModel.error.bind { [weak self] (err) in
+            guard let self = self, let err = err else { return }
+            self.showAlert(title: "".localized, message: err.localized)
+        }
+        
+        loanViewModel.products.bind { [weak self] (products) in
+            guard let self = self else { return }
+            self.products = products
+        }
+    }
+    
     @IBAction func contactUsButtonTapped(_ sender: Any) {
         navigateToWebview(with: .contactUs)
     }
@@ -160,9 +192,15 @@ extension HomeViewController: UICollectionViewDelegate {
         case gridCollectionView:
             switch indexPath.row {
             case 0:
+                guard let products = products, products.count > 0 else {
+                    navigates(to: .checkCredit(.form(nil)))
+                    return
+                }
                 
-                //let controller = CheckCreditHistoryViewController.instantiate()
-                //navigationController?.pushViewController(controller, animated: true)
+                let controller = CheckCreditHistoryViewController.instantiate(data: products)
+                navigationController?.pushViewController(controller, animated: true)
+                
+                
                 
                 //navigates(to: .checkCredit(.takePhoto))
                 //navigates(to: .checkCredit(.form))
@@ -173,8 +211,8 @@ extension HomeViewController: UICollectionViewDelegate {
                 navigationController?.pushViewController(controller, animated: true)
                 */
             
-                let controller = CheckCreditFormViewController.instantiate(item: "", loan: nil)
-                navigationController?.pushViewController(controller, animated: true)
+//                let controller = CheckCreditFormViewController.instantiate(item: "", loan: nil)
+//                navigationController?.pushViewController(controller, animated: true)
             
             case 1:
                 navigates(to: .applyLoan)

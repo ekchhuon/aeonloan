@@ -58,6 +58,8 @@ class LocationViewController: BaseViewController, UITextFieldDelegate, WriteValu
         submitButton.backgroundColor = .brandPurple
         updateLocationLabel()
         bind()
+        //bindApplyLoan()
+        bindCheckCredit()
         creditPickerViewModel.fetchVariable(with: .livingPeriod)
     }
     
@@ -72,9 +74,7 @@ class LocationViewController: BaseViewController, UITextFieldDelegate, WriteValu
                 self.showAlert(title: "".localized ,message: msg)
                 return
             }
-            
 //            self.navigates(to: .checkCredit(.result(.rejected)))
-            
             self.navigates(to: .checkCredit(.results(nil)))
         }
         viewModel.error.bind { [weak self] (err) in
@@ -86,14 +86,11 @@ class LocationViewController: BaseViewController, UITextFieldDelegate, WriteValu
             guard let self = self, let data = data else {
                debugPrint("Error") ;return
             }
-            
             self.navigates(to: .checkCredit(.results(data)))
-
-//            let controller = CreditAcceptedViewController.instantiate(data: data)
-//            self.navigationController?.pushViewController(controller, animated: true)
         }
-        
-        
+    }
+    
+    fileprivate func bindCheckCredit() {
         // check credit
         creditPickerViewModel.status.bind { [weak self] status in
             guard let self = self else { return }
@@ -112,8 +109,9 @@ class LocationViewController: BaseViewController, UITextFieldDelegate, WriteValu
             self.livings = data
             self.pickerView.reloadAllComponents()
         }
-        
-        // loan
+    }
+    
+    fileprivate func bindApplyLoan() {
         loanViewModel.status.bind { [weak self] status in
             guard let self = self else { return }
             self.showIndicator(status == .started)
@@ -209,7 +207,7 @@ class LocationViewController: BaseViewController, UITextFieldDelegate, WriteValu
         validate { [self] applicant in
             viewModel.submit(data: applicant)
             guard let loan = loan else { return }
-            loanViewModel.submit(data: loan)// mock
+//            loanViewModel.submit(data: loan)// mock
         }
     }
     

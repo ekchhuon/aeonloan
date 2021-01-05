@@ -190,7 +190,7 @@ extension APIClient {
         fetch(route: APIRouter.paymentScheduleDetail(param), completion: completion)
     }
     
-    static func applyLoan(param: Parameters, completion:@escaping(Result<Login, AFError>) -> Void ) {
+    static func applyLoan(param: Parameters, completion:@escaping(Result<Loan, AFError>) -> Void ) {
         fetch(route: APIRouter.loan(param), completion: completion)
     }
     

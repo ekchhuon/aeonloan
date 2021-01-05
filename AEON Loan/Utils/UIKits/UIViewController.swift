@@ -12,8 +12,8 @@ import UIKit
 extension UIViewController {
     func navigates(to scene: Scene) {
         switch scene {
-        case let .loanResult(result):
-            let controller = LoanSubmissionResultViewController.instantiate(result: result)
+        case .loanSuccess:
+            let controller = LoanSuccessViewController.instantiate()
             navigationController?.pushViewController(controller, animated: true)
 //        case .checkCredit(.takePhoto):
 //            // let controller = TakePhotoViewController.instantiate()

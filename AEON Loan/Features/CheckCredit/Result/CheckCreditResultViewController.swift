@@ -67,6 +67,11 @@ extension CheckCreditResultViewController: UITableViewDataSource, UITableViewDel
     }
     
     // MARK: Outlet Action
+    @IBAction func laterButtonTapped(_ sender: Any) {
+        navigates(to: .home(.moveIn(subtype: .fromLeft)))
+    }
+    
+    // MARK: Outlet Action
     @IBAction func applyButtonTapped(_ sender: Any) {
         navigates(to: .applyLoan)
     }

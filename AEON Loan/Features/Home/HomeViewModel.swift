@@ -69,22 +69,6 @@ public class HomeViewModel {
         self.imageURLs.value = urls
     }
     
-//    private func createImage(with imageIds: [String]?) {
-//        guard let imageIds = imageIds else {
-//            print("ImageID Not Found"); return
-//        }
-//        var urls = [URL]()
-//        var images = [UIImage]()
-//        let path = Constant.server + "public/v1/slide_image/"
-//        imageIds.forEach { id in
-//            guard let url = URL(string: path + id) else {
-//                print("Unable to convert string to URL"); return
-//            }
-//            let aaa = UIImageView().load(url: url)
-//        }
-//        self.imageURLs.value = urls
-//    }
-    
     func fetchSlideShow() {
         let header = Header()
         let body = Param.Body(encode: "")
@@ -129,7 +113,7 @@ public class SliderViewModel {
         loading.value = true
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             self.loading.value = false
-            let imageArray = [UIImage(named: "1"), UIImage(named: "2"), UIImage(named: "3"), UIImage(named: "4"), UIImage(named: "5"), UIImage(named: "6")]
+            let imageArray = [UIImage(named: "1"), UIImage(named: "2"), UIImage(named: "3"), UIImage(named: "4"), UIImage(named: "5"), UIImage(named: "6"), UIImage(named: "1"), UIImage(named: "2"), UIImage(named: "3"), UIImage(named: "4"), UIImage(named: "5"), UIImage(named: "6")]
             self.images.value = imageArray
         }
     }

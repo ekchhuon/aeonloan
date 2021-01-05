@@ -46,19 +46,43 @@ class ApplyLoanViewController: BaseViewController, WriteValueBackDelegate {
         }
         viewModel.message.bind { [weak self] msg in
             guard let self = self, let msg = msg else { return }
-            self.showAlert(title: "Login".localized ,message: msg)
+            guard msg.contains("No data found") else {
+                self.showAlert(title: "".localized ,message: msg)
+                return
+            }
+            
+            let alert = self.showAlt(title: "".localized, message: "Please check your credit before apply loan".localized, style: .alert)
+            let okAction = UIAlertAction(title: "Check", style: .default) {_ in
+                self.navigates(to: .checkCredit(.form(nil)))
+            }
+            alert.addAction(okAction)
+            
+//            let controller = CheckCreditMessageViewController.instantiate()
+//            controller.modalPresentationStyle = .overCurrentContext
+//            self.present(controller, animated: true)
+            
+//            let controller = CheckCreditMessageViewController.instantiate()
+//            self.navigationController?.pushViewController(controller, animated: true)
+            
         }
+        
         viewModel.error.bind { [weak self] (err) in
             guard let self = self, let err = err else { return }
-            self.showAlert(title: "Login".localized, message: err.localized)
+            self.showAlert(title: "".localized, message: err.localized)
         }
-        viewModel.response.bind { [weak self] (result) in
+        
+        viewModel.products.bind { [weak self] (products) in
             guard let self = self else { return }
-            self.products = result?.body.data?.productOffer
-            //self.submitButton.isHidden = false
+            self.products = products
+        }
+        
+        viewModel.response.bind { [weak self] response in
+            guard let self = self,
+                  let resp = response, resp.body.success else { return }
             
-            print("Products......", self.products, result?.body.data?.productOffer)
-            
+            let controller = LoanSuccessViewController.instantiate()
+            controller.modalPresentationStyle = .overCurrentContext
+            self.present(controller, animated: true)
         }
     }
     
@@ -93,9 +117,15 @@ class ApplyLoanViewController: BaseViewController, WriteValueBackDelegate {
 //            guard self.hasCheckedCredit else  {
 //                self.navigates(to: .checkCredit(.form(data))); return
 //            }
-            self.viewModel.submit(data: data)
+            
+            let amount = "\(self.amountTextField.text ?? "0")".asCurrency
+            
+            let alert = self.showAlt(title: "Apply Loan", message: "You're about to apply loan for \(self.productTextField.text ?? "") with the amount of USD \(amount) ", actionTitle: "Cancel".localized, style: .actionSheet, actionStyle: .cancel)
+            let okAction = UIAlertAction(title: "Apply", style: .default) {_ in
+                self.viewModel.submit(data: data)
+            }
+            alert.addAction(okAction)
         }
-        
     }
     
     func validate(completion: @escaping (_ data: ApplyLoan) -> Void) {

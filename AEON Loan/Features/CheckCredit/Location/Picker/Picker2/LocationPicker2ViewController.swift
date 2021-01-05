@@ -135,6 +135,7 @@ extension LocationPicker2ViewController: UITableViewDataSource, UITableViewDeleg
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("selected index", indexPath.row)
         self.selectedLocation = locations?[indexPath.row]
+        _ = navigationController?.popViewController(animated: true)
     }
     
 //    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

@@ -36,7 +36,7 @@
                     </connections>
                 </button>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="kIL-QL-ZX0">
-                    <rect key="frame" x="18" y="124" width="378" height="648"/>
+                    <rect key="frame" x="18" y="154" width="378" height="588"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="xEx-e5-jL6">
                             <rect key="frame" x="70.5" y="0.0" width="237.5" height="61.5"/>
@@ -56,7 +56,7 @@
                             </subviews>
                         </stackView>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="BTl-Fe-n2Y">
-                            <rect key="frame" x="0.0" y="91.5" width="378" height="556.5"/>
+                            <rect key="frame" x="0.0" y="91.5" width="378" height="496.5"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </tableView>
                     </subviews>
@@ -65,19 +65,35 @@
                         <constraint firstItem="BTl-Fe-n2Y" firstAttribute="leading" secondItem="kIL-QL-ZX0" secondAttribute="leading" id="n2j-7c-pa7"/>
                     </constraints>
                 </stackView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MIC-eI-3g3">
+                    <rect key="frame" x="18" y="742" width="378" height="50"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="YdE-v7-CQd"/>
+                    </constraints>
+                    <state key="normal" title="Later">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="laterButtonTapped:" destination="-1" eventType="touchUpInside" id="wW9-wF-pou"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" red="0.4549019608" green="0.3803921569" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="g1z-3F-1AW" secondAttribute="trailing" constant="18" id="3LV-LN-YAE"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="MIC-eI-3g3" secondAttribute="trailing" constant="18" id="BZz-PH-ckH"/>
                 <constraint firstItem="kIL-QL-ZX0" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="J1q-2i-ffk"/>
                 <constraint firstAttribute="trailing" secondItem="kIL-QL-ZX0" secondAttribute="trailing" constant="18" id="Mqg-gZ-o2E"/>
-                <constraint firstItem="g1z-3F-1AW" firstAttribute="top" secondItem="kIL-QL-ZX0" secondAttribute="bottom" constant="20" id="Pbm-yt-X9L"/>
+                <constraint firstItem="g1z-3F-1AW" firstAttribute="top" secondItem="MIC-eI-3g3" secondAttribute="bottom" id="WTZ-AJ-4Ui"/>
+                <constraint firstItem="MIC-eI-3g3" firstAttribute="top" secondItem="kIL-QL-ZX0" secondAttribute="bottom" id="XRN-vx-MAQ"/>
                 <constraint firstItem="kIL-QL-ZX0" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="18" id="bZp-al-oCd"/>
                 <constraint firstItem="g1z-3F-1AW" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="18" id="dO1-A9-OXY"/>
+                <constraint firstItem="MIC-eI-3g3" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="18" id="kw6-LR-QmV"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="g1z-3F-1AW" secondAttribute="bottom" constant="20" id="q44-2u-1tI"/>
             </constraints>
-            <point key="canvasLocation" x="139" y="87"/>
+            <point key="canvasLocation" x="137.68115942028987" y="86.383928571428569"/>
         </view>
     </objects>
 </document>

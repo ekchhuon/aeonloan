@@ -76,9 +76,9 @@ class ProductPickerViewController: BaseViewController {
             guard let self = self, let err = err else { return }
             self.showAlert(title: "Product Type".localized, message: err.localized)
         }
-        viewModel.response.bind { [weak self] data in
+        viewModel.products.bind { [weak self] products in
             guard let self = self else { return }
-            self.products = data?.body.data?.productOffer
+            self.products = products
             self.tableView.reloadData()
         }
     }
