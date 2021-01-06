@@ -170,10 +170,13 @@ extension SideMenuViewController: UITableViewDataSource, UITableViewDelegate {
 //            let alert = showAlt(title: "Logout".localized, message: "Are you sure you want to logout?".localized, actionTitle: "Cancel", style: .actionSheet)
             let alert = showAlt(title: "Logout".localized, message: "Are you sure you want to logout?".localized, actionTitle: "Cancel".localized, style: .actionSheet, actionStyle: .cancel)
             let okAction = UIAlertAction(title: "Logout".localized, style: .destructive) {_ in
-                self.viewModel.logout { _ in
-                    try? AuthController.signOut()
-                    self.navigates(to: .home(.fade))
-                }
+//                self.viewModel.logout { _ in
+//                    try? AuthController.signOut()
+//                    self.navigates(to: .home(.fade))
+//                }
+                
+                try? AuthController.signOut()
+                self.navigates(to: .home(.fade))
             }
             alert.addAction(okAction)
         default:

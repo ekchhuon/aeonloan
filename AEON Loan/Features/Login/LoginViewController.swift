@@ -21,6 +21,7 @@ class LoginViewController: BaseViewController {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var eyeballButton: UIButton!
+    @IBOutlet weak var closeButton: UIButton!
     
     let touchMe = BiometricIDAuth()
     var hidden: Bool = true
@@ -31,10 +32,31 @@ class LoginViewController: BaseViewController {
         setupView()
         bind()
         setTitle("Login")
-         startTouchID()
+        startTouchID()
         
         print("IS SIGN IN",AuthController.isSignedIn)
+        
+        print("self.isRoot", self.isRoot, self.navigationController?.viewControllers.count == 1, self.isModal)
+        
+        closeButton.isHidden = self.isModal ? false : true
+
+        
+        
+        //        if(self.navigationController?.viewControllers.count == 1){
+        //            //do what you want
+        //            print("self.isRoot...", self.isRoot)
+        //        }
     }
+    
+    //    override func viewWillAppear(_ animated: Bool) {
+    //        super.viewWillAppear(animated)
+    //        navigationController?.setNavigationBarHidden(true, animated: animated)
+    //    }
+    //
+    //    override func viewWillDisappear(_ animated: Bool) {
+    //        super.viewWillDisappear(animated)
+    //        navigationController?.setNavigationBarHidden(false, animated: animated)
+    //    }
     
     func startTouchID() {
         touchMe.tryBiometricAuthentications { (success, message, errCode)  in
@@ -42,7 +64,7 @@ class LoginViewController: BaseViewController {
                 self.navigates(to: .home(.push(subtype: .fromLeft)))
                 return
             }
-
+            
             guard let code = errCode else { return }
             switch code {
             case .authenticationFailed, .biometryNotEnrolled:
@@ -67,49 +89,52 @@ class LoginViewController: BaseViewController {
         }
     }
     
+    @IBAction func closeButtonTapped(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
     
     @IBAction func loginTapped(_ sender: Any) {
-/*
-        viewModel.login(username: "dara", password: "123456") { _ in
-            let user = User(username: "dara")
-            do {
-              try AuthController.signIn(user, password: "123456")
-            } catch {
-              print("Error signing in: \(error.localizedDescription)")
-            }
-            
-            if AuthController.isSignedIn {
+        /*
+         viewModel.login(username: "dara", password: "123456") { _ in
+         let user = User(username: "dara")
+         do {
+         try AuthController.signIn(user, password: "123456")
+         } catch {
+         print("Error signing in: \(error.localizedDescription)")
+         }
+         
+         if AuthController.isSignedIn {
+         self.navigates(to: .home(.push(subtype: .fromLeft)))
+         }
+         }
+         */
+        validate { user in
+            self.viewModel.login(username: user.username, password: user.password) { _ in
                 self.navigates(to: .home(.push(subtype: .fromLeft)))
             }
         }
-*/
-        validate { user in
-            self.viewModel.login(username: user.username, password: user.password) { _ in
-                    self.navigates(to: .home(.push(subtype: .fromLeft)))
-            }
-        }
         
-//        //validate()
-//        Preference.isLogin = false
-//        viewModel.fetchRSA { (publicKey) in
-//
-//            let sha256 = String.random(length: 5).asSha256 // randomsha
-//            Preference.sha256 = sha256
-//
-//            print("ShaKey===>", Preference.sha256)
-//
-//            let encrypted = RSA.encrypt(string: sha256, publicKey: publicKey)
-//
-//            self.viewModel.submitAES(encryption: encrypted!) {
-//                Preference.isLogin = true
-//                self.viewModel.login {
-//
-//
-//
-//                    Preference.isLogin = false
-//                }
-//            }
-//        }
+        //        //validate()
+        //        Preference.isLogin = false
+        //        viewModel.fetchRSA { (publicKey) in
+        //
+        //            let sha256 = String.random(length: 5).asSha256 // randomsha
+        //            Preference.sha256 = sha256
+        //
+        //            print("ShaKey===>", Preference.sha256)
+        //
+        //            let encrypted = RSA.encrypt(string: sha256, publicKey: publicKey)
+        //
+        //            self.viewModel.submitAES(encryption: encrypted!) {
+        //                Preference.isLogin = true
+        //                self.viewModel.login {
+        //
+        //
+        //
+        //                    Preference.isLogin = false
+        //                }
+        //            }
+        //        }
     }
     
     @IBAction func registerButtonTapped(_ sender: Any) {
@@ -145,10 +170,10 @@ class LoginViewController: BaseViewController {
     func validate(completion: @escaping (_ data: User) -> Void) {
         do {
             let username = try usernameTextField.validatedText(type:  .requiredField(field: "Username/Phone Number".localized))
-//            let password = try passwordTextField.validatedText(type: .other(message: "Required"))
+            //            let password = try passwordTextField.validatedText(type: .other(message: "Required"))
             let password = try passwordTextField.validatedText(type: .password)
-//            let data = LoginDataTest(username: username, password: password)
-//            fetch(data)
+            //            let data = LoginDataTest(username: username, password: password)
+            //            fetch(data)
             let user = User(username: username, password: password)
             
             print("Users........", user)
@@ -164,8 +189,8 @@ class LoginViewController: BaseViewController {
         // check if current controller is part of UINavigatinController!
         if let stack = self.navigationController?.viewControllers {
             for vc in stack where vc.isKind(of: LoginViewController.self) {
-            navigates(to: .home(.push(subtype: .fromLeft)))
-          }
+                navigates(to: .home(.push(subtype: .fromLeft)))
+            }
         } else {
             navigates(to: .home(.push(subtype: .fromRight)))
         }
@@ -216,3 +241,24 @@ extension String {
     }
 }
 
+extension UIViewController {
+    // if view controller is root/part navigation stack
+    var isRoot: Bool {
+        return self.navigationController?.viewControllers.count == 1
+    }
+    
+    // if view controller is pushed/present
+    var isModal: Bool {
+        if let index = navigationController?.viewControllers.firstIndex(of: self), index > 0 {
+            return false
+        } else if presentingViewController != nil {
+            return true
+        } else if navigationController?.presentingViewController?.presentedViewController == navigationController {
+            return true
+        } else if tabBarController?.presentingViewController is UITabBarController {
+            return true
+        } else {
+            return false
+        }
+    }
+}

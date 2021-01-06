@@ -114,6 +114,8 @@
 		3E66C8A32570E0E600C5502E /* ProductCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E66C8A12570E0E600C5502E /* ProductCell.swift */; };
 		3E66C8A42570E0E600C5502E /* ProductCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E66C8A22570E0E600C5502E /* ProductCell.xib */; };
 		3E68EF46258B8FF500A79DA7 /* Variable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E68EF45258B8FF500A79DA7 /* Variable.swift */; };
+		3E70D7CC25A5BBC500E6B710 /* ProtectedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E70D7CA25A5BBC500E6B710 /* ProtectedViewController.swift */; };
+		3E70D7CD25A5BBC500E6B710 /* ProtectedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E70D7CB25A5BBC500E6B710 /* ProtectedViewController.xib */; };
 		3E7367BB259085DD00E9A182 /* CheckCreditFormViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E7367BA259085DD00E9A182 /* CheckCreditFormViewModel.swift */; };
 		3E800261250B5C1100503267 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E800260250B5C1100503267 /* BaseViewController.swift */; };
 		3E800263250B75A000503267 /* UINavigationController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E800262250B75A000503267 /* UINavigationController + Extension.swift */; };
@@ -347,6 +349,8 @@
 		3E66C8A12570E0E600C5502E /* ProductCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductCell.swift; sourceTree = "<group>"; };
 		3E66C8A22570E0E600C5502E /* ProductCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProductCell.xib; sourceTree = "<group>"; };
 		3E68EF45258B8FF500A79DA7 /* Variable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Variable.swift; sourceTree = "<group>"; };
+		3E70D7CA25A5BBC500E6B710 /* ProtectedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtectedViewController.swift; sourceTree = "<group>"; };
+		3E70D7CB25A5BBC500E6B710 /* ProtectedViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProtectedViewController.xib; sourceTree = "<group>"; };
 		3E7367BA259085DD00E9A182 /* CheckCreditFormViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckCreditFormViewModel.swift; sourceTree = "<group>"; };
 		3E800260250B5C1100503267 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		3E800262250B75A000503267 /* UINavigationController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController + Extension.swift"; sourceTree = "<group>"; };
@@ -950,6 +954,8 @@
 			isa = PBXGroup;
 			children = (
 				3E800260250B5C1100503267 /* BaseViewController.swift */,
+				3E70D7CA25A5BBC500E6B710 /* ProtectedViewController.swift */,
+				3E70D7CB25A5BBC500E6B710 /* ProtectedViewController.xib */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -1464,6 +1470,7 @@
 				3EB27FE9258A10360039C00B /* LocationPicker2ViewController.xib in Resources */,
 				3E05D5D8252C1A15003C5432 /* LoginViewController.xib in Resources */,
 				3ECDBB1E25A45EB200681B06 /* OffersTableViewCell.xib in Resources */,
+				3E70D7CD25A5BBC500E6B710 /* ProtectedViewController.xib in Resources */,
 				3EA5778C25662F8C00312E5F /* WKViewController.xib in Resources */,
 				3EB28039258B52500039C00B /* PickerTableViewCell.xib in Resources */,
 				3E56EE94251846B90083CC49 /* TakePhotoViewController.xib in Resources */,
@@ -1754,6 +1761,7 @@
 				3E23674A24F617ED003FD6D4 /* TimeInterval.swift in Sources */,
 				3E5641DA2506504900716D8B /* HomeViewController.swift in Sources */,
 				3E5641E62507941900716D8B /* CollectionViewDataSource.swift in Sources */,
+				3E70D7CC25A5BBC500E6B710 /* ProtectedViewController.swift in Sources */,
 				3E93B2AA258870E4006AB2E9 /* AuthController.swift in Sources */,
 				3E90784F256E628700253AEB /* LanguageListViewController.swift in Sources */,
 				3E2F400D25109B1200C8875B /* PaymentOptionViewController.swift in Sources */,

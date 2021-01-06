@@ -15,7 +15,7 @@ extension CheckCreditHistoryViewController {
     }
 }
 
-class CheckCreditHistoryViewController: BaseViewController {
+class CheckCreditHistoryViewController: BaseViewController, Protectable {
     private let viewModel = ApplyLoanViewModel()    
     @IBOutlet weak var applyLoanButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
@@ -34,6 +34,10 @@ class CheckCreditHistoryViewController: BaseViewController {
         self.view.backgroundColor = .brandPurple
         applyLoanButton.rounds(radius: 10)
 //        bind()
+    }
+    
+    func log(_ message: String) {
+        print("Meassagesss.....", message)
     }
     
     private func bind() {
@@ -90,5 +94,15 @@ extension CheckCreditHistoryViewController: UITableViewDataSource, UITableViewDe
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print("ndexPath.row", indexPath.row)
+    }
+}
+
+
+protocol Protectable {
+    func log(_ message: String)
+}
+extension Protectable {
+    func log(_ message: String) {
+        print("\(Date()): Hellooo...... \(message).")
     }
 }

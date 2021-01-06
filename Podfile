@@ -15,7 +15,8 @@ target 'AEON Loan' do
   pod 'ActivityIndicatorView'
   pod 'MaterialActivityIndicator'
   pod 'SkeletonView'
-  # pod 'RealmSwift','4.4.1'
+#  pod 'CryptoSwift', '~> 1.3.8'
+#  pod 'RealmSwift','4.4.1'
   
   # Pods for AEON Loan
 

@@ -46,7 +46,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
         
         setupView()
         bindSliderData()
-        bindCheckCreditStatus()
+         bindCheckCreditStatus()
         bind()
         
         //self.showIndicator(true, style: .whiteBackground)
@@ -114,7 +114,7 @@ class HomeViewController: UIViewController, UIGestureRecognizerDelegate {
         
         loanViewModel.error.bind { [weak self] (err) in
             guard let self = self, let err = err else { return }
-            self.showAlert(title: "".localized, message: err.localized)
+//            self.showAlert(title: "".localized, message: err.localized)
         }
         
         loanViewModel.products.bind { [weak self] (products) in
@@ -192,6 +192,29 @@ extension HomeViewController: UICollectionViewDelegate {
         case gridCollectionView:
             switch indexPath.row {
             case 0:
+                
+                guard AuthController.isSignedIn else {
+                    
+//                    navigates(to: .login)
+                    
+                    let controller = LoginViewController.instantiate()
+                    controller.modalTransitionStyle = .crossDissolve
+                    controller.modalPresentationStyle = .overFullScreen
+                    self.present(controller, animated: true, completion: nil)
+                    
+//                    navigationController?.pushViewController(controller, animated: true)
+                    
+                    //let controller = LoginViewController.instantiate()
+                    //controller.modalPresentationStyle = .overFullScreen
+//                    controller.modalTransitionStyle = .coverVertical
+                    //self.present(controller, animated: true, completion: nil)
+//                    navigationController?.pushViewController(controller, animated: true)
+                    
+                    return
+                }
+                
+                print("Is signin: ", AuthController.isSignedIn)
+                
                 guard let products = products, products.count > 0 else {
                     navigates(to: .checkCredit(.form(nil)))
                     return
@@ -199,6 +222,8 @@ extension HomeViewController: UICollectionViewDelegate {
                 
                 let controller = CheckCreditHistoryViewController.instantiate(data: products)
                 navigationController?.pushViewController(controller, animated: true)
+                
+                
                 
                 
                 

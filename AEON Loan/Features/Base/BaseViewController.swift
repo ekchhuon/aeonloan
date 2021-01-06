@@ -77,6 +77,10 @@ class BaseViewController: UIViewController {
         
         return settings
     }
+    
+    func showProtectedScreen() {
+        
+    }
 
     @objc func openSearch() {
         print("search")

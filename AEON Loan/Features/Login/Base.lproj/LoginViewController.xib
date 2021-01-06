@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="AEON_Loan" customModuleProvider="target">
             <connections>
+                <outlet property="closeButton" destination="b1f-ce-dVo" id="Kla-Zf-paV"/>
                 <outlet property="eyeballButton" destination="50I-iZ-D1h" id="L92-A3-6w6"/>
                 <outlet property="forgotPassword" destination="5Zf-qK-JSw" id="zef-Q7-XNJ"/>
                 <outlet property="loginButton" destination="6WX-eU-26a" id="922-aT-JGQ"/>
@@ -218,13 +219,23 @@
                         <constraint firstAttribute="width" secondItem="FGX-Sr-fPb" secondAttribute="height" multiplier="1:1" id="iwd-sb-qhy"/>
                     </constraints>
                 </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b1f-ce-dVo">
+                    <rect key="frame" x="378.5" y="44" width="17.5" height="22"/>
+                    <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <state key="normal" image="xmark" catalog="system"/>
+                    <connections>
+                        <action selector="closeButtonTapped:" destination="-1" eventType="touchUpInside" id="mJ1-Y0-Thp"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="b1f-ce-dVo" secondAttribute="trailing" constant="18" id="3Kn-Nu-WLg"/>
                 <constraint firstItem="FGX-Sr-fPb" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="KfQ-u5-3cb"/>
                 <constraint firstItem="Wdj-kg-1gw" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="18" id="YAt-Rf-CFY"/>
                 <constraint firstItem="Wdj-kg-1gw" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="aOa-Mg-aY9"/>
+                <constraint firstItem="b1f-ce-dVo" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="jzX-Pm-qCS"/>
                 <constraint firstItem="Wdj-kg-1gw" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" multiplier="1.1" id="luW-LA-PCI"/>
                 <constraint firstItem="FGX-Sr-fPb" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="50" id="nCp-R5-xr5"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Wdj-kg-1gw" secondAttribute="trailing" constant="18" id="wZs-1v-gZh"/>
@@ -235,6 +246,7 @@
     <resources>
         <image name="AEONSPB-logo" width="558" height="543"/>
         <image name="eye.slash" catalog="system" width="128" height="86"/>
+        <image name="xmark" catalog="system" width="128" height="113"/>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
